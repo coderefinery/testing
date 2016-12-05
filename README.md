@@ -2,6 +2,10 @@
 
 # Example lesson
 
+## Credit and license
+
+- https://coderefinery.github.io/example-lesson/license/
+
 The lesson Jekyll file structure and browsing layout is inspired by and derived from
 work by [Software Carpentry](http://software-carpentry.org) licensed under the
 [Creative Commons Attribution license (CC BY4.0)](https://creativecommons.org/licenses/by/4.0/).
