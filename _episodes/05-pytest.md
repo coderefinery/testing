@@ -12,16 +12,43 @@ keypoints:
   - "Write me."
 ---
 
-```
-"First name","Last name","Age","Favourite ice cream","Favourite color","Favourite movie","Favourite programming language"
-Annmarie,Arana,27,Vanilla,Blue,Dirty Dancing,Python
-Pasquale,Pennebaker,17,Lemon,Green,Star Wars,C++
-Sumiko,Summerford,40,Pineapple,Black,Indiana Jones 3,Haskell
-Gerry,Gering,56,Chocolate,Green,Citizen Kane,Java
-Zoila,Zambrano,16,Vanilla,Orange,Dirty Dancing,C
-Kirk,Kolodziej,18,Strawberry,Red,Pulp Fiction,Python
-Olympia,Ousley,28,Lemon,Blue,Drive,Python
-Autumn,Aldape,22,Apple,Blue,Dirty Dancing,Julia
-Delena,Dishman,37,Vanilla,Red,Annie Hall,Fortran
-Jona,Jesse,31,Mango,Yellow,Manhattan,Ruby
+```python
+def reverse_string(s):
+    """
+    Reverses order or characters in string s.
+    """
+    return s[::-1]
+
+
+def test_reverse_string():
+    assert reverse_string('foobar!') == '!raboof'
+    assert reverse_string('stressed') == 'desserts'
+
+
+def reverse_words(s):
+    """
+    Reverses order or words in string s.
+    """
+    words = s.split()
+    words_reversed = words[::-1]
+    return ' '.join(words_reversed)
+
+
+def test_reverse_words():
+    assert reverse_words('dogs hate cats') == 'cats hate dogs'
+    assert reverse_words('dog eat dog') == 'dog eat dog'
+    assert reverse_words('one two three four') == 'four three two one'
+
+
+def get_word_lengths(s):
+    """
+    Returns a list of integers representing
+    the word lengths in string s.
+    """
+    return [len(word) for word in s.split()]
+
+
+def test_get_word_lengths():
+    text = "Three tomatoes are walking down the street"
+    assert get_word_lengths(text) == [5, 8, 3, 7, 4, 3, 6]
 ```
