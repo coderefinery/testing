@@ -1,6 +1,6 @@
-fork_me_ribbon_url: https://github.com/coderefinery/example-lesson
-title: "Example lesson"
-start_time: 540  # 9:00
+fork_me_ribbon_url: https://github.com/coderefinery/testing
+title: "Automated testing"
+start_time: 840  # 14:00
 
 # where things are
 source: .
