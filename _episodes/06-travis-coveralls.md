@@ -9,6 +9,8 @@ objectives:
   - "Get comfortable with Travis and Coveralls and experience a full-cycle collaborative workflow."
 ---
 
+## Exercise a full-cycle collaborative workflow
+
 We do this exercise in pairs. Below are the steps and here is a flow-chart for this exercise:
 
 **FIXME add chart**
@@ -73,12 +75,22 @@ def get_word_lengths(s):
     Returns a list of integers representing
     the word lengths in string s.
     """
-    return [len(word) for word in s.split()]
+    # uncomment next line in step 9
+#   return [len(word) for word in s.split()]
+    return None
 
 
-def test_get_word_lengths():
-    text = "Three tomatoes are walking down the street"
-    assert get_word_lengths(text) == [5, 8, 3, 7, 4, 3, 6]
+# uncomment this function in step 6
+#def test_get_word_lengths():
+#    text = "Three tomatoes are walking down the street"
+#    assert get_word_lengths(text) == [5, 8, 3, 7, 4, 3, 6]
+
+
+def obscure_function():
+    """
+    Example of a function that is never tested.
+    """
+    do_something_strange()
 ```
 
 Add a file `.travis.yml` (mind the "." at the beginning) containing:
