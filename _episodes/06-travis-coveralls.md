@@ -158,7 +158,7 @@ Now you know the drill.
 
 For this uncomment the code under "step 9".
 
-Commit the following commit message "restoring test; fixes #1" (assuming that you try to fix issue number 1).
+Commit the following commit message "restoring test_get_word_lengths; fixes #1" (assuming that you try to fix issue number 1).
 
 Then push to your fork.
 
