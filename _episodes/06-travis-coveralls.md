@@ -14,9 +14,11 @@ keypoints:
 
 ## Exercise a full-cycle collaborative workflow
 
-We do this exercise in pairs. Below are the steps and here is a flow-chart for this exercise:
+We will do this exercise in pairs.
 
-**FIXME add chart**
+Here is an overview of this exercise. Below we detail the steps.
+
+<img src="{{ site.baseurl }}/img/exercise.svg"/>
 
 
 ### Step 1: Create a new repository on GitHub
