@@ -14,33 +14,31 @@ keypoints:
 ## Unit test frameworks
 
 - Python
-    - py.test
-    - nose
-    - doctest
-    - unittest
+    - [pytest](http://doc.pytest.org)
+    - [nose](http://nose.readthedocs.io)
+    - [doctest](https://docs.python.org/2/library/doctest.html)
+    - [unittest](https://docs.python.org/2/library/unittest.html)
 
 - C(++)
-    - Google Test
-    - CppUnit
-    - Boost.Test
-    - UnitTest++
-    - https://github.com/philsquared/Catch
+    - [Google Test](https://github.com/google/googletest)
+    - [Catch](https://github.com/philsquared/Catch)
+    - [cppunit](https://freedesktop.org/wiki/Software/cppunit/)
+    - [Boost.Test](http://www.boost.org/doc/libs/1_62_0/libs/test/doc/html/index.html)
+    - [UnitTest++](http://unittest-cpp.github.io)
 
 - Fortran
-    - pFUnit
-    - Fruit
+    - [pFUnit](https://sourceforge.net/projects/pfunit/)
+    - [FRUIT](https://sourceforge.net/projects/fortranxunit/)
+    - [Ftunit](http://flibs.sourceforge.net/ftnunit.html)
 
 ---
 
-## py.test
+## [pytest](http://doc.pytest.org)
 
-- Very easy to set up
+Very easy to set up: Anaconda, Miniconda, or virtualenv.
 
-```shell
-$ pip install pytest  # ideally into a virtualenv
-```
-
-- Very easy to use
+Very easy to use: Prefix a function with "test\_" and the test runner will execute it.
+No need to subclass anything.
 
 ```python
 def get_word_lengths(s):
@@ -55,16 +53,15 @@ def test_get_word_lengths():
     assert get_word_lengths(text) == [5, 8, 3, 7, 4, 3, 6]
 ```
 
-- Example output: https://travis-ci.org/bast/pytest-demo/builds/104182942
-- Example project: https://github.com/bast/pytest-demo
+- [Example output](https://travis-ci.org/bast/pytest-demo/builds/104182942)
+- [Example project](https://github.com/bast/pytest-demo)
 
 ---
 
-## Google Test
+## [Google Test](https://github.com/google/googletest)
 
 - Widely used
 - Very rich in functionality
-- Source: https://github.com/google/googletest
 
 ```cpp
 #include "gtest/gtest.h"
@@ -78,15 +75,14 @@ TEST(example, add)
 }
 ```
 
-- Example output: https://travis-ci.org/bast/gtest-demo/builds/104190982
-- Example project: https://github.com/bast/gtest-demo
+- [Example output](https://travis-ci.org/bast/gtest-demo/builds/104190982)
+- [Example project](https://github.com/bast/gtest-demo)
 
 ---
 
-## pFUnit
+## [pFUnit](https://sourceforge.net/projects/pfunit/)
 
 - Very rich in functionality
-- Source: http://pfunit.sourceforge.net
 - Requires modern Fortran compilers (uses F2003 standard)
 
 ```fortran
@@ -106,21 +102,22 @@ subroutine test_add_numbers()
 end subroutine
 ```
 
-- Example output: https://travis-ci.org/bast/pfunit-demo/builds/104193675
-- Example project: https://github.com/bast/pfunit-demo
+- [Example output](https://travis-ci.org/bast/pfunit-demo/builds/104193675)
+- [Example project](https://github.com/bast/pfunit-demo)
 
 ---
 
 ## CTest and CDash
 
+- Components of the [CMake](https://cmake.org) suite (more about it later in this workshop)
 - CTest runs a set of tests through bash/perl/python scripts and reports to CDash which aggregates results
 - The test scripts can be anything you like
 
-```shell
-add_test(my_test_name ${PROJECT_BINARY_DIR}/my_test_script --flags)
-
+```cmake
 include(CTest)
 enable_testing()
+
+add_test(my_test_name ${PROJECT_BINARY_DIR}/my_test_script --flags)
 ```
 
 - CTest looks for the return codes: 0/non-0 (success/failure)
@@ -131,39 +128,32 @@ enable_testing()
 $ make Nightly
 ```
 
-- CDash example: https://testboard.org
-
----
-
-## Fun: Jenkins Chuck Norris plugin
-
-https://wiki.jenkins-ci.org/display/JENKINS/ChuckNorris+Plugin
-
-<img src="{{ site.baseurl }}/img/chucknorris_badass.jpg" style="width: 350px;"/>
-<img src="{{ site.baseurl }}/img/chucknorris_thumbup.jpg" style="width: 350px;"/>
-
----
-
-## Fun: Jenkins "Extreme Feedback" Contraption
-
-https://github.com/codedance/Retaliation
-
-"Retaliation is a Jenkins CI build monitor that automatically coordinates a foam missile counter-attack against the developer who breaks the build. It does
-this by playing a pre-programmed control sequence to a USB Foam Missile Launcher to target the offending code monkey."
-
-<img src="{{ site.baseurl }}/img/launcher.jpg" style="width: 400px;"/>
+- [CDash example](https://testboard.org)
 
 ---
 
 ## Travis and Coveralls
 
-- GitHub plus Travis plus Coveralls is a killer combination - use it!
+- GitHub plus [Travis CI](https://travis-ci.org)
+  plus [Coveralls](https://coveralls.io) is a killer combination - use it!
 - Free for public repositories
+- We will exercise with both tools in the following interactive exercise
 
-### Travis CI
+---
 
-- https://travis-ci.org
+## Testing can also be fun
 
-### Coveralls: code coverage history and stats
+[Jenkins Chuck Norris plugin](https://wiki.jenkins-ci.org/display/JENKINS/ChuckNorris+Plugin):
 
-- https://coveralls.io
+<img src="{{ site.baseurl }}/img/chucknorris_badass.jpg" style="width: 350px;"/>
+<img src="{{ site.baseurl }}/img/chucknorris_thumbup.jpg" style="width: 350px;"/>
+
+Another Jenkins plugin:
+
+"[Retaliation](https://github.com/codedance/Retaliation) is a Jenkins CI build
+monitor that automatically coordinates a foam missile counter-attack against
+the developer who breaks the build. It does this by playing a pre-programmed
+control sequence to a USB Foam Missile Launcher to target the offending code
+monkey."
+
+<img src="{{ site.baseurl }}/img/launcher.jpg" style="width: 400px;"/>
