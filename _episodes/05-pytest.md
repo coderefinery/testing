@@ -55,7 +55,8 @@ def test_reverse_words():
 This code contains two genuine functions and two test functions. Before you
 look at the implementations `reverse_string` and `reverse_words`, look at the
 tests. From the test functions it should be clear what the implementations do
-even without understanding Python.
+even without understanding Python. We remember now the point about tests
+serving as documentation and entry point for new developers.
 
 Let us try to test it with pytest:
 
