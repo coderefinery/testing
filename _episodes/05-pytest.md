@@ -127,6 +127,7 @@ example.py:9: AssertionError
 ## Note to Fortran developers
 
 Personal recommendation:
+
 - Compile the Fortran code to a dynamic library with C interface using `iso_c_binding`
 - Document your API in a C header file
 - Use Python [CFFI](http://cffi.readthedocs.io) to create a Python module from your C header file and dynamic library
