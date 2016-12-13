@@ -7,6 +7,8 @@ questions:
   - "How can we implement automatic testing each time we push changes to the repository?"
 objectives:
   - "Get comfortable with Travis and Coveralls and experience a full-cycle collaborative workflow."
+keypoints:
+  - "This example was using Python but you can achieve the same automation for Fortran or C or C++."
 ---
 
 ## Exercise a full-cycle collaborative workflow
