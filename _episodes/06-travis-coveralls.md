@@ -15,6 +15,7 @@ We do this exercise in pairs. Below are the steps and here is a flow-chart for t
 
 **FIXME add chart**
 
+
 ### Step 1: Create a new repository on GitHub
 
 - Select a **different repository name** than your partner
@@ -43,18 +44,6 @@ Clone the repository.
 Add a file `example.py` containing:
 
 ```python
-def reverse_string(s):
-    """
-    Reverses order or characters in string s.
-    """
-    return s[::-1]
-
-
-def test_reverse_string():
-    assert reverse_string('foobar!') == '!raboof'
-    assert reverse_string('stressed') == 'desserts'
-
-
 def reverse_words(s):
     """
     Reverses order or words in string s.
