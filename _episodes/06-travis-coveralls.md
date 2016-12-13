@@ -5,6 +5,7 @@ teaching: 0
 exercises: 40
 questions:
   - "How can we implement automatic testing each time we push changes to the repository?"
+  - "Why is it good to autoclose issues with commit messages?"
 objectives:
   - "Get comfortable with Travis and Coveralls and experience a full-cycle collaborative workflow."
 keypoints:
@@ -173,3 +174,5 @@ how Travis automatically tested the code.
 
 Observe how accepting the pull request automatically closes the issue (provided
 the commit message contained the correct issue number).
+
+Discuss why this is a useful feature.
