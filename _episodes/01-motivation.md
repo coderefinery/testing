@@ -6,12 +6,14 @@ exercises: 0
 questions:
   - "Why should we write tests?"
 objectives:
-  - "Write me"
+  - "Discuss the advantages of writing and maintaining tests in research software."
 keypoints:
   - "Do not trust software when its tests do not cover its claimed capabilities
      (test coverage) and when its tests do not pass or if there are no tests at all
      or if the tests are never run."
 ---
+
+## Simulations and analysis with untested software do not constitute science
 
 "Before relying on a new experimental device, an experimental scientist always
 establishes its accuracy. A new detector is calibrated when the scientist
@@ -23,6 +25,10 @@ software do not constitute science."
 (copied from [Testing and Continuous Integration with Python](http://katyhuff.github.io/python-testing/),
 created by Kathryn Huff, see also the Testing chapter in
 [Effective Computation In Physics](http://physics.codes) by Anthony Scopatz and Kathryn Huff)
+
+---
+
+## Testing in a nutshell
 
 In software tests, expected results are compared with observed results in order
 to establish accuracy:
@@ -40,6 +46,10 @@ def test_get_bmi():
     expected_result = 24.670376
     assert abs(bmi - expected_result) < 1.0e-6
 ```
+
+`assert` translates to English as "make sure that".
+
+Why are we not comparing directly all digits with the expected result?
 
 ---
 
@@ -59,10 +69,7 @@ def test_get_bmi():
 - Testing is essential for research software because we care about
   reproducibility of scientific results and because derivative research and
   programs depend on research software
-
-It is difficult to test whether the code is correct but it is possible to test
-whether the code is not obviously wrong. We test whether known bugs are not
-present.
+- "Program testing can be used to show the presence of bugs, but never to show their absence!" (Edsger W. Dijkstra)
 
 ---
 
@@ -105,7 +112,7 @@ has been preserved.
 
 ## Tests help managing complexity
 
-- Help to modularize/encapsulate
+- Help to identify dependcies when modularizing and encapsulating code
 - Unit tests sharpen and document interfaces
 - Enable reuse and migration
 - Faster coding: allows to make big changes quickly; refactoring

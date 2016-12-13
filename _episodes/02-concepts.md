@@ -8,35 +8,38 @@ questions:
   - "What is test coverage?"
   - "How should we approach testing?"
 objectives:
-  - "Write me"
+  - "Understand how the different layers of testing fit to each other."
 keypoints:
-  - "Write me"
+  - "Automatize testing."
 ---
 
-## Tests are no guarantee
+## Defensive programming
 
-<img src="{{ site.baseurl }}/img/unit-testing.jpg" style="width: 500px;"/>
-
-- https://twitter.com/dave1010/status/613601365529657344
+Assume that mistakes will happen and introduce guards against them:
+- Assertions
+- Unit tests
+- Regression tests
 
 ---
 
-## Imperfect tests run frequently are better than perfect tests which are never written
+## How?
 
-## Important
+Imperfect tests run frequently are better than perfect tests which are never written
+
+### Important
 
 - Test frequently (each commit)
-- Test automatically (Travis CI)
+- Test automatically ([Travis CI](https://travis-ci.org))
 - Test with numerical tolerance
-- Think about code coverage (https://coveralls.io)
-- Write test, red, green, refactor
+- Think about code coverage ([Coveralls](https://coveralls.io))
 
 ---
 
 ## Unit tests
 
+- Unit tests are just functions ([Testing and Continuous Integration with Python](http://katyhuff.github.io/python-testing/)
 - Test one unit: module or even single function
-- Sharpen interfaces
+- Help to sharpen interfaces by identifying dependencies
 - Speed up testing
 - Good documentation of the capability and dependencies of a module
 - In fact it is a documentation that is up to date by definition
@@ -47,7 +50,7 @@ keypoints:
 
 - Write tests before writing code
 - Very often we know the result that a function is supposed to produce
-- Development cycle:
+- Development cycle (red, green, refactor):
     - Write the test
     - Write an empty function template
     - Test that the test fails
@@ -59,11 +62,16 @@ keypoints:
 
 ## Functionality regression tests
 
+- The past is what we accept as correct ([Testing and Continuous Integration with Python](http://katyhuff.github.io/python-testing/)
 - Like in a car assembly we have to test all components and also whether the components work together
 - Typically tests entire code for a set of input examples and compares them with reference outputs
 - Hopefully with numerical tolerance
 - Typically we need both unit and functionality regression tests
 - Both are no guarantee that the code is correct "always"
+
+Tests are no guarantee ([@dave1010](https://twitter.com/dave1010/status/613601365529657344)):
+
+<img src="{{ site.baseurl }}/img/unit-testing.jpg" style="width: 500px;"/>
 
 ---
 
@@ -109,13 +117,13 @@ keypoints:
 
 ## Continuous integration
 
-- Test each commit on every branch
+- Test each commit (push) on every branch
 - Makes it possible for the mainline maintainer to see whether a modification
   breaks functionality before accepting the merge
 
 ---
 
-## Good practices (1/2)
+## Good practices
 
 - Test before committing (use the Git staging area)
 - Fix broken tests immediately (dirty dishes effect)
@@ -123,34 +131,9 @@ keypoints:
 - Think about coverage (physics and lines of code)
 - Go public with your testing dashboard and issues/tickets
 - Dogfooding: use the code/scripts that you ship
-
----
-
-## Good practices (2/2)
-
 - Think about input sanitization (green testing dashboard does not prevent me from making unexpected keyword combinations)
 - Test controlled errors: if something is expected to fail, test for that
 - Make testing easy to run (`make test`)
 - Make testing easy to analyze
     - Do not flood screen with pages of output in case everything runs OK
     - Test with numerical tolerance (extremely annoying to compare digits by eye)
-
----
-
-## Missing
-
-- defensive programming
-- assertions
-- exceptions
-- unit tests: they are just functions [cite katy]
-- regression tests: the past is what we accept as correct [cite katy]
-- integration tests
-- CI
-- test driven development
-- test coverage
-
-Robert C. Martin, the author of “Clean Code” said : “The first rule of
-functions is that they should be small. The second rule of functions is that
-they should be smaller than that.” [cite katy]
-
-Test suite: Collection of all of the tests for a given code.
