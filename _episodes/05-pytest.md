@@ -62,7 +62,7 @@ Let us try to test it with pytest:
 
 ```shell
 $ py.test -vv example.py
-============================================================ test session starts ============================================================
+============================================================ test session starts ==================================
 platform linux -- Python 3.5.2, pytest-3.0.5, py-1.4.31, pluggy-0.4.0 -- /home/user/pytest-example/venv/bin/python3
 cachedir: .cache
 rootdir: /home/user/pytest-example, inifile:
@@ -71,7 +71,7 @@ collected 2 items
 example.py::test_reverse_string PASSED
 example.py::test_reverse_words PASSED
 
-========================================================= 2 passed in 0.01 seconds ==========================================================
+========================================================= 2 passed in 0.01 seconds ================================
 ```
 
 Yay! All tests passed!
@@ -100,7 +100,7 @@ Now we want to see whether pytest detects the change:
 ```shell
 $ py.test -vv example.py
 
-============================================================ test session starts ============================================================
+============================================================ test session starts ==================================
 platform linux -- Python 3.5.2, pytest-3.0.5, py-1.4.31, pluggy-0.4.0 -- /home/user/pytest-example/venv/bin/python3
 cachedir: .cache
 rootdir: /home/user/pytest-example, inifile:
@@ -109,8 +109,8 @@ collected 2 items
 example.py::test_reverse_string FAILED
 example.py::test_reverse_words PASSED
 
-================================================================= FAILURES ==================================================================
-____________________________________________________________ test_reverse_string ____________________________________________________________
+================================================================= FAILURES ========================================
+____________________________________________________________ test_reverse_string __________________________________
 
     def test_reverse_string():
 >       assert reverse_string('foobar!') == '!raboof'
@@ -119,7 +119,7 @@ E         - foobar!
 E         + !raboof
 
 example.py:9: AssertionError
-==================================================== 1 failed, 1 passed in 0.03 seconds =====================================================
+==================================================== 1 failed, 1 passed in 0.03 seconds ===========================
 ```
 
 ---
