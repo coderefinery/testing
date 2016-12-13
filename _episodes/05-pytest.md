@@ -1,7 +1,7 @@
 ---
 layout: episode
 title: "Exercise: Testing with pytest"
-teaching: 10
+teaching: 0
 exercises: 20
 questions:
   - "How can we implement a test suite using pytest?"
