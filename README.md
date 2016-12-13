@@ -2,6 +2,5 @@
 
 # Lesson on automated testing
 
-## Credit and license
-
-- https://coderefinery.github.io/testing/license/
+- [Website](https://coderefinery.github.io/testing/)
+- [Credit and license](https://coderefinery.github.io/testing/license/)
