@@ -23,8 +23,8 @@ Here is an overview of this exercise. Below we detail the steps.
 
 ### Step 1: Create a new repository on GitHub
 
-- Select a **different repository name** than your partner
-- **Select** "Initialize this repository with a README"
+- Select a **different repository name** than your partner (otherwise forking the same name will be strange)
+- **Select** "Initialize this repository with a README" (otherwise you try to clone an empty repo)
 
 
 ### Step 2: Enable this repository on [Travis CI](https://travis-ci.org) and [Coveralls](https://coveralls.io)
@@ -39,6 +39,7 @@ On [Coveralls](https://coveralls.io):
 
 - Use "GITHUB SIGN IN"
 - Select "+" symbol: "ADD REPOS" ("SYNC REPOS" if it is not in the list; syncing can take a minute)
+- If syncing takes forever, reload the page
 - Enable the new repository
 
 
@@ -160,7 +161,7 @@ Now you know the drill.
 
 For this uncomment the code under "step 9".
 
-Commit the following commit message "restoring test_get_word_lengths; fixes #1" (assuming that you try to fix issue number 1).
+Commit the following commit message "restore test_get_word_lengths; fixes #1" (assuming that you try to fix issue number 1).
 
 Then push to your fork.
 
