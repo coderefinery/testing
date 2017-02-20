@@ -24,7 +24,7 @@ Here is an overview of this exercise. Below we detail the steps.
 ### Step 1: Create a new repository on GitHub
 
 - Select a **different repository name** than your partner (otherwise forking the same name will be strange)
-- **Select** "Initialize this repository with a README" (otherwise you try to clone an empty repo)
+- **Before** you create the repository, select **"Initialize this repository with a README"** (otherwise you try to clone an empty repo)
 
 
 ### Step 2: Enable this repository on [Travis CI](https://travis-ci.org) and [Coveralls](https://coveralls.io)
