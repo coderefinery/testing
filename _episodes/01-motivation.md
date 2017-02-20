@@ -76,7 +76,8 @@ Why are we not comparing directly all digits with the expected result?
 ## Tests help users of your code
 
 - Users and computing center personnel may not be able to identify incorrect
-  installation without automated testing
+  installation without automated testing (running a calculation and checking results
+  with the naked eye is not automated testing)
 - Users of your code publish papers based on results produced by your code
 - Your peers need to be able to reproduce your (to be) published computational results
 
@@ -95,8 +96,8 @@ Why are we not comparing directly all digits with the expected result?
 ## Tests facilitate external contributions
 
 Tests can be good documentation of what the code is capable to do and how it is
-supposed to be used since the tests are documentation which is up to date by
-definition.
+supposed to be used since the tests are **documentation which is up to date by
+definition**.
 
 Easier for external developers to contribute to the project without breaking
 your code.
@@ -118,7 +119,7 @@ has been preserved.
 - Faster coding: allows to make big changes quickly; refactoring
 - You start with design; often leads to better design
 - Well structured code is easy to test
-- Guides towards modular code structure
+- **Tests guide towards modular code structure**
 
 #### Good code: pure and easy to test
 
