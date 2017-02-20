@@ -19,6 +19,9 @@ keypoints:
     - [doctest](https://docs.python.org/2/library/doctest.html)
     - [unittest](https://docs.python.org/2/library/unittest.html)
 
+- R
+    - [testthat](https://github.com/hadley/testthat)
+
 - C(++)
     - [Google Test](https://github.com/google/googletest)
     - [Catch](https://github.com/philsquared/Catch)
