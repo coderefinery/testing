@@ -107,7 +107,7 @@ install:
 
 script:
   - if [[ $TRAVIS_PYTHON_VERSION == 2.7 ]];
-    then py.test -vv example.py --cov example.py;
+    then py.test -vv example.py --cov example;
     else py.test -vv example.py;
     fi
 
