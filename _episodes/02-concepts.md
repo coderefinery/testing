@@ -37,7 +37,7 @@ Imperfect tests run frequently are better than perfect tests which are never wri
 
 ## Unit tests
 
-- Unit tests are just functions ([Testing and Continuous Integration with Python](http://katyhuff.github.io/python-testing/)
+- Unit tests are functions ([Testing and Continuous Integration with Python](http://katyhuff.github.io/python-testing/))
 - Test one unit: module or even single function
 - Help to sharpen interfaces by identifying dependencies
 - Speed up testing
@@ -62,7 +62,7 @@ Imperfect tests run frequently are better than perfect tests which are never wri
 
 ## Functionality regression tests
 
-- The past is what we accept as correct ([Testing and Continuous Integration with Python](http://katyhuff.github.io/python-testing/)
+- The past is what we accept as correct ([Testing and Continuous Integration with Python](http://katyhuff.github.io/python-testing/))
 - Like in a car assembly we have to test all components and also whether the components work together
 - Typically tests entire code for a set of input examples and compares them with reference outputs
 - Hopefully with numerical tolerance
