@@ -178,3 +178,8 @@ Observe how accepting the pull request automatically closes the issue (provided
 the commit message contained the correct issue number).
 
 Discuss why this is a useful feature.
+
+
+### Step 12: Discussion
+
+We discuss together about our experiences with this exercise.
