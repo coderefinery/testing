@@ -178,7 +178,7 @@ how Travis automatically tested the code.
 Observe how accepting the pull request automatically closes the issue (provided
 the commit message contained the correct issue number).
 
-Discuss why this is a useful feature.
+Discuss whether this is a useful feature. And if it is, why do you think is it useful?
 
 
 ### Step 12: Discussion
