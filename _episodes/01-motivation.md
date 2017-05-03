@@ -113,7 +113,7 @@ has been preserved.
 
 ## Tests help managing complexity
 
-- Help to identify dependcies when modularizing and encapsulating code
+- Help to identify dependencies when modularizing and encapsulating code
 - Unit tests sharpen and document interfaces
 - Enable reuse and migration
 - Faster coding: allows to make big changes quickly; refactoring
