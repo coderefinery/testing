@@ -46,6 +46,15 @@ Imperfect tests run frequently are better than perfect tests which are never wri
 
 ---
 
+## Integration tests
+
+- Integration tests verify whether muliple modules are working well together ([Testing and Continuous Integration with Python](http://katyhuff.github.io/python-testing/))
+- Like in a car assembly we have to test all components independently and also whether the components are working together when combined
+- Unit tests can be used for testing independent components (e.g. engine, radiator, transmission) and integration tests to check if car is working overall
+- Essential for having adequate testing
+- An imperfect integration test is better than no integration test at all
+
+---
 ## Test-driven development
 
 - Write tests before writing code
@@ -63,7 +72,7 @@ Imperfect tests run frequently are better than perfect tests which are never wri
 ## Functionality regression tests
 
 - The past is what we accept as correct ([Testing and Continuous Integration with Python](http://katyhuff.github.io/python-testing/))
-- Like in a car assembly we have to test all components and also whether the components work together
+- If a defect in car engine is fixed, then regression tests can be used to check if the fixed defect has caused any new problems  
 - Typically tests entire code for a set of input examples and compares them with reference outputs
 - Hopefully with numerical tolerance
 - Typically we need both unit and functionality regression tests
