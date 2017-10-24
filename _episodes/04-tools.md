@@ -1,7 +1,7 @@
 ---
 layout: episode
 title: "Tools"
-teaching: 15
+teaching: 10
 exercises: 0
 questions:
   - "What tools are out there?"
