@@ -7,10 +7,6 @@ questions:
   - "Why should we write tests?"
 objectives:
   - "Discuss the advantages of writing and maintaining tests in research software."
-keypoints:
-  - "Do not trust software when its tests do not cover its claimed capabilities
-     (test coverage) and when its tests do not pass or if there are no tests at all
-     or if the tests are never run."
 ---
 
 ## Simulations and analysis with untested software do not constitute science
@@ -46,8 +42,6 @@ def test_get_bmi():
     expected_result = 24.670376
     assert abs(bmi - expected_result) < 1.0e-6
 ```
-
-`assert` translates to English as "make sure that".
 
 Why are we not comparing directly all digits with the expected result?
 
@@ -85,40 +79,21 @@ Why are we not comparing directly all digits with the expected result?
 
 ## Tests help developers of your code
 
-- Satisfying instant visual feedback
-- Avoid coding constipation
-- Avoid "gold-plating" the code
 - Tests make it possible to refactor the code
 - Code is unsustainable without runnable tests and becomes legacy software
-
----
-
-## Tests facilitate external contributions
-
-Tests can be good documentation of what the code is capable to do and how it is
-supposed to be used since the tests are **documentation which is up to date by
-definition**.
-
-Easier for external developers to contribute to the project without breaking
-your code.
+- Documentation which is up to date by definition
+- Easier for external developers to contribute to the project without breaking your code
 
 Suiting up to modify untested code:
 
 <img src="{{ site.baseurl }}/img/suit.jpg" style="width: 400px;"/>
 
-Easier for you to accept contributions from others knowing that functionality
-has been preserved.
-
 ---
 
 ## Tests help managing complexity
 
-- Help to identify dependencies when modularizing and encapsulating code
-- Unit tests sharpen and document interfaces
-- Enable reuse and migration
-- Faster coding: allows to make big changes quickly; refactoring
-- You start with design; often leads to better design
 - Well structured code is easy to test
+- Badly structured code is difficult to test automatically
 - **Tests guide towards modular code structure**
 
 #### Good code: pure and easy to test
@@ -147,3 +122,12 @@ def get_bmi():
 # compute the body mass index
 get_bmi()
 ```
+
+---
+
+## Do not trust software when ...
+
+- ... its tests do not cover its claimed capabilities (test coverage)
+- ... when its tests do not pass
+- ... if there are no tests at all
+- ... if the tests are never run
