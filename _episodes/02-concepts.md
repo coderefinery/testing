@@ -31,7 +31,7 @@ Imperfect tests run frequently are better than perfect tests which are never wri
 - Test frequently (each commit)
 - Test automatically ([Travis CI](https://travis-ci.org))
 - Test with numerical tolerance
-- Think about code coverage ([Coveralls](https://coveralls.io))
+- Think about code coverage ([Coveralls](https://coveralls.io) or [Codecov](https://codecov.io))
 
 ---
 
