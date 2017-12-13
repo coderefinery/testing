@@ -146,3 +146,7 @@ Tests are no guarantee ([@dave1010](https://twitter.com/dave1010/status/61360136
 - Make testing easy to analyze
     - Do not flood screen with pages of output in case everything runs OK
     - Test with numerical tolerance (extremely annoying to compare digits by eye)
+
+<img src="{{ site.baseurl }}/img/commenting-out-tests.jpg" style="width: 500px;"/>
+
+Image by [@thepracticaldev](https://github.com/thepracticaldev/orly-full-res), CC-BY-NC.
