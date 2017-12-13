@@ -24,7 +24,7 @@ keypoints:
 
 - C(++)
     - [Google Test](https://github.com/google/googletest)
-    - [Catch](https://github.com/philsquared/Catch)
+    - [Catch2](http://catch-lib.net)
     - [cppunit](https://freedesktop.org/wiki/Software/cppunit/)
     - [Boost.Test](http://www.boost.org/doc/libs/1_62_0/libs/test/doc/html/index.html)
     - [UnitTest++](http://unittest-cpp.github.io)
