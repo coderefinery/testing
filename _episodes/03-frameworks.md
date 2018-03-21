@@ -110,53 +110,9 @@ end subroutine
 
 ---
 
-## CTest and CDash
+## Services to deploy testing and coverage
 
-- Components of the [CMake](https://cmake.org) suite (more about it later in this workshop)
-- CTest runs a set of tests through bash/perl/python scripts and reports to CDash which aggregates results
-- The test scripts can be anything you like
-
-```cmake
-include(CTest)
-enable_testing()
-
-add_test(my_test_name ${PROJECT_BINARY_DIR}/my_test_script --flags)
-```
-
-- CTest looks for the return codes: 0/non-0 (success/failure)
-- CTest is a powerful test runner, no need to implement one
-- Reporting to CDash is easy
-
-```shell
-$ make Nightly
-```
-
-- [CDash example](https://testboard.org)
-
----
-
-## Travis and Coveralls
-
-- GitHub plus [Travis CI](https://travis-ci.org)
-  plus [Coveralls](https://coveralls.io) is a killer combination - use it!
-- Free for public repositories
-- We will exercise with both tools in the following interactive exercise
-
----
-
-## Testing can also be fun
-
-[Jenkins Chuck Norris plugin](https://wiki.jenkins-ci.org/display/JENKINS/ChuckNorris+Plugin):
-
-<img src="{{ site.baseurl }}/img/chucknorris_badass.jpg" style="width: 350px;"/>
-<img src="{{ site.baseurl }}/img/chucknorris_thumbup.jpg" style="width: 350px;"/>
-
-Another Jenkins plugin:
-
-"[Retaliation](https://github.com/codedance/Retaliation) is a Jenkins CI build
-monitor that automatically coordinates a foam missile counter-attack against
-the developer who breaks the build. It does this by playing a pre-programmed
-control sequence to a USB Foam Missile Launcher to target the offending code
-monkey."
-
-<img src="{{ site.baseurl }}/img/launcher.jpg" style="width: 400px;"/>
+- [Travis CI](https://travis-ci.org)
+- [GitLab CI](https://about.gitlab.com/features/gitlab-ci-cd/)
+- [Coveralls](https://coveralls.io)
+- [Codecov](https://codecov.io)

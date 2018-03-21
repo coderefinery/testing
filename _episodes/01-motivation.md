@@ -49,7 +49,6 @@ Why are we not comparing directly all digits with the expected result?
 
 ## Tests make sure that expected functionality is preserved
 
-- More robust code
 - As projects grow, it becomes easier to break things without noticing immediately
 - In particular for non-modular entangled projects (effects at distance)
 - Testing helps detecting errors early:
@@ -57,9 +56,6 @@ Why are we not comparing directly all digits with the expected result?
   and it is extremely time consuming to detect and fix them
 - Interpreted dynamically typed imperative languages need to be tested
 - So do compiled languages but the compiler catches at least some errors
-- We publish scientific papers based on scientific code
-- Scientific software cannot be called scientific unless it has been validated
-  (taken from [Testing and Continuous Integration with Python](http://katyhuff.github.io/python-testing/))
 - Testing is essential for research software because we care about
   reproducibility of scientific results and because derivative research and
   programs depend on research software
