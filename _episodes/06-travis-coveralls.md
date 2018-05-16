@@ -140,7 +140,7 @@ click on one of the python versions on Travis to see the full output.
 Browse the source code there and check which lines have not been tested.
 
 
-### Step 6: Add a test without the corresponding function
+### Step 6: Add a test which will reveal an unfinished function
 
 For this uncomment the code under "step 6", commit, and push.
 Verify on Travis that the test suite now fails.
