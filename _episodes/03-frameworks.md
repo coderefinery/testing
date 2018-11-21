@@ -38,7 +38,7 @@ keypoints:
 
 ## [pytest](http://doc.pytest.org)
 
-Very easy to set up: Anaconda, Miniconda, or virtualenv.
+Very easy to set up: Anaconda, Miniconda, virtualenv, or pipenv.
 
 Very easy to use: Prefix a function with "test\_" and the test runner will execute it.
 No need to subclass anything.
