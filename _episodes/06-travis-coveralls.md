@@ -163,6 +163,9 @@ For this uncomment the code under "step 9".
 
 Commit the following commit message "restore test_get_word_lengths; fixes #1" (assuming that you try to fix issue number 1).
 
+This will autoclose the issue since GitHub will recognize the "fixes #1" in the commit message, see also
+https://help.github.com/articles/closing-issues-using-keywords/.
+
 Then push to your fork.
 
 
