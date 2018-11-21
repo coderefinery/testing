@@ -50,10 +50,7 @@ Why are we not comparing directly all digits with the expected result?
 ## Tests make sure that expected functionality is preserved
 
 - As projects grow, it becomes easier to break things without noticing immediately
-- In particular for non-modular entangled projects (effects at distance)
-- Testing helps detecting errors early:
-  programming without constantly testing your changes will introduce errors
-  and it is extremely time consuming to detect and fix them
+- Testing helps detecting errors early
 - Interpreted dynamically typed imperative languages need to be tested
 - So do compiled languages but the compiler catches at least some errors
 - Testing is essential for research software because we care about
@@ -65,9 +62,7 @@ Why are we not comparing directly all digits with the expected result?
 
 ## Tests help users of your code
 
-- Users and computing center personnel may not be able to identify incorrect
-  installation without automated testing (running a calculation and checking results
-  with the naked eye is not automated testing)
+- Make it easier for others to verify whether the code has been correctly installed
 - Users of your code publish papers based on results produced by your code
 - Your peers need to be able to reproduce your (to be) published computational results
 
