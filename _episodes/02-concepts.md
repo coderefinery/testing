@@ -20,7 +20,7 @@ keypoints:
 
 ## How?
 
-Imperfect tests run frequently are better than perfect tests which are never written
+Imperfect tests **run frequently** are better than perfect tests which are never written
 
 ### Important
 
@@ -67,15 +67,6 @@ Imperfect tests run frequently are better than perfect tests which are never wri
 
 ---
 
-## Performance regression tests
-
-- Create benchmark calculations to cover various performance-critical modules
-- Run these benchmarks regularly (weekly?)
-- Monitor the timing
-- If timing changes significantly, alarm bells should be ringing
-
----
-
 ## Code coverage
 
 - If I break the code and all tests pass who is to blame?
@@ -110,6 +101,7 @@ Imperfect tests run frequently are better than perfect tests which are never wri
 - Think about coverage (physics and lines of code)
 - Go public with your testing dashboard and issues/tickets
 - Test controlled errors: if something is expected to fail, test for that
+- Create benchmark calculations to cover various performance-critical modules and monitor timing
 - Make testing easy to run (`make test`)
 - Make testing easy to analyze
     - Do not flood screen with pages of output in case everything runs OK
