@@ -187,3 +187,11 @@ Discuss whether this is a useful feature. And if it is, why do you think is it u
 ### Step 12: Discussion
 
 We discuss together about our experiences with this exercise.
+
+---
+
+## Where to go from here
+
+- On Travis you can also test macOS builds: https://docs.travis-ci.com/user/reference/osx/
+- On GitLab use [GitLab CI](https://about.gitlab.com/product/continuous-integration/)
+- For Windows builds use https://www.appveyor.com
