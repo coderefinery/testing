@@ -41,10 +41,12 @@ def count_word_occurence_in_file(file_name, word):
     Example: if file contains "one two one two three four"
              and word is "one", then this function returns 2
     """
+    count = 0
     with open(file_name, 'r') as f:
-        text = f.read()
-        words = text.split()
-        return words.count(word)
+        for line in f:
+            words = line.split()
+            count += words.count(word)
+    return count
 
 
 def check_reactor_temperature(temperature_celsius):
