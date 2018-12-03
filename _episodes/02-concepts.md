@@ -121,3 +121,9 @@ def kelvin_to_celsius(temp_k):
 <img src="{{ site.baseurl }}/img/commenting-out-tests.jpg" style="width: 500px;"/>
 
 Image by [@thepracticaldev](https://github.com/thepracticaldev/orly-full-res), CC-BY-NC.
+
+---
+
+## Discussion
+
+- For which situations would you consider automated testing as overkill?
