@@ -13,7 +13,7 @@ objectives:
 ## [pytest](http://doc.pytest.org) exercise
 
 In this exercise we will use [pytest](http://doc.pytest.org). We will try to
-keep things simple so that also C and Fortran developers can follow.
+keep things simple so that those who do not use Python can follow.
 
 Create a new directory and change into it:
 
