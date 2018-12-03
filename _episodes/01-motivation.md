@@ -117,9 +117,8 @@ print(temp_c)
 
 ---
 
-## Do not trust software ...
+## Would you trust a code ...
 
-- ... when its tests do not cover its claimed capabilities (test coverage)
 - ... when its tests do not pass
 - ... if there are no tests at all
 - ... if the tests are never run
