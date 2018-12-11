@@ -7,7 +7,7 @@ questions:
   - "How can we implement automatic testing each time we push changes to the repository?"
   - "Why is it good to autoclose issues with commit messages?"
 objectives:
-  - "Get comfortable with Travis and Coveralls and experience a full-cycle collaborative workflow."
+  - "Get comfortable with Travis and experience a full-cycle collaborative workflow."
 keypoints:
   - "This example was using Python but you can achieve the same automation for Fortran or C or C++."
 ---
@@ -27,20 +27,13 @@ Here is an overview of this exercise. Below we detail the steps.
 - **Before** you create the repository, select **"Initialize this repository with a README"** (otherwise you try to clone an empty repo)
 
 
-### Step 2: Enable this repository on [Travis CI](https://travis-ci.org) and [Coveralls](https://coveralls.io)
+### Step 2: Enable this repository on [Travis CI](https://travis-ci.org)
 
 On [Travis CI](https://travis-ci.org):
 
 - Use "Sign in with GitHub"
 - Click on the little "+" symbol
 - Enable the newly created repository for testing (you may need to "Sync account" if you do not see it there)
-
-On [Coveralls](https://coveralls.io):
-
-- Use "GITHUB SIGN IN"
-- Select "+" symbol: "ADD REPOS" ("SYNC REPOS" if it is not in the list; syncing can take a minute)
-- If syncing takes forever, reload the page
-- Enable the new repository
 
 
 ### Step 3: Clone the repository, add sources, commit, and push
@@ -103,18 +96,10 @@ python:
   - 3.5
 
 install:
-  - pip install pytest pytest-cov python-coveralls
+  - pip install pytest
 
 script:
-  - if [[ $TRAVIS_PYTHON_VERSION == 2.7 ]];
-    then py.test -vv example.py --cov example;
-    else py.test -vv example.py;
-    fi
-
-after_success:
-  - if [[ $TRAVIS_PYTHON_VERSION == 2.7 ]];
-    then coveralls;
-    fi
+  - pytest --verbose example.py
 
 notifications:
   email: false
@@ -131,13 +116,6 @@ After you have pushed, go to [https://travis-ci.org](https://travis-ci.org) and
 verify that Travis automatically picked up the change to the repository and ran
 the tests.  It should take less than 1 minute for the test set to run.  Also
 click on one of the python versions on Travis to see the full output.
-
-
-### Step 5: Verify the test coverage
-
-**After** Travis finished running all tests, check the coverage report on
-[https://coveralls.io](https://coveralls.io).
-Browse the source code there and check which lines have not been tested.
 
 
 ### Step 6: Add a test which will reveal an unfinished function
