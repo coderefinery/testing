@@ -1,6 +1,6 @@
 ---
 layout: episode
-title: "Exercise: Automatic testing with Travis CI and Coveralls"
+title: "Exercise: Automatic testing with Travis CI"
 teaching: 0
 exercises: 40
 questions:
