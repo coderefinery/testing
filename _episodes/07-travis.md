@@ -116,24 +116,24 @@ the tests.  It should take less than 1 minute for the test set to run.  Also
 click on one of the python versions on Travis to see the full output.
 
 
-### Step 6: Add a test which will reveal an unfinished function
+### Step 5: Add a test which reveals a problem
 
 For this uncomment the code under "step 6", commit, and push.
 Verify on Travis that the test suite now fails.
 
 
-### Step 7: Open an issue on GitHub
+### Step 6: Open an issue on GitHub
 
 Open a new issue on the broken test on GitHub.
 The plan is that your exercise partner will fix the issue.
 
 
-### Step 8: Fork and clone the repository of your exercise partner
+### Step 7: Fork and clone the repository of your exercise partner
 
 Now you know the drill.
 
 
-### Step 9: Fix the broken test
+### Step 8: Fix the broken test
 
 For this uncomment the code under "step 9".
 
@@ -145,14 +145,14 @@ https://help.github.com/articles/closing-issues-using-keywords/.
 Then push to your fork.
 
 
-### Step 10: File a pull request
+### Step 9: File a pull request
 
 And wait for your partner to do the same.
 Then before accepting the pull request from your partner, observe
 how Travis automatically tested the code.
 
 
-### Step 11: Accept the pull request
+### Step 10: Accept the pull request
 
 Observe how accepting the pull request automatically closes the issue (provided
 the commit message contained the correct issue number).
@@ -160,7 +160,7 @@ the commit message contained the correct issue number).
 Discuss whether this is a useful feature. And if it is, why do you think is it useful?
 
 
-### Step 12: Discussion
+### Step 11: Discussion
 
 We discuss together about our experiences with this exercise.
 
