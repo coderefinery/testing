@@ -140,7 +140,7 @@ For this uncomment the code under "step 9".
 Commit the following commit message "restore test_get_word_lengths; fixes #1" (assuming that you try to fix issue number 1).
 
 This will autoclose the issue since GitHub will recognize the "fixes #1" in the commit message, see also
-https://help.github.com/articles/closing-issues-using-keywords/.
+[closing issues using keywords](https://help.github.com/articles/closing-issues-using-keywords/).
 
 Then push to your fork.
 
@@ -170,4 +170,4 @@ We discuss together about our experiences with this exercise.
 
 - On Travis you can also test macOS builds: https://docs.travis-ci.com/user/reference/osx/
 - On GitLab use [GitLab CI](https://about.gitlab.com/product/continuous-integration/)
-- For Windows builds use https://www.appveyor.com
+- For Windows builds use [Appveyor](https://www.appveyor.com)
