@@ -118,7 +118,7 @@ click on one of the python versions on Travis to see the full output.
 
 ### Step 5: Add a test which reveals a problem
 
-For this uncomment the code under "step 6", commit, and push.
+For this uncomment the code under "step 5", commit, and push.
 Verify on Travis that the test suite now fails.
 
 
@@ -135,9 +135,8 @@ Now you know the drill.
 
 ### Step 8: Fix the broken test
 
-For this uncomment the code under "step 9".
-
-Commit the following commit message "restore test_get_word_lengths; fixes #1" (assuming that you try to fix issue number 1).
+After you have fixed the code,
+commit the following commit message "restore test_get_word_lengths; fixes #1" (assuming that you try to fix issue number 1).
 
 This will autoclose the issue since GitHub will recognize the "fixes #1" in the commit message, see also
 [closing issues using keywords](https://help.github.com/articles/closing-issues-using-keywords/).
