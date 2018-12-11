@@ -18,6 +18,6 @@ collaborative testing/code review workflow.
 
 3. You need a [GitHub](https://github.com) account.
 
-4. You will also need a [Travis CI](https://travis-ci.org) and
-   [Coveralls](https://coveralls.io) account but you can sign into them with
+4. You will also need a [Travis CI](https://travis-ci.org) account
+   but you can sign into it with
    your [GitHub](https://github.com) account.
