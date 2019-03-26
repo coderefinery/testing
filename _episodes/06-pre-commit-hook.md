@@ -22,17 +22,10 @@ commit is recorded.
 
 ## Exercise: Testing using a `pre-commit` hook
 
-### 1. Create a new directory and step into it
+### 1. The starting point is our `example.py` file
 
-### 2. Initialize an empty Git repository
-
-```shell
-$ git init
-```
-
-### 3. Create a file called `example.py`
-
-`git add` and `git commit` this file:
+We are still in the directory `pytest-example` which
+contains `example.py`:
 
 ```python
 def add(a, b):
@@ -44,10 +37,26 @@ def test_add():
     assert add('space', 'ship') == 'spaceship'
 ```
 
-### 4. Test it using pytest
 
-```
+### 2. Make sure the test passes
+
+```shell
 $ pytest example.py
+```
+
+
+### 3. Initialize a Git repository
+
+```shell
+$ git init
+```
+
+
+### 4. Git add and commit the file
+
+```shell
+$ git add example.py
+$ git commit
 ```
 
 ### 5. Create the following shell script
@@ -75,6 +84,7 @@ $ mv pre-commit .git/hooks
 ### 8. Break the code and try to commit this change
 
 Now the `pre-commit` should reject the commit.
+
 
 ### 9. Discuss
 

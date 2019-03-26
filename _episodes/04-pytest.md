@@ -25,101 +25,61 @@ $ cd pytest-example
 Then create a file called `example.py` and copy-paste the following code into it:
 
 ```python
-def reverse_string(s):
-    """
-    Reverses order or characters in string s.
-    """
-    return s[::-1]
+def add(a, b):
+    return a + b
 
 
-def test_reverse_string():
-    assert reverse_string('foobar!') == '!raboof'
-    assert reverse_string('stressed') == 'desserts'
-
-
-def reverse_words(s):
-    """
-    Reverses order or words in string s.
-    """
-    words = s.split()
-    words_reversed = words[::-1]
-    return ' '.join(words_reversed)
-
-
-def test_reverse_words():
-    assert reverse_words('dogs hate cats') == 'cats hate dogs'
-    assert reverse_words('dog eat dog') == 'dog eat dog'
-    assert reverse_words('one two three four') == 'four three two one'
+def test_add():
+    assert add(2, 3) == 5
+    assert add('space', 'ship') == 'spaceship'
 ```
 
-This code contains two genuine functions and two test functions. Before you
-look at the implementations `reverse_string` and `reverse_words`, look at the
-tests. From the test functions it should be clear what the implementations do
-even without understanding Python. We remember now the point about tests
-serving as documentation and entry point for new developers.
+This code contains one genuine function and a test function.
 
 Let us try to test it with pytest:
 
 ```shell
-$ py.test -vv example.py
-============================================================ test session starts ==================================
-platform linux -- Python 3.5.2, pytest-3.0.5, py-1.4.31, pluggy-0.4.0 -- /home/user/pytest-example/venv/bin/python3
-cachedir: .cache
+$ pytest -v example.py
+
+============================================================ test session starts =================================
+platform linux -- Python 3.7.2, pytest-4.3.1, py-1.8.0, pluggy-0.9.0 -- /home/user/pytest-example/venv/bin/python3
+cachedir: .pytest_cache
 rootdir: /home/user/pytest-example, inifile:
-collected 2 items
+collected 1 item
 
-example.py::test_reverse_string PASSED
-example.py::test_reverse_words PASSED
+example.py::test_add PASSED
 
-========================================================= 2 passed in 0.01 seconds ================================
+========================================================= 1 passed in 0.01 seconds ===============================
 ```
 
-Yay! All tests passed!
+Yay! The test passed!
 
-Let us break them!
+Let us break the test!
 
-Introduce a code change which breaks the code, for instance:
-
-```shell
-$ git diff
-
-diff --git a/example.py b/example.py
-index 50bff2d..2d0bfa6 100644
---- a/example.py
-+++ b/example.py
-@@ -2,7 +2,7 @@ def reverse_string(s):
-     """
-     Reverses order or characters in string s.
-     """
--    return s[::-1]
-+    return s
-```
-
-Now we want to see whether pytest detects the change:
+Introduce a code change which breaks the code and check
+whether pytest detects the change:
 
 ```shell
-$ py.test -vv example.py
-
-============================================================ test session starts ==================================
-platform linux -- Python 3.5.2, pytest-3.0.5, py-1.4.31, pluggy-0.4.0 -- /home/user/pytest-example/venv/bin/python3
-cachedir: .cache
+$ pytest -v example.py
+============================================================ test session starts =================================
+platform linux -- Python 3.7.2, pytest-4.3.1, py-1.8.0, pluggy-0.9.0 -- /home/user/pytest-example/venv/bin/python3
+cachedir: .pytest_cache
 rootdir: /home/user/pytest-example, inifile:
-collected 2 items
+collected 1 item
 
-example.py::test_reverse_string FAILED
-example.py::test_reverse_words PASSED
+example.py::test_add FAILED
 
-================================================================= FAILURES ========================================
-____________________________________________________________ test_reverse_string __________________________________
+================================================================= FAILURES =======================================
+_________________________________________________________________ test_add _______________________________________
 
-    def test_reverse_string():
->       assert reverse_string('foobar!') == '!raboof'
-E       assert 'foobar!' == '!raboof'
-E         - foobar!
-E         + !raboof
+    def test_add():
+>       assert add(2, 3) == 5
+E       assert -1 == 5
+E         --1
+E         +5
 
-example.py:9: AssertionError
-==================================================== 1 failed, 1 passed in 0.03 seconds ===========================
+example.py:6: AssertionError
+========================================================= 1 failed in 0.05 seconds ==============
 ```
 
 ---
