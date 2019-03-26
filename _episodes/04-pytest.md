@@ -2,7 +2,7 @@
 layout: episode
 title: "Exercise: Testing with pytest"
 teaching: 0
-exercises: 20
+exercises: 15
 questions:
   - "How can we implement a test suite using pytest?"
   - "I am a Fortran developer, do I need to care about pytest?"
