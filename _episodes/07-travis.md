@@ -32,7 +32,6 @@ Here is an overview of this exercise. Below we detail the steps.
 On [Travis CI](https://travis-ci.org):
 
 - Use "Sign in with GitHub"
-- Click on the little "+" symbol
 - Enable the newly created repository for testing (you may need to "Sync account" if you do not see it there)
 
 
