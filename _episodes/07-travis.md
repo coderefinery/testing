@@ -94,6 +94,8 @@ verify that Travis automatically picked up the change to the repository and ran
 the tests.  It should take less than 1 minute for the test set to run.  Also
 click on one of the python versions on Travis to see the full output.
 
+If you forgot to enable Travis before pushing, you may have to tell
+Travis to run the test manually.
 
 ### Step 5: Add a test which reveals a problem
 
