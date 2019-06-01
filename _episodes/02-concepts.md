@@ -50,7 +50,7 @@ def kelvin_to_celsius(temp_k):
 
 ## Unit tests
 
-- Unit tests are functions ([Testing and Continuous Integration with Python](http://katyhuff.github.io/python-testing/))
+- **Unit tests** are functions ([Testing and Continuous Integration with Python](http://katyhuff.github.io/python-testing/))
 - Test one unit: module or even single function
 - Good documentation of the capability and dependencies of a module
 
@@ -58,7 +58,7 @@ def kelvin_to_celsius(temp_k):
 
 ## Integration tests
 
-- Integration tests verify whether muliple modules are working well together ([Testing and Continuous Integration with Python](http://katyhuff.github.io/python-testing/))
+- **Integration tests** verify whether muliple modules are working well together ([Testing and Continuous Integration with Python](http://katyhuff.github.io/python-testing/))
 - Like in a car assembly we have to test all components independently and also whether the components are working together when combined
 - Unit tests can be used for testing independent components (e.g. engine, radiator, transmission) and integration tests to check if car is working overall
 
@@ -66,7 +66,7 @@ def kelvin_to_celsius(temp_k):
 
 ## Test-driven development
 
-- Write tests before writing code
+- In **test-driven devlopment**, one writes tests before writing code
 - Very often we know the result that a function is supposed to produce
 - Development cycle (red, green, refactor):
     - Write the test
@@ -81,7 +81,7 @@ def kelvin_to_celsius(temp_k):
 ## Code coverage
 
 - If I break the code and all tests pass who is to blame?
-- Code coverage measures and documents which lines of code have been traversed during a test run
+- **Code coverage** measures and documents which lines of code have been traversed during a test run
 - It is possible to have line-by-line coverage (example later)
 
 ---
@@ -97,6 +97,8 @@ def kelvin_to_celsius(temp_k):
 
 ## Continuous integration
 
+- **Continuous integration** is basically when you automatically test
+  every single commit or merge automatically
 - Test each commit (push) on every branch
 - Test merges before they are accepted
 - Makes it possible for the mainline maintainer to see whether a modification

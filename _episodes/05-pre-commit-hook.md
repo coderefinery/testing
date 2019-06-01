@@ -10,17 +10,21 @@ questions:
 
 ## Git hooks
 
-Git hooks are scripts that we can define and which can be run when certain Git
-events happen.
+**Git hooks** are scripts that we can define and which can be run when certain Git
+events happen.  They can, for example, run tests before a commit and
+reject if it fails.
 
-There are client-side hooks and server-side hooks.
-
-Here we will use a client-side the `pre-commit` hook to run a script before a
-commit is recorded.
+There are **client-side hooks** (run on your own computer when
+committing) and **server-side hooks** (run on server after pushing,
+usually used to test if merging is okay).
 
 ---
 
-## Exercise: Testing using a `pre-commit` hook
+## Type-along: Testing using a `pre-commit` hook
+
+Here we will use our previous `example.py` and add a git client-side hook the `pre-commit` hook to run a script before a
+commit is recorded.
+
 
 ### 1. The starting point is our `example.py` file
 

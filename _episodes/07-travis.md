@@ -12,9 +12,16 @@ keypoints:
   - "This example was using Python but you can achieve the same automation for Fortran or C or C++."
 ---
 
-## Exercise a full-cycle collaborative workflow
+## Type-along: a full-cycle collaborative workflow
 
 We will do this exercise in pairs.
+
+In this exercise, both partners make a repository on Github and set up
+code and tests within it.  The repository is liked to Travis for
+automated testing.  Both partners find a bug in their repository, make
+an issue, clone each other's repos, fixes the bug, makes a pull
+request, checks the automated tests on Github, and merge their
+partner's change.
 
 Here is an overview of this exercise. Below we detail the steps.
 
