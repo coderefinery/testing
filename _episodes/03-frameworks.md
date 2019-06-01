@@ -13,6 +13,10 @@ keypoints:
 
 ## Unit test frameworks
 
+A **test framework** makes it easy to run tests across large amounts
+of code automatically.  They provide more control than one single
+script which does some tests.
+
 - Python
     - [pytest](http://doc.pytest.org)
     - [nose](http://nose.readthedocs.io)

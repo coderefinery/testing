@@ -10,9 +10,10 @@ objectives:
   - "Get comfortable with pytest."
 ---
 
-## [pytest](http://doc.pytest.org) exercise
+## Type-along: [pytest](http://doc.pytest.org) exercise
 
-In this exercise we will use [pytest](http://doc.pytest.org). We will try to
+In this exercise we will make a simple Python function and use
+[pytest](http://doc.pytest.org) to test it. We will try to
 keep things simple so that those who do not use Python can follow.
 
 Create a new directory and change into it:
