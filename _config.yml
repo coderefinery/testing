@@ -1,7 +1,6 @@
 fork_me_ribbon_url: https://github.com/coderefinery/testing
 baseurl: "/testing"
 title: "Automated testing"
-start_time: 660  # 11:00
 
 source: .
 destination: ./_site
