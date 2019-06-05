@@ -126,7 +126,7 @@ Now you know the drill.
 After you have fixed the code,
 commit the following commit message "restore function subtract; fixes #1" (assuming that you try to fix issue number 1).
 
-This will autoclose the issue since GitHub will recognize the "fixes #1" in the commit message, see also
+Once the pull request is accepted/merged, this will autoclose the issue since GitHub will recognize the "fixes #1" in the commit message, see also
 [closing issues using keywords](https://help.github.com/articles/closing-issues-using-keywords/).
 
 Then push to your fork.
