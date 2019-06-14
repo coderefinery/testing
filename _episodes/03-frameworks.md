@@ -24,7 +24,7 @@ script which does some tests.
     - [unittest](https://docs.python.org/2/library/unittest.html)
 
 - R
-    - [testthat](https://github.com/hadley/testthat)
+    - [testthat](https://github.com/r-lib/testthat)
 
 - C(++)
     - [Google Test](https://github.com/google/googletest)
@@ -62,6 +62,48 @@ def test_get_word_lengths():
 
 - [Example output](https://travis-ci.org/bast/pytest-demo/builds/104182942)
 - [Example project](https://github.com/bast/pytest-demo)
+
+---
+
+## [testthat](https://github.com/r-lib/testthat)
+
+- Easily installed from CRAN with `install.packages("testthat")`, or from GitHub with `devtools::install_github("r-lib/testthat")`
+- Use in package development with `usethis::use_testthat()`
+- Add a new test file with `usethis::use_test("test-name")`, e.g.:
+
+  ```r
+  # tests/testthat/test_example.R
+  # file added by running `usethis::use_test("example")`
+
+  context("Arithmetics")
+  library("mypackage")
+
+  test_that("square root function works" {
+    expect_equal(my_sqrt(4), 2)
+    expect_warning(my_sqrt(-4))
+  })
+  ```
+
+  Tests consist of one or more _expectations_, and multiple tests can be grouped together in one test file.
+
+- Run all tests in package with `devtools::test()` (if you use RStudio, press <kbd>Ctrl+Shift+T</kbd>):
+
+  ```
+  > devtools::test()
+  Loading mypackage
+  Testing mypackage
+  ✔ |  OK F W S | Context
+  ✔ |   2       | Arithmetics
+
+  ══ Results ═════════════════════════════════════════════════════════════════════
+  OK:       2
+  Failed:   0
+  Warnings: 0
+  Skipped:  0
+  ```
+
+
+More information in the [Testing chapter](http://r-pkgs.had.co.nz/tests.html) of the book [R Packages](http://r-pkgs.had.co.nz) by Hadley Wickham.
 
 ---
 
