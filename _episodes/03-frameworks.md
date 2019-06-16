@@ -78,7 +78,7 @@ def test_get_word_lengths():
   context("Arithmetics")
   library("mypackage")
 
-  test_that("square root function works" {
+  test_that("square root function works", {
     expect_equal(my_sqrt(4), 2)
     expect_warning(my_sqrt(-4))
   })
