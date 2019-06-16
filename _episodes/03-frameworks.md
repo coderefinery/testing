@@ -85,6 +85,7 @@ def test_get_word_lengths():
   ```
 
   Tests consist of one or more _expectations_, and multiple tests can be grouped together in one test file.
+  Test files are put in the directory `tests/testthat/`, and their file names are prefixed with `test_`.
 
 - Run all tests in package with `devtools::test()` (if you use RStudio, press <kbd>Ctrl+Shift+T</kbd>):
 
