@@ -8,11 +8,30 @@ permalink: /guide/
 ## Why we teach this lesson
 
 ## Intended learning outcomes
+* To learn and get a feel of Travis.
+* Testing serve different purposes.
+* There are different type of tests
+* Tests can be challenging, but test help reveal intentions.
 
 
 ## How to teach this lesson
 
 ### How to start
+Every one know tests and do testing is a good thing. But do we stick to
+this? The motivation part start with a very strong claim, which put our
+non-tested code in the domain of "not science". It is interesting to get
+views from the participants on the citation of Anthony Scopatz and 
+Kathryn Huff.
+
+The lesson then continues with:
+- Motivate verification of functionality
+- Motivate tests as a way of documenting use
+- Motivate tests as a support for further code development
+
+These are valid points, but does not move "Testing" from the domain of
+something "we should do", to the domain of "what we always do". This is
+currently a weakness of the lesson (a point for discussion).
+
 
 ### Questions to involve participants
 * What do you think about the statement "Simulations and analysis with
@@ -40,6 +59,8 @@ Travis" and "Test Design".
 ### Typical pitfalls
 * The full introduction, which is Motivation + Concepts + Tools, is
   estimated to take 30 minutes. That is a very long intro!
+* The lesson is very Python centric. We just assume what we say is
+  transferable to another language, like R.
 * Testing is done with different motivations. If you ship software, you
   do testing with the purpose of quality assurance (QA). As a developer
     you do testing for verifying behaviour. With
