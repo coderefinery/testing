@@ -6,7 +6,21 @@ permalink: /guide/
 # Instructor guide
 
 ## Why we teach this lesson
+We illustrate how tests can be done in various ways. Tests can be part
+of code.  It can be used as a check during a git commit. It can be set
+up automatically such that Pull Requests get verified by a Continuous
+Integration service like Travis.
 
+The lesson covers a lot of aspects related to testing. It tilt some what
+towards testing with the purpose of software shipping. When testing with
+the purpose of verification and behavior specification is emphasized it
+becomes better and more well received.
+
+Currently the lesson is in the "discipline" domain. Testing is
+something you do to control behavior (your own as well as the code). 
+Testing is also something you can do to improve productivity, but this 
+is less visible/detectable.
+  
 ## Intended learning outcomes
 * To learn and get a feel of Travis.
 * Testing serve different purposes.
