@@ -32,6 +32,12 @@ These are valid points, but does not move "Testing" from the domain of
 something "we should do", to the domain of "what we always do". This is
 currently a weakness of the lesson (a point for discussion).
 
+The examples work quite well. The pytest example can be done as type
+along. During the wrap up of the example with Travis, it is useful to
+have co-instructor doing the exercise in parallel with you. As your
+partner write Pull Requests with "fixes #1" (or whatever PR number) you
+can show that the PR links to a issue, and the issue pointing to a
+commit.
 
 ### Questions to involve participants
 * What do you think about the statement "Simulations and analysis with
