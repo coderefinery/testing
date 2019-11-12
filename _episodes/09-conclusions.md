@@ -15,3 +15,8 @@ objectives:
 - Require that new functionality comes with new tests
 - When you discover and fix a bug, also commit a test against this bug
 - Use code coverage analysis to identify untested code or dead wood
+
+Other good resources:
+
+- [Getting Started With Testing in Python](https://realpython.com/python-testing/)
+- [Introductions to Python Testing Frameworks](http://pythontesting.net/start-here/)
