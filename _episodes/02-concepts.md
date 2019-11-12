@@ -58,9 +58,21 @@ def kelvin_to_celsius(temp_k):
 
 ## Integration tests
 
-- **Integration tests** verify whether muliple modules are working well together ([Testing and Continuous Integration with Python](http://katyhuff.github.io/python-testing/))
+- **Integration tests** verify whether multiple modules are working well together ([Testing and Continuous Integration with Python](http://katyhuff.github.io/python-testing/))
 - Like in a car assembly we have to test all components independently and also whether the components are working together when combined
 - Unit tests can be used for testing independent components (e.g. engine, radiator, transmission) and integration tests to check if car is working overall
+
+---
+
+## Regression tests
+
+- Similarly to integration tests, regression tests often operate on the 
+  whole code base
+- Rather than assuming that the test author knows what the correct 
+  result should be, regression tests look to the past for the expected behavior
+- Often spans multiple code versions: when developing a new version, input 
+  and output files of a previous version are used to test that the same 
+  behaviour is observed
 
 ---
 
