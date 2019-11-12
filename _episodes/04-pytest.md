@@ -9,7 +9,7 @@ questions:
 objectives:
   - "Get comfortable with pytest."
 keypoints:
-  - "pytest collects and runs all tests starting with `Test` or `test_`"
+  - "pytest collects and runs all test functions starting with `test_`"
   - "Python and C/C++ have better tooling for automated tests and you can use those also for Fortran projects (via `iso_c_binding`)."
 ---
 
