@@ -145,6 +145,7 @@ Image by [@thepracticaldev](https://github.com/thepracticaldev/orly-full-res), C
 
 ---
 
-## Discussion
-
-- For which situations would you consider automated testing as overkill?
+> ## Discussion
+> 
+> - For which situations would you consider automated testing as overkill?
+{: .task}
