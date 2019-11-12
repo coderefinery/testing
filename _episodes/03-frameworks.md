@@ -25,6 +25,9 @@ script which does some tests.
 - R
     - [testthat](https://github.com/r-lib/testthat)
 
+- Matlab
+    - [Class-Based Unit Tests](https://www.mathworks.com/help/matlab/class-based-unit-tests.html)
+
 - C(++)
     - [Google Test](https://github.com/google/googletest)
     - [Catch2](http://catch-lib.net)
