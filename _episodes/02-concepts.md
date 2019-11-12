@@ -10,7 +10,12 @@ questions:
 objectives:
   - "Understand how the different layers of testing fit to each other."
 keypoints:
-  - "Automatize testing."
+  - "Assertions, exceptions, unit tests, integration tests and regression 
+    tests are used to test a code on different levels"
+  - "Test driven development is one way to develop code which is tested 
+    from the start"
+  - "Continuous integration is when every commit/merge is tested 
+    automatically"
 ---
 
 [@dave1010](https://twitter.com/dave1010/status/613601365529657344):
@@ -34,6 +39,9 @@ Imperfect tests **run frequently** are better than perfect tests which are never
 ## Defensive programming
 
 - Assume that mistakes will happen and introduce guards against them.
+- Use `assertions` for things you believe will/should never happen.
+- Use `exceptions` for anomalous or exceptional conditions requiring
+  special processing.
 
 ```python
 def kelvin_to_celsius(temp_k):
@@ -50,7 +58,7 @@ def kelvin_to_celsius(temp_k):
 
 ## Unit tests
 
-- **Unit tests** are functions ([Testing and Continuous Integration with Python](http://katyhuff.github.io/python-testing/))
+- **Unit tests** are functions 
 - Test one unit: module or even single function
 - Good documentation of the capability and dependencies of a module
 
@@ -58,15 +66,27 @@ def kelvin_to_celsius(temp_k):
 
 ## Integration tests
 
-- **Integration tests** verify whether muliple modules are working well together ([Testing and Continuous Integration with Python](http://katyhuff.github.io/python-testing/))
+- **Integration tests** verify whether multiple modules are working well together 
 - Like in a car assembly we have to test all components independently and also whether the components are working together when combined
 - Unit tests can be used for testing independent components (e.g. engine, radiator, transmission) and integration tests to check if car is working overall
 
 ---
 
+## Regression tests
+
+- Similarly to integration tests, **regression tests** often operate on the 
+  whole code base
+- Rather than assuming that the test author knows what the correct 
+  result should be, regression tests look to the past for the expected behavior
+- Often spans multiple code versions: when developing a new version, input 
+  and output files of a previous version are used to test that the same 
+  behaviour is observed
+
+---
+
 ## Test-driven development
 
-- In **test-driven devlopment**, one writes tests before writing code
+- In **test-driven development**, one writes tests before writing code
 - Very often we know the result that a function is supposed to produce
 - Development cycle (red, green, refactor):
     - Write the test
@@ -126,6 +146,14 @@ Image by [@thepracticaldev](https://github.com/thepracticaldev/orly-full-res), C
 
 ---
 
-## Discussion
+## References
 
-- For which situations would you consider automated testing as overkill?
+- For a more detailed exposition of these concepts, see 
+  [this Carpentry lesson](https://katyhuff.github.io/python-testing/)
+
+---
+
+> ## Discussion
+> 
+> - For which situations would you consider automated testing as overkill?
+{: .task}

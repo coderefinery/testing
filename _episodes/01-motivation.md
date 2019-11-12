@@ -7,6 +7,10 @@ questions:
   - "Why should we write tests?"
 objectives:
   - "Discuss the advantages of writing and maintaining tests in research software."
+keypoints:
+  - "Tests make sure that expected functionality is preserved"
+  - "Tests help both users and developers of your code"
+  - "Tests help managing complexity"
 ---
 
 ## Simulations and analysis with untested software do not constitute science
@@ -117,8 +121,9 @@ print(temp_c)
 
 ---
 
-## Would you trust a code ...
-
-- ... when its tests do not pass
-- ... if there are no tests at all
-- ... if the tests are never run
+> ## Would you trust a code ...
+> 
+> - ... when its tests do not pass?
+> - ... if there are no tests at all?
+> - ... if the tests are never run?
+{: .task}

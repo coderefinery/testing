@@ -4,8 +4,11 @@ title: "Exercise/discussion: Testing using hooks"
 teaching: 0
 exercises: 15
 objectives:
+  - "Learn to write a Git hook to automatize testing."
 questions:
   - "How can we use Git hooks to make sure we do not commit broken code?"
+keypoints:
+  - "Git hooks provide a convenient way to *locally* automatize tests."
 ---
 
 ## Git hooks

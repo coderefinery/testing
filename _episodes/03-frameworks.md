@@ -7,8 +7,7 @@ questions:
   - "What tools are out there?"
 objectives:
   - "Discover the tool that fits your needs."
-keypoints:
-  - "Python and C/C++ have better tooling for automated tests and you can use those also for Fortran projects (via `iso_c_binding`)."
+
 ---
 
 ## Unit test frameworks

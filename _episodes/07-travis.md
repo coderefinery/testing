@@ -9,7 +9,10 @@ questions:
 objectives:
   - "Get comfortable with Travis and experience a full-cycle collaborative workflow."
 keypoints:
-  - "This example was using Python but you can achieve the same automation for Fortran or C or C++."
+  - "To enable automated testing on Travis, simply enable the repository and 
+    add a `.travis.yml` file"
+  - "When fixing bugs or other problems reported in issues, use the issue 
+    autoclosing mechanism when you send the pull request"
 ---
 
 ## Type-along: a full-cycle collaborative workflow
@@ -155,6 +158,7 @@ We discuss together about our experiences with this exercise.
 
 ## Where to go from here
 
+- This example was using Python but you can achieve the same automation for Fortran or C or C++
 - On Travis you can also test macOS builds: https://docs.travis-ci.com/user/reference/osx/
 - On GitLab use [GitLab CI](https://about.gitlab.com/product/continuous-integration/)
 - For Windows builds use [Appveyor](https://www.appveyor.com)
