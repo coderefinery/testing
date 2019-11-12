@@ -26,6 +26,12 @@ software do not constitute science."
 created by Kathryn Huff, see also the Testing chapter in
 [Effective Computation In Physics](http://physics.codes) by Anthony Scopatz and Kathryn Huff)
 
+
+Further motivation for testing:
+
+- [A Scientist's Nightmare: Software Problem Leads to Five Retractions](https://science.sciencemag.org/content/314/5807/1856.summary)
+- [Researchers find bug in Python script may have affected hundreds of studies](https://arstechnica.com/information-technology/2019/10/chemists-discover-cross-platform-python-scripts-not-so-cross-platform/)
+
 ---
 
 ## Testing in a nutshell
