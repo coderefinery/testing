@@ -10,7 +10,12 @@ questions:
 objectives:
   - "Understand how the different layers of testing fit to each other."
 keypoints:
-  - "Automatize testing."
+  - "Assertions, exceptions, unit tests, integration tests and regression 
+    tests are used to test a code on different levels"
+  - "Test driven development is one way to develop code which is tested 
+    from the start"
+  - "Continuous integration is when every commit/merge is tested 
+    automatically"
 ---
 
 [@dave1010](https://twitter.com/dave1010/status/613601365529657344):
