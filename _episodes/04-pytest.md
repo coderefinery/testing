@@ -8,6 +8,8 @@ questions:
   - "I am a Fortran developer, do I need to care about pytest?"
 objectives:
   - "Get comfortable with pytest."
+keypoints:
+  - "pytest collects and runs all tests starting with `Test` or `test_`"
 ---
 
 ## Type-along: [pytest](http://doc.pytest.org) exercise
