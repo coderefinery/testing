@@ -3,8 +3,13 @@ layout: episode
 title: "Exercise/discussion: Test design"
 teaching: 0
 exercises: 25
+questions:
+  - "How can different types of functions and classes be tested?"
 objectives:
-  - "How to design a test for a function."
+  - "Discuss test designs."
+keypoints:
+  - "Pure functions as easiest to test."
+  - "Classes can be tested but it's somewhat more elaborate."
 ---
 
 ## Exercise/discussion: Test design
