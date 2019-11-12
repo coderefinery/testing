@@ -50,7 +50,7 @@ def kelvin_to_celsius(temp_k):
 
 ## Unit tests
 
-- **Unit tests** are functions ([Testing and Continuous Integration with Python](http://katyhuff.github.io/python-testing/))
+- **Unit tests** are functions 
 - Test one unit: module or even single function
 - Good documentation of the capability and dependencies of a module
 
@@ -58,7 +58,7 @@ def kelvin_to_celsius(temp_k):
 
 ## Integration tests
 
-- **Integration tests** verify whether multiple modules are working well together ([Testing and Continuous Integration with Python](http://katyhuff.github.io/python-testing/))
+- **Integration tests** verify whether multiple modules are working well together 
 - Like in a car assembly we have to test all components independently and also whether the components are working together when combined
 - Unit tests can be used for testing independent components (e.g. engine, radiator, transmission) and integration tests to check if car is working overall
 
@@ -135,6 +135,13 @@ def kelvin_to_celsius(temp_k):
 <img src="{{ site.baseurl }}/img/commenting-out-tests.jpg" style="width: 500px;"/>
 
 Image by [@thepracticaldev](https://github.com/thepracticaldev/orly-full-res), CC-BY-NC.
+
+---
+
+## References
+
+- For a more detailed exposition of these concepts, see 
+  [this Carpentry lesson](https://katyhuff.github.io/python-testing/)
 
 ---
 
