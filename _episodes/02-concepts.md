@@ -66,7 +66,7 @@ def kelvin_to_celsius(temp_k):
 
 ## Regression tests
 
-- Similarly to integration tests, regression tests often operate on the 
+- Similarly to integration tests, **regression tests** often operate on the 
   whole code base
 - Rather than assuming that the test author knows what the correct 
   result should be, regression tests look to the past for the expected behavior
@@ -78,7 +78,7 @@ def kelvin_to_celsius(temp_k):
 
 ## Test-driven development
 
-- In **test-driven devlopment**, one writes tests before writing code
+- In **test-driven development**, one writes tests before writing code
 - Very often we know the result that a function is supposed to produce
 - Development cycle (red, green, refactor):
     - Write the test
