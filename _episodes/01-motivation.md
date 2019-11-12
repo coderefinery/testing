@@ -7,6 +7,10 @@ questions:
   - "Why should we write tests?"
 objectives:
   - "Discuss the advantages of writing and maintaining tests in research software."
+keypoints:
+  - "Tests make sure that expected functionality is preserved"
+  - "Tests help both users and developers of your code"
+  - "Tests help managing complexity"
 ---
 
 ## Simulations and analysis with untested software do not constitute science
