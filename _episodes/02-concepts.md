@@ -39,6 +39,9 @@ Imperfect tests **run frequently** are better than perfect tests which are never
 ## Defensive programming
 
 - Assume that mistakes will happen and introduce guards against them.
+- Use `assertions` for things you believe will/should never happen.
+- Use `exceptions` for anomalous or exceptional conditions requiring
+  special processing.
 
 ```python
 def kelvin_to_celsius(temp_k):
