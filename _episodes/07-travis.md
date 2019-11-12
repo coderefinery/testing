@@ -8,7 +8,11 @@ questions:
   - "Why is it good to autoclose issues with commit messages?"
 objectives:
   - "Get comfortable with Travis and experience a full-cycle collaborative workflow."
-
+keypoints:
+  - "To enable automated testing on Travis, simply enable the repository and 
+    add a `.travis.yml` file"
+  - "When fixing bugs or other problems reported in issues, use the issue 
+    autoclosing mechanism when you send the pull request"
 ---
 
 ## Type-along: a full-cycle collaborative workflow
