@@ -121,8 +121,9 @@ print(temp_c)
 
 ---
 
-## Would you trust a code ...
-
-- ... when its tests do not pass
-- ... if there are no tests at all
-- ... if the tests are never run
+> ## Would you trust a code ...
+> 
+> - ... when its tests do not pass?
+> - ... if there are no tests at all?
+> - ... if the tests are never run?
+{: .task}
