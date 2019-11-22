@@ -127,7 +127,7 @@ Now you know the drill.
 ### Step 8: Fix the broken test
 
 After you have fixed the code,
-commit the following commit message "restore function subtract; fixes #1" (assuming that you try to fix issue number 1).
+commit the following commit message `"restore function subtract; fixes #1"` (assuming that you try to fix issue number 1).
 
 Once the pull request is accepted/merged, this will autoclose the issue since GitHub will recognize the "fixes #1" in the commit message, see also
 [closing issues using keywords](https://help.github.com/articles/closing-issues-using-keywords/).
