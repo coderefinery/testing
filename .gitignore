@@ -1,3 +1,6 @@
+# vim temporary files
+.*.sw?
+
 _drafts/
 _site/
 .sass-cache

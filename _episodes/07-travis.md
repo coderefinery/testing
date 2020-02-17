@@ -20,7 +20,7 @@ keypoints:
 We will do this exercise in pairs.
 
 In this exercise, both partners make a repository on Github and set up
-code and tests within it.  The repository is liked to Travis for
+code and tests within it.  The repository is linked to Travis for
 automated testing.  Both partners find a bug in their repository, make
 an issue, clone each other's repos, fixes the bug, makes a pull
 request, checks the automated tests on Github, and merge their
