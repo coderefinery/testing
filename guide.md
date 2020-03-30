@@ -84,7 +84,7 @@ Travis" and "Test Design".
 * Testing is done with different motivations. If you ship software, you
   do testing with the purpose of quality assurance (QA). As a developer
     you do testing for verifying behaviour. With
-    Test-Driven-Developement you specify behavior with tests. Writing
+    Test-Driven-Development you specify behavior with tests. Writing
     software for research you want to verify/specify behavior, rather
     than do QA. 
 * With the Travis setup you verify that behavior is preserved across
