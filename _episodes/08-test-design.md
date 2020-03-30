@@ -30,7 +30,7 @@ def factorial(n):
     return result
 
 
-def count_word_occurence_in_string(text, word):
+def count_word_occurrence_in_string(text, word):
     """
     Counts how often word appears in text.
     Example: if text is "one two one two three four"
@@ -40,7 +40,7 @@ def count_word_occurence_in_string(text, word):
     return words.count(word)
 
 
-def count_word_occurence_in_file(file_name, word):
+def count_word_occurrence_in_file(file_name, word):
     """
     Counts how often word appears in file file_name.
     Example: if file contains "one two one two three four"
