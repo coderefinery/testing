@@ -1,30 +1,27 @@
 ---
 layout: episode
-title: "Exercise: Automatic testing with Travis CI"
-teaching: 0
-exercises: 40
+title: "Exercise: Automatic testing with GitHub Actions"
+teaching: 10
+exercises: 30
 questions:
   - "How can we implement automatic testing each time we push changes to the repository?"
   - "Why is it good to autoclose issues with commit messages?"
 objectives:
-  - "Get comfortable with Travis and experience a full-cycle collaborative workflow."
+  - "Get comfortable with GitHub Actions and experience a full-cycle collaborative workflow."
 keypoints:
-  - "To enable automated testing on Travis, simply enable the repository and 
-    add a `.travis.yml` file"
   - "When fixing bugs or other problems reported in issues, use the issue 
     autoclosing mechanism when you send the pull request"
 ---
 
-## Type-along: a full-cycle collaborative workflow
+##  Exercise a full-cycle collaborative workflow
 
-We will do this exercise in pairs.
+We will do this exercise in collaborative circle within the group
+(breakout room).
 
-In this exercise, both partners make a repository on Github and set up
-code and tests within it.  The repository is linked to Travis for
-automated testing.  Both partners find a bug in their repository, make
-an issue, clone each other's repos, fixes the bug, makes a pull
-request, checks the automated tests on Github, and merge their
-partner's change.
+In this exercise, all make a repository on Github and set up
+code and tests through GitHub actions within it.  Everybody find a bug in their repository, make
+an issue in their own repository. The each one  clone one of the other's repos, fixes the bug, makes a pull
+request, checks the automated tests on Github, and everybody merge their co-workers's change.
 
 Here is an overview of this exercise. Below we detail the steps.
 
@@ -37,15 +34,7 @@ Here is an overview of this exercise. Below we detail the steps.
 - **Before** you create the repository, select **"Initialize this repository with a README"** (otherwise you try to clone an empty repo)
 
 
-### Step 2: Enable this repository on [Travis CI](https://travis-ci.org)
-
-On [Travis CI](https://travis-ci.org):
-
-- Use "Sign in with GitHub"
-- Enable the newly created repository for testing (you may need to "Sync account" if you do not see it there)
-
-
-### Step 3: Clone the repository, add sources, commit, and push
+### Step 2: Clone the repository, add sources, commit, and push
 
 Clone the repository.
 
@@ -69,48 +58,75 @@ def subtract(a, b):
 #def test_subtract():
 #    assert subtract(2, 3) == -1
 ```
-
-Add a file `.travis.yml` (mind the "." at the beginning) containing:
-
-```yaml
-sudo: false
-
-language:
-  - python
-
-python:
-  - 2.7
-  - 3.6
-
-install:
-  - pip install pytest
-
-script:
-  - pytest --verbose example.py
-
-notifications:
-  email: false
-```
-
 Test `example.py` with `pytest`.
 
 Then `git add` the two files, commit, and push the changes to GitHub.
 
+### Step 3: Enable GitHub Actions
+Select "Actions" from your GitHub repository page. You get at paged with
+title "Get started with GitHub Actions". Select the button for "Set up
+this workflow" under Python Application:
+<img src="{{ site.baseurl }}/img/python_application.png"/>
+
+GitHub creates a subdirectory `.github/workflows` with at YAML. Add
+`example.py` to the last line with the `pytest` command:
+```YAML
+# This workflow will install Python dependencies, run tests and lint with a single version of Python
+# For more information see: https://help.github.com/actions/language-and-framework-guides/using-python-with-github-actions
+
+name: Python application
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Python 3.8
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.8
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install flake8 pytest
+        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+    - name: Lint with flake8
+      run: |
+        # stop the build if there are Python syntax errors or undefined names
+        flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
+        # exit-zero treats all errors as warnings. The GitHub editor is 127 chars wide
+        flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
+    - name: Test with pytest
+      run: |
+        pytest example.py
+```
+
+Do the commit by pressing  the "Start Commit" button.
+<img src="{{ site.baseurl}}/img/gh_action_commit.png"/>
 
 ### Step 4: Verify that tests have been automatically run
 
-After you have pushed, go to [https://travis-ci.org](https://travis-ci.org) and
-verify that Travis automatically picked up the change to the repository and ran
-the tests.  It should take less than 1 minute for the test set to run.  Also
-click on one of the python versions on Travis to see the full output.
-
-If you forgot to enable Travis before pushing, you may have to tell
-Travis to run the test manually.
+Observe in the repository how the test succeed. While it the test is
+done, the repository has yellow marker. This is replaced with a green
+check mark, once the test succeeds:
+<img src="{{ site.baseurl}}/img/green_check_mark.png"/>
 
 ### Step 5: Add a test which reveals a problem
 
-For this uncomment the code under "step 5", commit, and push.
-Verify on Travis that the test suite now fails.
+Update your local cloned repository by doing a `git pull` or `git fetch`
+followed by a `git merge orgin/master`. Nexy uncomment the code under "step 5", commit, and push.
+Verify that the test suite now fails, by selecting the yellow mark at
+"Latest commit".
+<img src="{{ site.baseurl}}/img/test_failed.png"/>
+
 
 
 ### Step 6: Open an issue on GitHub
@@ -137,9 +153,8 @@ Then push to your fork.
 
 ### Step 9: File a pull request
 
-And wait for your partner to do the same.
 Then before accepting the pull request from your partner, observe
-how Travis automatically tested the code.
+how GitHub Actions automatically tested the code.
 
 
 ### Step 10: Accept the pull request
@@ -155,10 +170,12 @@ Discuss whether this is a useful feature. And if it is, why do you think is it u
 We discuss together about our experiences with this exercise.
 
 ---
+{: .challenge}
 
 ## Where to go from here
 
 - This example was using Python but you can achieve the same automation for Fortran or C or C++
-- On Travis you can also test macOS builds: https://docs.travis-ci.com/user/reference/osx/
+- GitHub Actions has a [Marketpace](https://github.com/marketplace?type=actions) which offer wide range of automatic workflows
+- On [Travis](https://travis-ci.org) is an alternative service which offer much of the same
 - On GitLab use [GitLab CI](https://about.gitlab.com/product/continuous-integration/)
 - For Windows builds use [Appveyor](https://www.appveyor.com)
