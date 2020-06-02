@@ -60,7 +60,7 @@ def subtract(a, b):
 ```
 Test `example.py` with `pytest`.
 
-Then `git add` the two files, commit, and push the changes to GitHub.
+Then `git add` the file, commit, and push the changes to GitHub.
 
 ### Step 3: Enable GitHub Actions
 Select "Actions" from your GitHub repository page. You get at paged with
@@ -109,7 +109,9 @@ jobs:
         pytest example.py
 ```
 
-Do the commit by pressing  the "Start Commit" button.
+Do the commit by pressing  the "Start Commit" button:
+
+
 <img src="{{ site.baseurl}}/img/gh_action_commit.png"/>
 
 ### Step 4: Verify that tests have been automatically run
@@ -121,10 +123,10 @@ check mark, once the test succeeds:
 
 ### Step 5: Add a test which reveals a problem
 
-Update your local cloned repository by doing a `git pull` or `git fetch`
-followed by a `git merge orgin/master`. Nexy uncomment the code under "step 5", commit, and push.
+Update your local cloned repository by doing a `git pull` or a combined `git fetch`
+and a `git merge orgin/master`. Next uncomment the code in `example.py` under "step 5", commit, and push.
 Verify that the test suite now fails, by selecting the yellow mark at
-"Latest commit".
+"Latest commit":
 <img src="{{ site.baseurl}}/img/test_failed.png"/>
 
 
