@@ -98,6 +98,17 @@ def kelvin_to_celsius(temp_k):
 
 ---
 
+## Continuous integration
+
+- **Continuous integration** is basically when you automatically test
+  every single commit or merge automatically
+- Test each commit (push) on every branch
+- Test merges before they are accepted
+- Makes it possible for the mainline maintainer to see whether a modification
+  breaks functionality before accepting the merge
+
+---
+
 ## Code coverage
 
 - If I break the code and all tests pass who is to blame?
