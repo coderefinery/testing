@@ -30,7 +30,8 @@ Imperfect tests **run frequently** are better than perfect tests which are never
 ### Important
 
 - Test frequently (each commit)
-- Test automatically (e.g. using [Travis CI](https://travis-ci.org))
+- Test automatically (e.g. using [Travis CI](https://travis-ci.org) or
+  [GitHub Actions](https://github.com/marketplace?type=actions))
 - Test with [numerical tolerance](http://www.smbc-comics.com/comic/2013-06-05)
 - Think about code coverage ([Coveralls](https://coveralls.io) or [Codecov](https://codecov.io))
 
