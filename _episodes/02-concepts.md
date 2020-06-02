@@ -123,17 +123,19 @@ def kelvin_to_celsius(temp_k):
 - If the test set takes 7 hours to run, it is likely that nobody will run it
 - Identify fast essential test set that has sufficient coverage and is sufficiently
   short to be run before each commit or push
+- Test code can be marked. Here our `pytest` is marked
 
----
+```python
+@pytest.mark.fahrenheit_to_celsius
+def test_fahrenheit_to_celsius():
+    temp_c = fahrenheit_to_celsius(temp_f=100.0)
+    expected_result = 37.777777
+    assert abs(temp_c - expected_result) < 1.0e-6
+```
 
-## Continuous integration
-
-- **Continuous integration** is basically when you automatically test
-  every single commit or merge automatically
-- Test each commit (push) on every branch
-- Test merges before they are accepted
-- Makes it possible for the mainline maintainer to see whether a modification
-  breaks functionality before accepting the merge
+```sh
+$ pytest -v -m fahrenheit_to_celsius
+```
 
 ---
 
