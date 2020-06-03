@@ -136,8 +136,8 @@ check mark, once the test succeeds:
 
 ### Step 5: Add a test which reveals a problem
 
-After you commited the YAML file, your GitHub repository will be ahead of your local cloned repository. Update your local cloned repository by doing a `git pull` or a combined `git fetch`
-and a `git merge orgin/master`. Next uncomment the code in `example.py` under "step 5", commit, and push.
+After you committed the YAML file, your GitHub repository will be ahead of your local cloned repository. Update your local cloned repository by doing a `git pull` or a combined `git fetch`
+and a `git merge origin/master`. Next uncomment the code in `example.py` under "step 5", commit, and push.
 Verify that the test suite now fails, by selecting the yellow mark at
 "Latest commit":
 
