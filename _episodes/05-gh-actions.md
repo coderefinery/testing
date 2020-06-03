@@ -18,20 +18,21 @@ keypoints:
 We will do this exercise in collaborative circle within the group
 (breakout room).
 
-In this exercise, all make a repository on Github and set up
-code and tests through GitHub actions within it.  Everybody find a bug in their repository, make
+In this exercise, all make a repository on Github, commit code to the
+repository and set up tests with GitHub Actions.  Everybody find a bug in their repository, make
 an issue in their own repository. The each one  clone one of the other's repos, fixes the bug, makes a pull
 request, checks the automated tests on Github, and everybody merge their co-workers's change.
 
 Here is an overview of this exercise. Below we detail the steps.
 
-<img src="{{ site.baseurl }}/img/exercise.svg"/>
+<img src="{{ site.baseurl }}/img/testing_group_work.jpeg"/>
 
 
 ### Step 1: Create a new repository on GitHub
 
-- Select a **different repository name** than your partner (otherwise forking the same name will be strange)
-- **Before** you create the repository, select **"Initialize this repository with a README"** (otherwise you try to clone an empty repo)
+- Select a **different repository name** than your colleagues (otherwise forking the same name will be strange)
+- **Before** you create the repository, select **"Initialize this repository with a README"** (otherwise you try to clone an empty repo).
+  It is also possible to add a you a `.gitgnore` covering Python and License if you want to.
 
 
 ### Step 2: Clone the repository, add sources, commit, and push
@@ -66,7 +67,12 @@ Then `git add` the file, commit, and push the changes to GitHub.
 Select "Actions" from your GitHub repository page. You get at paged with
 title "Get started with GitHub Actions". Select the button for "Set up
 this workflow" under Python Application:
+
+---
+
 <img src="{{ site.baseurl }}/img/python_application.png"/>
+
+---
 
 GitHub creates a subdirectory `.github/workflows` with at YAML. Add
 `example.py` to the last line with the `pytest` command:
@@ -109,17 +115,23 @@ jobs:
         pytest example.py
 ```
 
+
 Do the commit by pressing  the "Start Commit" button:
 
 
 <img src="{{ site.baseurl}}/img/gh_action_commit.png"/>
+
+---
 
 ### Step 4: Verify that tests have been automatically run
 
 Observe in the repository how the test succeed. While it the test is
 done, the repository has yellow marker. This is replaced with a green
 check mark, once the test succeeds:
+
 <img src="{{ site.baseurl}}/img/green_check_mark.png"/>
+
+---
 
 ### Step 5: Add a test which reveals a problem
 
@@ -127,17 +139,18 @@ Update your local cloned repository by doing a `git pull` or a combined `git fet
 and a `git merge orgin/master`. Next uncomment the code in `example.py` under "step 5", commit, and push.
 Verify that the test suite now fails, by selecting the yellow mark at
 "Latest commit":
-<img src="{{ site.baseurl}}/img/test_failed.png"/>
 
+---
+<img src="{{ site.baseurl}}/img/test_failed.png"/>
 
 
 ### Step 6: Open an issue on GitHub
 
 Open a new issue on the broken test on GitHub.
-The plan is that your exercise partner will fix the issue.
+The plan is that your colleague will fix the issue.
 
 
-### Step 7: Fork and clone the repository of your exercise partner
+### Step 7: Fork and clone the repository of your colleague
 
 Now you know the drill.
 
@@ -155,7 +168,7 @@ Then push to your fork.
 
 ### Step 9: File a pull request
 
-Then before accepting the pull request from your partner, observe
+Then before accepting the pull request from your colleague, observe
 how GitHub Actions automatically tested the code.
 
 
