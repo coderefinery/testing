@@ -10,7 +10,7 @@ objectives:
 ---
 
 - Explore and use the good tools that exist out there
-- Automatize
+- Automatize. Automated tests enable faster feedback and reduce the number of surprises
 - Strike a healthy balance between unit tests and integration tests
 - Require that new functionality comes with new tests
 - When you discover and fix a bug, also commit a test against this bug
