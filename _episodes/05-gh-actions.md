@@ -33,6 +33,7 @@ Here is an overview of this exercise. Below we detail the steps.
 - Select a **different repository name** than your colleagues (otherwise forking the same name will be strange)
 - **Before** you create the repository, select **"Initialize this repository with a README"** (otherwise you try to clone an empty repo).
   It is also possible to add a you a `.gitgnore` covering Python and License if you want to.
+- Write the repository URL in the shared document (HackMD)
 
 
 ### Step 2: Clone the repository, add sources, commit, and push
@@ -125,8 +126,8 @@ Do the commit by pressing  the "Start Commit" button:
 
 ### Step 4: Verify that tests have been automatically run
 
-Observe in the repository how the test succeed. While it the test is
-done, the repository has yellow marker. This is replaced with a green
+Observe in the repository how the test succeed. While the test is
+executed, the repository has yellow marker. This is replaced with a green
 check mark, once the test succeeds:
 
 <img src="{{ site.baseurl}}/img/green_check_mark.png"/>
@@ -135,7 +136,7 @@ check mark, once the test succeeds:
 
 ### Step 5: Add a test which reveals a problem
 
-Update your local cloned repository by doing a `git pull` or a combined `git fetch`
+After you commited the YAML file, your GitHub repository will be ahead of your local cloned repository. Update your local cloned repository by doing a `git pull` or a combined `git fetch`
 and a `git merge orgin/master`. Next uncomment the code in `example.py` under "step 5", commit, and push.
 Verify that the test suite now fails, by selecting the yellow mark at
 "Latest commit":
@@ -189,7 +190,7 @@ We discuss together about our experiences with this exercise.
 
 ## Where to go from here
 
-- This example was using Python but you can achieve the same automation for Fortran or C or C++
+- This example was using Python but you can achieve the same automation for R or Fortran or C/C++ or other languages
 - GitHub Actions has a [Marketpace](https://github.com/marketplace?type=actions) which offer wide range of automatic workflows
 - On [Travis](https://travis-ci.org) is an alternative service which offer much of the same
 - On GitLab use [GitLab CI](https://about.gitlab.com/product/continuous-integration/)
