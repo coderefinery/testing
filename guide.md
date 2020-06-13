@@ -89,25 +89,31 @@ commit.
 
 
 ### Timing
+
 The lesson is stipulated to take 2 hours and 10 minutes. If the "Tools"
 and "Test Design" is skipped the lesson can shrink to a length of 90
 minutes.
 
 Splitting the lesson in two halves with a lunch break in the middle
 works very well. Before lunch you have on hour introduction and the two
-first exercises. After lunch you continue with "Automatic testing with 
-Travis" and "Test Design".
+first exercises. After lunch you continue with the collaborative testing
+exercise and test design.
 
-### Sessions which can be skipped if time is tight
-* The list of tools. One can just show the list, but not dive in to the
-  specifics. The participants know where to look if they a specific
-  interest.
-* The exercise/discussion test design has often been skipped. If one split into
-  groups with some python expertise in each group, the discussions are good though.
+The full introduction (motivation, concepts, and tools) can take 30 minutes and
+that is a too long intro so the instructor needs to select and make clear that
+material contains more than we wish to cover in a lesson.
+
+When discussing the list of tools, one can just show the list, but not dive in
+to the specifics. The participants know where to look if they a specific
+interest.
+
+The last exercise/discussion on test design has often been skipped.
+However, if there is time for group work and the groups have some Python experience,
+this episode can make for very good discussions.
+
 
 ### Typical pitfalls
-* The full introduction, which is Motivation + Concepts + Tools, is
-  estimated to take 30 minutes. That is a very long intro!
+
 * The lesson is very Python centric. We just assume what we say is
   transferable to another language, like R.
 * Testing is done with different motivations. If you ship software, you
