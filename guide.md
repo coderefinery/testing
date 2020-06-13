@@ -7,6 +7,19 @@ permalink: /guide/
 
 ## Why we teach this lesson
 
+- Because writing tests and using automated testing is often part
+  of the development process, especially for codes that are larger than
+  a simple script.
+- We wish to give learners the tools so that they can rewrite codes and
+  collaborate on a code projects with more confidence.
+- Testing can help detecting regressions during development instead of later
+  (when using the code) or too late (after having published results).
+- Can simplify collaboration since contributors can be more confident that
+  their changes preserve expected functionality.
+- Tests document the intent of the function/module/library/code.
+- Tests can guide the code towards more modular and reusable code style with
+  fewer side effects.
+
 
 ## Intended learning outcomes
 * To learn and get a feel of Travis.
