@@ -46,10 +46,6 @@ towards testing with the purpose of software shipping. When testing with
 the purpose of verification and behavior specification is emphasized it
 becomes better and more well received.
 
-Currently the lesson is in the "discipline" domain. Testing is
-something you do to control behavior (your own as well as the code). 
-Testing is also something you can do to improve productivity, but this 
-is less visible/detectable.
 
 
 ## How to teach this lesson
@@ -58,7 +54,7 @@ is less visible/detectable.
 Every one know tests and do testing is a good thing. But do we stick to
 this? The motivation part start with a very strong claim, which put our
 non-tested code in the domain of "not science". It is interesting to get
-views from the participants on the citation of Anthony Scopatz and 
+views from the participants on the citation of Anthony Scopatz and
 Kathryn Huff.
 
 The lesson then continues with:
@@ -66,9 +62,6 @@ The lesson then continues with:
 - Motivate tests as a way of documenting use
 - Motivate tests as a support for further code development
 
-These are valid points, but does not move "Testing" from the domain of
-something "we should do", to the domain of "what we always do". This is
-currently a weakness of the lesson (a point for discussion).
 
 The examples work quite well. The pytest example can be done as type
 along. During the wrap up of the example with Travis, it is useful to
@@ -112,16 +105,15 @@ However, if there is time for group work and the groups have some Python experie
 this episode can make for very good discussions.
 
 
-### Typical pitfalls
+### Room for improvement
 
-* The lesson is very Python centric. We just assume what we say is
-  transferable to another language, like R.
-* Testing is done with different motivations. If you ship software, you
-  do testing with the purpose of quality assurance (QA). As a developer
-    you do testing for verifying behaviour. With
-    Test-Driven-Development you specify behavior with tests. Writing
-    software for research you want to verify/specify behavior, rather
-    than do QA. 
-* With the Travis setup you verify that behavior is preserved across
-  versions and platforms. The motivation for using Travis is not
-  necessarily for shipping software. 
+- The lesson is too Python centric. It would be nice to offer more
+  for learners who write in different languages (like R or C++).
+- Currently the lesson is in the "discipline" domain. Testing is
+  something you do to control behavior (your own as well as the code).
+  Testing is also something you can do to improve productivity, but this
+  is less visible/detectable.
+- The lesson should give a more balanced view also about situations where
+  automated testing is not needed.
+- We have a test design episode but often skip it but we leave learners then
+  without having practices how to approach testing in an existing project.
