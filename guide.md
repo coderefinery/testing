@@ -6,6 +6,17 @@ permalink: /guide/
 # Instructor guide
 
 ## Why we teach this lesson
+
+
+## Intended learning outcomes
+* To learn and get a feel of Travis.
+* Testing serve different purposes.
+* There are different type of tests
+* Tests can be challenging, but test help reveal intentions.
+
+
+## Discussion
+
 We illustrate how tests can be done in various ways. Tests can be part
 of code.  It can be used as a check during a git commit. It can be set
 up automatically such that Pull Requests get verified by a Continuous
@@ -20,12 +31,6 @@ Currently the lesson is in the "discipline" domain. Testing is
 something you do to control behavior (your own as well as the code). 
 Testing is also something you can do to improve productivity, but this 
 is less visible/detectable.
-  
-## Intended learning outcomes
-* To learn and get a feel of Travis.
-* Testing serve different purposes.
-* There are different type of tests
-* Tests can be challenging, but test help reveal intentions.
 
 
 ## How to teach this lesson
