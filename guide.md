@@ -77,11 +77,16 @@ partner write Pull Requests with "fixes #1" (or whatever PR number) you
 can show that the PR links to a issue, and the issue pointing to a
 commit.
 
+
 ### Questions to involve participants
-* What do you think about the statement "Simulations and analysis with
+
+- What do you think about the statement "Simulations and analysis with
   untested software do not constitute science."?
-* Do you test?
-* How and when do you test?
+- Do you test your code?
+- How and when do you test?
+- Where would you start adding a test in an existing project?
+- In which situations would you recommend not to add any tests?
+
 
 ### Timing
 The lesson is stipulated to take 2 hours and 10 minutes. If the "Tools"
