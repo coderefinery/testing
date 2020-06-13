@@ -22,10 +22,16 @@ permalink: /guide/
 
 
 ## Intended learning outcomes
-* To learn and get a feel of Travis.
-* Testing serve different purposes.
-* There are different type of tests
-* Tests can be challenging, but test help reveal intentions.
+
+- Know that in each language tools exist that can execute a series of test functions
+  and report success or failure.
+- Know that services like GitHub Actions, Travis CI, GitLab CI, Appveyor, and others
+  allow us to automatically run tests on every Git push or every pull request or merge request.
+- Be able to approach a function or module or library and design a test for it "in words"
+  or pseudo-code.
+- Know what test coverage means and how it can help to detect untested/unused code.
+- Know where in a larger and untested project to start introducing tests since it is beyond
+  reach and also probably not reasonable to test everything.
 
 
 ## Discussion
