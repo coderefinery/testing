@@ -34,41 +34,15 @@ permalink: /guide/
   reach and also probably not reasonable to test everything.
 
 
-## Discussion
-
-We illustrate how tests can be done in various ways. Tests can be part
-of code.  It can be used as a check during a git commit. It can be set
-up automatically such that Pull Requests get verified by a Continuous
-Integration service like Travis.
-
-The lesson covers a lot of aspects related to testing. It tilt some what
-towards testing with the purpose of software shipping. When testing with
-the purpose of verification and behavior specification is emphasized it
-becomes better and more well received.
-
-
-
-## How to teach this lesson
+## How we teach this lesson
 
 ### How to start
+
 Every one know tests and do testing is a good thing. But do we stick to
 this? The motivation part start with a very strong claim, which put our
 non-tested code in the domain of "not science". It is interesting to get
 views from the participants on the citation of Anthony Scopatz and
 Kathryn Huff.
-
-The lesson then continues with:
-- Motivate verification of functionality
-- Motivate tests as a way of documenting use
-- Motivate tests as a support for further code development
-
-
-The examples work quite well. The pytest example can be done as type
-along. During the wrap up of the example with Travis, it is useful to
-have co-instructor doing the exercise in parallel with you. As your
-partner write Pull Requests with "fixes #1" (or whatever PR number) you
-can show that the PR links to a issue, and the issue pointing to a
-commit.
 
 
 ### Questions to involve participants
@@ -79,6 +53,26 @@ commit.
 - How and when do you test?
 - Where would you start adding a test in an existing project?
 - In which situations would you recommend not to add any tests?
+
+
+### Structure of the lesson
+
+The lesson then continues with:
+- Motivate verification of functionality
+- Motivate tests as a way of documenting use
+- Motivate tests as a support for further code development
+
+We illustrate how tests can be done in various ways. Tests can be part
+of code.  It can be used as a check during a git commit. It can be set
+up automatically such that Pull Requests get verified by a Continuous
+Integration service like Travis.
+
+The examples work quite well. The pytest example can be done as type
+along. During the wrap up of the example with GitHub Actions, it is useful to
+have co-instructor doing the exercise in parallel with you. As your
+partner write pull requests with "fixes #1" (or whatever PR number) you
+can show that the PR links to a issue, and the issue pointing to a
+commit.
 
 
 ### Timing
