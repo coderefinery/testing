@@ -16,6 +16,8 @@ keypoints:
   - "Git hooks provide a convenient way to *locally* automatize tests."
 ---
 
+# Exercises: Testing with pytest and precommit hooks
+
 > ## Exercise [pytest](http://doc.pytest.org) 
 > 
 > In this exercise we will make a simple Python function and use

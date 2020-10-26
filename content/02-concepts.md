@@ -18,6 +18,8 @@ keypoints:
     automatically"
 ---
 
+# Concepts
+
 [@dave1010](https://twitter.com/dave1010/status/613601365529657344):
 
 <img src="{{ site.baseurl }}/img/unit-testing.jpg" style="width: 500px;"/>
@@ -170,4 +172,4 @@ Image by [@thepracticaldev](https://github.com/thepracticaldev/orly-full-res), C
 > ## Discussion
 > 
 > - For which situations would you consider automated testing as overkill?
-{: .task}
+{: .challenge}

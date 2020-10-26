@@ -12,7 +12,7 @@ keypoints:
   - "Classes can be tested but it's somewhat more elaborate."
 ---
 
-## Exercise/discussion: Test design
+# Exercise/discussion: Test design
 
 Try to write tests or discuss test design for the following functions.
 Some are easier to test than others. Discuss why.
