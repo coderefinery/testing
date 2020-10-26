@@ -9,6 +9,8 @@ objectives:
   - "When you come home from this course you will start testing your code."
 ---
 
+# Conclusions and recommendations
+
 - Explore and use the good tools that exist out there
 - Automatize. Automated tests enable faster feedback and reduce the number of surprises
 - Strike a healthy balance between unit tests and integration tests

@@ -13,6 +13,8 @@ keypoints:
   - "Tests help managing complexity"
 ---
 
+# Motivation
+
 ## Untested software can be compared to uncalibrated detectors
 
 Before relying on a new experimental device, an experimental scientist always
@@ -98,7 +100,7 @@ Suiting up to modify untested code:
 - Badly structured code is difficult to test automatically
 - **Tests guide towards modular code structure**
 
-#### Good code: pure and easy to test
+### Good code: pure and easy to test
 
 ```python
 def fahrenheit_to_celsius(temp_f):
@@ -109,7 +111,7 @@ temp_c = fahrenheit_to_celsius(temp_f=100.0)
 print(temp_c)
 ```
 
-#### Less good code: has side effects and is difficult to test
+### Less good code: has side effects and is difficult to test
 
 ```python
 f_to_c_offset = 32.0
@@ -131,4 +133,4 @@ print(temp_c)
 > - ... when its tests do not pass?
 > - ... if there are no tests at all?
 > - ... if the tests are never run?
-{: .task}
+{: .challenge}

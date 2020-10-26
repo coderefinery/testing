@@ -13,6 +13,8 @@ keypoints:
     autoclosing mechanism when you send the pull request"
 ---
 
+# Exercise: Automatic testing with GitHub Actions
+
 ##  Exercise a full-cycle collaborative workflow
 
 We will do this exercise in collaborative circle within the group
