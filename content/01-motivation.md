@@ -1,32 +1,20 @@
----
-layout: episode
-title: "Motivation"
-teaching: 10
-exercises: 0
-questions:
-  - "Why should we write tests?"
-objectives:
-  - "Discuss the advantages of writing and maintaining tests in research software."
-keypoints:
-  - "Tests make sure that expected functionality is preserved"
-  - "Tests help both users and developers of your code"
-  - "Tests help managing complexity"
----
-
 # Motivation
+
+In this section we will talk about:
+- Why automated tests
+- Can there be situations where automated tests are too much?
+
 
 ## Untested software can be compared to uncalibrated detectors
 
-Before relying on a new experimental device, an experimental scientist always
+*"Before relying on a new experimental device, an experimental scientist always
 establishes its accuracy. A new detector is calibrated when the scientist
 observes its responses to known input signals. The results of this
-calibration are compared against the expected response.  
+calibration are compared against the expected response."*
 
-Simulations and analysis using software *should* be held to the same 
-standards!  
+> [From [Testing and Continuous Integration with Python](http://katyhuff.github.io/python-testing/), created by K. Huff]
 
-> Adapted from [Testing and Continuous Integration with Python](http://katyhuff.github.io/python-testing/), created by Kathryn Huff
-
+Simulations and analysis using software *should* be held to the same standards!
 
 Further motivation for testing:
 
@@ -40,31 +28,41 @@ Further motivation for testing:
 In software tests, expected results are compared with observed results in order
 to establish accuracy:
 
-```python
-def fahrenheit_to_celsius(temp_f):
-    """
-    Converts temperature in Fahrenheit
-    to Celsius.
-    """
-    temp_c = (temp_f - 32.0) * (5.0/9.0)
-    return temp_c
+`````{tabs}
+   ````{tab} Python
+
+      ```{code-block} python
+      def fahrenheit_to_celsius(temp_f):
+          """
+          Converts temperature in Fahrenheit
+          to Celsius.
+          """
+          temp_c = (temp_f - 32.0) * (5.0/9.0)
+          return temp_c
 
 
-def test_fahrenheit_to_celsius():
-    temp_c = fahrenheit_to_celsius(temp_f=100.0)
-    expected_result = 37.777777
-    assert abs(temp_c - expected_result) < 1.0e-6
-```
+      def test_fahrenheit_to_celsius():
+          temp_c = fahrenheit_to_celsius(temp_f=100.0)
+          expected_result = 37.777777
+          assert abs(temp_c - expected_result) < 1.0e-6
+      ```
+   ````
+
+   ````{tab} R
+
+   To be added ...
+   ````
+`````
 
 Why are we not comparing directly all digits with the expected result?
 
 ---
 
-## Tests make sure that expected functionality is preserved
+## Tests help preserving expected functionality
 
 - As projects grow, it becomes easier to break things without noticing immediately
-- Testing helps detecting errors early
-- Interpreted dynamically typed imperative languages need to be tested
+- Testing helps **detecting new errors early**
+- Interpreted dynamically typed imperative languages often need to be tested
 - So do compiled languages but the compiler catches at least some errors
 - Testing is essential for research software because we care about
   reproducibility of scientific results and because derivative research and
@@ -81,56 +79,90 @@ Why are we not comparing directly all digits with the expected result?
 
 ---
 
-## Tests help developers of your code
+## Tests help other developers
 
-- Tests make it possible to refactor the code
-- Code is unsustainable without runnable tests and becomes legacy software
+- Tests make it easier to **refactor the code** (rewrite code while keeping functionality)
+- Code can become unsustainable without runnable tests and becomes legacy software
 - Documentation which is up to date by definition
 - Easier for external developers to contribute to the project without breaking your code
+  (**you may immediately see problems in your code but others may not**)
 
 Suiting up to modify untested code:
 
-<img src="{{ site.baseurl }}/img/suit.jpg" style="width: 400px;"/>
+```{image} img/suit.jpg
+:alt: Suiting up to modify untested code
+:width: 300px
+```
 
 ---
 
 ## Tests help managing complexity
 
 - Well structured code is easy to test
-- Badly structured code is difficult to test automatically
+- "Badly" structured code is difficult to test automatically
 - **Tests guide towards modular code structure**
+
 
 ### Good code: pure and easy to test
 
-```python
-def fahrenheit_to_celsius(temp_f):
-    temp_c = (temp_f - 32.0) * (5.0/9.0)
-    return temp_c
+"Pure": no side effects.
+We already know how to test this code (see above):
 
-temp_c = fahrenheit_to_celsius(temp_f=100.0)
-print(temp_c)
-```
+`````{tabs}
+   ````{tab} Python
+
+      ```{code-block} python
+      def fahrenheit_to_celsius(temp_f):
+          temp_c = (temp_f - 32.0) * (5.0/9.0)
+          return temp_c
+
+      temp_c = fahrenheit_to_celsius(temp_f=100.0)
+      print(temp_c)
+      ```
+   ````
+
+   ````{tab} R
+
+   To be added ...
+   ````
+`````
+
 
 ### Less good code: has side effects and is difficult to test
 
-```python
-f_to_c_offset = 32.0
-f_to_c_factor = 0.555555555
-temp_c = 0.0
+How would you test this code:
 
-def fahrenheit_to_celsius_bad(temp_f):
-    global temp_c
-    temp_c = (temp_f - f_to_c_offset) * f_to_c_factor
+`````{tabs}
+   ````{tab} Python
 
-fahrenheit_to_celsius_bad(temp_f=100.0)
-print(temp_c)
-```
+      ```{code-block} python
+      f_to_c_offset = 32.0
+      f_to_c_factor = 0.555555555
+      temp_c = 0.0
+
+      def fahrenheit_to_celsius_bad(temp_f):
+          global temp_c
+          temp_c = (temp_f - f_to_c_offset) * f_to_c_factor
+
+      fahrenheit_to_celsius_bad(temp_f=100.0)
+      print(temp_c)
+      ```
+   ````
+
+   ````{tab} R
+
+   To be added ...
+   ````
+`````
 
 ---
 
-> ## Would you trust a code ...
-> 
-> - ... when its tests do not pass?
-> - ... if there are no tests at all?
-> - ... if the tests are never run?
-{: .challenge}
+> ## Discussion: When is it OK not to add tests?
+>
+> **It is always a balance: there is no "always"/"never"**.
+> - Jupyter or R Markdown notebook which produces a plot and you know by
+>   looking at the plot whether it worked?
+> - A short, "obviously correct" Python or R script which you never intend to reuse?
+> - A simple short, "obviously correct" shell script?
+> - Can you give other examples?
+{: .discussion}
