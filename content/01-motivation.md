@@ -98,10 +98,6 @@ Suiting up to modify untested code:
 
 ## Tests help managing complexity
 
-- Well structured code is easy to test
-- "Badly" structured code is difficult to test automatically
-- **Tests guide towards modular code structure**
-
 
 ### Good code: pure and easy to test
 
@@ -154,6 +150,14 @@ How would you test this code:
    To be added ...
    ````
 `````
+
+> ## Tests guide towards modular code structure
+>
+> - Well structured code (modular code) is easy to test
+> - "Badly" structured code is difficult to test automatically
+> - If you make it easier to test, it becomes more modular
+> - To make code more modular, maybe start by thinking about how to make it testable if you need inspiration?
+{: .discussion}
 
 ---
 
