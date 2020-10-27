@@ -159,10 +159,3 @@ $ pytest -v -m fahrenheit_to_celsius
 <img src="{{ site.baseurl }}/img/commenting-out-tests.jpg" style="width: 500px;"/>
 
 Image by [@thepracticaldev](https://github.com/thepracticaldev/orly-full-res), CC-BY-NC.
-
----
-
-## References
-
-- For a more detailed exposition of these concepts, see
-  [this Carpentry lesson](https://katyhuff.github.io/python-testing/)
