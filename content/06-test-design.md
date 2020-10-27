@@ -4,19 +4,6 @@
 - How can different types of functions and classes be tested?
 ```
 
-## Testing randomness
-
-Discussion: How would you test functions which generate random numbers
-according to some distribution/statistics?
-
-```{solution} Hints
-- What is a random seed and how can it be useful in tests?
-- Testing whether your results follow the expected distribution/statistics.
-- When you verify your code "by eye", what are you looking at? Now try to express
-  that in a script.
-- Other strategies?
-```
-
 
 ## Exercise/discussion: pure and impure functions
 
@@ -88,6 +75,21 @@ Some are easier to test than others. Discuss why.
    To be added ...
    ```
 ````
+
+
+## Testing randomness
+
+Discussion: How would you test functions which generate random numbers
+according to some distribution/statistics?
+
+```{solution} Hints
+- What is a random seed and how can it be useful in tests?
+- Testing whether your results follow the expected distribution/statistics.
+- When you verify your code "by eye", what are you looking at? Now try to express
+  that in a script.
+- Other strategies?
+```
+
 
 ```{keypoints}
 - Pure functions (these are functions without side-effects) are easiest to test.
