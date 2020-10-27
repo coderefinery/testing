@@ -163,7 +163,13 @@ The plan is that your colleague will fix the issue.
 
 ### Step 7: Fork and clone the repository of your colleague
 
-Now you know the drill.
+Fork the repository using the GitHub web interface. Make sure you clone the
+fork after you have forked it. Do not clone your colleague's repository
+directly.
+
+```bash
+$ git clone https://github.com/your-username/the-repository.git
+```
 
 
 ### Step 8: Fix the broken test
@@ -171,13 +177,10 @@ Now you know the drill.
 After you have fixed the code,
 commit the following commit message `"restore function subtract; fixes #1"` (assuming that you try to fix issue number 1).
 
-Once the pull request is accepted/merged, this will autoclose the issue since GitHub will recognize the "fixes #1" in the commit message, see also
-[closing issues using keywords](https://help.github.com/articles/closing-issues-using-keywords/).
-
 Then push to your fork.
 
 
-### Step 9: File a pull request
+### Step 9: Open a pull request
 
 Then before accepting the pull request from your colleague, observe
 how GitHub Actions automatically tested the code.
@@ -187,6 +190,9 @@ how GitHub Actions automatically tested the code.
 
 Observe how accepting the pull request automatically closes the issue (provided
 the commit message contained the correct issue number).
+
+See also
+[closing issues using keywords](https://help.github.com/articles/closing-issues-using-keywords/).
 
 Discuss whether this is a useful feature. And if it is, why do you think is it useful?
 
