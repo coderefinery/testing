@@ -10,11 +10,11 @@ questions:
 objectives:
   - "Understand how the different layers of testing fit to each other."
 keypoints:
-  - "Assertions, exceptions, unit tests, integration tests and regression 
+  - "Assertions, exceptions, unit tests, integration tests and regression
     tests are used to test a code on different levels"
-  - "Test driven development is one way to develop code which is tested 
+  - "Test driven development is one way to develop code which is tested
     from the start"
-  - "Continuous integration is when every commit/merge is tested 
+  - "Continuous integration is when every commit/merge is tested
     automatically"
 ---
 
@@ -61,7 +61,7 @@ def kelvin_to_celsius(temp_k):
 
 ## Unit tests
 
-- **Unit tests** are functions 
+- **Unit tests** are functions
 - Test one unit: module or even single function
 - Good documentation of the capability and dependencies of a module
 
@@ -69,7 +69,7 @@ def kelvin_to_celsius(temp_k):
 
 ## Integration tests
 
-- **Integration tests** verify whether multiple modules are working well together 
+- **Integration tests** verify whether multiple modules are working well together
 - Like in a car assembly we have to test all components independently and also whether the components are working together when combined
 - Unit tests can be used for testing independent components (e.g. engine, radiator, transmission) and integration tests to check if car is working overall
 
@@ -77,12 +77,12 @@ def kelvin_to_celsius(temp_k):
 
 ## Regression tests
 
-- Similarly to integration tests, **regression tests** often operate on the 
+- Similarly to integration tests, **regression tests** often operate on the
   whole code base
-- Rather than assuming that the test author knows what the correct 
+- Rather than assuming that the test author knows what the correct
   result should be, regression tests look to the past for the expected behavior
-- Often spans multiple code versions: when developing a new version, input 
-  and output files of a previous version are used to test that the same 
+- Often spans multiple code versions: when developing a new version, input
+  and output files of a previous version are used to test that the same
   behaviour is observed
 
 ---
@@ -164,12 +164,12 @@ Image by [@thepracticaldev](https://github.com/thepracticaldev/orly-full-res), C
 
 ## References
 
-- For a more detailed exposition of these concepts, see 
+- For a more detailed exposition of these concepts, see
   [this Carpentry lesson](https://katyhuff.github.io/python-testing/)
 
 ---
 
 > ## Discussion
-> 
+>
 > - For which situations would you consider automated testing as overkill?
 {: .challenge}
