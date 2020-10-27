@@ -147,7 +147,7 @@ to the above.
 harder.  You could use monkey patching to override the value of
 `max_temperature`, and test it with different values.  [Monkey
 patching](https://en.wikipedia.org/wiki/Monkey_patch) is the concept
-of artifically changing some other value.
+of artificially changing some other value.
 
    ````{tabs}
    ```{code-tab} py
