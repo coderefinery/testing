@@ -131,7 +131,7 @@ whether this works 100% on Windows):
             $ chmod +x pre-commit
             ```
          ````
-         ````{tab} Anaconda prompt
+         ````{group-tab} Windows Anaconda prompt
      
             Nothing to do.
          ````
