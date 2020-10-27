@@ -117,13 +117,14 @@ whether this works 100% on Windows):
    $ git add example.py
    $ git commit
    ```
-5. Create the following shell script. Save this file as `pre-commit`:
+5. Create the following shell script. Save this file as `pre-commit` (Linux or macOS)
+or `pre-commit.bat` (Windows Anaconda prompt):
    ```shell
    #!/bin/bash
 
    pytest example.py
    ```
-6. Make `pre-commit` executable:
+6. Make the script executable:
       `````{tabs}
          ````{tab} Bash
      
