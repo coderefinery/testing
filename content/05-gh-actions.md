@@ -33,7 +33,8 @@ Overview of this exercise. Below we detail the steps.
 ### Step 1: Create a new repository on GitHub
 
 - Select a **different repository name** than your colleagues (otherwise forking the same name will be strange)
-- **Before** you create the repository, select **"Initialize this repository with a README"** (otherwise you try to clone an empty repo).
+- **Before** you create the repository, select **"Initialize this repository
+  with a README"** (otherwise you try to clone an empty repo).
 - Share the repository URL with your exercise group via shared document or chat
 
 
@@ -200,6 +201,17 @@ Discuss whether this is a useful feature. And if it is, why do you think is it u
 ### Discussion
 
 Finally, we discuss together about our experiences with this exercise.
+
+
+```{challenge} Optional exercise
+In the [Social coding and open software](https://cicero.xyz/v3/remark/0.14.0/github.com/coderefinery/social-coding/master/talk.md/)
+lesson we learn how important it is to add a LICENSE file.
+
+Your goal:
+- You discover that your coworker's repository does not have a LICENSE file.
+- Open an issue and suggest a LICENSE.
+- Then add a LICENSE via a pull/merge request, referencing the issue number.
+```
 
 ---
 
