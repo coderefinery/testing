@@ -166,10 +166,3 @@ Image by [@thepracticaldev](https://github.com/thepracticaldev/orly-full-res), C
 
 - For a more detailed exposition of these concepts, see
   [this Carpentry lesson](https://katyhuff.github.io/python-testing/)
-
----
-
-> ## Discussion
->
-> - For which situations would you consider automated testing as overkill?
-{: .challenge}
