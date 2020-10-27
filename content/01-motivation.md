@@ -131,7 +131,7 @@ We already know how to test this code (see above):
 How would you test this code:
 
 `````{tabs}
-   ````{tab} Python
+   ````{code-tab} py
 
       ```{code-block} python
       f_to_c_offset = 32.0
