@@ -1,8 +1,9 @@
 # Motivation
 
-In this section we will talk about:
+```{questions}
 - Why automated tests
 - Can there be situations where automated tests are too much?
+```
 
 
 ## Untested software can be compared to uncalibrated detectors
