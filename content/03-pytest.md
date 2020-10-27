@@ -159,7 +159,7 @@ whether this works 100% on Windows):
             $ mv pre-commit .git/hooks
             ```
          ````
-         ````{tab} Anaconda prompt
+         ````{group-tab} Windows Anaconda prompt
      
             ```bash
             $ move pre-commit.bat .git/hooks
