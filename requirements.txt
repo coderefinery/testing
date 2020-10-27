@@ -2,3 +2,4 @@ Sphinx
 sphinx_rtd_theme
 myst_nb
 sphinx-lesson
+sphinx_rtd_theme_ext_color_contrast

@@ -35,6 +35,7 @@ extensions = [
     'sphinx.ext.githubpages',
     'sphinx_lesson',
     #'sphinx.ext.intersphinx',
+    'sphinx_rtd_theme_ext_color_contrast',
 ]
 
 # Settings for myst_nb:
