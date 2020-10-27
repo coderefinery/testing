@@ -25,9 +25,12 @@ repository and set up tests with GitHub Actions.  Everybody find a bug in their 
 an issue in their own repository. The each one  clone one of the other's repos, fixes the bug, makes a pull
 request, checks the automated tests on Github, and everybody merge their co-workers's change.
 
-Here is an overview of this exercise. Below we detail the steps.
+```{figure} img/testing_group_work.png
+:alt: Graph with exercise steps
+:width: 300px
 
-<img src="{{ site.baseurl }}/img/testing_group_work.jpeg"/>
+Overview of this exercise. Below we detail the steps.
+```
 
 
 ### Step 1: Create a new repository on GitHub
