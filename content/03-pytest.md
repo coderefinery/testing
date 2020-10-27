@@ -91,7 +91,7 @@ Here we will use our previous `example.py` and add a git client-side hook the
 `pre-commit` hook to run a script before a commit is recorded.
 
 **Instructor demonstrates** this example (the reason is that we are unsure
-whether this works on Windows):
+whether this works 100% on Windows):
 
 1. The starting point is our `example.py` file.  We are still in the
   directory `pytest-example` which contains `example.py`:
@@ -117,27 +117,57 @@ whether this works on Windows):
    $ git add example.py
    $ git commit
    ```
-5. Git add and commit the file:
-   ```shell
-   $ git add example.py
-   $ git commit
-   ```
-6. Create the following shell script. Save this file as `pre-commit`:
+5. Create the following shell script. Save this file as `pre-commit`:
    ```shell
    #!/bin/bash
 
    pytest example.py
    ```
-7. Make `pre-commit` executable:
-   ```shell
-   $ chmod +x pre-commit
-   ```
+6. Make `pre-commit` executable:
+      `````{tabs}
+         ````{tab} Bash
+     
+            ```bash
+            $ chmod +x pre-commit
+            ```
+         ````
+         ````{tab} Anaconda prompt
+     
+            Nothing to do.
+         ````
+      `````
+7. Check the hook script:
+      `````{tabs}
+         ````{tab} Bash
+     
+            ```bash
+            $ ./pre-commit
+            ```
+         ````
+         ````{tab} Anaconda prompt
+     
+            ```bash
+            $ ./pre-commit.bat
+            ```
+         ````
+      `````
 8. Move this file under .git/hooks:
-   ```shell
-   $ mv pre-commit .git/hooks
-   ```
+      `````{tabs}
+         ````{tab} Bash
+     
+            ```bash
+            $ mv pre-commit .git/hooks
+            ```
+         ````
+         ````{tab} Anaconda prompt
+     
+            ```bash
+            $ move pre-commit.bat .git/hooks
+            ```
+         ````
+      `````
 9. Break the code and try to commit this change.
-  Now the `pre-commit` should reject the commit.
+   Now the `pre-commit` should reject the commit.
 10. Discuss this approach: pros and cons.
 ````
 
