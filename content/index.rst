@@ -1,13 +1,13 @@
 Automated testing
 =================
 
-In this lesson we will discuss why testing needs to be part of the software
-development cycle and how such a cycle can be implemented. We will exercise a
-collaborative testing/code review workflow.
+In this lesson we will discuss why testing often needs to be part of the
+software development cycle and how such a cycle can be implemented. We will
+exercise automated testing as part of a collaborative code review workflow.
 
 .. prereq::
 
-   1. You need `pytest <http://doc.pytest.org>`__ (as part of Anaconda or Miniconda or Virtualenv).
+   1. You need `pytest <http://doc.pytest.org>`__ (as part of Anaconda or Miniconda or Virtual Environment).
 
    2. Basic understanding of Git.
 
