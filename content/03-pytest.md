@@ -125,7 +125,7 @@ whether this works 100% on Windows):
          ````
          ````{group-tab} Windows Anaconda prompt
 
-		 Save the file as `pre-commit.bat`
+         Save the file as `pre-commit.bat`
          ````
       `````
 
@@ -138,26 +138,26 @@ whether this works 100% on Windows):
 6. Make the script executable:
       `````{tabs}
          ````{group-tab} Bash, Linux or macOS
-     
+
             ```bash
             $ chmod +x pre-commit
             ```
          ````
          ````{group-tab} Windows Anaconda prompt
-     
+
             Nothing to do.
          ````
       `````
 7. Check the hook script:
       `````{tabs}
          ````{group-tab} Bash, Linux or macOS
-     
+
             ```bash
             $ ./pre-commit
             ```
          ````
          ````{group-tab} Windows Anaconda prompt
-     
+
             ```bash
             $ ./pre-commit.bat
             ```
@@ -166,13 +166,13 @@ whether this works 100% on Windows):
 8. Move this file under .git/hooks:
       `````{tabs}
          ````{group-tab} Bash, Linux or macOS
-     
+
             ```bash
             $ mv pre-commit .git/hooks
             ```
          ````
          ````{group-tab} Windows Anaconda prompt
-     
+
             ```bash
             $ move pre-commit.bat .git/hooks
             ```
