@@ -153,7 +153,7 @@ whether this works 100% on Windows):
       `````
 8. Move this file under .git/hooks:
       `````{tabs}
-         ````{tab} Bash
+         ````{group-tab} Bash
      
             ```bash
             $ mv pre-commit .git/hooks
