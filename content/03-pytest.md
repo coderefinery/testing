@@ -30,7 +30,7 @@ keep things simple so that those who do not use Python can follow.
        assert add('space', 'ship') == 'spaceship'
    ```
    This code contains one genuine function and a test function.
-4. Let us try to test it with pytest:
+3. Let us try to test it with pytest:
    ```shell
    $ pytest -v example.py
 
