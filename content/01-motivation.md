@@ -47,7 +47,7 @@ to establish accuracy:
        assert abs(temp_c - expected_result) < 1.0e-6
    ```
 
-   ```{tab} R
+   ```{code-tab} r R
 
    To be added ...
    ```
@@ -116,7 +116,7 @@ We already know how to test this code (see above):
    print(temp_c)
    ```
 
-   ```{tab} R
+   ```{code-tab} r R
 
    To be added ...
    ```
@@ -142,7 +142,7 @@ How would you test this code:
    print(temp_c)
    ```
 
-   ```{tab} R
+   ```{code-tab} r R
 
    To be added ...
    ```
