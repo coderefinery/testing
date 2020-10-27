@@ -83,7 +83,7 @@ def kelvin_to_celsius(temp_k):
     - Write an empty function template
     - **Verify that the test fails**
     - Program until the test passes
-    - Perhaps refactor (improve)
+    - Perhaps improve until you are happy (refactor)
     - Move on
 
 ---
