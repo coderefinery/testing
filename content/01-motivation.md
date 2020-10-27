@@ -89,9 +89,11 @@ Why are we not comparing directly all digits with the expected result?
 
 Suiting up to modify untested code:
 
-```{image} img/suit.jpg
-:alt: Suiting up to modify untested code
+```{figure} img/suit.jpg
+:alt: Old-fashioned diving suit
 :width: 300px
+
+Suiting up to modify untested code.
 ```
 
 ---
