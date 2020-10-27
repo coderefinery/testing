@@ -143,6 +143,6 @@ whether this works on Windows):
 
 ```{keypoints}
 - pytest collects and runs all test functions starting with `test_`.
-- Python and C/C++ have better tooling for automated tests thank Fortran and you can use those also for Fortran projects (via `iso_c_binding`).
+- Python and C/C++ have better tooling for automated tests than Fortran and you can use those also for Fortran projects (via `iso_c_binding`).
 - Git hooks provide a convenient way to *locally* automatize tests.
 ```
