@@ -117,8 +117,19 @@ whether this works 100% on Windows):
    $ git add example.py
    $ git commit
    ```
-5. Create the following shell script. Save this file as `pre-commit` (Linux or macOS)
-or `pre-commit.bat` (Windows Anaconda prompt):
+5. Create the following shell script:
+      `````{tabs}
+         ````{group-tab} Bash, Linux or macOS
+
+         Save the file as `pre-commit`
+         ````
+         ````{group-tab} Windows Anaconda prompt
+
+		 Save the file as `pre-commit.bat`
+         ````
+      `````
+
+   The script is the same for all operating systems:
    ```shell
    #!/bin/bash
 
