@@ -1,15 +1,3 @@
----
-layout: episode
-title: "Tools"
-teaching: 10
-exercises: 0
-questions:
-  - "What tools are out there?"
-objectives:
-  - "Discover the tool that fits your needs."
-
----
-
 # Tools
 
 ## Unit test frameworks
@@ -46,9 +34,9 @@ script which does some tests.
 
 ## [pytest](http://doc.pytest.org)
 
-Very easy to set up: Anaconda, Miniconda, virtualenv, or pipenv.
+Installable via Conda or pip.
 
-Very easy to use: Prefix a function with "test\_" and the test runner will execute it.
+Easy to use: Prefix a function with `test_` and the test runner will execute it.
 No need to subclass anything.
 
 ```python
@@ -163,6 +151,7 @@ end subroutine
 
 ## Services to deploy testing and coverage
 
+- [GitHub Actions](https://github.com/features/actions)
 - [Travis CI](https://travis-ci.org)
 - [GitLab CI](https://about.gitlab.com/features/gitlab-ci-cd/)
 - [Coveralls](https://coveralls.io)
