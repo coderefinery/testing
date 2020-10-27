@@ -144,7 +144,7 @@ whether this works 100% on Windows):
             $ ./pre-commit
             ```
          ````
-         ````{tab} Anaconda prompt
+         ````{group-tab} Windows Anaconda prompt
      
             ```bash
             $ ./pre-commit.bat
