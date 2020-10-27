@@ -28,31 +28,29 @@ Further motivation for testing:
 In software tests, expected results are compared with observed results in order
 to establish accuracy:
 
-`````{tabs}
-   ````{tab} Python
+````{tabs}
+   ```{code-tab} py
 
-      ```{code-block} python
-      def fahrenheit_to_celsius(temp_f):
-          """
-          Converts temperature in Fahrenheit
-          to Celsius.
-          """
-          temp_c = (temp_f - 32.0) * (5.0/9.0)
-          return temp_c
+   def fahrenheit_to_celsius(temp_f):
+       """
+       Converts temperature in Fahrenheit
+       to Celsius.
+       """
+       temp_c = (temp_f - 32.0) * (5.0/9.0)
+       return temp_c
 
 
-      def test_fahrenheit_to_celsius():
-          temp_c = fahrenheit_to_celsius(temp_f=100.0)
-          expected_result = 37.777777
-          assert abs(temp_c - expected_result) < 1.0e-6
-      ```
-   ````
+   def test_fahrenheit_to_celsius():
+       temp_c = fahrenheit_to_celsius(temp_f=100.0)
+       expected_result = 37.777777
+       assert abs(temp_c - expected_result) < 1.0e-6
+   ```
 
-   ````{tab} R
+   ```{tab} R
 
    To be added ...
-   ````
-`````
+   ```
+````
 
 Why are we not comparing directly all digits with the expected result?
 
@@ -106,52 +104,48 @@ Suiting up to modify untested code.
 "Pure": no side effects.
 We already know how to test this code (see above):
 
-`````{tabs}
-   ````{tab} Python
+````{tabs}
+   ```{code-tab} py
 
-      ```{code-block} python
-      def fahrenheit_to_celsius(temp_f):
-          temp_c = (temp_f - 32.0) * (5.0/9.0)
-          return temp_c
+   def fahrenheit_to_celsius(temp_f):
+       temp_c = (temp_f - 32.0) * (5.0/9.0)
+       return temp_c
 
-      temp_c = fahrenheit_to_celsius(temp_f=100.0)
-      print(temp_c)
-      ```
-   ````
+   temp_c = fahrenheit_to_celsius(temp_f=100.0)
+   print(temp_c)
+   ```
 
-   ````{tab} R
+   ```{tab} R
 
    To be added ...
-   ````
-`````
+   ```
+````
 
 
 ### Less good code: has side effects and is difficult to test
 
 How would you test this code:
 
-`````{tabs}
-   ````{code-tab} py
+````{tabs}
+   ```{code-tab} py
 
-      ```{code-block} python
-      f_to_c_offset = 32.0
-      f_to_c_factor = 0.555555555
-      temp_c = 0.0
+   f_to_c_offset = 32.0
+   f_to_c_factor = 0.555555555
+   temp_c = 0.0
 
-      def fahrenheit_to_celsius_bad(temp_f):
-          global temp_c
-          temp_c = (temp_f - f_to_c_offset) * f_to_c_factor
+   def fahrenheit_to_celsius_bad(temp_f):
+       global temp_c
+       temp_c = (temp_f - f_to_c_offset) * f_to_c_factor
 
-      fahrenheit_to_celsius_bad(temp_f=100.0)
-      print(temp_c)
-      ```
-   ````
+   fahrenheit_to_celsius_bad(temp_f=100.0)
+   print(temp_c)
+   ```
 
-   ````{tab} R
+   ```{tab} R
 
    To be added ...
-   ````
-`````
+   ```
+````
 
 > ## Tests guide towards modular code structure
 >
