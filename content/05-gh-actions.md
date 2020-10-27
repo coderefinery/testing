@@ -1,29 +1,26 @@
----
-layout: episode
-title: "Exercise: Automatic testing with GitHub Actions"
-teaching: 10
-exercises: 30
-questions:
-  - "How can we implement automatic testing each time we push changes to the repository?"
-  - "Why is it good to autoclose issues with commit messages?"
-objectives:
-  - "Get comfortable with GitHub Actions and experience a full-cycle collaborative workflow."
-keypoints:
-  - "When fixing bugs or other problems reported in issues, use the issue 
-    autoclosing mechanism when you send the pull request"
----
+# Automatic testing with GitHub Actions
 
-# Exercise: Automatic testing with GitHub Actions
+```{questions}
+- How can we implement automatic testing each time we push changes to the repository?
+- Why is it good to autoclose issues with commit messages?
+```
 
-##  Exercise a full-cycle collaborative workflow
 
-We will do this exercise in collaborative circle within the group
+## Exercise a full-cycle collaborative workflow
+
+```{challenge} Exercise overview
+We will do this exercise in a collaborative circle within the exercise group
 (breakout room).
 
-In this exercise, all make a repository on Github, commit code to the
-repository and set up tests with GitHub Actions.  Everybody find a bug in their repository, make
-an issue in their own repository. The each one  clone one of the other's repos, fixes the bug, makes a pull
-request, checks the automated tests on Github, and everybody merge their co-workers's change.
+The exercise takes 20-30 minutes.
+
+In this exercise, everybody will:
+- Create a repository on Github (everybody should use a **different name** for their repository)
+- Commit code to the repository and set up tests with GitHub Actions
+- Everybody will find a bug in their repository and open an issue in their repository
+- Then each one will clone the repo of one of their exercise partners, fix the bug, and open a pull request
+- Everybody then merges their co-worker's change
+```
 
 ```{figure} img/testing_group_work.png
 :alt: Graph with exercise steps
@@ -37,11 +34,10 @@ Overview of this exercise. Below we detail the steps.
 
 - Select a **different repository name** than your colleagues (otherwise forking the same name will be strange)
 - **Before** you create the repository, select **"Initialize this repository with a README"** (otherwise you try to clone an empty repo).
-  It is also possible to add a you a `.gitgnore` covering Python and License if you want to.
-- Write the repository URL in the shared document (HackMD)
+- Share the repository URL with your exercise group via shared document or chat
 
 
-### Step 2: Clone the repository, add sources, commit, and push
+### Step 2: Clone your own repository, add code, commit, and push
 
 Clone the repository.
 
@@ -69,20 +65,24 @@ Test `example.py` with `pytest`.
 
 Then `git add` the file, commit, and push the changes to GitHub.
 
+
 ### Step 3: Enable GitHub Actions
-Select "Actions" from your GitHub repository page. You get at paged with
-title "Get started with GitHub Actions". Select the button for "Set up
+
+Select "Actions" from your GitHub repository page. You get to a page
+"Get started with GitHub Actions". Select the button for "Set up
 this workflow" under Python Application:
 
+```{figure} img/python_application.png
+:alt: Selecting a Python workflow
+```
+
+GitHub creates the following file for you in the subfolder `.github/workflows`.
+Add `pytest example.py` to the last line (highlighted):
+
+```{code-block} yaml
 ---
-
-<img src="{{ site.baseurl }}/img/python_application.png"/>
-
+emphasize-lines: 34-36
 ---
-
-GitHub creates a subdirectory `.github/workflows` with at YAML. Add
-`example.py` to the last line with the `pytest` command:
-```YAML
 # This workflow will install Python dependencies, run tests and lint with a single version of Python
 # For more information see: https://help.github.com/actions/language-and-framework-guides/using-python-with-github-actions
 
@@ -121,13 +121,13 @@ jobs:
         pytest example.py
 ```
 
+Commit the change by pressing the "Start Commit" button:
 
-Do the commit by pressing  the "Start Commit" button:
+```{figure} img/gh_action_commit.png
+:alt: Committing the change
+:width: 400px
+```
 
-
-<img src="{{ site.baseurl}}/img/gh_action_commit.png"/>
-
----
 
 ### Step 4: Verify that tests have been automatically run
 
@@ -135,24 +135,29 @@ Observe in the repository how the test succeed. While the test is
 executed, the repository has yellow marker. This is replaced with a green
 check mark, once the test succeeds:
 
-<img src="{{ site.baseurl}}/img/green_check_mark.png"/>
+```{figure} img/green_check_mark.png
+:alt: Verify that the test passed
+```
 
----
+Also browse the "Actions" tab and look at the steps there and their output.
+
 
 ### Step 5: Add a test which reveals a problem
 
-After you committed the YAML file, your GitHub repository will be ahead of your local cloned repository. Update your local cloned repository by doing a `git pull` or a combined `git fetch`
-and a `git merge origin/master`. Next uncomment the code in `example.py` under "step 5", commit, and push.
-Verify that the test suite now fails, by selecting the yellow mark at
-"Latest commit":
+After you committed the workflow file, your GitHub repository will be ahead of
+your local cloned repository.  Update your local cloned repository:
 
----
-<img src="{{ site.baseurl}}/img/test_failed.png"/>
+```bash
+$ git pull origin master
+```
+
+Next uncomment the code in `example.py` under "step 5", commit, and push.
+Verify that the test suite now fails on the "Actions" tab.
 
 
 ### Step 6: Open an issue on GitHub
 
-Open a new issue on the broken test on GitHub.
+Open a new issue in your repository on the broken test on GitHub.
 The plan is that your colleague will fix the issue.
 
 
@@ -186,12 +191,11 @@ the commit message contained the correct issue number).
 Discuss whether this is a useful feature. And if it is, why do you think is it useful?
 
 
-### Step 11: Discussion
+### Discussion
 
-We discuss together about our experiences with this exercise.
+Finally, we discuss together about our experiences with this exercise.
 
 ---
-{: .challenge}
 
 ## Where to go from here
 
@@ -199,4 +203,10 @@ We discuss together about our experiences with this exercise.
 - GitHub Actions has a [Marketpace](https://github.com/marketplace?type=actions) which offer wide range of automatic workflows
 - On [Travis](https://travis-ci.org) is an alternative service which offer much of the same
 - On GitLab use [GitLab CI](https://about.gitlab.com/product/continuous-integration/)
-- For Windows builds use [Appveyor](https://www.appveyor.com)
+- For Windows builds you can also use [Appveyor](https://www.appveyor.com)
+
+
+```{keypoints}
+- When fixing bugs or other problems reported in issues, use the issue
+  autoclosing mechanism when you send the pull/merge request.
+```
