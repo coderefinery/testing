@@ -1,41 +1,28 @@
----
-layout: episode
-title: "Concepts"
-teaching: 10
-exercises: 0
-questions:
-  - "What are unit tests, regression tests, and integration tests?"
-  - "What is test coverage?"
-  - "How should we approach testing?"
-objectives:
-  - "Understand how the different layers of testing fit to each other."
-keypoints:
-  - "Assertions, exceptions, unit tests, integration tests and regression 
-    tests are used to test a code on different levels"
-  - "Test driven development is one way to develop code which is tested 
-    from the start"
-  - "Continuous integration is when every commit/merge is tested 
-    automatically"
----
-
 # Concepts
 
-[@dave1010](https://twitter.com/dave1010/status/613601365529657344):
+```{questions}
+- What are unit tests, regression tests, and integration tests?
+- What is test coverage?
+- How should we approach testing?
+```
 
-<img src="{{ site.baseurl }}/img/unit-testing.jpg" style="width: 500px;"/>
+```{figure} img/unit-testing.jpg
+:alt: Tests are no guarantee
+:width: 400px
+
+Tests are no guarantee. Figure source: <https://twitter.com/dave1010/status/613601365529657344>
+```
 
 
-## How?
+## How to test?
 
-Imperfect tests **run frequently** are better than perfect tests which are never written
-
-### Important
-
-- Test frequently (each commit)
-- Test automatically (e.g. using [Travis CI](https://travis-ci.org) or
-  [GitHub Actions](https://github.com/marketplace?type=actions))
+Imperfect tests **run frequently** are better than perfect tests which are
+never written:
+- Test **frequently** (each commit/push)
+- Test **automatically** (e.g. using [Travis CI](https://travis-ci.org) or
+  [GitHub Actions](https://github.com/marketplace?type=actions) or [GitLab CI](https://docs.gitlab.com/ee/ci/) or similar services)
 - Test with [numerical tolerance](http://www.smbc-comics.com/comic/2013-06-05)
-- Think about code coverage ([Coveralls](https://coveralls.io) or [Codecov](https://codecov.io))
+- Think about **code coverage** ([Coveralls](https://coveralls.io) or [Codecov](https://codecov.io) or similar services)
 
 ---
 
@@ -61,7 +48,7 @@ def kelvin_to_celsius(temp_k):
 
 ## Unit tests
 
-- **Unit tests** are functions 
+- **Unit tests** are functions
 - Test one unit: module or even single function
 - Good documentation of the capability and dependencies of a module
 
@@ -69,7 +56,7 @@ def kelvin_to_celsius(temp_k):
 
 ## Integration tests
 
-- **Integration tests** verify whether multiple modules are working well together 
+- **Integration tests** verify whether multiple modules are working well together
 - Like in a car assembly we have to test all components independently and also whether the components are working together when combined
 - Unit tests can be used for testing independent components (e.g. engine, radiator, transmission) and integration tests to check if car is working overall
 
@@ -77,12 +64,12 @@ def kelvin_to_celsius(temp_k):
 
 ## Regression tests
 
-- Similarly to integration tests, **regression tests** often operate on the 
+- Similarly to integration tests, **regression tests** often operate on the
   whole code base
-- Rather than assuming that the test author knows what the correct 
+- Rather than assuming that the test author knows what the correct
   result should be, regression tests look to the past for the expected behavior
-- Often spans multiple code versions: when developing a new version, input 
-  and output files of a previous version are used to test that the same 
+- Often spans multiple code versions: when developing a new version, input
+  and output files of a previous version are used to test that the same
   behaviour is observed
 
 ---
@@ -94,9 +81,9 @@ def kelvin_to_celsius(temp_k):
 - Development cycle (red, green, refactor):
     - Write the test
     - Write an empty function template
-    - Test that the test fails
+    - **Verify that the test fails**
     - Program until the test passes
-    - Perhaps refactor
+    - Perhaps improve until you are happy (refactor)
     - Move on
 
 ---
@@ -104,11 +91,7 @@ def kelvin_to_celsius(temp_k):
 ## Continuous integration
 
 - **Continuous integration** is basically when you automatically test
-  every single commit or merge automatically
-- Test each commit (push) on every branch
-- Test merges before they are accepted
-- Makes it possible for the mainline maintainer to see whether a modification
-  breaks functionality before accepting the merge
+  every single commit/push (you test whether code integrates **before** you integrate it)
 
 ---
 
@@ -116,7 +99,8 @@ def kelvin_to_celsius(temp_k):
 
 - If I break the code and all tests pass who is to blame?
 - **Code coverage** measures and documents which lines of code have been traversed during a test run
-- It is possible to have line-by-line coverage (example later)
+- It is possible to have line-by-line coverage
+- [Real-life example](https://coveralls.io/github/bast/runtest)
 
 ---
 
@@ -126,7 +110,7 @@ def kelvin_to_celsius(temp_k):
 - If the test set takes 7 hours to run, it is likely that nobody will run it
 - Identify fast essential test set that has sufficient coverage and is sufficiently
   short to be run before each commit or push
-- Test code can be marked. Here our `pytest` is marked
+- Test code can be marked (grouped). Here our `pytest` is marked:
 
 ```python
 @pytest.mark.fahrenheit_to_celsius
@@ -156,20 +140,12 @@ $ pytest -v -m fahrenheit_to_celsius
     - Do not flood screen with pages of output in case everything runs OK
     - Test with numerical tolerance (extremely annoying to compare digits by eye)
 
-<img src="{{ site.baseurl }}/img/commenting-out-tests.jpg" style="width: 500px;"/>
 
-Image by [@thepracticaldev](https://github.com/thepracticaldev/orly-full-res), CC-BY-NC.
-
----
-
-## References
-
-- For a more detailed exposition of these concepts, see 
-  [this Carpentry lesson](https://katyhuff.github.io/python-testing/)
-
----
-
-> ## Discussion
-> 
-> - For which situations would you consider automated testing as overkill?
-{: .challenge}
+```{keypoints}
+- Assertions, exceptions, unit tests, integration tests and regression
+  tests are used to test a code on different levels
+- Test driven development is one way to develop code which is tested
+  from the start
+- Continuous integration is when every commit/merge is tested
+  automatically
+```
