@@ -34,10 +34,10 @@ script which does some tests.
 
 ## [pytest](http://doc.pytest.org)
 
-Installable via Conda or pip.
-
-Easy to use: Prefix a function with `test_` and the test runner will execute it.
-No need to subclass anything.
+- Python
+- Installable via Conda or pip.
+- Easy to use: Prefix a function with `test_` and the test runner will execute it.
+  No need to subclass anything.
 
 ```python
 def get_word_lengths(s):
@@ -59,6 +59,7 @@ def test_get_word_lengths():
 
 ## [testthat](https://github.com/r-lib/testthat)
 
+- R
 - Easily installed from CRAN with `install.packages("testthat")`, or from GitHub with `devtools::install_github("r-lib/testthat")`
 - Use in package development with `usethis::use_testthat()`
 - Add a new test file with `usethis::use_test("test-name")`, e.g.:
@@ -102,6 +103,7 @@ More information in the [Testing chapter](http://r-pkgs.had.co.nz/tests.html) of
 
 ## [Google Test](https://github.com/google/googletest)
 
+- C++
 - Widely used
 - Very rich in functionality
 
@@ -122,8 +124,9 @@ TEST(example, add)
 
 ---
 
-## [pFUnit](https://sourceforge.net/projects/pfunit/)
+## [pFUnit](https://github.com/Goddard-Fortran-Ecosystem/pFUnit)
 
+- Fortran
 - Very rich in functionality
 - Requires modern Fortran compilers (uses F2003 standard)
 
@@ -151,8 +154,19 @@ end subroutine
 
 ## Services to deploy testing and coverage
 
-- [GitHub Actions](https://github.com/features/actions)
+Each of these are web services to handle testing, free for open source
+projects.
+
+- [GitHub Actions](https://github.com/features/actions) (we will
+  demonstrate in next episode)
 - [Travis CI](https://travis-ci.org)
 - [GitLab CI](https://about.gitlab.com/features/gitlab-ci-cd/)
 - [Coveralls](https://coveralls.io)
 - [Codecov](https://codecov.io)
+
+
+```{keypoints}
+- Testing is a basic requirement of any possible language
+- There are various tools for any language you may use
+- There are free web services for open source
+```
