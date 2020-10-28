@@ -127,15 +127,23 @@ to the above.
    ````
 
 3. Not a pure function, because the output depends on the value of a
-   file.  I would start by splitting file reading from the
+   file. We can generate a temporary file for testing and remove it afterwards.
+   Even better could be to split file reading from the
    calculation, so that testing the calculation part becomes easy (see
-   above).  You might skip testing file reading if you think it's not
-   worth it, or use monkey patching (next example below) to override
-   `open`.
+   above).
 
    ````{tabs}
    ```{code-tab} py
-   Not demonstrated...
+   import tempfile
+   import os
+   
+   def test_count_word_occurrence_in_file():
+       _, temporary_file_name = tempfile.mkstemp()
+       with open(temporary_file_name, 'w') as f:
+           f.write("one two one two three four")
+       count = count_word_occurrence_in_file(temporary_file_name, "one")
+       assert count == 2
+       os.remove(temporary_file_name)
    ```
    ```{code-tab} r R
    Nothing here yet...
