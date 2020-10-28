@@ -117,8 +117,19 @@ whether this works 100% on Windows):
    $ git add example.py
    $ git commit
    ```
-5. Create the following shell script. Save this file as `pre-commit` (Linux or macOS)
-or `pre-commit.bat` (Windows Anaconda prompt):
+5. Create the following shell script:
+      `````{tabs}
+         ````{group-tab} Bash, Linux or macOS
+
+         Save the file as `pre-commit`
+         ````
+         ````{group-tab} Windows Anaconda prompt
+
+         Save the file as `pre-commit.bat`
+         ````
+      `````
+
+   The script is the same for all operating systems:
    ```shell
    #!/bin/bash
 
@@ -126,27 +137,27 @@ or `pre-commit.bat` (Windows Anaconda prompt):
    ```
 6. Make the script executable:
       `````{tabs}
-         ````{tab} Bash
-     
+         ````{group-tab} Bash, Linux or macOS
+
             ```bash
             $ chmod +x pre-commit
             ```
          ````
          ````{group-tab} Windows Anaconda prompt
-     
+
             Nothing to do.
          ````
       `````
 7. Check the hook script:
       `````{tabs}
-         ````{tab} Bash
-     
+         ````{group-tab} Bash, Linux or macOS
+
             ```bash
             $ ./pre-commit
             ```
          ````
          ````{group-tab} Windows Anaconda prompt
-     
+
             ```bash
             $ ./pre-commit.bat
             ```
@@ -154,14 +165,14 @@ or `pre-commit.bat` (Windows Anaconda prompt):
       `````
 8. Move this file under .git/hooks:
       `````{tabs}
-         ````{group-tab} Bash
-     
+         ````{group-tab} Bash, Linux or macOS
+
             ```bash
             $ mv pre-commit .git/hooks
             ```
          ````
          ````{group-tab} Windows Anaconda prompt
-     
+
             ```bash
             $ move pre-commit.bat .git/hooks
             ```
