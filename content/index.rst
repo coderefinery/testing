@@ -18,26 +18,26 @@ exercise automated testing as part of a collaborative code review workflow.
    :widths: auto
    :delim: ;
 
-   10 min ; :doc:`01-motivation`
-   10 min ; :doc:`02-concepts`
-   25 min ; :doc:`03-pytest`
-   10 min ; :doc:`04-frameworks`
-   40 min ; :doc:`05-gh-actions`
-   25 min ; :doc:`06-test-design`
-   5 min ; :doc:`07-conclusions`
+   10 min ; :doc:`motivation`
+   10 min ; :doc:`concepts`
+   25 min ; :doc:`pytest`
+   10 min ; :doc:`frameworks`
+   40 min ; :doc:`gh-actions`
+   25 min ; :doc:`test-design`
+   5 min ; :doc:`conclusions`
 
 
 .. toctree::
    :maxdepth: 1
    :caption: The lesson
 
-   01-motivation
-   02-concepts
-   03-pytest
-   04-frameworks
-   05-gh-actions
-   06-test-design
-   07-conclusions
+   motivation
+   concepts
+   pytest
+   frameworks
+   gh-actions
+   test-design
+   conclusions
 
 
 .. toctree::
