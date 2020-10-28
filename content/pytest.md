@@ -203,8 +203,9 @@ Pros:
 
 Cons:
 - If tests take a long time, your computer is blocked
-- Each person has to enable the commit separately
-- Can't ensure the test was run.
+- Each person has to enable the commit hook separately (hooks are not part of Git history)
+- Can't ensure the test was run
+- Sometimes you want to commit a change which breaks a test but this way you cannot
 
 ```
 
