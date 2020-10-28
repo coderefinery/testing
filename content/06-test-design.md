@@ -154,7 +154,7 @@ of artificially changing some other value.
    def test_set_temp(monkeypatch):
        monkeypatch.setattr(reactor, "max_temperature", 100)
        assert check_reactor_temperature(99)  == 0
-       assert check_reactor_temperature(100) == 0   # boundrary case easily goes wrong
+       assert check_reactor_temperature(100) == 0   # boundary cases easily go wrong
        assert check_reactor_temperature(101) == 1
    ```
    ```{code-tab} r R
