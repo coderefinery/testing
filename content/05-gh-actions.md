@@ -129,6 +129,8 @@ Commit the change by pressing the "Start Commit" button:
 ```{figure} img/gh_action_commit.png
 :alt: Committing the change
 :width: 400px
+
+Committing the file via the Github web interface: follow the flow, give it some commit name.  You can commit directly to master.
 ```
 
 
