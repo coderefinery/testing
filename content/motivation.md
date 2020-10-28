@@ -33,14 +33,14 @@ to establish accuracy:
    ```{code-tab} py
 
    def fahrenheit_to_celsius(temp_f):
-       """
-       Converts temperature in Fahrenheit
+       """Converts temperature in Fahrenheit
        to Celsius.
        """
        temp_c = (temp_f - 32.0) * (5.0/9.0)
        return temp_c
 
-
+   # This is the test function: `assert` raises an error if something
+   # is wrong.
    def test_fahrenheit_to_celsius():
        temp_c = fahrenheit_to_celsius(temp_f=100.0)
        expected_result = 37.777777
@@ -85,8 +85,8 @@ Why are we not comparing directly all digits with the expected result?
 - Documentation which is up to date by definition
 - Easier for external developers to contribute to the project without breaking your code
   (**you may immediately see problems in your code but others may not**)
-
-Suiting up to modify untested code:
+  - You are confident accepting contributions
+  - *You* can confidently improve your code
 
 ```{figure} img/suit.jpg
 :alt: Old-fashioned diving suit

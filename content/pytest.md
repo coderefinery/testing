@@ -21,7 +21,7 @@ keep things simple so that those who do not use Python can follow.
 
 ````{challenge} Exercise: 15 min
 1. Create a new directory and change into it:
-   ```shell
+   ```console
    $ mkdir pytest-example
    $ cd pytest-example
    ```
@@ -117,15 +117,15 @@ Windows):
        assert add('space', 'ship') == 'spaceship'
    ```
 2. Make sure the test passes:
-   ```shell
+   ```console
    $ pytest example.py
    ```
 3. Initialize a Git repository:
-   ```shell
+   ```console
    $ git init
    ```
 4. Git add and commit the file:
-   ```shell
+   ```console
    $ git add example.py
    $ git commit
    ```
@@ -151,7 +151,7 @@ Windows):
       `````{tabs}
          ````{group-tab} Bash, Linux or macOS
 
-            ```bash
+            ```console
             $ chmod +x pre-commit
             ```
          ````
@@ -164,13 +164,13 @@ Windows):
       `````{tabs}
          ````{group-tab} Bash, Linux or macOS
 
-            ```bash
+            ```console
             $ ./pre-commit
             ```
          ````
          ````{group-tab} Windows Anaconda prompt
 
-            ```bash
+            ```console
             $ ./pre-commit.bat
             ```
          ````
@@ -179,13 +179,13 @@ Windows):
       `````{tabs}
          ````{group-tab} Bash, Linux or macOS
 
-            ```bash
+            ```console
             $ mv pre-commit .git/hooks
             ```
          ````
          ````{group-tab} Windows Anaconda prompt
 
-            ```bash
+            ```console
             $ move pre-commit.bat .git/hooks
             ```
          ````
