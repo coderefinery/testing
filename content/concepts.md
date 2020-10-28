@@ -29,8 +29,8 @@ never written:
 ## Defensive programming
 
 - Assume that mistakes will happen and introduce guards against them.
-- Use `assertions` for things you believe will/should never happen.
-- Use `exceptions` for anomalous or exceptional conditions requiring
+- Use **assertions** for things you believe will/should never happen.
+- Use **exceptions** for anomalous or exceptional conditions requiring
   special processing.
 
 ```python
@@ -113,7 +113,7 @@ def kelvin_to_celsius(temp_k):
 - Test code can be marked (grouped). Here our `pytest` is marked:
 
 ```python
-@pytest.mark.fahrenheit_to_celsius
+@pytest.mark.conversion
 def test_fahrenheit_to_celsius():
     temp_c = fahrenheit_to_celsius(temp_f=100.0)
     expected_result = 37.777777
@@ -121,7 +121,7 @@ def test_fahrenheit_to_celsius():
 ```
 
 ```sh
-$ pytest -v -m fahrenheit_to_celsius
+$ pytest -v -m conversion
 ```
 
 ---

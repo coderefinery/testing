@@ -15,7 +15,7 @@ We will do this exercise in a collaborative circle within the exercise group
 The exercise takes 20-30 minutes.
 
 In this exercise, everybody will:
-- Create a repository on Github (everybody should use a **different name** for their repository)
+- Create a repository on Github (everybody should use a **different repository name** for their repository)
 - Commit code to the repository and set up tests with GitHub Actions
 - Everybody will find a bug in their repository and open an issue in their repository
 - Then each one will clone the repo of one of their exercise partners, fix the bug, and open a pull request
@@ -136,8 +136,8 @@ Committing the file via the Github web interface: follow the flow, give it some 
 
 ### Step 4: Verify that tests have been automatically run
 
-Observe in the repository how the test succeed. While the test is
-executed, the repository has yellow marker. This is replaced with a green
+Observe in the repository how the test succeeds. While the test is
+executing, the repository has yellow marker. This is replaced with a green
 check mark, once the test succeeds:
 
 ```{figure} img/green_check_mark.png
