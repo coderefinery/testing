@@ -140,6 +140,8 @@ check mark, once the test succeeds:
 
 ```{figure} img/green_check_mark.png
 :alt: Verify that the test passed
+
+Green check means passed.
 ```
 
 Also browse the "Actions" tab and look at the steps there and their output.
