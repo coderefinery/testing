@@ -10,7 +10,13 @@
 ## Exercise [pytest](http://doc.pytest.org)
 
 In this exercise we will make a simple Python function and use
-[pytest](http://doc.pytest.org) to test it. We will try to
+[pytest](http://doc.pytest.org) to test it.
+
+* This is easy to use by almost any project and doesn't rely on any
+  other servers or services.
+* The downside is that you have to remember to run it yourself.
+
+We will try to
 keep things simple so that those who do not use Python can follow.
 
 ````{challenge} Exercise: 15 min
@@ -30,6 +36,8 @@ keep things simple so that those who do not use Python can follow.
        assert add('space', 'ship') == 'spaceship'
    ```
    This code contains one genuine function and a test function.
+   `pytest` finds any functions beginning with `test_` and treats them
+   as tests.
 3. Let us try to test it with pytest:
    ```shell
    $ pytest -v example.py
@@ -71,6 +79,9 @@ keep things simple so that those who do not use Python can follow.
    example.py:6: AssertionError
    ========================================================= 1 failed in 0.05 seconds ==============
    ```
+   Notice how pytest is smart and includes context: lines that failed,
+   values of the relevant variables.
+
 ````
 
 ---
@@ -90,8 +101,9 @@ usually used to test if merging is okay).
 Here we will use our previous `example.py` and add a git client-side hook the
 `pre-commit` hook to run a script before a commit is recorded.
 
-**Instructor demonstrates** this example (the reason is that we are unsure
-whether this works 100% on Windows):
+**Instructor demonstrates** this example but you can try to follow
+along (the reason is that we are unsure whether this works 100% on
+Windows):
 
 1. The starting point is our `example.py` file.  We are still in the
   directory `pytest-example` which contains `example.py`:
@@ -178,10 +190,23 @@ whether this works 100% on Windows):
             ```
          ````
       `````
-9. Break the code and try to commit this change.
+9. Break the code (for example, change `+` to `-`) and try to commit this change.
    Now the `pre-commit` should reject the commit.
 10. Discuss this approach: pros and cons.
 ````
+
+```{solution}
+Pros:
+- Tests exist
+- You won't forget to run it
+- Doesn't depend on any other services
+
+Cons:
+- If tests take a long time, your computer is blocked
+- Each person has to enable the commit separately
+- Can't ensure the test was run.
+
+```
 
 ```{keypoints}
 - pytest collects and runs all test functions starting with `test_`.
