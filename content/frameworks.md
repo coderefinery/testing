@@ -130,7 +130,7 @@ TEST(example, add)
 - Very rich in functionality
 - Requires modern Fortran compilers (uses F2003 standard)
 
-```fortran
+```
 @test
 subroutine test_add_numbers()
 
