@@ -75,6 +75,8 @@ this workflow" under Python Application:
 
 ```{figure} img/python_application.png
 :alt: Selecting a Python workflow
+
+Select "Python application" as the starter workflow.
 ```
 
 GitHub creates the following file for you in the subfolder `.github/workflows`.
