@@ -2,7 +2,6 @@
 
 ```{questions}
 - How can we implement a test suite using pytest?
-- I am a Fortran developer, do I need to care about pytest?
 - How can we use Git hooks to make sure we do not commit broken code?
 ```
 
