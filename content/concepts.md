@@ -58,7 +58,7 @@ def kelvin_to_celsius(temp_k):
 
 - **Integration tests** verify whether multiple modules are working well together
 - Like in a car assembly we have to test all components independently and also whether the components are working together when combined
-- Unit tests can be used for testing independent components (e.g. engine, radiator, transmission) and integration tests to check if car is working overall
+- Unit tests can be used for testing independent components (_e.g._ battery, controller, motor) and integration tests to check if car is working overall
 
 ---
 
