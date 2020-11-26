@@ -155,7 +155,7 @@ After you committed the workflow file, your GitHub repository will be ahead of
 your local cloned repository.  Update your local cloned repository:
 
 ```bash
-$ git pull origin main
+$ git pull
 ```
 
 Next uncomment the code in `example.py` under "step 5", commit, and push.
