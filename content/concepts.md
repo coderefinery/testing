@@ -7,7 +7,7 @@
 ```
 
 ```{figure} img/unit-testing.jpg
-:alt: Tests are no guarantee
+:alt: Tests is no guarantee
 :width: 400px
 
 Tests are no guarantee. Figure source: <https://twitter.com/dave1010/status/613601365529657344>
