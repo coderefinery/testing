@@ -79,6 +79,86 @@ Also discuss why some are easier to test than others.
 
    To be added ...
    ```
+
+   ```{code-tab} julia
+
+    # 1
+    """
+        factorial(n::Int)
+
+    Compute the factorial of n.
+    """
+    function factorial(n::Int)
+        if n < 0
+            throw(DomainError("n must be non-negative"))
+        end
+        result = 1
+        for i in 1:n
+            result *= i
+        end
+        return result
+    end
+
+    # 2
+    """
+        count_word_occurrence_in_string(text::String, word::String)
+    
+    Count how often word appears in text.
+    Example: if `text` is "one two one two three four"
+    and `word` is "one", then this function returns 2
+    """
+    function count_word_occurrence_in_string(text::String, word::String)
+    
+        return count(word, text)
+    
+    end
+
+    # 3
+    """
+        count_word_occurrence_in_file(file_name::String, word::String)
+    
+    Counts how often word appears in file file_name.
+    Example: if file contains "one two one two three four"
+             And word is "one", then this function returns 2
+    """
+    function count_word_occurrence_in_file(file_name::String, word::String)
+        open(file_name, "r") do file
+            lines = readlines(file)
+            return count(word, join(lines))
+        end
+    end
+
+    # 4
+
+    # Importing modules inside functions is not allowed in Julia and must be done at top-level:
+    using reactor: max_temperature
+    
+    """
+        check_reactor_temperature(temperature_celsius)
+    
+    Checks whether temperature is above max_temperature
+    and returns a status.
+    """
+    function check_reactor_temperature(temperature_celsius)    
+        if temperature_celsius > max_temperature
+            status = 1
+        else
+            status = 0
+        end
+    end
+    
+    # 5    
+    # the closest thing to a class in Julia is a `mutable struct`
+    mutable struct Pet
+        name::String
+        hunger::Int64 
+    end
+    
+    function go_for_a_walk!(pet::Pet)
+        pet.hunger += 1
+    end
+    
+   ```
 ````
 
 `````{solution}
@@ -108,6 +188,13 @@ function more fine-grained and test only one concept.
    ```{code-tab} r R
    Nothing here yet...
    ```
+   ```{code-tab} julia
+   @testset "Test factorial function" begin
+       @test_throws DomainError factorial(-1)
+       @test factorial(3) == 6
+   end
+
+   ```
    ````
 
 2. Again a **pure function** but uses strings.  Use a similar strategy
@@ -124,6 +211,14 @@ to the above.
    ```{code-tab} r R
    Nothing here yet...
    ```
+   ```{code-tab} julia
+    @testset "Test count word occurrence in string" begin
+        @test count_word_occurrence_in_string("AAA BBB", "AAA") == 1
+        @test count_word_occurrence_in_string("AAA AAA", "AAA") == 2
+        @test count_word_occurrence_in_string("AAAAA", "AAA") == 1
+    end
+   ```
+
    ````
 
 3. Not a pure function, because the output depends on the value of a
@@ -148,6 +243,17 @@ to the above.
    ```{code-tab} r R
    Nothing here yet...
    ```
+   ```{code-tab} julia
+   @testset "Test count word occurrence in file" begin
+       msg = "one two one two three four"
+       (fname, testio) = mktemp()
+       println(testio, msg)
+       close(testio)
+       @test count_word_occurrence_in_file(fname, "one") == 2
+       @test count_word_occurrence_in_file(fname, "three") == 1
+       @test count_word_occurrence_in_file(fname, "six") == 0
+    end
+   ```   
    ````
 
 4. External dependency.  Now, this depends on the value of
@@ -168,6 +274,29 @@ of artificially changing some other value.
    ```{code-tab} r R
    Nothing here yet...
    ```
+   ```{code-tab} julia
+   # Changing variables imported from modules (monkey patching) is not possible in Julia.
+   # To be able to test this function properly it needs to be made pure:
+
+   function check_reactor_temperature(temperature_celsius, max_temperature)   
+       if temperature_celsius > max_temperature
+           status = 1
+       else
+           status = 0
+       end
+   end
+
+   # normal invocation:
+   using reactor: max_temperature
+   check_reactor_temperature(99, max_temperature)      
+
+   # tests
+   @testset "Test check_reactor_temperature function" begin
+       @test check_reactor_temperature(99, 100) == 0
+       @test check_reactor_temperature(100, 100) == 0   # boundary cases easily go wrong
+       @test check_reactor_temperature(101, 100) == 1
+   end
+   ```   
    ````
 
 5. Mutable class.  You'd make the class and test it out some.
@@ -187,6 +316,18 @@ of artificially changing some other value.
    ```{code-tab} r R
    Nothing here yet...
    ```
+   ```{code-tab} julia
+   # create the mutable struct and test it
+   @testset "Test mutable struct" begin
+       p = Pet("asdf", 0)
+       @test p.hunger == 0
+       go_for_a_walk!(p)
+       @test p.hunger == 1
+       p.hunger = -1
+       go_for_a_walk!(p)
+       @test p.hunger == 0
+   end
+   ```   
    ````
 
 
