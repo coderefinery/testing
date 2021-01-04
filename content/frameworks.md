@@ -15,6 +15,9 @@ script which does some tests.
 - R
     - [testthat](https://github.com/r-lib/testthat)
 
+- Julia
+    - [Test](https://docs.julialang.org/en/v1/stdlib/Test/)
+
 - Matlab
     - [Class-Based Unit Tests](https://www.mathworks.com/help/matlab/class-based-unit-tests.html)
 
@@ -98,6 +101,52 @@ def test_get_word_lengths():
 
 
 More information in the [Testing chapter](http://r-pkgs.had.co.nz/tests.html) of the book [R Packages](http://r-pkgs.had.co.nz) by Hadley Wickham.
+
+---
+
+## [Test](https://docs.julialang.org/en/v1/stdlib/Test/)
+
+- Julia
+- Part of the standard library
+- Provides simple unit testing functionality with
+  `@test` and `@test_throws` macros:
+
+```julia
+julia> using Test
+
+julia> @test [1, 2] + [2, 1] == [3, 3]
+Test Passed
+
+# approximate comparisons:
+julia> @test π ≈ 3.14 atol=0.01
+Test Passed
+
+# Tests that an expression throws exception:
+julia> @test_throws BoundsError [1, 2, 3][4]
+Test Passed
+      Thrown: BoundsError
+
+julia> @test_throws DimensionMismatch [1, 2, 3] + [1, 2]
+Test Passed
+      Thrown: DimensionMismatch
+```
+
+- Grouping related tests with the `@testset` macro:
+
+```julia
+using Test
+
+function get_word_lengths(s::String)
+    return [length(w) for w in split(s)]
+end 
+
+@testset "Testing get_word_length()" begin
+    text = "Three tomatoes are walking down the street"
+    @test get_word_lengths(text) == [5, 8, 3, 7, 4, 3, 6]
+    number = 123
+    @test_throws MethodError get_word_lengths(number)
+end
+```
 
 ---
 
