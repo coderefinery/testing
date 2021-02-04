@@ -1,4 +1,4 @@
-# Automatic testing with GitHub Actions
+# Automatic testing with GitLab CI
 
 ```{questions}
 - How can we implement automatic testing each time we push changes to the repository?
