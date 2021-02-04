@@ -30,7 +30,7 @@ Overview of this exercise. Below we detail the steps.
 ```
 
 
-### Step 1: Create a new repository on GitHub
+### Step 1: Create a new repository on GitLab
 
 - Select a **different repository name** than your colleagues (otherwise forking the same name will be strange)
 - **Before** you create the repository, select **"Initialize this repository
