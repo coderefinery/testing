@@ -13,6 +13,8 @@ exercise automated testing as part of a collaborative code review workflow.
 
    3. You need a `GitHub <https://github.com>`__ account.
 
+   4. Alternatively a `Gitlab <https://gitlab.com/>`__ account.
+
 
 .. csv-table::
    :widths: auto
@@ -23,6 +25,7 @@ exercise automated testing as part of a collaborative code review workflow.
    25 min ; :doc:`pytest`
    10 min ; :doc:`frameworks`
    40 min ; :doc:`gh-actions`
+   40 min ; :doc:`gitlab-ci`
    25 min ; :doc:`test-design`
    5 min ; :doc:`conclusions`
 
@@ -36,6 +39,7 @@ exercise automated testing as part of a collaborative code review workflow.
    pytest
    frameworks
    gh-actions
+   gitlab-ci
    test-design
    conclusions
 

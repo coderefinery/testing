@@ -1,4 +1,4 @@
-# Automatic testing with GitHub Actions
+# Automatic testing with GitLab CI
 
 ```{questions}
 - How can we implement automatic testing each time we push changes to the repository?
@@ -15,10 +15,10 @@ We will do this exercise in a collaborative circle within the exercise group
 The exercise takes 20-30 minutes.
 
 In this exercise, everybody will:
-- Create a repository on Github (everybody should use a **different repository name** for their repository)
-- Commit code to the repository and set up tests with GitHub Actions
+- Create a repository on Gitlab (everybody should use a **different repository name** for their repository)
+- Commit code to the repository and set up tests with Gitlab Ci
 - Everybody will find a bug in their repository and open an issue in their repository
-- Then each one will clone the repo of one of their exercise partners, fix the bug, and open a pull request
+- Then each one will clone the repo of one of their exercise partners, fix the bug, and open a merge request
 - Everybody then merges their co-worker's change
 ```
 
@@ -30,7 +30,7 @@ Overview of this exercise. Below we detail the steps.
 ```
 
 
-### Step 1: Create a new repository on GitHub
+### Step 1: Create a new repository on GitLab
 
 - Select a **different repository name** than your colleagues (otherwise forking the same name will be strange)
 - **Before** you create the repository, select **"Initialize this repository
@@ -64,94 +64,75 @@ def subtract(a, b):
 ```
 Test `example.py` with `pytest`.
 
-Then `git add` the file, commit, and push the changes to GitHub.
+Then `git add` the file, commit, and push the changes to Gitlab.
 
 
-### Step 3: Enable GitHub Actions
+### Step 3: Enable Gitlab-Ci
 
-Select "Actions" from your GitHub repository page. You get to a page
-"Get started with GitHub Actions". Select the button for "Set up
-this workflow" under Python Application:
+Select "CI/CD" from your Gitlab repository page. You get to a page
+"Editor". 
 
-```{figure} img/python_application.png
-:alt: Selecting a Python workflow
-
-Select "Python application" as the starter workflow.
-```
-
-GitHub creates the following file for you in the subfolder `.github/workflows`.
+Copy the following code snippet into the file. Gitlab will save it as `.gitlab-ci.yml`.
 Add `pytest example.py` to the last line (highlighted):
 
 ```{code-block} yaml
 ---
-emphasize-lines: 34-36
+emphasize-lines: 22
 ---
 # This workflow will install Python dependencies, run tests and lint with a single version of Python
-# For more information see: https://help.github.com/actions/language-and-framework-guides/using-python-with-github-actions
+# For more information see: https://gitlab.com/gitlab-org/gitlab/-/blob/master/lib/gitlab/ci/templates/Python.gitlab-ci.yml
 
-name: Python application
+image: python:latest
+stages:
+  - linting
+  - test
+before_script:
+  - cat /proc/version #print out operations system
+  - python -V  # Print out python version for debugging
+  - pip install pytest flake8
+  - if [ -f requirements.txt ]; then pip install -r requirements.txt;fi
 
-on:
-  push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
+linting:
+  stage: linting
+  script:
+    - flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
+    - flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
 
-jobs:
-  build:
+test:
+  stage: test
+  script: 
+    - pytest example.py
 
-    runs-on: ubuntu-latest
-
-    steps:
-    - uses: actions/checkout@v2
-    - name: Set up Python 3.8
-      uses: actions/setup-python@v2
-      with:
-        python-version: 3.8
-    - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip
-        pip install flake8 pytest
-        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
-    - name: Lint with flake8
-      run: |
-        # stop the build if there are Python syntax errors or undefined names
-        flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
-        # exit-zero treats all errors as warnings. The GitHub editor is 127 chars wide
-        flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
-    - name: Test with pytest
-      run: |
-        pytest example.py
 ```
 
-Commit the change by pressing the "Start Commit" button:
+Commit the change by pressing the "Commit changes" button:
 
-```{figure} img/gh_action_commit.png
+```{figure} img/gl_action_commit.png
 :alt: Committing the change
 :width: 400px
 
-Committing the file via the Github web interface: follow the flow, give it some commit name.  You can commit directly to master.
+Committing the file via the Gitlab web interface: follow the flow, give it some commit name.  You can commit directly to master.
 ```
 
 
 ### Step 4: Verify that tests have been automatically run
 
 Observe in the repository how the test succeeds. While the test is
-executing, the repository has yellow marker. This is replaced with a green
+executing, the repository has a blue marker. This is replaced with a green
 check mark, once the test succeeds:
 
-```{figure} img/green_check_mark.png
+```{figure} img/gl_green_check_mark.png
 :alt: Verify that the test passed
 
 Green check means passed.
 ```
 
-Also browse the "Actions" tab and look at the steps there and their output.
+Also browse the "Pipelines" tab and look at the steps there and their output.
 
 
 ### Step 5: Add a test which reveals a problem
 
-After you committed the workflow file, your GitHub repository will be ahead of
+After you committed the workflow file, your Gitlab repository will be ahead of
 your local cloned repository.  Update your local cloned repository:
 
 ```bash
@@ -162,20 +143,20 @@ Next uncomment the code in `example.py` under "step 5", commit, and push.
 Verify that the test suite now fails on the "Actions" tab.
 
 
-### Step 6: Open an issue on GitHub
+### Step 6: Open an issue on Gitlab
 
-Open a new issue in your repository on the broken test on GitHub.
+Open a new issue in your repository on the broken test on Gitlab.
 The plan is that your colleague will fix the issue.
 
 
 ### Step 7: Fork and clone the repository of your colleague
 
-Fork the repository using the GitHub web interface. Make sure you clone the
+Fork the repository using the Gitlab web interface. Make sure you clone the
 fork after you have forked it. Do not clone your colleague's repository
 directly.
 
 ```bash
-$ git clone https://github.com/your-username/the-repository.git
+$ git clone https://gitlab.com/your-username/the-repository.git
 ```
 
 
@@ -187,19 +168,20 @@ commit the following commit message `"restore function subtract; fixes #1"` (ass
 Then push to your fork.
 
 
-### Step 9: Open a pull request
+### Step 9: Open a merge request
 
-Then before accepting the pull request from your colleague, observe
-how GitHub Actions automatically tested the code.
+Then before accepting the merge request from your colleague, observe
+how Gitlab-CI automatically tested the code. Add a description to the merge request with a 
+"Closes #NUMBEROFYOURISSUE".
 
 
-### Step 10: Accept the pull request
+### Step 10: Accept the merge request
 
-Observe how accepting the pull request automatically closes the issue (provided
-the commit message contained the correct issue number).
+Observe how accepting the merge request automatically closes the issue (provided
+the merge request message contained the correct issue number).
 
 See also
-[closing issues using keywords](https://help.github.com/articles/closing-issues-using-keywords/).
+[closing issues using keywords](https://docs.gitlab.com/ee/user/project/issues/managing_issues.html#closing-issues).
 
 Discuss whether this is a useful feature. And if it is, why do you think is it useful?
 
@@ -225,7 +207,7 @@ Your goal:
 
 - This example was using Python but you can achieve the same automation for R or Fortran or C/C++ or other languages
 - GitHub Actions has a [Marketpace](https://github.com/marketplace?type=actions) which offer wide range of automatic workflows
-- On GitLab use [GitLab CI](https://about.gitlab.com/product/continuous-integration/)
+- Check out the [tutorial](https://coderefinery.github.io/testing/gh-actions/) about GitHub Actions
 - For Windows builds you can also use [Appveyor](https://www.appveyor.com)
 
 
