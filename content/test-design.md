@@ -76,8 +76,79 @@ Also discuss why some are easier to test than others.
    ```
 
    ```{code-tab} r R
+   # 1
+   #' Computes the factorial of n
+   #'
+   #' @param n The number to compute the factorial of.
+   #' @return The factorial of n
+   factorial <- function(n) {
+     if (n < 0)
+       stop('received negative input')
 
-   To be added ...
+     result <- 1
+     for (i in 1:n)
+       result <- result * i
+     result
+   }
+
+   # 2
+   #' Counts how often a given word appears in text
+   #'
+   #' @param text The text to search in.
+   #' @param word The word to search for.
+   #' @return The number of times the word occurs in the text.
+   count_word_occurrence_in_string <- function(text, word) {
+     words <- strsplit(text, ' ')[[1]]
+     sum(words == word)
+   }
+
+   # 3
+   #' Counts how often a given word appears in a file.
+   #'
+   #' @param file_name The name of the file to search in.
+   #' @param word The word to search for in the file.
+   #' @return The number of times the word appeared in the file.
+   count_word_occurrence_in_file <- function(file_name, word) {
+     count <- 0
+     for (line in readLines(file_name)) {
+       words <- strsplit(line, ' ')[[1]]
+       count <- count + sum(words == word)
+     }
+     count
+   }
+
+   # 4
+   # reactor <- namespace::makeNamespace("reactor")
+   # assign("max_temperature", 100, env = reactor)
+   # namespaceExport(reactor, "max_temperature")
+
+   #' Checks whether the temperature is above max_temperature
+   #' and returns the status.
+   #'
+   #' @param temperature_celsius The temperature of the core
+   #' @return 1 if the temperature is in range, otherwise 0
+   check_reactor_temperature <- function(temperature_celsius) {
+     if (temperature_celsius > reactor::max_temperature)
+       status <- 1
+     else
+       status <- 0
+     status
+   }
+
+   # 5
+   Pet <- function(name) {
+     structure(
+       list(name = name, hunger = 0),
+       class = "Pet"
+     )
+   }
+
+   # How would you test this function?
+   take_for_a_walk <- function(pet) UseMethod("take_for_a_walk")
+   take_for_a_walk.Pet <- function(pet) {
+     pet$hunger <- pet$hunger + 1
+     pet
+   }
    ```
 
    ```{code-tab} julia
