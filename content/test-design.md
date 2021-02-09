@@ -365,7 +365,15 @@ of artificially changing some other value.
        assert check_reactor_temperature(101) == 1
    ```
    ```{code-tab} r R
-   Nothing here yet...
+   test_that("Test reactor temperature", {
+     reactor <- namespace::makeNamespace("reactor")  # fails on "namespace already registered"
+     assign("max_temperature", 100, env = reactor)
+     namespaceExport(reactor, "max_temperature")
+     expect_equal(check_reactor_temperature(99), 0)
+     expect_equal(check_reactor_temperature(100), 0)  # boundary cases easily go wrong
+     expect_equal(check_reactor_temperature(101), 1)
+     namespace::unregisterNamespace("reactor")  # not working?
+   })
    ```
    ```{code-tab} julia
    # Changing variables imported from modules (monkey patching) is not possible in Julia.
