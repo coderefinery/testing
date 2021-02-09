@@ -84,6 +84,8 @@ Also discuss why some are easier to test than others.
    factorial <- function(n) {
      if (n < 0)
        stop('received negative input')
+     if (n == 0)
+       return(1)
 
      result <- 1
      for (i in 1:n)
@@ -257,7 +259,16 @@ function more fine-grained and test only one concept.
 
    ```
    ```{code-tab} r R
-   Nothing here yet...
+   test_that("Test factorial", {
+     expect_equal(factorial(0), 1)
+     expect_equal(factorial(1), 1)
+     expect_equal(factorial(2), 2)
+     expect_equal(factorial(3), 6)
+     # also try negatives (check that it raises an error), non-integers, etc.
+
+     # Raise an error if factorial does *not* raise an error:
+     expect_error(factorial(-1))
+   })
    ```
    ```{code-tab} julia
    @testset "Test factorial function" begin
@@ -280,7 +291,11 @@ to the above.
        assert count_word_occurrence_in_string('AAAAA', 'AAA') == 1
    ```
    ```{code-tab} r R
-   Nothing here yet...
+   test_that("Test count word occurrence in string", {
+     expect_equal(count_word_occurrence_in_string("AAA BBB", "AAA"), 1)
+     expect_equal(count_word_occurrence_in_string("AAA AAA", "AAA"), 2)
+     expect_equal(count_word_occurrence_in_string("AAAAA", "AAA"), 0)
+   })
    ```
    ```{code-tab} julia
     @testset "Test count word occurrence in string" begin
@@ -312,7 +327,14 @@ to the above.
        os.remove(temporary_file_name)
    ```
    ```{code-tab} r R
-   Nothing here yet...
+   test_that("Test count word occurrence in file", {
+     fname <- tempfile()
+     write("one two one two three four", fname)
+     expect_equal(count_word_occurrence_in_file(fname, "one"), 2)
+     expect_equal(count_word_occurrence_in_file(fname, "three"), 1)
+     expect_equal(count_word_occurrence_in_file(fname, "six"), 0)
+     unlink(fname)
+   })
    ```
    ```{code-tab} julia
    @testset "Test count word occurrence in file" begin
@@ -385,7 +407,16 @@ of artificially changing some other value.
        assert p.hunger == 0
    ```
    ```{code-tab} r R
-   Nothing here yet...
+   test_that("Test Pet class", {
+     p <- Pet(name = "asdf")
+     expect_equal(p$hunger, 0)
+     p <- take_for_a_walk(p)
+     expect_equal(p$hunger, 1)
+   
+     p$hunger <- -1
+     p <- take_for_a_walk(p)
+     expect_equal(p$hunger, 0)
+   })
    ```
    ```{code-tab} julia
    # create the mutable struct and test it
