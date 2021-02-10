@@ -76,8 +76,81 @@ Also discuss why some are easier to test than others.
    ```
 
    ```{code-tab} r R
+   # 1
+   #' Computes the factorial of n
+   #'
+   #' @param n The number to compute the factorial of.
+   #' @return The factorial of n
+   factorial <- function(n) {
+     if (n < 0)
+       stop('received negative input')
+     if (n == 0)
+       return(1)
 
-   To be added ...
+     result <- 1
+     for (i in 1:n)
+       result <- result * i
+     result
+   }
+
+   # 2
+   #' Counts how often a given word appears in text
+   #'
+   #' @param text The text to search in.
+   #' @param word The word to search for.
+   #' @return The number of times the word occurs in the text.
+   count_word_occurrence_in_string <- function(text, word) {
+     words <- strsplit(text, ' ')[[1]]
+     sum(words == word)
+   }
+
+   # 3
+   #' Counts how often a given word appears in a file.
+   #'
+   #' @param file_name The name of the file to search in.
+   #' @param word The word to search for in the file.
+   #' @return The number of times the word appeared in the file.
+   count_word_occurrence_in_file <- function(file_name, word) {
+     count <- 0
+     for (line in readLines(file_name)) {
+       words <- strsplit(line, ' ')[[1]]
+       count <- count + sum(words == word)
+     }
+     count
+   }
+
+   # 4
+   # reactor <- namespace::makeNamespace("reactor")
+   # assign("max_temperature", 100, env = reactor)
+   # namespaceExport(reactor, "max_temperature")
+
+   #' Checks whether the temperature is above max_temperature
+   #' and returns the status.
+   #'
+   #' @param temperature_celsius The temperature of the core
+   #' @return 1 if the temperature is in range, otherwise 0
+   check_reactor_temperature <- function(temperature_celsius) {
+     if (temperature_celsius > reactor::max_temperature)
+       status <- 1
+     else
+       status <- 0
+     status
+   }
+
+   # 5
+   Pet <- function(name) {
+     structure(
+       list(name = name, hunger = 0),
+       class = "Pet"
+     )
+   }
+
+   # How would you test this function?
+   take_for_a_walk <- function(pet) UseMethod("take_for_a_walk")
+   take_for_a_walk.Pet <- function(pet) {
+     pet$hunger <- pet$hunger + 1
+     pet
+   }
    ```
 
    ```{code-tab} julia
@@ -186,7 +259,16 @@ function more fine-grained and test only one concept.
 
    ```
    ```{code-tab} r R
-   Nothing here yet...
+   test_that("Test factorial", {
+     expect_equal(factorial(0), 1)
+     expect_equal(factorial(1), 1)
+     expect_equal(factorial(2), 2)
+     expect_equal(factorial(3), 6)
+     # also try negatives (check that it raises an error), non-integers, etc.
+
+     # Raise an error if factorial does *not* raise an error:
+     expect_error(factorial(-1))
+   })
    ```
    ```{code-tab} julia
    @testset "Test factorial function" begin
@@ -209,7 +291,11 @@ to the above.
        assert count_word_occurrence_in_string('AAAAA', 'AAA') == 1
    ```
    ```{code-tab} r R
-   Nothing here yet...
+   test_that("Test count word occurrence in string", {
+     expect_equal(count_word_occurrence_in_string("AAA BBB", "AAA"), 1)
+     expect_equal(count_word_occurrence_in_string("AAA AAA", "AAA"), 2)
+     expect_equal(count_word_occurrence_in_string("AAAAA", "AAA"), 0)
+   })
    ```
    ```{code-tab} julia
     @testset "Test count word occurrence in string" begin
@@ -241,7 +327,14 @@ to the above.
        os.remove(temporary_file_name)
    ```
    ```{code-tab} r R
-   Nothing here yet...
+   test_that("Test count word occurrence in file", {
+     fname <- tempfile()
+     write("one two one two three four", fname)
+     expect_equal(count_word_occurrence_in_file(fname, "one"), 2)
+     expect_equal(count_word_occurrence_in_file(fname, "three"), 1)
+     expect_equal(count_word_occurrence_in_file(fname, "six"), 0)
+     unlink(fname)
+   })
    ```
    ```{code-tab} julia
    @testset "Test count word occurrence in file" begin
@@ -272,7 +365,20 @@ of artificially changing some other value.
        assert check_reactor_temperature(101) == 1
    ```
    ```{code-tab} r R
-   Nothing here yet...
+   # Changing variables imported from modules (monkey patching) is not possible in R.
+   # To be able to test this function properly it needs to be made pure:
+   check_reactor_temperature <- function(max_temperature, temperature_celsius) {
+     if (temperature_celsius > max_temperature)
+       status <- 1
+     else
+       status <- 0
+     status
+   }
+   test_that("Test reactor temperature", {
+     expect_equal(check_reactor_temperature(100, 99), 0)
+     expect_equal(check_reactor_temperature(100, 100), 0)  # boundary cases easily go wrong
+     expect_equal(check_reactor_temperature(100, 101), 1)
+   })
    ```
    ```{code-tab} julia
    # Changing variables imported from modules (monkey patching) is not possible in Julia.
@@ -314,7 +420,16 @@ of artificially changing some other value.
        assert p.hunger == 0
    ```
    ```{code-tab} r R
-   Nothing here yet...
+   test_that("Test Pet class", {
+     p <- Pet(name = "asdf")
+     expect_equal(p$hunger, 0)
+     p <- take_for_a_walk(p)
+     expect_equal(p$hunger, 1)
+   
+     p$hunger <- -1
+     p <- take_for_a_walk(p)
+     expect_equal(p$hunger, 0)
+   })
    ```
    ```{code-tab} julia
    # create the mutable struct and test it
