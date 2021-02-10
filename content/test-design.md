@@ -364,7 +364,7 @@ of artificially changing some other value.
        assert check_reactor_temperature(100) == 0   # boundary cases easily go wrong
        assert check_reactor_temperature(101) == 1
    ```
-   ```{code-tab} R
+   ```{code-tab} r R
    # Changing variables imported from modules (monkey patching) is not possible in R.
    # To be able to test this function properly it needs to be made pure:
    check_reactor_temperature <- function(max_temperature, temperature_celsius) {
