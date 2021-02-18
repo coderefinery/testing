@@ -69,8 +69,8 @@ Then `git add` the file, commit, and push the changes to Gitlab.
 
 ### Step 3: Enable Gitlab-Ci
 
-Select "CI/CD" from your Gitlab repository page. You get to a page
-"Editor". 
+Select "CI/CD" from your Gitlab sidebar of the project. You get to a page
+"Editor". (Instead you can also click on "Add CI/CD" on the main page or just add a `.gitlab-ci.yml` file the result is identical.
 
 Copy the following code snippet into the file. Gitlab will save it as `.gitlab-ci.yml`.
 Add `pytest example.py` to the last line (highlighted):
@@ -140,7 +140,7 @@ $ git pull origin main
 ```
 
 Next uncomment the code in `example.py` under "step 5", commit, and push.
-Verify that the test suite now fails on the "Actions" tab.
+Verify that the test suite now fails on the "CI/CD->Pipelines" tab.
 
 
 ### Step 6: Open an issue on Gitlab
