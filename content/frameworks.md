@@ -150,26 +150,76 @@ end
 
 ---
 
+## [Catch2](https://github.com/catchorg/Catch2)
+
+- C++
+- Widely used
+- Header-only
+- Very rich in functionality
+- Well-integrated with CMake
+
+```cpp
+#include <catch2/catch.hpp>
+
+#include "example.h"
+
+using namespace Catch::literals;
+
+TEST_CASE("Use the example library to add numbers", "[add]") {
+  auto res = add_numbers(1.0, 2.0);
+  REQUIRE(res == 3.0_a);
+}
+```
+
+- [Example output](https://github.com/ENCCS/catch2-demo/runs/1959590399?check_suite_focus=true)
+- [Example project](https://github.com/ENCCS/catch2-demo)
+
+---
+
 ## [Google Test](https://github.com/google/googletest)
 
 - C++
 - Widely used
 - Very rich in functionality
+- Well-integrated with CMake
 
 ```cpp
-#include "gtest/gtest.h"
+#include <gtest/gtest.h>
+
 #include "example.h"
 
-TEST(example, add)
-{
-    double res;
-    res = add_numbers(1.0, 2.0);
-    ASSERT_NEAR(res, 3.0, 1.0e-11);
+TEST(example, add) {
+  double res;
+  res = add_numbers(1.0, 2.0);
+  ASSERT_NEAR(res, 3.0, 1.0e-11);
 }
 ```
 
 - [Example output](https://travis-ci.org/bast/gtest-demo/builds/104190982)
 - [Example project](https://github.com/bast/gtest-demo)
+
+---
+
+## [Boost.Test](https://www.boost.org/doc/libs/1_75_0/libs/test/doc/html/index.html)
+
+- C++
+- Very rich in functionality
+- Header-only use possible
+
+```cpp
+#include <boost/test/unit_test.hpp>
+
+#include "example.h"
+
+BOOST_AUTO_TEST_CASE( add )
+{
+  auto res = add_numbers(1.0, 2.0);
+  BOOST_TEST(res == 3.0);
+}
+```
+
+- [Example output](https://github.com/ENCCS/boost-test-demo/runs/1959592305?check_suite_focus=true)
+- [Example project](https://github.com/ENCCS/boost-test-demo)
 
 ---
 
