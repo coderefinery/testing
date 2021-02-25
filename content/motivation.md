@@ -47,7 +47,6 @@ to establish accuracy:
        assert abs(temp_c - expected_result) < 1.0e-6
    ```
    ```{code-tab} c/c++
-   
    To be added
    ```
    ```{code-tab} r R
