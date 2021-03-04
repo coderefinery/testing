@@ -23,11 +23,11 @@ exercise automated testing as part of a collaborative code review workflow.
    10 min ; :doc:`motivation`
    10 min ; :doc:`concepts`
    25 min ; :doc:`pytest`
-   10 min ; :doc:`frameworks`
    40 min ; :doc:`gh-actions`
    40 min ; :doc:`gitlab-ci`
    25 min ; :doc:`test-design`
    5 min ; :doc:`conclusions`
+   0 min ; :doc:`frameworks`
 
 
 .. toctree::
