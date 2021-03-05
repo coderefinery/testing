@@ -454,12 +454,95 @@ of artificially changing some other value.
    end
    ```   
    ````
-
-
-
 `````
 
 
+
+```{challenge} Test-driven development
+
+Write a test before writing the function! You can decide yourself
+what your unwritten function should do, but as a suggestion it can
+be based on [FizzBuzz](https://en.wikipedia.org/wiki/Fizz_buzz) - i.e.
+a function that:
+- takes an integer argument
+- for arguments that are multiples of three, returns "Fizz"
+- for arguments that are multiples of five, returns "Buzz"
+- for arguments that are multiples of both three and five, returns "FizzBuzz"
+- fails in case of non-integer arguments or integer arguments 0 or negative
+- otherwise returns the integer itself
+
+When writing the tests, consider the different ways that the function could
+and should fail.
+
+After you have written the tests, implement the function and run the tests
+until they pass.
+
+
+```
+
+`````{solution}
+   ````{tabs}
+      ```{code-tab} py
+
+      def fizzbuzz(number):
+      	  if not isinstance(number, int):
+             raise TypeError
+          if number < 1:
+      	     raise ValueError
+          elif number % 15 == 0:
+             return "FizzBuzz"
+          elif number % 3 == 0:
+              return "Fizz"
+          elif number % 5 == 0:
+              return "Buzz"
+          else:
+              return number
+
+
+      def test_fizzbuzz():
+          import pytest
+          assert fizzbuzz(1) == 1
+          assert fizzbuzz(2) == 2	
+          assert fizzbuzz(3) == "Fizz"
+          assert fizzbuzz(4) == 4
+          assert fizzbuzz(5) == "Buzz"
+          assert fizzbuzz(10) == "Buzz"
+          assert fizzbuzz(12) == "Fizz" 
+          assert fizzbuzz(15) == "FizzBuzz"
+          assert fizzbuzz(16) == 16
+          
+          with pytest.raises(ValueError):
+              fizzbuzz(-5)
+          with pytest.raises(ValueError):        
+              fizzbuzz(0)        
+      
+          with pytest.raises(TypeError):
+              fizzbuzz(1.5)
+          with pytest.raises(TypeError):
+              fizzbuzz("rabbit")    	      
+      
+      
+      def main():      
+          for i in range(1,100):
+              print(fizzbuzz(i))
+      
+      if __name__=="__main__":
+          main()
+      ```
+      ```{code-tab} r R
+      WRITEME
+      ```
+      ```{code-tab} julia
+      WRITEME
+      ```
+      ```{code-tab} c++
+      WRITEME
+      ```
+      ```{code-tab} fortran
+      WRITEME      
+      ```
+   ````
+`````
 
 ## Testing randomness
 
