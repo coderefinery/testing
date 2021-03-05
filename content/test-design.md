@@ -161,10 +161,9 @@ Also discuss why some are easier to test than others.
         */
         
         if(temperature_celsius > max_temperature)
-              status = 1;
+              return 1;
         else
-              status = 0;
-        return status;        
+              return 0;        
    }
    
    # 5
@@ -172,18 +171,18 @@ Also discuss why some are easier to test than others.
    class Pet
    {
       public:
-      string name;
-      int hunger;
-      Pet(string name)
-      {
-          this.name = name;
-          this.hunger = 0;
-      }
-      void go_for_a_walk()  /* <-- how would you test this function? */
-      {
-          this.hunger += 1;
-      }
-   }
+        string name;
+        int hunger;
+        Pet(string name)
+        {
+            this->name = name;
+            this->hunger = 0;
+        }
+        void go_for_a_walk()  /* <-- how would you test this function? */
+        {
+            this->hunger += 1;
+        }
+   };
 
    ```
 
