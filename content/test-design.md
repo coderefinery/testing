@@ -171,14 +171,15 @@ Also discuss why some are easier to test than others.
    
    class Pet
    {
-      public string name;
-      public int hunger;
+      public:
+      string name;
+      int hunger;
       Pet(string name)
       {
           this.name = name;
           this.hunger = 0;
       }
-      public void go_for_a_walk()  /* <-- how would you test this function? */
+      void go_for_a_walk()  /* <-- how would you test this function? */
       {
           this.hunger += 1;
       }
