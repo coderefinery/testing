@@ -74,6 +74,117 @@ Also discuss why some are easier to test than others.
        def go_for_a_walk(self):  # <-- how would you test this function?
            self.hunger += 1
    ```
+   ```{code-tab} c++
+
+
+   # 1
+   /*   Computes the factorial of n.   */
+   int factorial(int n)
+   {
+      if(n<0)
+        throw "received negative input";
+      if(n==1)
+        return 1;
+      else
+        return factorial(n-1) * n;
+   }
+
+   # 2
+
+    int count_word_occurrence_in_string(string text,string word)
+    {
+      /*
+        Counts how often word appears in text.
+        Example: if text is "one two one two three four"
+                  and word is "one", then this function returns 2
+      */
+      int i=0,count = 0,word_count = 0;
+
+      while(text[i] != '\0')
+      {
+          if(text[i]==word[word_count])
+              word_count++;
+          
+          if(word[word_count]=='\0')
+          {
+              word_count=0;
+              count++;
+          }
+          
+          i++;
+      }
+      return count;
+    
+    }
+
+    # 3
+
+    int count_word_occurrence_in_file(string file_name, string word)
+    {
+      /*
+        Counts how often word appears in file file_name.
+        Example: if file contains "one two one two three four"
+                  and word is "one", then this function returns 2
+      */
+      string text,totalText;
+      
+      ifstream MyReadFile(file_name);
+      while (getline (MyReadFile, text)) {
+      totalText = text  + totalText;
+      }
+      
+          int i=0,count = 0,word_count = 0;
+
+      while(totalText[i] != '\0')
+      {
+          if(totalText[i]==word[word_count])
+              word_count++;
+          
+          if(word[word_count]=='\0')
+          {
+              word_count=0;
+              count++;
+          }
+          
+          i++;
+      }
+      return count;
+    }
+
+   # 4 
+   
+   int check_reactor_temperature(float temperature_celsius, float max_temperature)
+   {     
+      /*
+      Checks whether temperature is above max_temperature
+      and returns a status.
+        */
+        
+        if(temperature_celsius > max_temperature)
+              status = 1;
+        else
+              status = 0;
+        return status;        
+   }
+   
+   # 5
+   
+   class Pet
+   {
+      public string name;
+      public int hunger;
+      Pet(string name)
+      {
+          this.name = name;
+          this.hunger = 0;
+      }
+      public void go_for_a_walk()  /* <-- how would you test this function? */
+      {
+          this.hunger += 1;
+      }
+   }
+
+   ```
 
    ```{code-tab} r R
    # 1
