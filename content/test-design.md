@@ -5,10 +5,19 @@
 ```
 
 
-## Exercise/discussion: pure and impure functions
+## Exercises and discussions 
 
-Discuss how you would design test functions for the following functions.
+This section has different types of exercises that can be 
+solved and discussed in groups.
+
+
+`````{challenge} Pure and impure functions
+
+Start by discussing how you would design tests for the
+following five functions, and then try to write the tests (note however that
+function 4 cannot be directly run or tested because it's hypothetical).
 Also discuss why some are easier to test than others.
+
 
 ````{tabs}
    ```{code-tab} py
@@ -233,6 +242,7 @@ Also discuss why some are easier to test than others.
     
    ```
 ````
+`````
 
 `````{solution}
 
@@ -448,6 +458,7 @@ of artificially changing some other value.
 
 
 `````
+
 
 
 ## Testing randomness
