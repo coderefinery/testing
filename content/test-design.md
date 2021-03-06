@@ -485,7 +485,7 @@ until they pass.
       ```{code-tab} py
 
       def fizzbuzz(number):
-      	  if not isinstance(number, int):
+          if not isinstance(number, int):
              raise TypeError
           if number < 1:
       	     raise ValueError
