@@ -501,15 +501,11 @@ until they pass.
 
       def test_fizzbuzz():
           import pytest
-          assert fizzbuzz(1) == 1
-          assert fizzbuzz(2) == 2	
-          assert fizzbuzz(3) == "Fizz"
-          assert fizzbuzz(4) == 4
-          assert fizzbuzz(5) == "Buzz"
-          assert fizzbuzz(10) == "Buzz"
-          assert fizzbuzz(12) == "Fizz" 
-          assert fizzbuzz(15) == "FizzBuzz"
-          assert fizzbuzz(16) == 16
+
+          expected_result = [1, 2, "Fizz", 4, "Buzz", "Fizz",
+                             7, 8, "Fizz", "Buzz", 11, "Fizz",
+                             13, 14, "FizzBuzz", 16, 17, "Fizz", 19, "Buzz"]
+          obtained_result = [fizzbuzz(i) for i in range(1,21)]
           
           with pytest.raises(ValueError):
               fizzbuzz(-5)
