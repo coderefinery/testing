@@ -20,7 +20,7 @@
 
 - Know that in each language tools exist that can execute a series of test functions
   and report success or failure.
-- Know that services like GitHub Actions, Travis CI, GitLab CI, Appveyor, and others
+- Know that services like GitHub Actions, Azure pipelines, GitLab CI, Appveyor, and others
   allow us to automatically run tests on every Git push or every pull request or merge request.
 - Be able to approach a function or module or library and design a test for it "in words"
   or pseudo-code.
@@ -60,7 +60,7 @@ The lesson then continues with:
 We illustrate how tests can be done in various ways. Tests can be part
 of code.  It can be used as a check during a git commit. It can be set
 up automatically such that Pull Requests get verified by a Continuous
-Integration service like Travis.
+Integration service like GitHub Actions or GitLab CI.
 
 The examples work quite well. The pytest example can be done as type
 along. During the wrap up of the example with GitHub Actions, it is useful to

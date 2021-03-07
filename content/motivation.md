@@ -46,10 +46,59 @@ to establish accuracy:
        expected_result = 37.777777
        assert abs(temp_c - expected_result) < 1.0e-6
    ```
+   ```{code-tab} c++
 
+    #include <iostream>
+    #include <cmath>        // std::abs
+
+    using namespace std;
+
+    double fahrenheit_to_celsius(double temp_f)
+    {
+        /*Converts temperature in Fahrenheit
+        to Celsius.*/
+        double temp_c = (temp_f - 32.0) * (5.0/9.0);
+        return temp_c;
+    }
+    void test_fahrenheit_to_celsius()
+    {
+        /*This is the test function: `throws` raises an error if something 
+        is wrong.*/
+        double temp_c = fahrenheit_to_celsius(100.0);
+        double expected_result = 37.777777;
+        try{
+            if(abs(temp_c - expected_result) > 1.0e-6)
+                throw "Error";
+        }
+        catch(char const* err){ 
+            cout<< err;
+        }
+    }
+    
+    int main()
+    {
+        cout<<fahrenheit_to_celsius(20);
+        test_fahrenheit_to_celsius();
+        return 0;
+    }
+   ```
    ```{code-tab} r R
 
-   To be added ...
+   # Converts temperature in Fahrenheit to Celsius.
+   fahrenheit_to_celsius <- function(temp_f)
+   {
+     temp_c <- (temp_f - 32.0) * (5.0/9.0)
+     temp_c
+   }
+
+   # This is the test function: `assertive::is_true` raises an error if something
+   # is wrong.
+   test_fahrenheit_to_celsius <- function()
+   {
+     temp_c <- fahrenheit_to_celsius(temp_f = 100.0)
+     expected_result <- 37.777777
+     assertive::is_true(abs(temp_c - expected_result) < 1.0e-6)
+   }
    ```
 ````
 
@@ -118,7 +167,14 @@ We already know how to test this code (see above):
 
    ```{code-tab} r R
 
-   To be added ...
+   fahrenheit_to_celsius <- function(temp_f)
+   {
+     temp_c <- (temp_f - 32.0) * (5.0/9.0)
+     temp_c
+   }
+
+   temp_c <- fahrenheit_to_celsius(temp_f = 100.0)
+   print(temp_c)
    ```
 ````
 
@@ -144,7 +200,17 @@ How would you test this code:
 
    ```{code-tab} r R
 
-   To be added ...
+   f_to_c_offset <- 32.0
+   f_to_c_factor <- 0.555555555
+   temp_c <- 0.0
+
+   fahrenheit_to_celsius_bad <- function(temp_f)
+   {
+     temp_c <<- (temp_f - f_to_c_offset) * f_to_c_factor
+   }
+
+   fahrenheit_to_celsius_bad(temp_f = 100.0)
+   print(temp_c)
    ```
 ````
 

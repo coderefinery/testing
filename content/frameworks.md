@@ -258,8 +258,9 @@ projects.
 
 - [GitHub Actions](https://github.com/features/actions) (we will
   demonstrate in next episode)
-- [Travis CI](https://travis-ci.org)
 - [GitLab CI](https://about.gitlab.com/features/gitlab-ci-cd/)
+  (we will demonstrate in next episode)
+- [Azure Pipelines](https://azure.microsoft.com/en-us/services/devops/pipelines/)
 - [Coveralls](https://coveralls.io)
 - [Codecov](https://codecov.io)
 

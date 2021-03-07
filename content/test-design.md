@@ -5,10 +5,19 @@
 ```
 
 
-## Exercise/discussion: pure and impure functions
+## Exercises and discussions 
 
-Discuss how you would design test functions for the following functions.
+This section has different types of exercises that can be 
+solved and discussed in groups.
+
+
+`````{challenge} Pure and impure functions
+
+Start by discussing how you would design tests for the
+following five functions, and then try to write the tests (note however that
+function 4 cannot be directly run or tested because it's hypothetical).
 Also discuss why some are easier to test than others.
+
 
 ````{tabs}
    ```{code-tab} py
@@ -73,6 +82,117 @@ Also discuss why some are easier to test than others.
            self.hunger = 0
        def go_for_a_walk(self):  # <-- how would you test this function?
            self.hunger += 1
+   ```
+   ```{code-tab} c++
+
+
+   # 1
+   /*   Computes the factorial of n.   */
+   int factorial(int n)
+   {
+      if(n<0)
+        throw "received negative input";
+      if(n==1)
+        return 1;
+      else
+        return factorial(n-1) * n;
+   }
+
+   # 2
+
+    int count_word_occurrence_in_string(string text,string word)
+    {
+      /*
+        Counts how often word appears in text.
+        Example: if text is "one two one two three four"
+                  and word is "one", then this function returns 2
+      */
+      int i=0,count = 0,word_count = 0;
+
+      while(text[i] != '\0')
+      {
+          if(text[i]==word[word_count])
+              word_count++;
+          
+          if(word[word_count]=='\0')
+          {
+              word_count=0;
+              count++;
+          }
+          
+          i++;
+      }
+      return count;
+    
+    }
+
+    # 3
+
+    int count_word_occurrence_in_file(string file_name, string word)
+    {
+      /*
+        Counts how often word appears in file file_name.
+        Example: if file contains "one two one two three four"
+                  and word is "one", then this function returns 2
+      */
+      string text,totalText;
+      
+      ifstream MyReadFile(file_name);
+      while (getline (MyReadFile, text)) {
+      totalText = text  + totalText;
+      }
+      
+          int i=0,count = 0,word_count = 0;
+
+      while(totalText[i] != '\0')
+      {
+          if(totalText[i]==word[word_count])
+              word_count++;
+          
+          if(word[word_count]=='\0')
+          {
+              word_count=0;
+              count++;
+          }
+          
+          i++;
+      }
+      return count;
+    }
+
+   # 4 
+   
+   int check_reactor_temperature(float temperature_celsius, float max_temperature)
+   {     
+      /*
+      Checks whether temperature is above max_temperature
+      and returns a status.
+        */
+        
+        if(temperature_celsius > max_temperature)
+              return 1;
+        else
+              return 0;        
+   }
+   
+   # 5
+   
+   class Pet
+   {
+      public:
+        string name;
+        int hunger;
+        Pet(string name)
+        {
+            this->name = name;
+            this->hunger = 0;
+        }
+        void go_for_a_walk()  /* <-- how would you test this function? */
+        {
+            this->hunger += 1;
+        }
+   };
+
    ```
 
    ```{code-tab} r R
@@ -233,6 +353,7 @@ Also discuss why some are easier to test than others.
     
    ```
 ````
+`````
 
 `````{solution}
 
@@ -444,11 +565,124 @@ of artificially changing some other value.
    end
    ```   
    ````
-
-
-
 `````
 
+
+
+```{challenge} Test-driven development
+
+Write a test before writing the function! You can decide yourself
+what your unwritten function should do, but as a suggestion it can
+be based on [FizzBuzz](https://en.wikipedia.org/wiki/Fizz_buzz) - i.e.
+a function that:
+- takes an integer argument
+- for arguments that are multiples of three, returns "Fizz"
+- for arguments that are multiples of five, returns "Buzz"
+- for arguments that are multiples of both three and five, returns "FizzBuzz"
+- fails in case of non-integer arguments or integer arguments 0 or negative
+- otherwise returns the integer itself
+
+When writing the tests, consider the different ways that the function could
+and should fail.
+
+After you have written the tests, implement the function and run the tests
+until they pass.
+
+
+```
+
+`````{solution}
+   ````{tabs}
+      ```{code-tab} py
+
+      def fizzbuzz(number):
+          if not isinstance(number, int):
+             raise TypeError
+          if number < 1:
+      	     raise ValueError
+          elif number % 15 == 0:
+             return "FizzBuzz"
+          elif number % 3 == 0:
+              return "Fizz"
+          elif number % 5 == 0:
+              return "Buzz"
+          else:
+              return number
+
+
+      def test_fizzbuzz():
+          import pytest
+
+          expected_result = [1, 2, "Fizz", 4, "Buzz", "Fizz",
+                             7, 8, "Fizz", "Buzz", 11, "Fizz",
+                             13, 14, "FizzBuzz", 16, 17, "Fizz", 19, "Buzz"]
+          obtained_result = [fizzbuzz(i) for i in range(1,21)]
+          
+          with pytest.raises(ValueError):
+              fizzbuzz(-5)
+          with pytest.raises(ValueError):        
+              fizzbuzz(0)        
+      
+          with pytest.raises(TypeError):
+              fizzbuzz(1.5)
+          with pytest.raises(TypeError):
+              fizzbuzz("rabbit")    	      
+      
+      
+      def main():      
+          for i in range(1,100):
+              print(fizzbuzz(i))
+      
+      if __name__=="__main__":
+          main()
+      ```
+      ```{code-tab} r R
+      WRITEME
+      ```
+      ```{code-tab} julia
+
+      using Test
+
+      function fizzbuzz(number::Int)
+          if number < 1
+              throw(DomainError(number, "number needs to be 1 or higher"))
+          elseif number % 15 == 0
+              return "FizzBuzz"
+          elseif number % 3 == 0
+              return "Fizz"        
+          elseif number % 5 == 0
+              return "Buzz"
+          else
+              return number
+          end
+      end
+
+      @testset begin
+          expected_result = [1, 2, "Fizz", 4, "Buzz", "Fizz",
+                             7, 8, "Fizz", "Buzz", 11, "Fizz",
+                             13, 14, "FizzBuzz", 16, 17, "Fizz", 19, "Buzz"]
+          obtained_result = [fizzbuzz(i) for i in 1:20]
+
+          @test obtained_result == expected_result
+
+          @test_throws MethodError fizzbuzz(1.5)
+          @test_throws DomainError fizzbuzz(0)
+          @test_throws DomainError fizzbuzz(-5)
+
+      end
+
+      for i in 1:20
+          println(fizzbuzz(i))
+      end
+      ```
+      ```{code-tab} c++
+      WRITEME
+      ```
+      ```{code-tab} fortran
+      WRITEME      
+      ```
+   ````
+`````
 
 ## Testing randomness
 
