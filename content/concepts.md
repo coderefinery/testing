@@ -41,7 +41,7 @@ def kelvin_to_celsius(temp_k):
     to Celsius.
     """
     assert temp_k >= 0.0, "ERROR: negative T_K"
-    temp_c = temp_k + 273.15
+    temp_c = temp_k - 273.15
     return temp_c
 ```
 
@@ -124,6 +124,34 @@ def test_fahrenheit_to_celsius():
 ```sh
 $ pytest -v -m conversion
 ```
+
+---
+
+## Tests don't guarantee correctness
+
+Not only do tests not guarantee the absence of bugs, they can
+also contain their own bugs. 
+Here's an example of how we could get the testing of the
+`kelvin_to_celsius` function wrong:
+
+```python
+def kelvin_to_celsius(temp_k):
+    """
+    Converts temperature in Kelvin
+    to Celsius.
+    """
+    assert temp_k >= 0.0, "ERROR: negative T_K"
+    temp_c = temp_k + 273.15  # BUG!
+    return temp_c
+
+# buggy test
+def test_kelvin_to_celsius():
+    temp_c = kelvin_to_celsius(temp_k=0.0)
+    expected_result = 273.15
+    assert abs(temp_c - expected_result) < 1.0e-6    
+```
+
+All tests are happy!
 
 ---
 
