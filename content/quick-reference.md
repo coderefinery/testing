@@ -1,6 +1,8 @@
-# (Reference) Available tools
+# Quick Reference
 
-## Unit test frameworks
+## Available tools
+
+### Unit test frameworks
 
 A **test framework** makes it easy to run tests across large amounts
 of code automatically.  They provide more control than one single
@@ -35,7 +37,7 @@ script which does some tests.
 
 ---
 
-## [pytest](http://doc.pytest.org)
+### [pytest](http://doc.pytest.org)
 
 - Python
 - Installable via Conda or pip.
@@ -60,7 +62,7 @@ def test_get_word_lengths():
 
 ---
 
-## [testthat](https://github.com/r-lib/testthat)
+### [testthat](https://github.com/r-lib/testthat)
 
 - R
 - Easily installed from CRAN with `install.packages("testthat")`, or from GitHub with `devtools::install_github("r-lib/testthat")`
@@ -104,7 +106,7 @@ More information in the [Testing chapter](http://r-pkgs.had.co.nz/tests.html) of
 
 ---
 
-## [Test](https://docs.julialang.org/en/v1/stdlib/Test/)
+### [Test](https://docs.julialang.org/en/v1/stdlib/Test/)
 
 - Julia
 - Part of the standard library
@@ -150,7 +152,7 @@ end
 
 ---
 
-## [Catch2](https://github.com/catchorg/Catch2)
+### [Catch2](https://github.com/catchorg/Catch2)
 
 - C++
 - Widely used
@@ -176,7 +178,7 @@ TEST_CASE("Use the example library to add numbers", "[add]") {
 
 ---
 
-## [Google Test](https://github.com/google/googletest)
+### [Google Test](https://github.com/google/googletest)
 
 - C++
 - Widely used
@@ -200,7 +202,7 @@ TEST(example, add) {
 
 ---
 
-## [Boost.Test](https://www.boost.org/doc/libs/1_75_0/libs/test/doc/html/index.html)
+### [Boost.Test](https://www.boost.org/doc/libs/1_75_0/libs/test/doc/html/index.html)
 
 - C++
 - Very rich in functionality
@@ -223,7 +225,7 @@ BOOST_AUTO_TEST_CASE( add )
 
 ---
 
-## [pFUnit](https://github.com/Goddard-Fortran-Ecosystem/pFUnit)
+### [pFUnit](https://github.com/Goddard-Fortran-Ecosystem/pFUnit)
 
 - Fortran
 - Very rich in functionality
@@ -251,7 +253,7 @@ end subroutine
 
 ---
 
-## Services to deploy testing and coverage
+### Services to deploy testing and coverage
 
 Each of these are web services to handle testing, free for open source
 projects.
