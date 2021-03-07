@@ -19,7 +19,8 @@ Tests are no guarantee. Figure source: <https://twitter.com/dave1010/status/6136
 Imperfect tests **run frequently** are better than perfect tests which are
 never written:
 - Test **frequently** (each commit/push)
-- Test **automatically** (e.g. using [Travis CI](https://travis-ci.org) or
+- Test **automatically** (e.g. using
+  [Azure pipelines](https://azure.microsoft.com/en-us/services/devops/pipelines/) or
   [GitHub Actions](https://github.com/marketplace?type=actions) or [GitLab CI](https://docs.gitlab.com/ee/ci/) or similar services)
 - Test with [numerical tolerance](http://www.smbc-comics.com/comic/2013-06-05)
 - Think about **code coverage** ([Coveralls](https://coveralls.io) or [Codecov](https://codecov.io) or similar services)
