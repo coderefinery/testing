@@ -67,7 +67,7 @@ to establish accuracy:
         double temp_c = fahrenheit_to_celsius(100.0);
         double expected_result = 37.777777;
         try{
-            if(abs(temp_c - expected_result) < 1.0e-6)
+            if(abs(temp_c - expected_result) > 1.0e-6)
                 throw "Error";
         }
         catch(char const* err){ 
