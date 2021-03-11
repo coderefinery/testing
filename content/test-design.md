@@ -536,7 +536,7 @@ of artificially changing some other value.
        p.go_for_a_walk()
        assert p.hunger == 1
 
-	   p.hunger = -1
+           p.hunger = -1
        p.go_for_a_walk()
        assert p.hunger == 0
    ```
@@ -686,16 +686,153 @@ until they pass.
 
 ## Testing randomness
 
-Discussion: How would you test functions which generate random numbers
+How would you test functions which generate random numbers
 according to some distribution/statistics?
 
-```{solution} Hints
-- What is a random seed and how can it be useful in tests?
-- Testing whether your results follow the expected distribution/statistics.
-- When you verify your code "by eye", what are you looking at? Now try to express
-  that in a script.
-- Other strategies?
-```
+Functions and modules which contain randomness are
+more difficult to test than pure deterministic functions, but
+many strategies exist:
+- For unit tests we can use fixed random seeds.
+- Try to test whether your results follow the expected
+  distribution/statistics.
+- When you verify your code "by eye", what are you looking at? Now try
+  to express that in a script.
+
+
+`````{challenge} Different ways of testing randomness
+
+   Consider the code below which simulates playing
+   [Yahtzee](https://en.wikipedia.org/wiki/Yahtzee) by using
+   random numbers. How would you go about testing it?
+
+   Try to write two types of tests:
+   - a *unit test* for the `roll_dice` function. Since it uses
+     random numbers, you will need to **set the random seed**,
+     pre-calculate what sequence of dice throws you get with that seed,
+     and use that in your test.
+   - a test of the `yahtzee` function which considers the statistical
+     probability of obtaining a "Yahtzee" (5 dice with the same value 
+     after three throws), which is around 4.6%. This test will be
+     an *integration test* since it tests multiple functions including the
+     random number generator itself.
+
+
+   ````{tabs}
+      ```{code-tab} py
+      WRITEME
+      ```
+      ```{code-tab} r R
+      WRITEME
+      ```      
+      ```{code-tab} julia      
+      using Random
+
+      """
+          roll_dice(n_dice::Int=5, sides=(1,2,3,4,5,6))
+
+      Returns array of n_dice random integers corresponding to the sides of dice
+      """
+      function roll_dice(n_dice::Int=5, sides=(1,2,3,4,5,6))
+          return [rand(sides) for i in 1:n_dice]    
+      end
+
+      """
+          yahtzee()
+
+      Play Yahtzee with 5 6-sided dice and 3 throws.
+      Collect as many of the same dice side as possible. 
+      Returns a tuple with the collected side (e.g. 4's) and 
+      how many of that side (between 1 and 5).
+      """
+      function yahtzee()
+          sides = (1,2,3,4,5,6)
+          n_dice = 5
+          # we first throw all dice
+          first_throw = roll_dice(n_dice, sides)
+          # count how many times each side comes up
+          side_counts = [count(x->x==i,first_throw) for i in sides]
+          # collected_side is the dice side we will start collecting
+          n_collected, collected_side = findmax(side_counts)
+          if n_collected == 5
+              return collected_side, n_collected
+          end
+    
+          # now we throw n_dice-n_collected dice and hope to get more collected_side
+          second_throw = roll_dice(n_dice-n_collected, sides)
+          n_new_matches = count(x->x==collected_side,second_throw)
+          n_collected += n_new_matches
+          if n_collected == 5
+              return collected_side, n_collected
+          end    
+      
+          # final throw...
+          third_throw = roll_dice(n_dice-n_collected, sides)
+          n_new_matches = count(x->x==collected_side,third_throw)
+          n_collected += n_new_matches
+      
+          return collected_side, n_collected
+      end
+            
+      
+      for i in 1:10
+          collected_side, n_collected = yahtzee()
+          println("We got $n_collected $collected_side's in this round")
+          if n_collected == 5
+              println("Yay, it's a Yahtzee!")
+          end
+      end
+      ```
+   ````
+`````
+            
+`````{solution}
+   ````{tabs}
+      ```{code-tab} py
+      WRITEME
+      ```
+      ```{code-tab} r R
+      WRITEME
+      ```
+      ```{code-tab} julia
+      using Test      
+
+      @testset "test roll_dice" begin
+          # fix random seed
+          Random.seed!(1234);
+          # known sequence for given seed
+          exp_first_throw = [1, 3, 5, 1, 6]
+          exp_second_throw = [1, 6, 4, 5, 4]
+          exp_third_throw = [1, 2, 5, 3, 2]
+      
+          n_dice = 5
+          sides=(1,2,3,4,5,6)
+          throw = roll_dice(n_dice, sides)
+          @test throw == exp_first_throw
+          throw = roll_dice(n_dice, sides)
+          @test throw == exp_second_throw
+          throw = roll_dice(n_dice, sides)
+          @test throw == exp_third_throw
+      end
+      
+      @testset "testing yahtzee" begin
+          # try a million throws and see if we get close
+          # to the statistical average of 4.6%
+          # (https://en.wikipedia.org/wiki/Yahtzee#Probabilities)
+          n_yahtzees = 0
+          n_tests = 1_000_000
+          for i in 1:n_tests
+              collected_side, n_collected = yahtzee()    
+              if n_collected == 5
+                  n_yahtzees += 1
+              end
+          end
+          @test n_yahtzees/n_tests ≈ 0.046 atol=0.001
+      end
+      
+
+      ```      
+   ````
+`````
 
 
 ```{keypoints}
