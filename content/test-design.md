@@ -352,6 +352,9 @@ Also discuss why some are easier to test than others.
     end
     
    ```
+   ```{code-tab} fortran
+   WRITEME
+   ```
 ````
 `````
 
@@ -398,6 +401,9 @@ function more fine-grained and test only one concept.
    end
 
    ```
+   ```{code-tab} fortran
+   WRITEME
+   ```
    ````
 
 2. Again a **pure function** but uses strings.  Use a similar strategy
@@ -425,7 +431,9 @@ to the above.
         @test count_word_occurrence_in_string("AAAAA", "AAA") == 1
     end
    ```
-
+   ```{code-tab} fortran
+   WRITEME
+   ```
    ````
 
 3. Not a pure function, because the output depends on the value of a
@@ -467,7 +475,10 @@ to the above.
        @test count_word_occurrence_in_file(fname, "three") == 1
        @test count_word_occurrence_in_file(fname, "six") == 0
     end
-   ```   
+   ```
+   ```{code-tab} fortran
+   WRITEME
+   ```
    ````
 
 4. External dependency.  Now, this depends on the value of
@@ -523,6 +534,9 @@ of artificially changing some other value.
        @test check_reactor_temperature(100, 100) == 0   # boundary cases easily go wrong
        @test check_reactor_temperature(101, 100) == 1
    end
+   ```
+   ```{code-tab} fortran
+   WRITEME
    ```   
    ````
 
@@ -563,6 +577,9 @@ of artificially changing some other value.
        go_for_a_walk!(p)
        @test p.hunger == 0
    end
+   ```
+   ```{code-tab} fortran
+   WRITEME
    ```   
    ````
 `````
