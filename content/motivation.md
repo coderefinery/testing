@@ -100,6 +100,9 @@ to establish accuracy:
      assertive::is_true(abs(temp_c - expected_result) < 1.0e-6)
    }
    ```
+   ```{code-tab} fortran
+   WRITEME
+   ```
 ````
 
 Why are we not comparing directly all digits with the expected result?
@@ -176,6 +179,9 @@ We already know how to test this code (see above):
    temp_c <- fahrenheit_to_celsius(temp_f = 100.0)
    print(temp_c)
    ```
+   ```{code-tab} fortran
+   WRITEME
+   ```
 ````
 
 
@@ -211,6 +217,9 @@ How would you test this code:
 
    fahrenheit_to_celsius_bad(temp_f = 100.0)
    print(temp_c)
+   ```
+   ```{code-tab} fortran
+   WRITEME
    ```
 ````
 
