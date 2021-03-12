@@ -207,7 +207,15 @@ We already know how to test this code (see above):
    print(temp_c)
    ```
    ```{code-tab} fortran
-   WRITEME
+   function fahrenheit_to_celsius(temp_f) result(temp_c)
+   implicit none
+   real temp_f
+   real temp_c
+   temp_c = (temp_f - 32.0) * (5.0/9.0)
+   end function fahrenheit_to_celsius
+
+   temp_c = fahrenheit_to_celsius(100.0)
+   write(*,*) temp_c
    ```
 ````
 
@@ -246,7 +254,18 @@ How would you test this code:
    print(temp_c)
    ```
    ```{code-tab} fortran
-   WRITEME
+   real f_to_c_offset = 32.0
+   real f_to_c_factor = 0.555555555
+
+   function fahrenheit_to_celsius_bad(temp_f) result(temp_c)
+      implicit none
+      real temp_f
+      real temp_c
+      temp_c = (temp_f - f_to_c_offset) * f_to_c_factor
+   end function fahrenheit_to_celsius_bad
+
+   temp_c = fahrenheit_to_celsius_bad(100.0)
+   write(*,*) temp_c
    ```
 ````
 
