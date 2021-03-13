@@ -174,7 +174,7 @@ Also discuss why some are easier to test than others.
    };
    ```
 
-   ```{code-tab} R
+   ```{code-tab} r R
    # 1
    #' Computes the factorial of n
    #'
@@ -373,7 +373,7 @@ function more fine-grained and test only one concept.
      REQUIRE(factorial(3) == 6);
    }
    ```
-   ```{code-tab} R
+   ```{code-tab} r R
    test_that("Test factorial", {
      expect_equal(factorial(0), 1)
      expect_equal(factorial(1), 1)
@@ -419,7 +419,7 @@ to the above.
      REQUIRE(count_word_occurrence_in_string("AAAA", "AAA") == 0);
    }
    ```   
-   ```{code-tab} R
+   ```{code-tab} r R
    test_that("Test count word occurrence in string", {
      expect_equal(count_word_occurrence_in_string("AAA BBB", "AAA"), 1)
      expect_equal(count_word_occurrence_in_string("AAA AAA", "AAA"), 2)
@@ -478,7 +478,7 @@ to the above.
      std::remove(fname);
    }
    ```   
-   ```{code-tab} R
+   ```{code-tab} r R
    test_that("Test count word occurrence in file", {
      fname <- tempfile()
      write("one two one two three four", fname)
@@ -531,7 +531,7 @@ of artificially changing some other value.
      REQUIRE(check_reactor_temperature(101) == ReactorState::CRITICAL);
    }
    ```
-   ```{code-tab} R
+   ```{code-tab} r R
    # Changing variables imported from modules (monkey patching) is not possible in R.
    # To be able to test this function properly it needs to be made pure:
    check_reactor_temperature <- function(max_temperature, temperature_celsius) {
@@ -603,7 +603,7 @@ of artificially changing some other value.
      REQUIRE(fido.hunger() == 1);
    }
    ```
-   ```{code-tab} R
+   ```{code-tab} r R
    test_that("Test Pet class", {
      p <- Pet(name = "asdf")
      expect_equal(p$hunger, 0)
@@ -749,7 +749,7 @@ until they pass.
       }
    
       ```
-      ```{code-tab} R
+      ```{code-tab} r R
       WRITEME
       ```
       ```{code-tab} julia
@@ -919,10 +919,10 @@ many strategies exist:
         return EXIT_SUCCESS;
       }
       ```
-      ```{code-tab} R
+      ```{code-tab} r R
       WRITEME
       ```      
-      ```{code-tab} R
+      ```{code-tab} r R
       WRITEME
       ```      
       ```{code-tab} julia      
@@ -1040,7 +1040,7 @@ many strategies exist:
         REQUIRE( n_yahtzees / n_tests == 0.046_a)
       }
       ```
-      ```{code-tab} R
+      ```{code-tab} r R
       WRITEME
       ```
       ```{code-tab} julia

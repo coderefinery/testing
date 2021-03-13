@@ -36,7 +36,6 @@ exercise automated testing as part of a collaborative code review workflow.
    motivation
    concepts
    pytest
-   frameworks
    gh-actions
    gitlab-ci
    test-design
