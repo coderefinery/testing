@@ -340,7 +340,7 @@ Also discuss why some are easier to test than others.
 outputs.  For example, start with the below, then think of some
 what extreme cases/boundary cases there might be.  This example shows
 all of the tests as one function, but you might want to make each test
-function more    fine-grained and test only one concept.
+function more fine-grained and test only one concept.
 
    ````{tabs}
    ```{code-tab} py
