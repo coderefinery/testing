@@ -174,7 +174,7 @@ Also discuss why some are easier to test than others.
    };
    ```
 
-   ```{code-tab} r R
+   ```{code-tab} R
    # 1
    #' Computes the factorial of n
    #'
@@ -373,7 +373,7 @@ function more fine-grained and test only one concept.
      REQUIRE(factorial(3) == 6);
    }
    ```
-   ```{code-tab} r R
+   ```{code-tab} R
    test_that("Test factorial", {
      expect_equal(factorial(0), 1)
      expect_equal(factorial(1), 1)
@@ -419,7 +419,7 @@ to the above.
      REQUIRE(count_word_occurrence_in_string("AAAA", "AAA") == 0);
    }
    ```   
-   ```{code-tab} r R
+   ```{code-tab} R
    test_that("Test count word occurrence in string", {
      expect_equal(count_word_occurrence_in_string("AAA BBB", "AAA"), 1)
      expect_equal(count_word_occurrence_in_string("AAA AAA", "AAA"), 2)
@@ -478,7 +478,7 @@ to the above.
      std::remove(fname);
    }
    ```   
-   ```{code-tab} r R
+   ```{code-tab} R
    test_that("Test count word occurrence in file", {
      fname <- tempfile()
      write("one two one two three four", fname)
@@ -531,7 +531,7 @@ of artificially changing some other value.
      REQUIRE(check_reactor_temperature(101) == ReactorState::CRITICAL);
    }
    ```
-   ```{code-tab} r R
+   ```{code-tab} R
    # Changing variables imported from modules (monkey patching) is not possible in R.
    # To be able to test this function properly it needs to be made pure:
    check_reactor_temperature <- function(max_temperature, temperature_celsius) {
@@ -603,7 +603,7 @@ of artificially changing some other value.
      REQUIRE(fido.hunger() == 1);
    }
    ```
-   ```{code-tab} r R
+   ```{code-tab} R
    test_that("Test Pet class", {
      p <- Pet(name = "asdf")
      expect_equal(p$hunger, 0)
@@ -749,7 +749,7 @@ until they pass.
       }
    
       ```
-      ```{code-tab} r R
+      ```{code-tab} R
       WRITEME
       ```
       ```{code-tab} julia
@@ -841,18 +841,21 @@ many strategies exist:
       #include <tuple>
       #include <vector>
       
-      /* Roll a fair die n_dice times. The faces of the die can be set (default is 1 to 6). */
+      /* Roll a fair die n_dice times. The faces of the die can be set (default is 1 to 6). 
+       * The PRNG engine is moved in the function such that changes in its state are propagated back to the caller.
+       */
       template <typename PRNGEngine = decltype(std::default_random_engine())>
-      std::vector<int> roll_dice(
-          unsigned int n_dice, std::vector<int> faces = {1, 2, 3, 4, 5, 6},
-          PRNGEngine gen = std::default_random_engine(std::random_device()())) {
+      std::vector<unsigned int> roll_dice(
+          unsigned int n_dice = 5,
+          std::vector<unsigned int> faces = {1, 2, 3, 4, 5, 6},
+          PRNGEngine&& gen = std::default_random_engine(std::random_device()())) {
         // create a fair die
         auto weights = std::vector<double>(faces.size(), 1.0);
         auto fair_dice =
-            std::discrete_distribution<int>(weights.begin(), weights.end());
+            std::discrete_distribution<unsigned int>(weights.begin(), weights.end());
       
-        auto rolls = std::vector<int>(n_dice, 0);
-        for (auto i = 0; i < n_dice; ++i) {
+        auto rolls = std::vector<unsigned int>(n_dice, 0);
+        for (auto i = 0u; i < n_dice; ++i) {
           rolls[i] = faces[fair_dice(gen)];
         }
       
@@ -916,10 +919,10 @@ many strategies exist:
         return EXIT_SUCCESS;
       }
       ```
-      ```{code-tab} r R
+      ```{code-tab} R
       WRITEME
       ```      
-      ```{code-tab} r R
+      ```{code-tab} R
       WRITEME
       ```      
       ```{code-tab} julia      
@@ -989,9 +992,55 @@ many strategies exist:
       WRITEME
       ```
       ```{code-tab} c++
-      WRITEME
+      #include <random>
+      
+      #include <catch2/catch.hpp>
+      
+      #include "yahtzee.hpp"
+      
+      using namespace Catch::literals;
+      
+      TEST_CASE("Tossing 5 dice", "[toss]") {
+        auto n_dice = 5;
+        auto faces = std::vector<unsigned int>{1, 2, 3, 4, 5, 6};
+
+        // we fix both the random device and the random engine.
+        // the latter is necessary since the default random engine is implementation-dependent 
+        std::mt19937 prng;
+        prng.seed(1234);
+        
+        auto expected_1 = std::vector<unsigned int>{3, 5, 4, 5, 6};
+        auto toss_1  = roll_dice(n_dice, faces, prng);
+        REQUIRE(toss_1 == expected_1);
+        
+        auto expected_2 = std::vector<unsigned int>{1, 2, 5, 1, 1};
+        auto toss_2  = roll_dice(n_dice, faces, prng);
+        REQUIRE(toss_2 == expected_2);
+        
+        auto expected_3 = std::vector<unsigned int>{1, 3, 2, 5, 1};
+        auto toss_3  = roll_dice(n_dice, faces, prng);
+        REQUIRE(toss_3 == expected_3);
+      }
+      
+      TEST_CASE("Distribution of Yahtzee", "[yahtzee]") {
+        // try a million throws and see if we get close
+        // to the statistical average of 4.6%
+        // (https://en.wikipedia.org/wiki/Yahtzee#Probabilities)
+        auto n_yahtzees = 0;
+        auto n_trials = 1e6;
+
+        for (auto i = 0; i < n_trials; ++i) {
+          unsigned int value = 0, times = 0;
+          std::tie(value, times) = yahtzee();
+          if (times == 5) {
+            ++n_yahtzees;
+          } 
+        }
+        
+        REQUIRE( n_yahtzees / n_tests == 0.046_a)
+      }
       ```
-      ```{code-tab} r R
+      ```{code-tab} R
       WRITEME
       ```
       ```{code-tab} julia
