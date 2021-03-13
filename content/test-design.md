@@ -85,114 +85,93 @@ Also discuss why some are easier to test than others.
    ```
    ```{code-tab} c++
 
-
-   # 1
-   /*   Computes the factorial of n.   */
-   int factorial(int n)
-   {
-      if(n<0)
-        throw "received negative input";
-      if(n==1)
-        return 1;
-      else
-        return factorial(n-1) * n;
+   // 1
+   /* Computes the factorial of n recursively. */
+   constexpr unsigned int factorial(unsigned int n) {
+      return (n <= 1) ? 1 : (n * factorial(n - 1));
    }
 
-   # 2
-
-    int count_word_occurrence_in_string(string text,string word)
-    {
-      /*
-        Counts how often word appears in text.
-        Example: if text is "one two one two three four"
-                  and word is "one", then this function returns 2
-      */
-      int i=0,count = 0,word_count = 0;
-
-      while(text[i] != '\0')
-      {
-          if(text[i]==word[word_count])
-              word_count++;
-          
-          if(word[word_count]=='\0')
-          {
-              word_count=0;
-              count++;
-          }
-          
-          i++;
-      }
-      return count;
-    
-    }
-
-    # 3
-
-    int count_word_occurrence_in_file(string file_name, string word)
-    {
-      /*
-        Counts how often word appears in file file_name.
-        Example: if file contains "one two one two three four"
-                  and word is "one", then this function returns 2
-      */
-      string text,totalText;
-      
-      ifstream MyReadFile(file_name);
-      while (getline (MyReadFile, text)) {
-      totalText = text  + totalText;
-      }
-      
-          int i=0,count = 0,word_count = 0;
-
-      while(totalText[i] != '\0')
-      {
-          if(totalText[i]==word[word_count])
-              word_count++;
-          
-          if(word[word_count]=='\0')
-          {
-              word_count=0;
-              count++;
-          }
-          
-          i++;
-      }
-      return count;
-    }
-
-   # 4 
+   // 2
+   #include <string>
    
-   int check_reactor_temperature(float temperature_celsius, float max_temperature)
-   {     
-      /*
-      Checks whether temperature is above max_temperature
-      and returns a status.
-        */
-        
-        if(temperature_celsius > max_temperature)
-              return 1;
-        else
-              return 0;        
+   /* Counts how often word appears in text.
+    * Example: if text is "one two one two three four"
+    *          and word is "one", then this function returns 2
+    */
+   int count_word_occurrence_in_string(const std::string& text, const std::string& word) {
+     auto word_count = 0;
+     auto count = 0;
+   
+     for (const auto ch : text) {
+       if (ch == word[word_count]) ++word_count;
+       if (word[word_count] == '\0') {
+         word_count = 0;
+         ++count;
+       }
+     }
+   
+     return count;
+   }
+
+   // 3
+   #include <fstream>
+   #include <streambuf>
+   #include <string>
+
+   /* Counts how often word appears in file fname.
+    * Example: if file contains "one two one two three four"
+    *          and word is "one", then this function returns 2
+    */
+   int count_word_occurrence_in_file(std::string fname, std::string word) {
+     std::ifstream fh(fname);
+     std::string text((std::istreambuf_iterator<char>(fh)),
+                      std::istreambuf_iterator<char>());
+   
+     auto word_count = 0;
+     auto count = 0;
+   
+     for (const auto ch : text) {
+       if (ch == word[word_count]) ++word_count;
+       if (word[word_count] == '\0') {
+         word_count = 0;
+         ++count;
+       }
+     }
+   
+     return count;
+   }
+
+   // 4 
+   #include "constants.hpp"  
+  /* ^--- Defines the max_temperature constant as:
+   * namespace constants { 
+   * constexpr double max_temperature = 100.0; 
+   * }
+   */
+   
+   enum class ReactorState : int { FINE, CRITICAL };
+   
+   /* Checks whether temperature is above max_temperature and returns a status. */
+   ReactorState check_reactor_temperature(double temperature_celsius) {
+     return temperature_celsius > constants::max_temperature
+                ? ReactorState::CRITICAL
+                : ReactorState::FINE;
    }
    
-   # 5
+   // 5
+   #include <string>
    
-   class Pet
-   {
-      public:
-        string name;
-        int hunger;
-        Pet(string name)
-        {
-            this->name = name;
-            this->hunger = 0;
-        }
-        void go_for_a_walk()  /* <-- how would you test this function? */
-        {
-            this->hunger += 1;
-        }
+   class Pet {
+    private:
+     unsigned int hunger_{0};
+     std::string name_{};
+   
+    public:
+     explicit Pet(std::string name) : name_(name) {}
+     void go_for_a_walk() { hunger_ += 1; }
+     // ^-- how would you test this function?
+     unsigned int hunger() const { return hunger_; }
    };
-
    ```
 
    ```{code-tab} r R
@@ -382,6 +361,18 @@ function more fine-grained and test only one concept.
            factorial(-1)  # raises ValueError
 
    ```
+   ```{code-tab} c++
+   #include <catch2/catch.hpp>
+   
+   #include "factorial.hpp"
+
+   TEST_CASE("Compute the factorial", "[factorial]") {
+     REQUIRE(factorial(0) == 1);
+     REQUIRE(factorial(1) == 1);
+     REQUIRE(factorial(2) == 2);
+     REQUIRE(factorial(3) == 6);
+   }
+   ```
    ```{code-tab} r R
    test_that("Test factorial", {
      expect_equal(factorial(0), 1)
@@ -417,6 +408,17 @@ to the above.
        # What does this last test tell us?
        assert count_word_occurrence_in_string('AAAAA', 'AAA') == 1
    ```
+   ```{code-tab} c++
+   #include <catch2/catch.hpp>
+   
+   #include "word_count.hpp"
+
+   TEST_CASE("Count occurrences of substring in string", "[count_word_occurrence_in_string]") {
+     REQUIRE(count_word_occurrence_in_string("AAA BBB", "AAA") == 1);
+     REQUIRE(count_word_occurrence_in_string("AAA AAA", "AAA") == 2);
+     REQUIRE(count_word_occurrence_in_string("AAAA", "AAA") == 0);
+   }
+   ```   
    ```{code-tab} r R
    test_that("Test count word occurrence in string", {
      expect_equal(count_word_occurrence_in_string("AAA BBB", "AAA"), 1)
@@ -455,6 +457,27 @@ to the above.
        assert count == 2
        os.remove(temporary_file_name)
    ```
+   ```{code-tab} c++
+   #include <cstdio>
+   #include <fstream>
+   
+   #include <catch2/catch.hpp>
+   
+   #include "word_count.hpp"
+   
+   TEST_CASE("Count occurrences of substring in file", "[count_word_occurrence_in_file]") {
+     auto fname = std::tmpnam(nullptr);
+     std::ofstream s(fname, std::ios::out | std::ios::trunc); 
+     s << "one two one two three four" << std::endl;
+     s.close();
+     
+     REQUIRE(count_word_occurrence_in_file(fname, "one") == 1);
+     REQUIRE(count_word_occurrence_in_file(fname, "three") == 2);
+     REQUIRE(count_word_occurrence_in_file(fname, "six") == 0);
+     
+     std::remove(fname);
+   }
+   ```   
    ```{code-tab} r R
    test_that("Test count word occurrence in file", {
      fname <- tempfile()
@@ -495,6 +518,18 @@ of artificially changing some other value.
        assert check_reactor_temperature(99)  == 0
        assert check_reactor_temperature(100) == 0   # boundary cases easily go wrong
        assert check_reactor_temperature(101) == 1
+   ```
+   ```{code-tab} c++
+   // Changing variables included from headers (monkey patching) is not possible in C++.
+   #include <catch2/catch.hpp>
+   
+   #include "reactor.hpp"
+   
+   TEST_CASE("Check reactor state", "[reactor_state]") {
+     REQUIRE(check_reactor_temperature(99) == ReactorState::FINE);
+     REQUIRE(check_reactor_temperature(100) == ReactorState::FINE);
+     REQUIRE(check_reactor_temperature(101) == ReactorState::CRITICAL);
+   }
    ```
    ```{code-tab} r R
    # Changing variables imported from modules (monkey patching) is not possible in R.
@@ -550,9 +585,23 @@ of artificially changing some other value.
        p.go_for_a_walk()
        assert p.hunger == 1
 
-           p.hunger = -1
+       p.hunger = -1
        p.go_for_a_walk()
        assert p.hunger == 0
+   ```
+   ```{code-tab} c++
+   // Changing variables included from headers (monkey patching) is not possible in C++.
+   #include <catch2/catch.hpp>
+   
+   #include "pet.hpp"
+   
+   TEST_CASE("Check my pets", "[pets]") {
+     auto fido = Pet("fido");
+     REQUIRE(fido.hunger() == 0);
+     
+     fido.go_for_a_walk();
+     REQUIRE(fido.hunger() == 1);
+   }
    ```
    ```{code-tab} r R
    test_that("Test Pet class", {
@@ -635,23 +684,70 @@ until they pass.
                              13, 14, "FizzBuzz", 16, 17, "Fizz", 19, "Buzz"]
           obtained_result = [fizzbuzz(i) for i in range(1,21)]
           
+          assert obtained_result == expected_result
+          
           with pytest.raises(ValueError):
               fizzbuzz(-5)
-          with pytest.raises(ValueError):        
-              fizzbuzz(0)        
+          with pytest.raises(ValueError): 
+              fizzbuzz(0)
       
           with pytest.raises(TypeError):
               fizzbuzz(1.5)
           with pytest.raises(TypeError):
-              fizzbuzz("rabbit")    	      
+              fizzbuzz("rabbit")
       
       
-      def main():      
+      def main():
           for i in range(1,100):
               print(fizzbuzz(i))
       
       if __name__=="__main__":
           main()
+      ```
+      ```{code-tab} c++
+      // in the fizzbuzz.hpp header file
+      #include <string>
+      
+      std::string fizzbuzz(unsigned int n) {
+        if (n % 15 == 0) {
+          return "FizzBuzz";
+        } else if (n % 3 == 0) {
+          return "Fizz";
+        } else if (n % 5 == 0) {
+          return "Buzz";
+        } else {
+          return std::to_string(n);
+        }
+      }
+      
+      // in the source file for the main executable
+      #include <cstdlib>
+      #include <iostream>
+      
+      int main() {
+        for (auto i = 0; i < 100; ++i) {
+          std::cout << fizzbuzz(i) << std::endl;
+        }
+      }
+      
+      // in the source file for the test
+      #include <string>
+
+      #include <catch2/catch.hpp>
+      
+      #include "fizzbuzz.hpp"
+      
+      TEST_CASE("FizzBuzz", "[fizzbuzz]") {
+        auto expected = std::vector<std::string>{
+              "1",        "2",    "Fizz", "4",    "Buzz", "Fizz", "7",
+              "8",        "Fizz", "Buzz", "11",   "Fizz", "13",   "14",
+              "FizzBuzz", "16",   "17",   "Fizz", "19",   "Buzz"};
+        
+        for (auto i = 1; i <= 21; ++i) {
+          REQUIRE(fizzbuzz(i) == expected[i]); 
+        }
+      }
+   
       ```
       ```{code-tab} r R
       WRITEME
@@ -738,6 +834,91 @@ many strategies exist:
       ```{code-tab} py
       WRITEME
       ```
+      ```{code-tab} c++
+      #include <cstdlib>
+      #include <iostream>
+      #include <random>
+      #include <tuple>
+      #include <vector>
+      
+      /* Roll a fair die n_dice times. The faces of the die can be set (default is 1 to 6). */
+      template <typename PRNGEngine = decltype(std::default_random_engine())>
+      std::vector<int> roll_dice(
+          unsigned int n_dice, std::vector<int> faces = {1, 2, 3, 4, 5, 6},
+          PRNGEngine gen = std::default_random_engine(std::random_device()())) {
+        // create a fair die
+        auto weights = std::vector<double>(faces.size(), 1.0);
+        auto fair_dice =
+            std::discrete_distribution<int>(weights.begin(), weights.end());
+      
+        auto rolls = std::vector<int>(n_dice, 0);
+        for (auto i = 0; i < n_dice; ++i) {
+          rolls[i] = faces[fair_dice(gen)];
+        }
+      
+        return rolls;
+      }
+      
+      /* count how many times each face comes up */
+      std::vector<unsigned int> count(const std::vector<unsigned int>& toss,
+                                      const std::vector<unsigned int>& faces = {
+                                          1, 2, 3, 4, 5, 6}) {
+        auto face_counts = std::vector<unsigned int>(faces.size(), 0);
+        for (auto i = 0; i < faces.size(); ++i) {
+          face_counts[i] = std::count(toss.cbegin(), toss.cend(), faces[i]);
+        }
+        return face_counts;
+      }
+
+      std::tuple<unsigned int, unsigned int> yahtzee() {
+        auto n_dice = 5;
+        auto faces = std::vector<unsigned int>{1, 2, 3, 4, 5, 6};
+        auto toss = [faces](unsigned int n_dice) { return roll_dice(n_dice, faces); };
+        // throw all dice
+        auto first_toss = toss(n_dice);
+        auto face_counts = count(first_toss);
+      
+        auto it_max = std::max_element(face_counts.cbegin(), face_counts.cend());
+        // number of faces that showed the most
+        auto n_collected = *it_max;
+        // corresponding index in the array, will be used to get which face showed up
+        // the most
+        auto idx_max = std::distance(face_counts.cbegin(), it_max);
+      
+        // all 5 dice showed the same face! YAHTZEE!
+        if (n_collected == 5) return std::make_tuple(faces[idx_max], n_collected);
+      
+        // no yahtzee :(
+        // we throw (n_dice - n_collected) dice
+        auto second_toss = toss(n_dice - n_collected);
+        n_collected += count(second_toss, {faces[idx_max]})[0];
+        // YAHTZEE!
+        if (n_collected == 5) return std::make_tuple(faces[idx_max], n_collected);
+      
+        // final chance
+        auto third_toss = toss(n_dice - n_collected);
+        n_collected += count(third_toss, {faces[idx_max]})[0];
+      
+        return std::make_tuple(faces[idx_max], n_collected);
+      }
+      
+      int main() {
+        for (auto i = 0; i < 100; ++i) {
+          unsigned int value = 0, times = 0;
+          std::tie(value, times) = yahtzee();
+          std::cout << "We got " << value << " " << times << " times in round " << i
+                    << std::endl;
+          if (times == 5) {
+            std::cout << "YAHTZEE in round " << i << std::endl;
+          }
+        }     
+        
+        return EXIT_SUCCESS;
+      }
+      ```
+      ```{code-tab} r R
+      WRITEME
+      ```      
       ```{code-tab} r R
       WRITEME
       ```      
@@ -805,6 +986,9 @@ many strategies exist:
 `````{solution}
    ````{tabs}
       ```{code-tab} py
+      WRITEME
+      ```
+      ```{code-tab} c++
       WRITEME
       ```
       ```{code-tab} r R

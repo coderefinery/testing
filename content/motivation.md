@@ -46,42 +46,39 @@ to establish accuracy:
        expected_result = 37.777777
        assert abs(temp_c - expected_result) < 1.0e-6
    ```
+
    ```{code-tab} c++
 
-    #include <iostream>
-    #include <cmath>        // std::abs
+   #include <cmath>  // std::abs
+   #include <cstdlib>
+   #include <iostream>
 
-    using namespace std;
+   using namespace std;
 
-    double fahrenheit_to_celsius(double temp_f)
-    {
-        /*Converts temperature in Fahrenheit
-        to Celsius.*/
-        double temp_c = (temp_f - 32.0) * (5.0/9.0);
-        return temp_c;
-    }
-    void test_fahrenheit_to_celsius()
-    {
-        /*This is the test function: `throws` raises an error if something 
-        is wrong.*/
-        double temp_c = fahrenheit_to_celsius(100.0);
-        double expected_result = 37.777777;
-        try{
-            if(abs(temp_c - expected_result) > 1.0e-6)
-                throw "Error";
-        }
-        catch(char const* err){ 
-            cout<< err;
-        }
-    }
-    
-    int main()
-    {
-        cout<<fahrenheit_to_celsius(20);
-        test_fahrenheit_to_celsius();
-        return 0;
-    }
+   /* Converts temperature in Fahrenheit to Celsius. */
+   double fahrenheit_to_celsius(double temp_f) {
+     auto temp_c = (temp_f - 32.0) * (5.0 / 9.0);
+     return temp_c;
+   }
+
+   /* This is the test function: `throws` raises an error if something is wrong. */
+   void test_fahrenheit_to_celsius() {
+     auto temp_c = fahrenheit_to_celsius(100.0);
+     auto expected_result = 37.777777;
+     try {
+       if (abs(temp_c - expected_result) > 1.0e-6) throw "Error";
+     } catch (char const* err) {
+       cout << err;
+     }
+   }
+   
+   int main() {
+     cout << fahrenheit_to_celsius(20);
+     test_fahrenheit_to_celsius();
+     return EXIT_SUCCESS;
+   }
    ```
+   
    ```{code-tab} r R
 
    # Converts temperature in Fahrenheit to Celsius.
@@ -195,6 +192,24 @@ We already know how to test this code (see above):
    print(temp_c)
    ```
 
+   ```{code-tab} c++
+
+   #include <cstdlib>
+   #include <iostream>
+
+   /* Converts temperature in Fahrenheit to Celsius. */
+   double fahrenheit_to_celsius(double temp_f) {
+     auto temp_c = (temp_f - 32.0) * (5.0 / 9.0);
+     return temp_c;
+   }
+
+   int main() {
+     auto temp_c = fahrenheit_to_celsius(20);
+     std::cout << temp_c << std::endl;
+     return EXIT_SUCCESS;
+   }
+   ```
+
    ```{code-tab} r R
 
    fahrenheit_to_celsius <- function(temp_f)
@@ -237,6 +252,27 @@ How would you test this code:
 
    fahrenheit_to_celsius_bad(temp_f=100.0)
    print(temp_c)
+   ```
+
+   ```{code-tab} c++
+
+   #include <cstdlib>
+   #include <iostream>
+
+   constexpr double f_to_c_offset = 32.0;
+   constexpr double f_to_c_factor = 0.555555555;
+   double temp_c = 0.0;
+
+   /* Converts temperature in Fahrenheit to Celsius. */
+   void fahrenheit_to_celsius(double temp_f) {
+     temp_c = (temp_f - f_to_c_offset) * f_to_c_factor;
+   }
+
+   int main() {
+     fahrenheit_to_celsius(20);
+     std::cout << temp_c << std::endl;
+     return EXIT_SUCCESS;
+   }
    ```
 
    ```{code-tab} r R
