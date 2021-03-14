@@ -23,6 +23,7 @@ never written:
   [Azure pipelines](https://azure.microsoft.com/en-us/services/devops/pipelines/) or
   [GitHub Actions](https://github.com/marketplace?type=actions) or [GitLab CI](https://docs.gitlab.com/ee/ci/) or similar services)
 - Test with [numerical tolerance](http://www.smbc-comics.com/comic/2013-06-05)
+  (see also ["What Every Programmer Should Know About Floating-Point Arithmetic"](https://floating-point-gui.de/))
 - Think about **code coverage** ([Coveralls](https://coveralls.io) or [Codecov](https://codecov.io) or similar services)
 
 ---
