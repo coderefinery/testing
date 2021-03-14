@@ -52,6 +52,7 @@ def kelvin_to_celsius(temp_k):
 - **Unit tests** are functions
 - Test one unit: module or even single function
 - Good documentation of the capability and dependencies of a module
+- Unit tests are not about testing units of measure and unit conversion, they are about testing small components (units) of a code
 
 ---
 
