@@ -332,7 +332,25 @@ Also discuss why some are easier to test than others.
     
    ```
    ```{code-tab} fortran
-   WRITEME
+   module factorial_mod
+   contains
+      ! computes the factorial of n
+      integer function factorial(n)
+         implicit none
+         integer, intent(in) :: n
+         integer r
+         integer i
+         if(n < 0) then
+            write(*,*) 'Received negative input'
+            stop
+         end if
+         r = 1
+         do i = 1,n
+            r = r*i
+         end do
+         factorial=r
+      end function factorial
+   end module factorial_mod
    ```
 ````
 `````
@@ -393,7 +411,12 @@ function more fine-grained and test only one concept.
 
    ```
    ```{code-tab} fortran
-   WRITEME
+   @test
+   subroutine test_factorial()
+      use factorial_mod
+      use funit
+      @assertEqual(120, factorial(5), 'factorial(5)')
+   end subroutine test_factorial
    ```
    ````
 
