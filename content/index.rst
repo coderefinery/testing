@@ -11,9 +11,7 @@ exercise automated testing as part of a collaborative code review workflow.
 
    2. Basic understanding of Git.
 
-   3. You need a `GitHub <https://github.com>`__ account.
-
-   4. Alternatively a `Gitlab <https://gitlab.com/>`__ account.
+   3. You need a `GitHub <https://github.com>`__ or a `Gitlab <https://gitlab.com/>`__ account.
 
 
 .. csv-table::
@@ -23,8 +21,7 @@ exercise automated testing as part of a collaborative code review workflow.
    10 min ; :doc:`motivation`
    10 min ; :doc:`concepts`
    25 min ; :doc:`pytest`
-   40 min ; :doc:`gh-actions`
-   40 min ; :doc:`gitlab-ci`
+   40 min ; :doc:`continuous-integration`
    25 min ; :doc:`test-design`
    5 min ; :doc:`conclusions`
 
@@ -36,8 +33,7 @@ exercise automated testing as part of a collaborative code review workflow.
    motivation
    concepts
    pytest
-   gh-actions
-   gitlab-ci
+   continuous-integration
    test-design
    conclusions
 
