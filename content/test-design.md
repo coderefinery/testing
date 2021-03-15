@@ -962,8 +962,56 @@ many strategies exist:
 
    ````{tabs}
       ```{code-tab} py
-      WRITEME
+      import random
+      from collections import Counter
+
+
+      def random_dice(num_dice):
+          return [random.choice([1, 2, 3, 4, 5, 6]) for _ in range(num_dice)]
+
+
+      def num_same_sides_after_3_throws():
+          """
+          Play yahtzee with 5 6-sided dice and 3 throws.
+          Collect as many of the same dice side as possible.
+          Returns the number of same sides.
+          """
+
+          # first throw
+          result = random_dice(5)
+          most_common_side, how_often = Counter(result).most_common(1)[0]
+
+          # we keep the most common side
+          target_side = most_common_side
+          num_same_sides = how_often
+          if num_same_sides == 5:
+              return 5
+
+          # second and third throw
+          for _ in [2, 3]:
+              throw = random_dice(5 - num_same_sides)
+              # c = Counter(throw)
+              # num_same_sides += c[target_side]
+              num_same_sides += Counter(throw)[target_side]
+              if num_same_sides == 5:
+                  return 5
+
+          return num_same_sides
+
+
+      if __name__ == "__main__":
+          num_games = 100
+
+          winning_games = list(
+              filter(
+                  lambda x: x == 5,
+                  [num_same_sides_after_3_throws() for _ in range(num_games)],
+              )
+          )
+
+          print(f"out of the {num_games} games, {len(winning_games)} got a yahtzee!")
       ```
+
       ```{code-tab} c++
       #include <cstdlib>
       #include <iostream>
@@ -1114,8 +1162,27 @@ many strategies exist:
 `````{solution}
    ````{tabs}
       ```{code-tab} py
-      WRITEME
+      def test_random_dice():
+          random.seed(0)
+          assert random_dice(5) == [4, 4, 1, 3, 5]
+          assert random_dice(5) == [4, 4, 3, 4, 3]
+          assert random_dice(5) == [5, 2, 5, 2, 3]
+
+
+      def test_num_same_sides_after_3_throws():
+          random.seed(1)
+          num_games = 10000
+
+          winning_games = list(
+              filter(
+                  lambda x: x == 5,
+                  [num_same_sides_after_3_throws() for _ in range(num_games)],
+              )
+          )
+
+          assert len(winning_games) == 460
       ```
+
       ```{code-tab} c++
       #include <random>
 
