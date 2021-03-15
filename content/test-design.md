@@ -14,6 +14,7 @@ In this exercise we will consider how functions and programs can be tested in pr
 - Learn how to determine what kind of unit tests can be performed for different type of functions.
 - Learn how to perform test-driven development in which tests for a function are designed and implemented before the function is written.
 - Learn how to test functions whose output depend on random numbers.
+```
 
 ```{Exercise}
 - Examples of pure and impure functions, test-driven development, and end-to-end testing are presented by the instructor (10 minutes).
@@ -23,6 +24,7 @@ In this exercise we will consider how functions and programs can be tested in pr
 - Discuss what testing framework can be used to implement the test.
 - If time is available, implement the test(s) using the chosen framework.
 - Discussion in main room on experiences learned (10 minutes).
+```
 
 `````{challenge} Pure and impure functions
 
