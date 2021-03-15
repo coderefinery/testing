@@ -1205,6 +1205,61 @@ many strategies exist:
    ````
 `````
 
+
+## Designing an end-to-end test
+
+In this exercise we will practice designing an end-to-end test.
+In an end-to-end test (or integration test), the unit is the entire program.
+We typically feed the program with some well defined input and verify
+that it still produces the expected output by comparing it to some reference.
+
+````{challenge} Integration test for the uniq program
+To have a tangible example, let us consider the `uniq` command. This command
+can read a file or an input stream and remove consecutive repetition.
+The program behind `uniq` has been written by somebody else, it probably contains
+some functions, but we will not look into it but regard it as "black box".
+
+If we have a file called `repetitive-text.txt` containing:
+```
+(all together now) all together now
+(all together now) all together now
+(all together now) all together now
+(all together now) all together now
+(all together now) all together now
+another line
+another line
+another line
+another line
+intermission
+more repetition
+more repetition
+more repetition
+more repetition
+more repetition
+(all together now) all together now
+(all together now) all together now
+```
+
+... then feeding this input file to `uniq` like this:
+```
+$ uniq < repetitive-text.txt
+```
+
+... will produce the following output with repetitions removed:
+```
+(all together now) all together now
+another line
+intermission
+more repetition
+(all together now) all together now
+```
+
+- How would you write an end-to-end test?
+- Now imagine the code reads numbers and produces some (floating point) numbers.
+  How would you test that?
+- How would you test a code end-to-end which produces images?
+````
+
 ```{keypoints}
 - Pure functions (these are functions without side-effects) are easiest to test.
 - Classes can be tested but it's somewhat more elaborate.
