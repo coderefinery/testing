@@ -24,6 +24,7 @@ keep things simple so that those who do not use Python can follow.
    $ mkdir pytest-example
    $ cd pytest-example
    ```
+
 2. Then create a file called `example.py` and copy-paste the following code into it:
    ```python
    def add(a, b):
@@ -37,6 +38,7 @@ keep things simple so that those who do not use Python can follow.
    This code contains one genuine function and a test function.
    `pytest` finds any functions beginning with `test_` and treats them
    as tests.
+
 3. Let us try to test it with pytest:
    ```shell
    $ pytest -v example.py
@@ -52,6 +54,9 @@ keep things simple so that those who do not use Python can follow.
    ========================================================= 1 passed in 0.01 seconds ===============================
    ```
    Yay! The test passed!
+
+   Hint for participants trying this inside Spyder or IPython: try `!pytest -v example.py`.
+
 4. Let us break the test!
    Introduce a code change which breaks the code and check
    whether pytest detects the change:
