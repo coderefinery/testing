@@ -83,6 +83,48 @@ keep things simple so that those who do not use Python can follow.
 
 ````
 
+````{challenge} Optional exercise: Testing with numerical tolerance (10 min)
+In the above exercise we have compared integers.  In this optional exercise we
+want to learn how to compare floating point numbers since they are more tricky
+(see also ["What Every Programmer Should Know About Floating-Point Arithmetic"](https://floating-point-gui.de/)).
+
+The following test will fail and this might be surprising. Try it out:
+   ```python
+   def add(a, b):
+       return a + b
+
+
+   def test_add():
+       assert add(0.1, 0.2) == 0.3
+   ```
+
+Your goal: find a more robust way to test this addition.
+````
+
+````{solution}
+One solution is to use
+[pytest.approx](https://docs.pytest.org/en/4.6.x/reference.html#pytest-approx):
+```python
+from pytest import approx
+
+def add(a, b):
+    return a + b
+
+def test_add():
+    assert add(0.1, 0.2) == approx(0.3)
+```
+
+But maybe you didn't know about
+[pytest.approx](https://docs.pytest.org/en/4.6.x/reference.html#pytest-approx):
+and did this instead:
+```python
+def test_add():
+    result = add(0.1, 0.2)
+    assert abs(result - 0.3) < 1.0e-7
+```
+This is OK but the `1.0e-7` can be a bit arbitrary.
+````
+
 ```{keypoints}
 - pytest collects and runs all test functions starting with `test_`.
 - Python and C/C++ have better tooling for automated tests than Fortran and you can use those also for Fortran projects (via `iso_c_binding`).
