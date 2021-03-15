@@ -990,8 +990,6 @@ many strategies exist:
           # second and third throw
           for _ in [2, 3]:
               throw = roll_dice(5 - num_same_sides)
-              # c = Counter(throw)
-              # num_same_sides += c[target_side]
               num_same_sides += Counter(throw)[target_side]
               if num_same_sides == 5:
                   return 5
