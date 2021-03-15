@@ -13,9 +13,9 @@ establishes its accuracy. A new detector is calibrated when the scientist
 observes its responses to known input signals. The results of this
 calibration are compared against the expected response."*
 
-> [From [Testing and Continuous Integration with Python](http://katyhuff.github.io/python-testing/), created by K. Huff]
+> [From [Testing and Continuous Integration with Python](https://carpentries-incubator.github.io/python-testing/), created by K. Huff]
 
-Simulations and analysis using software *should* be held to the same standards!
+Simulations and analysis using software *should* be held to the same standards as experimental measurement devices!
 
 Further motivation for testing:
 
@@ -136,6 +136,7 @@ Why are we not comparing directly all digits with the expected result?
 ## Tests help preserving expected functionality
 
 - As projects grow, it becomes easier to break things without noticing immediately
+- Software defects can be caused by both human errors and non-controllable events (i.e. environmental conditions)
 - Testing helps **detecting new errors early**
 - Interpreted dynamically typed imperative languages often need to be tested
 - So do compiled languages but the compiler catches at least some errors
@@ -149,6 +150,7 @@ Why are we not comparing directly all digits with the expected result?
 ## Tests help users of your code
 
 - Make it easier for others to verify whether the code has been correctly installed
+- Provide basis to judge the quality of the code
 - Users of your code publish papers based on results produced by your code
 - Your peers need to be able to reproduce your (to be) published computational results
 
@@ -157,7 +159,7 @@ Why are we not comparing directly all digits with the expected result?
 ## Tests help other developers
 
 - Tests make it easier to **refactor the code** (rewrite code while keeping functionality)
-- Code can become unsustainable without runnable tests and becomes legacy software
+- Code can become unsustainable without runnable tests and becomes legacy software (i.e. software outdated and not usable anymore)
 - Documentation which is up to date by definition
 - Easier for external developers to contribute to the project without breaking your code
   (**you may immediately see problems in your code but others may not**)
