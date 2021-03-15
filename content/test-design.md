@@ -966,11 +966,11 @@ many strategies exist:
       from collections import Counter
 
 
-      def random_dice(num_dice):
+      def roll_dice(num_dice):
           return [random.choice([1, 2, 3, 4, 5, 6]) for _ in range(num_dice)]
 
 
-      def num_same_sides_after_3_throws():
+      def yahtzee():
           """
           Play yahtzee with 5 6-sided dice and 3 throws.
           Collect as many of the same dice side as possible.
@@ -978,7 +978,7 @@ many strategies exist:
           """
 
           # first throw
-          result = random_dice(5)
+          result = roll_dice(5)
           most_common_side, how_often = Counter(result).most_common(1)[0]
 
           # we keep the most common side
@@ -989,7 +989,7 @@ many strategies exist:
 
           # second and third throw
           for _ in [2, 3]:
-              throw = random_dice(5 - num_same_sides)
+              throw = roll_dice(5 - num_same_sides)
               # c = Counter(throw)
               # num_same_sides += c[target_side]
               num_same_sides += Counter(throw)[target_side]
@@ -1005,7 +1005,7 @@ many strategies exist:
           winning_games = list(
               filter(
                   lambda x: x == 5,
-                  [num_same_sides_after_3_throws() for _ in range(num_games)],
+                  [yahtzee() for _ in range(num_games)],
               )
           )
 
@@ -1162,21 +1162,21 @@ many strategies exist:
 `````{solution}
    ````{tabs}
       ```{code-tab} py
-      def test_random_dice():
+      def test_roll_dice():
           random.seed(0)
-          assert random_dice(5) == [4, 4, 1, 3, 5]
-          assert random_dice(5) == [4, 4, 3, 4, 3]
-          assert random_dice(5) == [5, 2, 5, 2, 3]
+          assert roll_dice(5) == [4, 4, 1, 3, 5]
+          assert roll_dice(5) == [4, 4, 3, 4, 3]
+          assert roll_dice(5) == [5, 2, 5, 2, 3]
 
 
-      def test_num_same_sides_after_3_throws():
+      def test_yahtzee():
           random.seed(1)
           num_games = 10000
 
           winning_games = list(
               filter(
                   lambda x: x == 5,
-                  [num_same_sides_after_3_throws() for _ in range(num_games)],
+                  [yahtzee() for _ in range(num_games)],
               )
           )
 
