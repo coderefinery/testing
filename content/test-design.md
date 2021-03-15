@@ -2,14 +2,27 @@
 
 ```{questions}
 - How can different types of functions and classes be tested?
+- How can the integrity of a complete program be monitored over time?
+- How can functions that involve random numbers be tested?
 ```
 
+## Test-design for different programming languages
 
-## Exercises and discussions 
+In this exercise we will consider how functions and programs can be tested in programs developed in different programming languages.
 
-This section has different types of exercises that can be 
-solved and discussed in groups.
+```{Objectives}
+- Learn how to determine what kind of unit tests can be performed for different type of functions.
+- Learn how to perform test-driven development in which tests for a function are designed and implemented before the function is written.
+- Learn how to test functions whose output depend on random numbers.
 
+```{Exercise}
+- Examples of pure and impure functions, test-driven development, and end-to-end testing are presented by the instructor (10 minutes).
+- Work in break out rooms for each programming language. Notes are kept on hackMD (35 minutes).
+- In the break out rooms, choose to work with one of functions WordOccurence, FizzBuzz or Yahtzee.
+- Discuss and design tests for the chosen function.
+- Discuss what testing framework can be used to implement the test.
+- If time is available, implement the test(s) using the chosen framework.
+- Discussion in main room on experiences learned (10 minutes).
 
 `````{challenge} Pure and impure functions
 
