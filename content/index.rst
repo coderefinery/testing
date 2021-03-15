@@ -22,7 +22,7 @@ exercise automated testing as part of a collaborative code review workflow.
    10 min ; :doc:`concepts`
    25 min ; :doc:`pytest`
    40 min ; :doc:`continuous-integration`
-   25 min ; :doc:`test-design`
+   55 min ; :doc:`test-design`
    5 min ; :doc:`conclusions`
 
 
