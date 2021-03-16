@@ -1,6 +1,7 @@
 # Conclusions and recommendations
 
 - Explore and use the good tools that exist out there
+- An incomplete list of testing frameworks can be found in the [Quick Reference](quick-reference)
 - Automate tests: faster feedback and reduce the number of surprises
 - Strike a healthy balance between unit tests and integration tests
 - When adding new functionality, also add tests
