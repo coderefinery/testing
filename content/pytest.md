@@ -2,7 +2,6 @@
 
 ```{questions}
 - How can we implement a test suite using pytest?
-- How can we use Git hooks to make sure we do not commit broken code?
 ```
 
 
