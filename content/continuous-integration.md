@@ -30,6 +30,12 @@ In this exercise, everybody will:
 Overview of this exercise. Below we detail the steps.
 ```
 
+### Prerequisites
+
+If you are new to Git, you can find a step-by-step guide to
+setting up repositories and making commits in
+[this git-refresher material](https://coderefinery.github.io/git-refresher/).
+
 
 ### Step 1: Create a new repository on GitHub/GitLab
 
@@ -65,7 +71,8 @@ def subtract(a, b):
 ```
 Test `example.py` with `pytest`.
 
-Then `git add` the file, commit, and push the changes.
+Then stage the file (`git add <filename>`), commit (`git commit -m "some commit message"`),
+and push the changes (`git push origin main`).
 
 
 ### Step 3: Enable automated testing
@@ -244,16 +251,19 @@ or the "CI/CD->Pipelines" tab (GitLab).
 
 ### Step 6: Open an issue on GitHub/GitLab
 
-Open a new issue in your repository about the broken test.
-The plan is that your colleague will fix the issue.
+Open a new issue in your repository about the broken test (click the "Issues" button on
+GitHub or GitLab and write a title for the issue). 
+The plan is that your colleague will fix the issue through a pull/merge request.
 
 
 ### Step 7: Fork and clone the repository of your colleague
 
 Fork the repository using the GitHub/GitLab web interface.
-Make sure you clone the
-fork after you have forked it. Do not clone your colleague's repository
-directly.
+(if you are unfamiliar with forking and pull requests, have a look at
+[this visual representation](https://coderefinery.github.io/git-collaborative/03-distributed/#forking-layout)).
+
+**Make sure you clone the fork after you have forked it. Do not clone
+your colleague's repository directly.**
 
 `````{tabs}
    ````{tab} GitHub
@@ -274,8 +284,9 @@ directly.
 
 ### Step 8: Fix the broken test
 
-After you have fixed the code,
-commit the following commit message `"restore function subtract; fixes #1"` (assuming that you try to fix issue number 1).
+After you have fixed the code, commit the following commit message
+`"restore function subtract; fixes #1"` (assuming that you try to fix
+issue number 1).
 
 Then push to your fork.
 
