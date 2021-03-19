@@ -406,7 +406,7 @@ calculation, so that testing the calculation part becomes easy (see above).
    ```
 
    ```{code-tab} c++
-   #include <cstdio>
+   #include <stdlib.h> // for mkstemp()
    #include <fstream>
 
    #include <catch2/catch.hpp>
@@ -414,7 +414,9 @@ calculation, so that testing the calculation part becomes easy (see above).
    #include "word_count.hpp"
 
    TEST_CASE("Count occurrences of substring in file", "[count_word_occurrence_in_file]") {
-     auto fname = std::tmpnam(nullptr);
+     char fname[]{ "fileXXXXXX" }; // 'X's will be replaced with the unique characters.
+     auto file_descriptor{ mkstemp( fname ) };
+     REQUIRE( file_descriptor != -1 );
      std::ofstream s(fname, std::ios::out | std::ios::trunc);
      s << "one two one two three four" << std::endl;
      s.close();
