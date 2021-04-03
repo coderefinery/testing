@@ -333,7 +333,7 @@ to the above.
      std::string text((std::istreambuf_iterator<char>(fh)),
                       std::istreambuf_iterator<char>());
 
-     auto word_count = 0;
+     auto word_count = 0lu; // will be used for indexing and therefore it has to be *long unsigned* int for the safe conversion to 'std::__cxx11::basic_string<char>::size_type'.
      auto count = 0;
 
      for (const auto ch : text) {
@@ -406,7 +406,7 @@ calculation, so that testing the calculation part becomes easy (see above).
    ```
 
    ```{code-tab} c++
-   #include <stdlib.h> // for mkstemp()
+   #include <filesystem> // for temp_directory_path(), requires C++17.
    #include <fstream>
 
    #include <catch2/catch.hpp>
@@ -414,18 +414,19 @@ calculation, so that testing the calculation part becomes easy (see above).
    #include "word_count.hpp"
 
    TEST_CASE("Count occurrences of substring in file", "[count_word_occurrence_in_file]") {
-     char fname[]{ "fileXXXXXX" }; // 'X's will be replaced with the unique characters.
-     auto file_descriptor{ mkstemp( fname ) };
-     REQUIRE( file_descriptor != -1 );
-     std::ofstream s(fname, std::ios::out | std::ios::trunc);
+     namespace fs = std::filesystem;
+     auto tmp_dir{ fs::temp_directory_path() };
+     auto fpath{ fs::temp_directory_path() / "temp_file" };
+
+     std::ofstream s(fpath, std::ios::out | std::ios::trunc);
      s << "one two one two three four" << std::endl;
      s.close();
 
-     REQUIRE(count_word_occurrence_in_file(fname, "one") == 1);
-     REQUIRE(count_word_occurrence_in_file(fname, "three") == 2);
+     REQUIRE(count_word_occurrence_in_file(fname, "one") == 2);
+     REQUIRE(count_word_occurrence_in_file(fname, "three") == 1);
      REQUIRE(count_word_occurrence_in_file(fname, "six") == 0);
 
-     std::remove(fname);
+     fs::remove( fpath );
    }
    ```
 
