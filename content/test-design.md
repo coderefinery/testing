@@ -125,35 +125,35 @@ function more fine-grained and test only one concept.
 `````{tabs}
    ````{tab} Python
 
-      ```{literalinclude} code/count_word_occurence_in_string.py
+      ```{literalinclude} code/count_word_occurrence_in_string.py
       :language: Python
       ```
    ````
 
    ````{tab} C++
 
-      ```{literalinclude} code/count_word_occurence_in_string.cpp
+      ```{literalinclude} code/count_word_occurrence_in_string.cpp
       :language: c++
       ```
    ````
 
    ````{tab} R
 
-      ```{literalinclude} code/count_word_occurence_in_string.R
+      ```{literalinclude} code/count_word_occurrence_in_string.R
       :language: R
       ```
    ````
 
    ````{tab} Julia
 
-      ```{literalinclude} code/count_word_occurence_in_string.jl
+      ```{literalinclude} code/count_word_occurrence_in_string.jl
       :language: julia
       ```
    ````
 
    ````{tab} Fortran
 
-      ```{literalinclude} code/count_word_occurence_in_string.f90
+      ```{literalinclude} code/count_word_occurrence_in_string.f90
       :language: fortran
       ```
    ````
@@ -166,35 +166,35 @@ to the above.
 `````{tabs}
    ````{tab} Python
 
-      ```{literalinclude} code/count_word_occurence_in_string_sol.py
+      ```{literalinclude} code/count_word_occurrence_in_string_sol.py
       :language: Python
       ```
    ````
 
    ````{tab} C++
 
-      ```{literalinclude} code/count_word_occurence_in_string_sol.cpp
+      ```{literalinclude} code/count_word_occurrence_in_string_sol.cpp
       :language: c++
       ```
    ````
 
    ````{tab} R
 
-      ```{literalinclude} code/count_word_occurence_in_string_sol.R
+      ```{literalinclude} code/count_word_occurrence_in_string_sol.R
       :language: R
       ```
    ````
 
    ````{tab} Julia
 
-      ```{literalinclude} code/count_word_occurence_in_string_sol.jl
+      ```{literalinclude} code/count_word_occurrence_in_string_sol.jl
       :language: julia
       ```
    ````
 
    ````{tab} Fortran
 
-      ```{literalinclude} code/count_word_occurence_in_string_sol.f90
+      ```{literalinclude} code/count_word_occurrence_in_string_sol.f90
       :language: fortran
       ```
    ````
@@ -207,35 +207,35 @@ to the above.
 
    ````{tab} Python
 
-      ```{literalinclude} code/count_word_occurence_in_file.py
+      ```{literalinclude} code/count_word_occurrence_in_file.py
       :language: Python
       ```
    ````
 
    ````{tab} C++
 
-      ```{literalinclude} code/count_word_occurence_in_file.cpp
+      ```{literalinclude} code/count_word_occurrence_in_file.cpp
       :language: c++
       ```
    ````
 
    ````{tab} R
 
-      ```{literalinclude} code/count_word_occurence_in_file.R
+      ```{literalinclude} code/count_word_occurrence_in_file.R
       :language: R
       ```
    ````
 
    ````{tab} Julia
 
-      ```{literalinclude} code/count_word_occurence_in_file.jl
+      ```{literalinclude} code/count_word_occurrence_in_file.jl
       :language: julia
       ```
    ````
 
    ````{tab} Fortran
 
-      ```{literalinclude} code/count_word_occurence_in_file.f90
+      ```{literalinclude} code/count_word_occurrence_in_file.f90
       :language: fortran
       ```
    ````
@@ -251,35 +251,35 @@ calculation, so that testing the calculation part becomes easy (see above).
 
    ````{tab} Python
 
-      ```{literalinclude} code/count_word_occurence_in_file_sol.py
+      ```{literalinclude} code/count_word_occurrence_in_file_sol.py
       :language: Python
       ```
    ````
 
    ````{tab} C++
 
-      ```{literalinclude} code/count_word_occurence_in_file_sol.cpp
+      ```{literalinclude} code/count_word_occurrence_in_file_sol.cpp
       :language: c++
       ```
    ````
 
    ````{tab} R
 
-      ```{literalinclude} code/count_word_occurence_in_file_sol.R
+      ```{literalinclude} code/count_word_occurrence_in_file_sol.R
       :language: R
       ```
    ````
 
    ````{tab} Julia
 
-      ```{literalinclude} code/count_word_occurence_in_file_sol.jl
+      ```{literalinclude} code/count_word_occurrence_in_file_sol.jl
       :language: julia
       ```
    ````
 
    ````{tab} Fortran
 
-      ```{literalinclude} code/count_word_occurence_in_file_sol.f90
+      ```{literalinclude} code/count_word_occurrence_in_file_sol.f90
       :language: fortran
       ```
    ````
