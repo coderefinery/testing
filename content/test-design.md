@@ -25,6 +25,7 @@ In this episode we will consider how functions and programs can be tested in pro
 - Discuss what testing framework can be used to implement the test.
 - Keep notes, questions, and answers in the collaborative document.
 - If time is available, implement the test(s) using the chosen framework.
+- If you want to collaborate on writing the code and tests you can share a workspace on [codeshare.io](https://codeshare.io/)!
 
 **Once we return to main room**
 - Discussion on experiences learned (10 minutes).
