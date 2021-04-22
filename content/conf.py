@@ -17,7 +17,7 @@
 
 # -- Project information -----------------------------------------------------
 
-project = 'Automated testing'
+project = 'Software testing'
 copyright = '2020, CodeRefinery project'
 author = 'CodeRefinery project'
 github_user = 'coderefinery'
