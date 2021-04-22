@@ -157,6 +157,14 @@ All tests are happy!
 
 ---
 
+## Testing frameworks
+
+A large number of testing frameworks, tools and libraries are available for
+different programming languages. Some of the most popular ones are listed
+in the [Quick Reference](./quick-reference).
+
+---
+
 ## Good practices
 
 - Test before committing (use the Git staging area)
