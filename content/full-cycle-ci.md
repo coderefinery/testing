@@ -1,29 +1,37 @@
-# Automated testing 
+# (Optional) Full-cycle collaborative workflow
 
 ```{questions}
 - How can we implement automatic testing each time we push changes to the repository?
 - Why is it good to autoclose issues with commit messages?
 ```
 
-## Type-along exercise: Continuous integration
 
-We will now learn to set up automatic tests using either GitHub Actions or
-GitLab CI - you can choose which one to use and instructions are provided for both.
+## Exercise a full-cycle collaborative workflow
 
-This exercise can be run in "collaborative mode" by following instead the instructions
-in [Full-cycle collaborative workflow](./full-cycle-ci). In the collaborative version steps
-C-D below are performed by a collaborator.
-
+This exercise is a collaborative version of the [Automated testing exercise](./continuous-integration).
 
 ```{challenge} Exercise overview
+This is an expanded version of the [automated testing demonstration](./continuous-integration).
+The exercise is performed in a collaborative circle within the exercise group
+(breakout room).
 
-In this exercise, we will:
+The exercise takes 20-30 minutes.
 
-**A.** Create a repository on GitHub/GitLab   
+In this exercise, everybody will:
+
+**A.** Create a repository on GitHub/GitLab (everybody should use a **different repository name** for their repository)  
 **B.** Commit code to the repository and set up tests with GitHub Actions/ GitLab CI  
-**C.** Find a bug in our repository and open an issue to report it  
-**D.** Fix the bug on a bugfix branch and open a pull request (GitHub)/ merge request (GitLab)  
-**E.** Merge the pull/merge request and see how the issue is automatically closed.
+**C.** Everybody will find a bug in their repository and open an issue in their repository  
+**D.** Then each one will clone the repo of one of their exercise partners, fix the bug,
+  and open a pull request (GitHub)/ merge request (GitLab)  
+**E.** Everybody then merges their co-worker's change  
+```
+
+```{figure} img/testing_group_work.png
+:alt: Graph with exercise steps
+:width: 300px
+
+Overview of this exercise. Below we detail the steps.
 ```
 
 ### Prerequisites
@@ -31,16 +39,17 @@ In this exercise, we will:
 If you are new to Git, you can find a step-by-step guide to
 setting up repositories and making commits in
 [this git-refresher material](https://coderefinery.github.io/git-refresher/).
-If you are new to pull requests / merge requests, you can learn all about them
-in the [Collaborative Git lesson](https://coderefinery.github.io/git-collaborative/).
+
 
 ### Step 1: Create a new repository on GitHub/GitLab
 
-- Begin by creating a repository called (for example) *example-ci*.
+- Select a **different repository name** than your colleagues (otherwise forking the same name will be strange)
 - **Before** you create the repository, select **"Initialize this repository
   with a README"** (otherwise you try to clone an empty repo).
+- Share the repository URL with your exercise group via shared document or chat
 
-### Step 2: Clone your repository, add code, commit, and push
+
+### Step 2: Clone your own repository, add code, commit, and push
 
 Clone the repository.
 
@@ -236,7 +245,7 @@ your local cloned repository.  Update your local cloned repository:
 $ git pull origin main
 ```
 
-Hint: if the above command fails, check whether the branch name on the GitHub/GitLab
+Hint for helpers: if the above command fails, check whether the branch name on the GitHub/GitLab
 repository is called `main` and not perhaps `master`.
 
 Next uncomment the code in `example.py` under "step 5", commit, and push.
@@ -246,38 +255,59 @@ or the "CI/CD->Pipelines" tab (GitLab).
 
 ### Step 6: Open an issue on GitHub/GitLab
 
-Open a new issue in your repository about the broken test (click the
-"Issues" button on GitHub or GitLab and write a title for the issue).
-The plan is that we will fix the issue through a pull/merge request.
+Open a new issue in your repository about the broken test (click the "Issues" button on
+GitHub or GitLab and write a title for the issue). 
+The plan is that your colleague will fix the issue through a pull/merge request.
 
 
-### Step 7: Fix the broken test
+### Step 7: Fork and clone the repository of your colleague
 
-Now fix the code **on a new branch**, you can call it `yourname/bugfix`.
-After you have fixed the code on the new branch, commit the following
-commit message `"restore function subtract; fixes #1"` (assuming that
-you try to fix issue number 1).
+Fork the repository using the GitHub/GitLab web interface.
+(if you are unfamiliar with forking and pull requests, have a look at
+[this visual representation](https://coderefinery.github.io/git-collaborative/03-distributed/#forking-layout)).
 
-Then push to your repository.
+**Make sure you clone the fork after you have forked it. Do not clone
+your colleague's repository directly.**
+
+`````{tabs}
+   ````{tab} GitHub
+
+      ```bash
+      $ git clone https://github.com/your-username/the-repository.git
+      ```
+   ````
+
+   ````{tab} GitLab
+
+      ```bash
+      $ git clone https://gitlab.com/your-username/the-repository.git
+      ```
+   ````
+`````
 
 
-### Step 8: Open a pull request (GitHub)/ merge request (GitLab)
+### Step 8: Fix the broken test
 
-Go back to the repository on GitHub or GitLab and open a pull/merge
-request. **In a collaborative setting, you could request a code
-review from collaborators at this stage.** Before accepting the
-pull/merge request, observe how GitHub Actions/ Gitlab CI
-automatically tested the code.
+After you have fixed the code, commit the following commit message
+`"restore function subtract; fixes #1"` (assuming that you try to fix
+issue number 1).
 
-If you forgot to reference the issue number in the commit message, you
-can still add it to the pull/merge request: `my pull/merge request
-title, closes #1`.
+Then push to your fork.
 
 
-### Step 9: Accept the pull/merge request
+### Step 9: Open a pull request (GitHub)/ merge request (GitLab)
 
-Observe how accepting the pull/merge request automatically closes the issue (provided
-the commit message or the pull/merge request contained the correct issue number).
+Then before accepting the pull request/ merge request from your colleague, observe
+how GitHub Actions/ Gitlab CI automatically tested the code.
+
+If you forgot to reference the issue number in the commit message, you can still add it to
+the pull request/ merge request: `my pull/merge request title, closes #NUMBEROFTHEISSUE`
+
+
+### Step 10: Accept the pull request/ merge request
+
+Observe how accepting the pull request/ merge request automatically closes the issue (provided
+the commit message or the pull request/ merge request contained the correct issue number).
 
 See also:
 - GitHub: [closing issues using keywords](https://help.github.com/articles/closing-issues-using-keywords/)
@@ -290,15 +320,22 @@ Discuss whether this is a useful feature. And if it is, why do you think is it u
 
 Finally, we discuss together about our experiences with this exercise.
 
+
+```{challenge} Optional exercise
+In the [Social coding and open software](https://cicero.xyz/v3/remark/0.14.0/github.com/coderefinery/social-coding/master/talk.md/)
+lesson we learn how important it is to add a LICENSE file.
+
+Your goal:
+- You discover that your coworker's repository does not have a LICENSE file.
+- Open an issue and suggest a LICENSE.
+- Then add a LICENSE via a pull/merge request, referencing the issue number.
+```
+
 ---
 
 ## Where to go from here
 
 - This example was using Python but you can achieve the same automation for R or Fortran or C/C++ or other languages
-- This workflow is very useful for collaborators who work on the same code and it works both for
-  [centralized](https://coderefinery.github.io/git-collaborative/02-centralized/) and
-  [forking](https://coderefinery.github.io/git-collaborative/03-distributed/) workflows - have a look at this
-  [alternative exercise](./full-cycle-ci) to see how that works.
 - GitHub Actions has a [Marketpace](https://github.com/marketplace?type=actions) which offer wide range of automatic workflows
 - On GitLab use [GitLab CI](https://about.gitlab.com/product/continuous-integration/)
 - For Windows builds you can also use [Appveyor](https://www.appveyor.com)

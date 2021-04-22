@@ -1,9 +1,9 @@
-Automated testing
-=================
+Software testing
+================
 
 In this lesson we will discuss why testing often needs to be part of the
 software development cycle and how such a cycle can be implemented. We will
-exercise automated testing as part of a collaborative code review workflow.
+see automated testing works and practice designing and writing tests.
 
 .. prereq::
 
@@ -20,9 +20,9 @@ exercise automated testing as part of a collaborative code review workflow.
 
    10 min ; :doc:`motivation`
    10 min ; :doc:`concepts`
-   25 min ; :doc:`pytest`
-   40 min ; :doc:`continuous-integration`
-   55 min ; :doc:`test-design`
+   20 min ; :doc:`pytest`
+   30 min ; :doc:`continuous-integration`
+   30 min ; :doc:`test-design`
    5 min ; :doc:`conclusions`
 
 
@@ -36,6 +36,7 @@ exercise automated testing as part of a collaborative code review workflow.
    continuous-integration
    test-design
    conclusions
+   full-cycle-ci
 
 
 .. toctree::
