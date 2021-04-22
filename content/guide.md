@@ -72,9 +72,12 @@ automated testing using GitHub Actions or GitLab CI in the Automated
 Testing episode. This episode is a simplified version of the
 collaborative exercise in the optional episode "Full-cycle
 collaborative workflow", and the instructor has a choice which one to
-teach (with the latter requiring around double the time).  The
+teach (with the latter requiring around double the time). The
 exercise in Automated Testing can either be done as a type-along
-demonstration by the instructor or as an exercise in breakout rooms.
+demonstration by the instructor or as an exercise in breakout rooms.  
+**If run as an exercise, this episode requires that learners know how
+to set up Git repositories locally and online and how to work with
+pull/merge requests!**
 
 If the optional Full-cycle episode is covered, it is useful during the
 wrap up of the exercise to have a co-instructor doing the exercise in
