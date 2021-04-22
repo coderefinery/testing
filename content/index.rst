@@ -36,6 +36,7 @@ exercise automated testing as part of a collaborative code review workflow.
    continuous-integration
    test-design
    conclusions
+   full-cycle-ci
 
 
 .. toctree::
