@@ -1,9 +1,9 @@
-Automated testing
-=================
+Software testing
+================
 
 In this lesson we will discuss why testing often needs to be part of the
 software development cycle and how such a cycle can be implemented. We will
-exercise automated testing as part of a collaborative code review workflow.
+see automated testing works and practice designing and writing tests.
 
 .. prereq::
 
