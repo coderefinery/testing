@@ -35,7 +35,7 @@
 
 The quote from another testing lesson by Kathryn Huff can be discussed
 to get participants to reflect on the role of software testing in
-science and its parallells to calibrating measurement devices. The second half
+science and its parallels to calibrating measurement devices. The second half
 of the quote is left out because it goes so far as to say that untested software
 does not constitute science, and this can be offending to learners.
 
