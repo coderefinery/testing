@@ -75,6 +75,7 @@ collaborative workflow", and the instructor has a choice which one to
 teach (with the latter requiring around double the time). The
 exercise in Automated Testing can either be done as a type-along
 demonstration by the instructor or as an exercise in breakout rooms.  
+
 **If run as an exercise, this episode requires that learners know how
 to set up Git repositories locally and online and how to work with
 pull/merge requests!**
@@ -93,6 +94,12 @@ randomness, TDD). In normal workshops there are far too many
 exercises for the available time so the instructor has freedom to
 recommend specific exercises, to let learners choose themselves, or to
 recommend learners to discuss rather than implement the tests.
+
+#### Order of Continuous Integration and Test Design
+
+When this lesson is taught standalone in a software testing workshop
+or hackathon, it might be better to go through the Test Design episode
+before the Continuous Integration episode.
 
 ### Timing
 
