@@ -72,7 +72,10 @@ Also discuss why some are easier to test than others.
       ```{literalinclude} code/factorial.f90
       :language: fortran
       ```
+
     ````
+    Discussion point: The factorial grows very rapidly. What happens if you
+    pass a large number as argument to the function? 
    `````
 
 ``````{solution}
@@ -118,6 +121,10 @@ function more fine-grained and test only one concept.
       ```
    ````
 `````
+   Notes on the discussion point: Programming languages differ in the way they deal with integer
+   overflow. Python automatically converts to the necessary `long` type, in Julia you would
+   observe a "wrap-around", in C/C++ you get undefined behaviour for signed integers.
+   Testing for overflow likewise depends on the language.
 ``````
 ```````
 
