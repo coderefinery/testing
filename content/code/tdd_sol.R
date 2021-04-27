@@ -2,7 +2,7 @@
 fizz_buzz <- function(number){
   if(!number%%1==0 | number < 0) {
      stop("non-integer or negative input not allowed!")
-   }
+  }
   if(number%%3 == 0 & number%%5 == 0) {
     return('FizzBuzz')
   }
