@@ -1,0 +1,8 @@
+@test
+subroutine test_fizzbuzz()
+   use fizzbuzz_mod
+   use funit
+   @assertEqual('Fizz', fizzbuzz(12), 'fizzbuzz(12)')
+   @assertEqual('Buzz', fizzbuzz(25), 'fizzbuzz(25)')
+   @assertEqual('FizzBuzz', fizzbuzz(60), 'fizzbuzz(60)')
+end subroutine test_fizzbuzz

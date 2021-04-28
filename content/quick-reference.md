@@ -250,6 +250,7 @@ end subroutine
 
 - [Example output](https://travis-ci.org/bast/pfunit-demo/builds/104193675)
 - [Example project](https://github.com/bast/pfunit-demo)
+- [Example factorial and FizzBuzz](https://github.com/coderefinery/testing/tree/main/content/code/pFUnitexamples)
 
 ---
 
