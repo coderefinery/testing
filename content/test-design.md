@@ -59,8 +59,8 @@ In this episode we will consider how functions and programs can be tested in pro
 
     ```{tab} Fortran
 
-    The suggested solutions below use pFUnit. Further information and
-    installation instructions can
+    The suggested solutions below use pFUnit. Further information on how to install 
+    pFUnit and set up tests can
     be found in the [Quick Reference](./quick-reference.html#pfunit).
     ```
   ````
