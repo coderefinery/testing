@@ -42,35 +42,35 @@ Also discuss why some are easier to test than others.
   `````{tabs}
     ````{tab} Python
 
-      ```{literalinclude} code/factorial.py
+      ```{literalinclude} code/python/factorial.py
       :language: python
       ```
     ````
 
     ````{tab} C++
 
-      ```{literalinclude} code/factorial.cpp
+      ```{literalinclude} code/cpp/factorial.cpp
       :language: C++
       ```
     ````
 
     ````{tab} R
 
-      ```{literalinclude} code/factorial.R
+      ```{literalinclude} code/R/factorial.R
       :language: R
       ```
     ````
 
     ````{tab} Julia
 
-      ```{literalinclude} code/factorial.jl
+      ```{literalinclude} code/julia/factorial.jl
       :language: julia
       ```
     ````
 
     ````{tab} Fortran
 
-      ```{literalinclude} code/pFUnitexamples/factorial.f90
+      ```{literalinclude} code/fortran/factorial.f90
       :language: fortran
       ```
 
@@ -89,35 +89,35 @@ function more fine-grained and test only one concept.
 `````{tabs}
    ````{tab} Python
 
-      ```{literalinclude} code/factorial_sol.py
+      ```{literalinclude} code/python/factorial_sol.py
       :language: python
       ```
    ````
 
    ````{tab} C++
 
-      ```{literalinclude} code/factorial_sol.cpp
+      ```{literalinclude} code/cpp/factorial_sol.cpp
       :language: c++
       ```
    ````
 
    ````{tab} R
 
-      ```{literalinclude} code/factorial_sol.R
+      ```{literalinclude} code/R/factorial_sol.R
       :language: R
       ```
    ````
 
    ````{tab} Julia
 
-      ```{literalinclude} code/factorial_sol.jl
+      ```{literalinclude} code/julia/factorial_sol.jl
       :language: julia
       ```
    ````
 
    ````{tab} Fortran
 
-      ```{literalinclude} code/factorial_sol.f90
+      ```{literalinclude} code/fortran/factorial_sol.f90
       :language: fortran
       ```
    ````
@@ -133,35 +133,35 @@ function more fine-grained and test only one concept.
 `````{tabs}
    ````{tab} Python
 
-      ```{literalinclude} code/count_word_occurrence_in_string.py
+      ```{literalinclude} code/python/count_word_occurrence_in_string.py
       :language: Python
       ```
    ````
 
    ````{tab} C++
 
-      ```{literalinclude} code/count_word_occurrence_in_string.cpp
+      ```{literalinclude} code/cpp/count_word_occurrence_in_string.cpp
       :language: c++
       ```
    ````
 
    ````{tab} R
 
-      ```{literalinclude} code/count_word_occurrence_in_string.R
+      ```{literalinclude} code/R/count_word_occurrence_in_string.R
       :language: R
       ```
    ````
 
    ````{tab} Julia
 
-      ```{literalinclude} code/count_word_occurrence_in_string.jl
+      ```{literalinclude} code/julia/count_word_occurrence_in_string.jl
       :language: julia
       ```
    ````
 
    ````{tab} Fortran
 
-      ```{literalinclude} code/count_word_occurrence_in_string.f90
+      ```{literalinclude} code/fortran/count_word_occurrence_in_string.f90
       :language: fortran
       ```
    ````
@@ -174,35 +174,35 @@ to the above.
 `````{tabs}
    ````{tab} Python
 
-      ```{literalinclude} code/count_word_occurrence_in_string_sol.py
+      ```{literalinclude} code/python/count_word_occurrence_in_string_sol.py
       :language: Python
       ```
    ````
 
    ````{tab} C++
 
-      ```{literalinclude} code/count_word_occurrence_in_string_sol.cpp
+      ```{literalinclude} code/cpp/count_word_occurrence_in_string_sol.cpp
       :language: c++
       ```
    ````
 
    ````{tab} R
 
-      ```{literalinclude} code/count_word_occurrence_in_string_sol.R
+      ```{literalinclude} code/R/count_word_occurrence_in_string_sol.R
       :language: R
       ```
    ````
 
    ````{tab} Julia
 
-      ```{literalinclude} code/count_word_occurrence_in_string_sol.jl
+      ```{literalinclude} code/julia/count_word_occurrence_in_string_sol.jl
       :language: julia
       ```
    ````
 
    ````{tab} Fortran
 
-      ```{literalinclude} code/count_word_occurrence_in_string_sol.f90
+      ```{literalinclude} code/fortran/count_word_occurrence_in_string_sol.f90
       :language: fortran
       ```
    ````
@@ -215,35 +215,35 @@ to the above.
 
    ````{tab} Python
 
-      ```{literalinclude} code/count_word_occurrence_in_file.py
+      ```{literalinclude} code/python/count_word_occurrence_in_file.py
       :language: Python
       ```
    ````
 
    ````{tab} C++
 
-      ```{literalinclude} code/count_word_occurrence_in_file.cpp
+      ```{literalinclude} code/cpp/count_word_occurrence_in_file.cpp
       :language: c++
       ```
    ````
 
    ````{tab} R
 
-      ```{literalinclude} code/count_word_occurrence_in_file.R
+      ```{literalinclude} code/R/count_word_occurrence_in_file.R
       :language: R
       ```
    ````
 
    ````{tab} Julia
 
-      ```{literalinclude} code/count_word_occurrence_in_file.jl
+      ```{literalinclude} code/julia/count_word_occurrence_in_file.jl
       :language: julia
       ```
    ````
 
    ````{tab} Fortran
 
-      ```{literalinclude} code/count_word_occurrence_in_file.f90
+      ```{literalinclude} code/fortran/count_word_occurrence_in_file.f90
       :language: fortran
       ```
    ````
@@ -259,35 +259,35 @@ calculation, so that testing the calculation part becomes easy (see above).
 
    ````{tab} Python
 
-      ```{literalinclude} code/count_word_occurrence_in_file_sol.py
+      ```{literalinclude} code/python/count_word_occurrence_in_file_sol.py
       :language: Python
       ```
    ````
 
    ````{tab} C++
 
-      ```{literalinclude} code/count_word_occurrence_in_file_sol.cpp
+      ```{literalinclude} code/cpp/count_word_occurrence_in_file_sol.cpp
       :language: c++
       ```
    ````
 
    ````{tab} R
 
-      ```{literalinclude} code/count_word_occurrence_in_file_sol.R
+      ```{literalinclude} code/R/count_word_occurrence_in_file_sol.R
       :language: R
       ```
    ````
 
    ````{tab} Julia
 
-      ```{literalinclude} code/count_word_occurrence_in_file_sol.jl
+      ```{literalinclude} code/julia/count_word_occurrence_in_file_sol.jl
       :language: julia
       ```
    ````
 
    ````{tab} Fortran
 
-      ```{literalinclude} code/count_word_occurrence_in_file_sol.f90
+      ```{literalinclude} code/fortran/count_word_occurrence_in_file_sol.f90
       :language: fortran
       ```
    ````
@@ -303,35 +303,35 @@ This one is not easy to test because the function has an external dependency.
 
    ````{tab} Python
 
-      ```{literalinclude} code/reactor_temperature.py
+      ```{literalinclude} code/python/reactor_temperature.py
       :language: Python
       ```
    ````
 
    ````{tab} C++
 
-      ```{literalinclude} code/reactor_temperature.cpp
+      ```{literalinclude} code/cpp/reactor_temperature.cpp
       :language: c++
       ```
    ````
 
    ````{tab} R
 
-      ```{literalinclude} code/reactor_temperature.R
+      ```{literalinclude} code/R/reactor_temperature.R
       :language: R
       ```
    ````
 
    ````{tab} Julia
 
-      ```{literalinclude} code/reactor_temperature.jl
+      ```{literalinclude} code/julia/reactor_temperature.jl
       :language: julia
       ```
    ````
 
    ````{tab} Fortran
 
-      ```{literalinclude} code/reactor_temperature.f90
+      ```{literalinclude} code/fortran/reactor_temperature.f90
       :language: fortran
       ```
    ````
@@ -351,35 +351,35 @@ A better solution would probably be to rewrite the function.
 
    ````{tab} Python
 
-      ```{literalinclude} code/reactor_temperature_sol.py
+      ```{literalinclude} code/python/reactor_temperature_sol.py
       :language: Python
       ```
    ````
 
    ````{tab} C++
 
-      ```{literalinclude} code/reactor_temperature_sol.cpp
+      ```{literalinclude} code/cpp/reactor_temperature_sol.cpp
       :language: c++
       ```
    ````
 
    ````{tab} R
 
-      ```{literalinclude} code/reactor_temperature_sol.R
+      ```{literalinclude} code/R/reactor_temperature_sol.R
       :language: R
       ```
    ````
 
    ````{tab} Julia
 
-      ```{literalinclude} code/reactor_temperature_sol.jl
+      ```{literalinclude} code/julia/reactor_temperature_sol.jl
       :language: julia
       ```
    ````
 
    ````{tab} Fortran
 
-      ```{literalinclude} code/reactor_temperature_sol.f90
+      ```{literalinclude} code/fortran/reactor_temperature_sol.f90
       :language: fortran
       ```
    ````
@@ -393,35 +393,35 @@ A better solution would probably be to rewrite the function.
 
    ````{tab} Python
 
-      ```{literalinclude} code/Pet.py
+      ```{literalinclude} code/python/Pet.py
       :language: Python
       ```
    ````
 
    ````{tab} C++
 
-      ```{literalinclude} code/Pet.cpp
+      ```{literalinclude} code/cpp/Pet.cpp
       :language: c++
       ```
    ````
 
    ````{tab} R
 
-      ```{literalinclude} code/Pet.R
+      ```{literalinclude} code/R/Pet.R
       :language: R
       ```
    ````
 
    ````{tab} Julia
 
-      ```{literalinclude} code/Pet.jl
+      ```{literalinclude} code/julia/Pet.jl
       :language: julia
       ```
    ````
 
    ````{tab} Fortran
 
-      ```{literalinclude} code/Pet.f90
+      ```{literalinclude} code/fortran/Pet.f90
       :language: fortran
       ```
    ````
@@ -432,35 +432,35 @@ A better solution would probably be to rewrite the function.
 
    ````{tab} Python
 
-      ```{literalinclude} code/Pet_sol.py
+      ```{literalinclude} code/python/Pet_sol.py
       :language: Python
       ```
    ````
 
    ````{tab} C++
 
-      ```{literalinclude} code/Pet_sol.cpp
+      ```{literalinclude} code/cpp/Pet_sol.cpp
       :language: c++
       ```
    ````
 
    ````{tab} R
 
-      ```{literalinclude} code/Pet_sol.R
+      ```{literalinclude} code/R/Pet_sol.R
       :language: R
       ```
    ````
 
    ````{tab} Julia
 
-      ```{literalinclude} code/Pet_sol.jl
+      ```{literalinclude} code/julia/Pet_sol.jl
       :language: julia
       ```
    ````
 
    ````{tab} Fortran
 
-      ```{literalinclude} code/Pet_sol.f90
+      ```{literalinclude} code/fortran/Pet_sol.f90
       :language: fortran
       ```
    ````
@@ -496,35 +496,35 @@ until they pass.
 
    ````{tab} Python
 
-      ```{literalinclude} code/tdd_sol.py
+      ```{literalinclude} code/python/tdd_sol.py
       :language: Python
       ```
    ````
 
    ````{tab} C++
 
-      ```{literalinclude} code/tdd_sol.cpp
+      ```{literalinclude} code/cpp/tdd_sol.cpp
       :language: c++
       ```
    ````
 
    ````{tab} R
 
-      ```{literalinclude} code/tdd_sol.R
+      ```{literalinclude} code/R/tdd_sol.R
       :language: R
       ```
    ````
 
    ````{tab} Julia
 
-      ```{literalinclude} code/tdd_sol.jl
+      ```{literalinclude} code/julia/tdd_sol.jl
       :language: julia
       ```
    ````
 
    ````{tab} Fortran
 
-      ```{literalinclude} code/tdd_sol.f90
+      ```{literalinclude} code/fortran/tdd_sol.f90
       :language: fortran
       ```
    ````
@@ -569,21 +569,21 @@ many strategies exist:
 
    ````{tab} Python
 
-      ```{literalinclude} code/yahtzee.py
+      ```{literalinclude} code/python/yahtzee.py
       :language: Python
       ```
    ````
 
    ````{tab} C++
 
-      ```{literalinclude} code/yahtzee.cpp
+      ```{literalinclude} code/cpp/yahtzee.cpp
       :language: c++
       ```
    ````
 
    ````{tab} Julia
 
-      ```{literalinclude} code/yahtzee.jl
+      ```{literalinclude} code/julia/yahtzee.jl
       :language: julia
       ```
    ````
@@ -595,21 +595,21 @@ many strategies exist:
 
    ````{tab} Python
 
-      ```{literalinclude} code/yahtzee_sol.py
+      ```{literalinclude} code/python/yahtzee_sol.py
       :language: Python
       ```
    ````
 
    ````{tab} C++
 
-      ```{literalinclude} code/yahtzee_sol.cpp
+      ```{literalinclude} code/cpp/yahtzee_sol.cpp
       :language: c++
       ```
    ````
 
    ````{tab} Julia
 
-      ```{literalinclude} code/yahtzee_sol.jl
+      ```{literalinclude} code/julia/yahtzee_sol.jl
       :language: julia
       ```
    ````

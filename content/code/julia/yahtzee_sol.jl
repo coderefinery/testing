@@ -1,4 +1,7 @@
 using Test
+using Random
+
+include("yahtzee.jl")
 
 @testset "test roll_dice" begin
     # fix random seed
