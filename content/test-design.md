@@ -117,7 +117,7 @@ function more fine-grained and test only one concept.
 
    ````{tab} Fortran
 
-      ```{literalinclude} code/fortran/factorial_sol.f90
+      ```{literalinclude} code/fortran/test_factorial.pf
       :language: fortran
       ```
    ````
@@ -496,37 +496,40 @@ until they pass.
 
    ````{tab} Python
 
-      ```{literalinclude} code/python/tdd_sol.py
+      ```{literalinclude} code/python/fizzbuzz.py
       :language: Python
       ```
    ````
 
    ````{tab} C++
 
-      ```{literalinclude} code/cpp/tdd_sol.cpp
+      ```{literalinclude} code/cpp/fizzbuzz.cpp
       :language: c++
       ```
    ````
 
    ````{tab} R
 
-      ```{literalinclude} code/R/tdd_sol.R
+      ```{literalinclude} code/R/fizzbuzz.R
       :language: R
       ```
    ````
 
    ````{tab} Julia
 
-      ```{literalinclude} code/julia/tdd_sol.jl
+      ```{literalinclude} code/julia/fizzbuzz.jl
       :language: julia
       ```
    ````
 
    ````{tab} Fortran
 
-      ```{literalinclude} code/fortran/tdd_sol.f90
+      ```{literalinclude} code/fortran/fizzbuzz.f90
       :language: fortran
       ```
+      ```{literalinclude} code/fortran/test_fizzbuzz.pf
+      :language: fortran
+      ```      
    ````
    `````
 ``````
