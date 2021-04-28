@@ -9,37 +9,38 @@ of code automatically.  They provide more control than one single
 script which does some tests.
 
 - Python
-    - [pytest](http://doc.pytest.org)
+    - [pytest](#pytest)
     - [nose](http://nose.readthedocs.io)
     - [doctest](https://docs.python.org/2/library/doctest.html)
     - [unittest](https://docs.python.org/2/library/unittest.html)
 
 - R
-    - [testthat](https://github.com/r-lib/testthat)
+    - [testthat](#testthat)
 
 - Julia
-    - [Test](https://docs.julialang.org/en/v1/stdlib/Test/)
+    - [Test](#test)
 
 - Matlab
     - [Class-Based Unit Tests](https://www.mathworks.com/help/matlab/class-based-unit-tests.html)
 
 - C(++)
-    - [Google Test](https://github.com/google/googletest)
-    - [Catch2](http://catch-lib.net)
+    - [Google Test](#google-test)
+    - [Catch2](#catch2)
     - [cppunit](https://freedesktop.org/wiki/Software/cppunit/)
-    - [Boost.Test](http://www.boost.org/doc/libs/1_62_0/libs/test/doc/html/index.html)
+    - [Boost.Test](#boost-test)
     - [UnitTest++](http://unittest-cpp.github.io)
 
 - Fortran
-    - [pFUnit](https://sourceforge.net/projects/pfunit/)
+    - [pFUnit](#pfunit)
     - [FRUIT](https://sourceforge.net/projects/fortranxunit/)
     - [Ftunit](http://flibs.sourceforge.net/ftnunit.html)
 
 ---
 
-### [pytest](http://doc.pytest.org)
+### pytest
 
 - Python
+- http://doc.pytest.org
 - Installable via Conda or pip.
 - Easy to use: Prefix a function with `test_` and the test runner will execute it.
   No need to subclass anything.
@@ -62,9 +63,10 @@ def test_get_word_lengths():
 
 ---
 
-### [testthat](https://github.com/r-lib/testthat)
+### testthat
 
 - R
+- https://github.com/r-lib/testthat
 - Easily installed from CRAN with `install.packages("testthat")`, or from GitHub with `devtools::install_github("r-lib/testthat")`
 - Use in package development with `usethis::use_testthat()`
 - Add a new test file with `usethis::use_test("test-name")`, e.g.:
@@ -106,9 +108,10 @@ More information in the [Testing chapter](http://r-pkgs.had.co.nz/tests.html) of
 
 ---
 
-### [Test](https://docs.julialang.org/en/v1/stdlib/Test/)
+### Test
 
 - Julia
+- https://docs.julialang.org/en/v1/stdlib/Test/
 - Part of the standard library
 - Provides simple unit testing functionality with
   `@test` and `@test_throws` macros:
@@ -152,9 +155,10 @@ end
 
 ---
 
-### [Catch2](https://github.com/catchorg/Catch2)
+### Catch2
 
 - C++
+- https://github.com/catchorg/Catch2
 - Widely used
 - Header-only
 - Very rich in functionality
@@ -178,9 +182,10 @@ TEST_CASE("Use the example library to add numbers", "[add]") {
 
 ---
 
-### [Google Test](https://github.com/google/googletest)
+### Google Test
 
 - C++
+- https://github.com/google/googletest
 - Widely used
 - Very rich in functionality
 - Well-integrated with CMake
@@ -202,9 +207,10 @@ TEST(example, add) {
 
 ---
 
-### [Boost.Test](https://www.boost.org/doc/libs/1_75_0/libs/test/doc/html/index.html)
+### Boost.Test
 
 - C++
+- https://www.boost.org/doc/libs/1_75_0/libs/test/doc/html/index.html
 - Very rich in functionality
 - Header-only use possible
 
@@ -225,9 +231,10 @@ BOOST_AUTO_TEST_CASE( add )
 
 ---
 
-### [pFUnit](https://github.com/Goddard-Fortran-Ecosystem/pFUnit)
+### pFUnit
 
 - Fortran
+- https://github.com/Goddard-Fortran-Ecosystem/pFUnit
 - Very rich in functionality
 - Requires modern Fortran compilers (uses F2003 standard)
 
@@ -248,9 +255,21 @@ subroutine test_add_numbers()
 end subroutine
 ```
 
+- [Example installation instructions](./code/fortran/buildpFUnitTetralith)
+
+To test the `factorial` and `fizzbuzz` functions from the [test-design
+exercises](./test-design), use this `CMakeLists.txt` file:
+```{literalinclude} code/fortran/CMakeLists.txt
+:language: cmake
+```
+
+You can then compile using this script:
+```{literalinclude} code/fortran/build_with_cmake_and_run.sh
+:language: bash
+```
+
 - [Example output](https://travis-ci.org/bast/pfunit-demo/builds/104193675)
 - [Example project](https://github.com/bast/pfunit-demo)
-- [Example factorial and FizzBuzz](https://github.com/coderefinery/testing/tree/main/content/code/pFUnitexamples)
 
 ---
 
