@@ -31,6 +31,40 @@ In this episode we will consider how functions and programs can be tested in pro
 - Discussion on experiences learned (10 minutes).
 ```
 
+`````{callout} Language-specific instructions
+  ````{tabs}
+    ```{tab} Python
+
+    The suggested solutions below use pytest. Further information can
+    be found in the [Quick Reference](./quick-reference.html#pytest).
+    ```
+
+    ```{tab} C++
+
+    The suggested solutions below use Catch2. Further information can
+    be found in the [Quick Reference](./quick-reference.html#catch2).
+    ```
+
+   ```{tab} R
+
+    The suggested solutions below use testthat. Further information can
+    be found in the [Quick Reference](./quick-reference.html#testthat).
+    ```
+
+    ```{tab} Julia
+
+    The suggested solutions below use Test. Further information can
+    be found in the [Quick Reference](./quick-reference.html#test).
+    ```
+
+    ```{tab} Fortran
+
+    The suggested solutions below use pFUnit. Further information and
+    installation instructions can
+    be found in the [Quick Reference](./quick-reference.html#pfunit).
+    ```
+  ````
+`````
 
 ## Pure and impure functions
 
