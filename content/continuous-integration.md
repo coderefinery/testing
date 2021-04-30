@@ -258,6 +258,15 @@ After you have fixed the code on the new branch, commit the following
 commit message `"restore function subtract; fixes #1"` (assuming that
 you try to fix issue number 1).
 
+```{callout} Shortcut
+
+   Here it's perfectly possible to take a shortcut and commit and push
+   directly to the main branch. If you do this, steps 8-9 below are skipped.  
+   - When would you push directly to the main branch, and when would you send a
+   pull/merge request?
+```   
+   
+
 Then push to your repository.
 
 
