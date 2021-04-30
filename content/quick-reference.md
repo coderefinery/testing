@@ -286,6 +286,13 @@ projects.
 - [Coveralls](https://coveralls.io)
 - [Codecov](https://codecov.io)
 
+---
+
+## Good resources
+
+- [Getting Started With Testing in Python](https://realpython.com/python-testing/)
+- [Introductions to Python Testing Frameworks](http://pythontesting.net/start-here/)
+
 
 ```{keypoints}
 - Testing is a basic requirement of any possible language

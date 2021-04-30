@@ -9,8 +9,3 @@
 - Use code coverage analysis to identify untested or unused code
 - If you make your code easier to test, it becomes more modular
 
-
-## Good resources
-
-- [Getting Started With Testing in Python](https://realpython.com/python-testing/)
-- [Introductions to Python Testing Frameworks](http://pythontesting.net/start-here/)
