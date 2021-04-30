@@ -1,0 +1,530 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>(Optional) Full-cycle collaborative workflow &mdash; Software testing  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/togglebutton.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/mystnb.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/tabs.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/sphinx_lesson.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/sphinx_rtd_theme_ext_color_contrast.css" type="text/css" />
+
+  
+  
+    <link rel="shortcut icon" href="../_static/coderefinery.ico"/>
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/togglebutton.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
+        <script src="../_static/minipres.js"></script>
+        <script src="../_static/tabs.js"></script>
+        <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex/" />
+    <link rel="search" title="Search" href="../search/" />
+    <link rel="next" title="Quick Reference" href="../quick-reference/" />
+    <link rel="prev" title="Conclusions and recommendations" href="../conclusions/" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../" class="icon icon-home"> Software testing
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search/" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">The lesson</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../motivation/">Motivation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../concepts/">Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pytest/">Testing locally</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../continuous-integration/">Automated testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../test-design/">Test design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../conclusions/">Conclusions and recommendations</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">(Optional) Full-cycle collaborative workflow</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#exercise-a-full-cycle-collaborative-workflow">Exercise a full-cycle collaborative workflow</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#prerequisites">Prerequisites</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#step-1-create-a-new-repository-on-github-gitlab">Step 1: Create a new repository on GitHub/GitLab</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#step-2-clone-your-own-repository-add-code-commit-and-push">Step 2: Clone your own repository, add code, commit, and push</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#step-3-enable-automated-testing">Step 3: Enable automated testing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#step-4-verify-that-tests-have-been-automatically-run">Step 4: Verify that tests have been automatically run</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#step-5-add-a-test-which-reveals-a-problem">Step 5: Add a test which reveals a problem</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#step-6-open-an-issue-on-github-gitlab">Step 6: Open an issue on GitHub/GitLab</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#step-7-fork-and-clone-the-repository-of-your-colleague">Step 7: Fork and clone the repository of your colleague</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#step-8-fix-the-broken-test">Step 8: Fix the broken test</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#step-9-open-a-pull-request-github-merge-request-gitlab">Step 9: Open a pull request (GitHub)/ merge request (GitLab)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#step-10-accept-the-pull-request-merge-request">Step 10: Accept the pull request/ merge request</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#discussion">Discussion</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#where-to-go-from-here">Where to go from here</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../quick-reference/">Quick Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guide/">Instructor guide</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../">Software testing</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>(Optional) Full-cycle collaborative workflow</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            
+              <a href="https://github.com/coderefinery/testing/blob/master/content/full-cycle-ci.md" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="optional-full-cycle-collaborative-workflow">
+<h1>(Optional) Full-cycle collaborative workflow<a class="headerlink" href="#optional-full-cycle-collaborative-workflow" title="Permalink to this headline">¶</a></h1>
+<div class="admonition-questions questions admonition">
+<p class="admonition-title">Questions</p>
+<ul class="simple">
+<li><p>How can we implement automatic testing each time we push changes to the repository?</p></li>
+<li><p>Why is it good to autoclose issues with commit messages?</p></li>
+</ul>
+</div>
+<div class="section" id="exercise-a-full-cycle-collaborative-workflow">
+<h2>Exercise a full-cycle collaborative workflow<a class="headerlink" href="#exercise-a-full-cycle-collaborative-workflow" title="Permalink to this headline">¶</a></h2>
+<p>This exercise is a collaborative version of the <a class="reference internal" href="../continuous-integration/"><span class="doc std std-doc">Automated testing exercise</span></a>.</p>
+<div class="admonition-exercise-overview challenge admonition">
+<p class="admonition-title">Exercise overview</p>
+<p>This is an expanded version of the <a class="reference internal" href="../continuous-integration/"><span class="doc std std-doc">automated testing demonstration</span></a>.
+The exercise is performed in a collaborative circle within the exercise group
+(breakout room).</p>
+<p>The exercise takes 20-30 minutes.</p>
+<p>In this exercise, everybody will:</p>
+<p><strong>A.</strong> Create a repository on GitHub/GitLab (everybody should use a <strong>different repository name</strong> for their repository)<br />
+<strong>B.</strong> Commit code to the repository and set up tests with GitHub Actions/ GitLab CI<br />
+<strong>C.</strong> Everybody will find a bug in their repository and open an issue in their repository<br />
+<strong>D.</strong> Then each one will clone the repo of one of their exercise partners, fix the bug,
+and open a pull request (GitHub)/ merge request (GitLab)<br />
+<strong>E.</strong> Everybody then merges their co-worker’s change</p>
+</div>
+<div class="figure align-default" id="id1">
+<a class="reference internal image-reference" href="../_images/testing_group_work.png"><img alt="Graph with exercise steps" src="../_images/testing_group_work.png" style="width: 300px;" /></a>
+<p class="caption"><span class="caption-text">Overview of this exercise. Below we detail the steps.</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
+</div>
+<div class="section" id="prerequisites">
+<h3>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this headline">¶</a></h3>
+<p>If you are new to Git, you can find a step-by-step guide to
+setting up repositories and making commits in
+<a class="reference external" href="https://coderefinery.github.io/git-refresher/">this git-refresher material</a>.</p>
+</div>
+<div class="section" id="step-1-create-a-new-repository-on-github-gitlab">
+<h3>Step 1: Create a new repository on GitHub/GitLab<a class="headerlink" href="#step-1-create-a-new-repository-on-github-gitlab" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Select a <strong>different repository name</strong> than your colleagues (otherwise forking the same name will be strange)</p></li>
+<li><p><strong>Before</strong> you create the repository, select <strong>“Initialize this repository
+with a README”</strong> (otherwise you try to clone an empty repo).</p></li>
+<li><p>Share the repository URL with your exercise group via shared document or chat</p></li>
+</ul>
+</div>
+<div class="section" id="step-2-clone-your-own-repository-add-code-commit-and-push">
+<h3>Step 2: Clone your own repository, add code, commit, and push<a class="headerlink" href="#step-2-clone-your-own-repository-add-code-commit-and-push" title="Permalink to this headline">¶</a></h3>
+<p>Clone the repository.</p>
+<p>Add a file <code class="docutils literal notranslate"><span class="pre">example.py</span></code> containing:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
+
+
+<span class="k">def</span> <span class="nf">test_add</span><span class="p">():</span>
+    <span class="k">assert</span> <span class="n">add</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span> <span class="o">==</span> <span class="mi">5</span>
+    <span class="k">assert</span> <span class="n">add</span><span class="p">(</span><span class="s1">&#39;space&#39;</span><span class="p">,</span> <span class="s1">&#39;ship&#39;</span><span class="p">)</span> <span class="o">==</span> <span class="s1">&#39;spaceship&#39;</span>
+
+
+<span class="k">def</span> <span class="nf">subtract</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>  <span class="c1"># &lt;--- fix this in step 8</span>
+
+
+<span class="c1"># uncomment the following test in step 5</span>
+<span class="c1">#def test_subtract():</span>
+<span class="c1">#    assert subtract(2, 3) == -1</span>
+</pre></div>
+</div>
+<p>Test <code class="docutils literal notranslate"><span class="pre">example.py</span></code> with <code class="docutils literal notranslate"><span class="pre">pytest</span></code>.</p>
+<p>Then stage the file (<code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">add</span> <span class="pre">&lt;filename&gt;</span></code>), commit (<code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">commit</span> <span class="pre">-m</span> <span class="pre">&quot;some</span> <span class="pre">commit</span> <span class="pre">message&quot;</span></code>),
+and push the changes (<code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">push</span> <span class="pre">origin</span> <span class="pre">main</span></code>).</p>
+</div>
+<div class="section" id="step-3-enable-automated-testing">
+<h3>Step 3: Enable automated testing<a class="headerlink" href="#step-3-enable-automated-testing" title="Permalink to this headline">¶</a></h3>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-0-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-0-0-0" name="0-0" role="tab" tabindex="0">GitHub</button><button aria-controls="panel-0-0-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-1" name="0-1" role="tab" tabindex="-1">GitLab</button></div><div aria-labelledby="tab-0-0-0" class="sphinx-tabs-panel" id="panel-0-0-0" name="0-0" role="tabpanel" tabindex="0"><p>In this step we will enable GitHub Actions.
+Select “Actions” from your GitHub repository page. You get to a page
+“Get started with GitHub Actions”. Select the button for “Set up
+this workflow” under Python Application:</p>
+<div class="figure align-default" id="id2">
+<img alt="Selecting a Python workflow" src="../_images/python_application.png" />
+<p class="caption"><span class="caption-text">Select “Python application” as the starter workflow.</span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
+</div>
+<p>GitHub creates the following file for you in the subfolder <code class="docutils literal notranslate"><span class="pre">.github/workflows</span></code>.
+Add <code class="docutils literal notranslate"><span class="pre">pytest</span> <span class="pre">example.py</span></code> to the last line (highlighted):</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># This workflow will install Python dependencies, run tests and lint with a single version of Python</span>
+<span class="c1"># For more information see: https://help.github.com/actions/language-and-framework-guides/using-python-with-github-actions</span>
+
+<span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Python application</span>
+
+<span class="nt">on</span><span class="p">:</span>
+  <span class="nt">push</span><span class="p">:</span>
+    <span class="nt">branches</span><span class="p">:</span> <span class="p p-Indicator">[</span> <span class="nv">main</span> <span class="p p-Indicator">]</span>
+  <span class="nt">pull_request</span><span class="p">:</span>
+    <span class="nt">branches</span><span class="p">:</span> <span class="p p-Indicator">[</span> <span class="nv">main</span> <span class="p p-Indicator">]</span>
+
+<span class="nt">jobs</span><span class="p">:</span>
+  <span class="nt">build</span><span class="p">:</span>
+
+    <span class="nt">runs-on</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">ubuntu-latest</span>
+
+    <span class="nt">steps</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="nt">uses</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">actions/checkout@v2</span>
+    <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Set up Python 3.8</span>
+      <span class="nt">uses</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">actions/setup-python@v2</span>
+      <span class="nt">with</span><span class="p">:</span>
+        <span class="nt">python-version</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">3.8</span>
+    <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Install dependencies</span>
+      <span class="nt">run</span><span class="p">:</span> <span class="p p-Indicator">|</span>
+        <span class="no">python -m pip install --upgrade pip</span>
+        <span class="no">pip install flake8 pytest</span>
+        <span class="no">if [ -f requirements.txt ]; then pip install -r requirements.txt; fi</span>
+    <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Lint with flake8</span>
+      <span class="nt">run</span><span class="p">:</span> <span class="p p-Indicator">|</span>
+        <span class="no"># stop the build if there are Python syntax errors or undefined names</span>
+        <span class="no">flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics</span>
+        <span class="no"># exit-zero treats all errors as warnings. The GitHub editor is 127 chars wide</span>
+        <span class="no">flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics</span>
+<span class="hll">    <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Test with pytest</span>
+</span><span class="hll">      <span class="nt">run</span><span class="p">:</span> <span class="p p-Indicator">|</span>
+</span><span class="hll">        <span class="no">pytest example.py</span>
+</span></pre></div>
+</div>
+<p>Commit the change by pressing the “Start Commit” button:</p>
+<div class="figure align-default" id="id3">
+<a class="reference internal image-reference" href="../_images/gh_action_commit.png"><img alt="Committing the change" src="../_images/gh_action_commit.png" style="width: 400px;" /></a>
+<p class="caption"><span class="caption-text">Committing the file via the GitHub web interface: follow the flow, give it some commit name. You can commit directly to master.</span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
+</div>
+</div><div aria-labelledby="tab-0-0-1" class="sphinx-tabs-panel" hidden="true" id="panel-0-0-1" name="0-1" role="tabpanel" tabindex="0"><p>In this step we will enable GitLab CI.
+Select “CI/CD” from your Gitlab sidebar of the project. You get to a page
+“Editor”. (Instead you can also click on “Add CI/CD” on the main page or just add a <code class="docutils literal notranslate"><span class="pre">.gitlab-ci.yml</span></code> file the result is identical.</p>
+<p>Copy the following code snippet into the file. Gitlab will save it as <code class="docutils literal notranslate"><span class="pre">.gitlab-ci.yml</span></code>.
+Add <code class="docutils literal notranslate"><span class="pre">pytest</span> <span class="pre">example.py</span></code> to the last line (highlighted):</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># This workflow will install Python dependencies, run tests and lint with a single version of Python</span>
+<span class="c1"># For more information see: https://gitlab.com/gitlab-org/gitlab/-/blob/master/lib/gitlab/ci/templates/Python.gitlab-ci.yml</span>
+
+<span class="nt">image</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">python:latest</span>
+<span class="nt">stages</span><span class="p">:</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">linting</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">test</span>
+<span class="nt">before_script</span><span class="p">:</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">cat /proc/version</span> <span class="c1">#print out operations system</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">python -V</span>  <span class="c1"># Print out python version for debugging</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">pip install pytest flake8</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">if [ -f requirements.txt ]; then pip install -r requirements.txt;fi</span>
+
+<span class="nt">linting</span><span class="p">:</span>
+  <span class="nt">stage</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">linting</span>
+  <span class="nt">script</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics</span>
+
+<span class="nt">test</span><span class="p">:</span>
+  <span class="nt">stage</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">test</span>
+<span class="hll">  <span class="nt">script</span><span class="p">:</span>
+</span>    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">pytest example.py</span>
+</pre></div>
+</div>
+<p>Commit the change by pressing the “Commit changes” button:</p>
+<div class="figure align-default" id="id4">
+<a class="reference internal image-reference" href="../_images/gl_action_commit.png"><img alt="Committing the change" src="../_images/gl_action_commit.png" style="width: 400px;" /></a>
+<p class="caption"><span class="caption-text">Committing the file via the GitLab web interface: follow the flow, give it some commit name. You can commit directly to master.</span><a class="headerlink" href="#id4" title="Permalink to this image">¶</a></p>
+</div>
+</div></div>
+</div>
+<div class="section" id="step-4-verify-that-tests-have-been-automatically-run">
+<h3>Step 4: Verify that tests have been automatically run<a class="headerlink" href="#step-4-verify-that-tests-have-been-automatically-run" title="Permalink to this headline">¶</a></h3>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-1-1-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-1-1-0" name="1-0" role="tab" tabindex="0">GitHub</button><button aria-controls="panel-1-1-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-1-1-1" name="1-1" role="tab" tabindex="-1">GitLab</button></div><div aria-labelledby="tab-1-1-0" class="sphinx-tabs-panel" id="panel-1-1-0" name="1-0" role="tabpanel" tabindex="0"><p>Observe in the repository how the test succeeds. While the test is
+executing, the repository has a yellow marker. This is replaced with a green
+check mark, once the test succeeds:</p>
+<div class="figure align-default" id="id5">
+<img alt="Verify that the test passed" src="../_images/green_check_mark.png" />
+<p class="caption"><span class="caption-text">Green check means passed.</span><a class="headerlink" href="#id5" title="Permalink to this image">¶</a></p>
+</div>
+<p>Also browse the “Actions” tab and look at the steps there and their output.</p>
+</div><div aria-labelledby="tab-1-1-1" class="sphinx-tabs-panel" hidden="true" id="panel-1-1-1" name="1-1" role="tabpanel" tabindex="0"><p>Observe in the repository how the test succeeds. While the test is
+executing, the repository has a blue marker. This is replaced with a green
+check mark, once the test succeeds:</p>
+<div class="figure align-default" id="id6">
+<img alt="Verify that the test passed" src="../_images/gl_green_check_mark.png" />
+<p class="caption"><span class="caption-text">Green check means passed.</span><a class="headerlink" href="#id6" title="Permalink to this image">¶</a></p>
+</div>
+<p>Also browse the “Pipelines” tab and look at the steps there and their output.</p>
+</div></div>
+</div>
+<div class="section" id="step-5-add-a-test-which-reveals-a-problem">
+<h3>Step 5: Add a test which reveals a problem<a class="headerlink" href="#step-5-add-a-test-which-reveals-a-problem" title="Permalink to this headline">¶</a></h3>
+<p>After you committed the workflow file, your GitHub/GitLab repository will be ahead of
+your local cloned repository.  Update your local cloned repository:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git pull origin main
+</pre></div>
+</div>
+<p>Hint for helpers: if the above command fails, check whether the branch name on the GitHub/GitLab
+repository is called <code class="docutils literal notranslate"><span class="pre">main</span></code> and not perhaps <code class="docutils literal notranslate"><span class="pre">master</span></code>.</p>
+<p>Next uncomment the code in <code class="docutils literal notranslate"><span class="pre">example.py</span></code> under “step 5”, commit, and push.
+Verify that the test suite now fails on the “Actions” tab (GitHub)
+or the “CI/CD-&gt;Pipelines” tab (GitLab).</p>
+</div>
+<div class="section" id="step-6-open-an-issue-on-github-gitlab">
+<h3>Step 6: Open an issue on GitHub/GitLab<a class="headerlink" href="#step-6-open-an-issue-on-github-gitlab" title="Permalink to this headline">¶</a></h3>
+<p>Open a new issue in your repository about the broken test (click the “Issues” button on
+GitHub or GitLab and write a title for the issue).
+The plan is that your colleague will fix the issue through a pull/merge request.</p>
+</div>
+<div class="section" id="step-7-fork-and-clone-the-repository-of-your-colleague">
+<h3>Step 7: Fork and clone the repository of your colleague<a class="headerlink" href="#step-7-fork-and-clone-the-repository-of-your-colleague" title="Permalink to this headline">¶</a></h3>
+<p>Fork the repository using the GitHub/GitLab web interface.
+(if you are unfamiliar with forking and pull requests, have a look at
+<a class="reference external" href="https://coderefinery.github.io/git-collaborative/03-distributed/#forking-layout">this visual representation</a>).</p>
+<p><strong>Make sure you clone the fork after you have forked it. Do not clone
+your colleague’s repository directly.</strong></p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-2-2-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-2-2-0" name="2-0" role="tab" tabindex="0">GitHub</button><button aria-controls="panel-2-2-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-2-2-1" name="2-1" role="tab" tabindex="-1">GitLab</button></div><div aria-labelledby="tab-2-2-0" class="sphinx-tabs-panel" id="panel-2-2-0" name="2-0" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git clone https://github.com/your-username/the-repository.git
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-2-2-1" class="sphinx-tabs-panel" hidden="true" id="panel-2-2-1" name="2-1" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git clone https://gitlab.com/your-username/the-repository.git
+</pre></div>
+</div>
+</div></div>
+</div>
+<div class="section" id="step-8-fix-the-broken-test">
+<h3>Step 8: Fix the broken test<a class="headerlink" href="#step-8-fix-the-broken-test" title="Permalink to this headline">¶</a></h3>
+<p>After you have fixed the code, commit the following commit message
+<code class="docutils literal notranslate"><span class="pre">&quot;restore</span> <span class="pre">function</span> <span class="pre">subtract;</span> <span class="pre">fixes</span> <span class="pre">#1&quot;</span></code> (assuming that you try to fix
+issue number 1).</p>
+<p>Then push to your fork.</p>
+</div>
+<div class="section" id="step-9-open-a-pull-request-github-merge-request-gitlab">
+<h3>Step 9: Open a pull request (GitHub)/ merge request (GitLab)<a class="headerlink" href="#step-9-open-a-pull-request-github-merge-request-gitlab" title="Permalink to this headline">¶</a></h3>
+<p>Then before accepting the pull request/ merge request from your colleague, observe
+how GitHub Actions/ Gitlab CI automatically tested the code.</p>
+<p>If you forgot to reference the issue number in the commit message, you can still add it to
+the pull request/ merge request: <code class="docutils literal notranslate"><span class="pre">my</span> <span class="pre">pull/merge</span> <span class="pre">request</span> <span class="pre">title,</span> <span class="pre">closes</span> <span class="pre">#NUMBEROFTHEISSUE</span></code></p>
+</div>
+<div class="section" id="step-10-accept-the-pull-request-merge-request">
+<h3>Step 10: Accept the pull request/ merge request<a class="headerlink" href="#step-10-accept-the-pull-request-merge-request" title="Permalink to this headline">¶</a></h3>
+<p>Observe how accepting the pull request/ merge request automatically closes the issue (provided
+the commit message or the pull request/ merge request contained the correct issue number).</p>
+<p>See also:</p>
+<ul class="simple">
+<li><p>GitHub: <a class="reference external" href="https://help.github.com/articles/closing-issues-using-keywords/">closing issues using keywords</a></p></li>
+<li><p>GitLab: <a class="reference external" href="https://docs.gitlab.com/ee/user/project/issues/managing_issues.html#closing-issues">closing issues using keywords</a></p></li>
+</ul>
+<p>Discuss whether this is a useful feature. And if it is, why do you think is it useful?</p>
+</div>
+<div class="section" id="discussion">
+<h3>Discussion<a class="headerlink" href="#discussion" title="Permalink to this headline">¶</a></h3>
+<p>Finally, we discuss together about our experiences with this exercise.</p>
+<div class="admonition-optional-exercise challenge admonition">
+<p class="admonition-title">Optional exercise</p>
+<p>In the <a class="reference external" href="https://cicero.xyz/v3/remark/0.14.0/github.com/coderefinery/social-coding/master/talk.md/">Social coding and open software</a>
+lesson we learn how important it is to add a LICENSE file.</p>
+<p>Your goal:</p>
+<ul class="simple">
+<li><p>You discover that your coworker’s repository does not have a LICENSE file.</p></li>
+<li><p>Open an issue and suggest a LICENSE.</p></li>
+<li><p>Then add a LICENSE via a pull/merge request, referencing the issue number.</p></li>
+</ul>
+</div>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="where-to-go-from-here">
+<h2>Where to go from here<a class="headerlink" href="#where-to-go-from-here" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>This example was using Python but you can achieve the same automation for R or Fortran or C/C++ or other languages</p></li>
+<li><p>GitHub Actions has a <a class="reference external" href="https://github.com/marketplace?type=actions">Marketpace</a> which offer wide range of automatic workflows</p></li>
+<li><p>On GitLab use <a class="reference external" href="https://about.gitlab.com/product/continuous-integration/">GitLab CI</a></p></li>
+<li><p>For Windows builds you can also use <a class="reference external" href="https://www.appveyor.com">Appveyor</a></p></li>
+</ul>
+<div class="admonition-keypoints keypoints admonition">
+<p class="admonition-title">Keypoints</p>
+<ul class="simple">
+<li><p>When fixing bugs or other problems reported in issues, use the issue
+autoclosing mechanism when you send the pull/merge request.</p></li>
+</ul>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="../quick-reference/" class="btn btn-neutral float-right" title="Quick Reference" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../conclusions/" class="btn btn-neutral float-left" title="Conclusions and recommendations" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2020, CodeRefinery project.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

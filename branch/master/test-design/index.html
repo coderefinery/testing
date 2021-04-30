@@ -1,0 +1,1520 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Test design &mdash; Automated testing  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/togglebutton.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/mystnb.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/tabs.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/sphinx_lesson.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/sphinx_rtd_theme_ext_color_contrast.css" type="text/css" />
+
+  
+  
+    <link rel="shortcut icon" href="../_static/coderefinery.ico"/>
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/togglebutton.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
+        <script src="../_static/minipres.js"></script>
+        <script src="../_static/tabs.js"></script>
+        <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex/" />
+    <link rel="search" title="Search" href="../search/" />
+    <link rel="next" title="Conclusions and recommendations" href="../conclusions/" />
+    <link rel="prev" title="Automatic testing with GitHub Actions or GitLab CI" href="../continuous-integration/" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../" class="icon icon-home"> Automated testing
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search/" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">The lesson</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../motivation/">Motivation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../concepts/">Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pytest/">Testing locally</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../continuous-integration/">Automatic testing with GitHub Actions or GitLab CI</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Test design</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#pure-and-impure-functions">Pure and impure functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#test-driven-development">Test-driven development</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#testing-randomness">Testing randomness</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#designing-an-end-to-end-test">Designing an end-to-end test</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../conclusions/">Conclusions and recommendations</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../quick-reference/">Quick Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guide/">Instructor guide</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../">Automated testing</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Test design</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            
+              <a href="https://github.com/coderefinery/testing/blob/master/content/test-design.md" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="test-design">
+<h1>Test design<a class="headerlink" href="#test-design" title="Permalink to this headline">¶</a></h1>
+<div class="admonition-questions questions admonition">
+<p class="admonition-title">Questions</p>
+<ul class="simple">
+<li><p>How can different types of functions and classes be tested?</p></li>
+<li><p>How can the integrity of a complete program be monitored over time?</p></li>
+<li><p>How can functions that involve random numbers be tested?</p></li>
+</ul>
+</div>
+<p>In this episode we will consider how functions and programs can be tested in programs developed in different programming languages.</p>
+<div class="admonition-objectives objectives admonition">
+<p class="admonition-title">Objectives</p>
+<ul class="simple">
+<li><p>Learn how to determine what kind of unit tests can be performed for different type of functions.</p></li>
+<li><p>Learn how to perform test-driven development in which tests for a function are designed and implemented before the function is written.</p></li>
+<li><p>Learn how to test functions whose output depend on random numbers.</p></li>
+</ul>
+</div>
+<div class="admonition-exercise-instructions discussion admonition">
+<p class="admonition-title">Exercise instructions</p>
+<p><strong>For the instructor</strong></p>
+<ul class="simple">
+<li><p>First motivate and give a quick tour of all exercises below (10 minutes).</p></li>
+<li><p>Emphasize that the focus of this episode is <em>design</em>. It is OK to only discuss in groups and not write code.</p></li>
+</ul>
+<p><strong>In breakout rooms (35 minutes)</strong></p>
+<ul class="simple">
+<li><p>We arrange breakout rooms according to preferred languages.</p></li>
+<li><p>Choose the exercise which interests you most. There are many more exercises than we would have time for.</p></li>
+<li><p>Discuss what testing framework can be used to implement the test.</p></li>
+<li><p>Keep notes, questions, and answers in the collaborative document.</p></li>
+<li><p>If time is available, implement the test(s) using the chosen framework.</p></li>
+</ul>
+<p><strong>Once we return to main room</strong></p>
+<ul class="simple">
+<li><p>Discussion on experiences learned (10 minutes).</p></li>
+</ul>
+</div>
+<div class="section" id="pure-and-impure-functions">
+<h2>Pure and impure functions<a class="headerlink" href="#pure-and-impure-functions" title="Permalink to this headline">¶</a></h2>
+<p>Start by discussing how you would design tests for the
+following five functions, and then try to write the tests.
+Also discuss why some are easier to test than others.</p>
+<div class="admonition-function-that-receives-a-number-and-returns-a-number challenge admonition">
+<p class="admonition-title">1. Function that receives a number and returns a number</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-UHl0aG9u" aria-selected="true" class="sphinx-tabs-tab code-tab group-tab" id="tab-0-UHl0aG9u" name="UHl0aG9u" role="tab" tabindex="0">Python</button><button aria-controls="panel-0-Qysr" aria-selected="false" class="sphinx-tabs-tab code-tab group-tab" id="tab-0-Qysr" name="Qysr" role="tab" tabindex="-1">C++</button><button aria-controls="panel-0-Ug==" aria-selected="false" class="sphinx-tabs-tab code-tab group-tab" id="tab-0-Ug==" name="Ug==" role="tab" tabindex="-1">R</button><button aria-controls="panel-0-SnVsaWE=" aria-selected="false" class="sphinx-tabs-tab code-tab group-tab" id="tab-0-SnVsaWE=" name="SnVsaWE=" role="tab" tabindex="-1">Julia</button><button aria-controls="panel-0-Rm9ydHJhbg==" aria-selected="false" class="sphinx-tabs-tab code-tab group-tab" id="tab-0-Rm9ydHJhbg==" name="Rm9ydHJhbg==" role="tab" tabindex="-1">Fortran</button></div><div aria-labelledby="tab-0-UHl0aG9u" class="sphinx-tabs-panel code-tab group-tab" id="panel-0-UHl0aG9u" name="UHl0aG9u" role="tabpanel" tabindex="0"><div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">factorial</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Computes the factorial of n.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;received negative input&#39;</span><span class="p">)</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="n">result</span> <span class="o">*=</span> <span class="n">i</span>
+    <span class="k">return</span> <span class="n">result</span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-0-Qysr" class="sphinx-tabs-panel code-tab group-tab" hidden="true" id="panel-0-Qysr" name="Qysr" role="tabpanel" tabindex="0"><div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="cm">/* Computes the factorial of n recursively. */</span>
+<span class="k">constexpr</span> <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">factorial</span><span class="p">(</span><span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">n</span><span class="p">)</span> <span class="p">{</span>
+   <span class="k">return</span> <span class="p">(</span><span class="n">n</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">)</span> <span class="o">?</span> <span class="mi">1</span> <span class="o">:</span> <span class="p">(</span><span class="n">n</span> <span class="o">*</span> <span class="n">factorial</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">));</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-0-Ug==" class="sphinx-tabs-panel code-tab group-tab" hidden="true" id="panel-0-Ug==" name="Ug==" role="tabpanel" tabindex="0"><div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1">#&#39; Computes the factorial of n</span>
+<span class="c1">#&#39;</span>
+<span class="c1">#&#39; @param n The number to compute the factorial of.</span>
+<span class="c1">#&#39; @return The factorial of n</span>
+<span class="n">factorial</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nf">if </span><span class="p">(</span><span class="n">n</span> <span class="o">&lt;</span> <span class="m">0</span><span class="p">)</span>
+    <span class="nf">stop</span><span class="p">(</span><span class="s">&#39;received negative input&#39;</span><span class="p">)</span>
+  <span class="nf">if </span><span class="p">(</span><span class="n">n</span> <span class="o">==</span> <span class="m">0</span><span class="p">)</span>
+    <span class="nf">return</span><span class="p">(</span><span class="m">1</span><span class="p">)</span>
+
+  <span class="n">result</span> <span class="o">&lt;-</span> <span class="m">1</span>
+  <span class="nf">for </span><span class="p">(</span><span class="n">i</span> <span class="n">in</span> <span class="m">1</span><span class="o">:</span><span class="n">n</span><span class="p">)</span>
+    <span class="n">result</span> <span class="o">&lt;-</span> <span class="n">result</span> <span class="o">*</span> <span class="n">i</span>
+  <span class="n">result</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-0-SnVsaWE=" class="sphinx-tabs-panel code-tab group-tab" hidden="true" id="panel-0-SnVsaWE=" name="SnVsaWE=" role="tabpanel" tabindex="0"><div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="s">&quot;&quot;&quot;</span>
+<span class="s">    factorial(n::Int)</span>
+
+<span class="s">Compute the factorial of n.</span>
+<span class="s">&quot;&quot;&quot;</span>
+<span class="k">function</span> <span class="n">factorial</span><span class="p">(</span><span class="n">n</span><span class="o">::</span><span class="kt">Int</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">&lt;</span> <span class="mi">0</span>
+        <span class="n">throw</span><span class="p">(</span><span class="kt">DomainError</span><span class="p">(</span><span class="s">&quot;n must be non-negative&quot;</span><span class="p">))</span>
+    <span class="k">end</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="kp">in</span> <span class="mi">1</span><span class="o">:</span><span class="n">n</span>
+        <span class="n">result</span> <span class="o">*=</span> <span class="n">i</span>
+    <span class="k">end</span>
+    <span class="k">return</span> <span class="n">result</span>
+<span class="k">end</span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-0-Rm9ydHJhbg==" class="sphinx-tabs-panel code-tab group-tab" hidden="true" id="panel-0-Rm9ydHJhbg==" name="Rm9ydHJhbg==" role="tabpanel" tabindex="0"><div class="highlight-fortran notranslate"><div class="highlight"><pre><span></span><span class="k">module </span><span class="n">factorial_mod</span>
+<span class="k">contains</span>
+   <span class="c">! computes the factorial of n</span>
+   <span class="kt">integer </span><span class="k">function </span><span class="n">factorial</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+      <span class="k">implicit none</span>
+<span class="k">      </span><span class="kt">integer</span><span class="p">,</span> <span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span> <span class="kd">::</span> <span class="n">n</span>
+      <span class="kt">integer </span><span class="n">r</span>
+      <span class="kt">integer </span><span class="n">i</span>
+      <span class="k">if</span><span class="p">(</span><span class="n">n</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="k">then</span>
+<span class="k">         write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span> <span class="s1">&#39;Received negative input&#39;</span>
+         <span class="k">stop</span>
+<span class="k">      end if</span>
+<span class="k">      </span><span class="n">r</span> <span class="o">=</span> <span class="mi">1</span>
+      <span class="k">do </span><span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span><span class="n">n</span>
+         <span class="n">r</span> <span class="o">=</span> <span class="n">r</span><span class="o">*</span><span class="n">i</span>
+      <span class="k">end do</span>
+<span class="k">      </span><span class="n">factorial</span><span class="o">=</span><span class="n">r</span>
+   <span class="k">end function </span><span class="n">factorial</span>
+<span class="k">end module </span><span class="n">factorial_mod</span>
+</pre></div>
+</div>
+</div></div>
+<div class="admonition-solution solution dropdown admonition">
+<p class="admonition-title">Solution</p>
+<p>This is a <strong>pure function</strong> so is easy to test: inputs go to
+outputs.  For example, start with the below, then think of some
+what extreme cases/boundary cases there might be.  This example shows
+all of the tests as one function, but you might want to make each test
+function more fine-grained and test only one concept.</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-1-UHl0aG9u" aria-selected="true" class="sphinx-tabs-tab code-tab group-tab" id="tab-1-UHl0aG9u" name="UHl0aG9u" role="tab" tabindex="0">Python</button><button aria-controls="panel-1-Qysr" aria-selected="false" class="sphinx-tabs-tab code-tab group-tab" id="tab-1-Qysr" name="Qysr" role="tab" tabindex="-1">C++</button><button aria-controls="panel-1-Ug==" aria-selected="false" class="sphinx-tabs-tab code-tab group-tab" id="tab-1-Ug==" name="Ug==" role="tab" tabindex="-1">R</button><button aria-controls="panel-1-SnVsaWE=" aria-selected="false" class="sphinx-tabs-tab code-tab group-tab" id="tab-1-SnVsaWE=" name="SnVsaWE=" role="tab" tabindex="-1">Julia</button><button aria-controls="panel-1-Rm9ydHJhbg==" aria-selected="false" class="sphinx-tabs-tab code-tab group-tab" id="tab-1-Rm9ydHJhbg==" name="Rm9ydHJhbg==" role="tab" tabindex="-1">Fortran</button></div><div aria-labelledby="tab-1-UHl0aG9u" class="sphinx-tabs-panel code-tab group-tab" id="panel-1-UHl0aG9u" name="UHl0aG9u" role="tabpanel" tabindex="0"><div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pytest</span>
+
+<span class="k">def</span> <span class="nf">test_factorial</span><span class="p">():</span>
+    <span class="k">assert</span> <span class="n">factorial</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span>
+    <span class="k">assert</span> <span class="n">factorial</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span>
+    <span class="k">assert</span> <span class="n">factorial</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span>
+    <span class="k">assert</span> <span class="n">factorial</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="o">==</span> <span class="mi">6</span>
+    <span class="c1"># also try negatives (check that it raises an error), non-integers, etc.</span>
+
+    <span class="c1"># Raise an error if factorial does *not* raise an error:</span>
+    <span class="k">with</span> <span class="n">pytest</span><span class="o">.</span><span class="n">raises</span><span class="p">(</span><span class="ne">ValueError</span><span class="p">):</span>
+        <span class="n">factorial</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># raises ValueError</span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-1-Qysr" class="sphinx-tabs-panel code-tab group-tab" hidden="true" id="panel-1-Qysr" name="Qysr" role="tabpanel" tabindex="0"><div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&lt;catch2/catch.hpp&gt;</span><span class="cp"></span>
+
+<span class="cp">#include</span> <span class="cpf">&quot;factorial.hpp&quot;</span><span class="cp"></span>
+
+<span class="n">TEST_CASE</span><span class="p">(</span><span class="s">&quot;Compute the factorial&quot;</span><span class="p">,</span> <span class="s">&quot;[factorial]&quot;</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">REQUIRE</span><span class="p">(</span><span class="n">factorial</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">);</span>
+  <span class="n">REQUIRE</span><span class="p">(</span><span class="n">factorial</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">);</span>
+  <span class="n">REQUIRE</span><span class="p">(</span><span class="n">factorial</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span><span class="p">);</span>
+  <span class="n">REQUIRE</span><span class="p">(</span><span class="n">factorial</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="o">==</span> <span class="mi">6</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-1-Ug==" class="sphinx-tabs-panel code-tab group-tab" hidden="true" id="panel-1-Ug==" name="Ug==" role="tabpanel" tabindex="0"><div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">test_that</span><span class="p">(</span><span class="s">&quot;Test factorial&quot;</span><span class="p">,</span> <span class="p">{</span>
+  <span class="nf">expect_equal</span><span class="p">(</span><span class="nf">factorial</span><span class="p">(</span><span class="m">0</span><span class="p">),</span> <span class="m">1</span><span class="p">)</span>
+  <span class="nf">expect_equal</span><span class="p">(</span><span class="nf">factorial</span><span class="p">(</span><span class="m">1</span><span class="p">),</span> <span class="m">1</span><span class="p">)</span>
+  <span class="nf">expect_equal</span><span class="p">(</span><span class="nf">factorial</span><span class="p">(</span><span class="m">2</span><span class="p">),</span> <span class="m">2</span><span class="p">)</span>
+  <span class="nf">expect_equal</span><span class="p">(</span><span class="nf">factorial</span><span class="p">(</span><span class="m">3</span><span class="p">),</span> <span class="m">6</span><span class="p">)</span>
+  <span class="c1"># also try negatives (check that it raises an error), non-integers, etc.</span>
+
+  <span class="c1"># Raise an error if factorial does *not* raise an error:</span>
+  <span class="nf">expect_error</span><span class="p">(</span><span class="nf">factorial</span><span class="p">(</span><span class="m">-1</span><span class="p">))</span>
+<span class="p">})</span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-1-SnVsaWE=" class="sphinx-tabs-panel code-tab group-tab" hidden="true" id="panel-1-SnVsaWE=" name="SnVsaWE=" role="tabpanel" tabindex="0"><div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="nd">@testset</span> <span class="s">&quot;Test factorial function&quot;</span> <span class="k">begin</span>
+    <span class="nd">@test_throws</span> <span class="kt">DomainError</span> <span class="n">factorial</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+    <span class="nd">@test</span> <span class="n">factorial</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="o">==</span> <span class="mi">6</span>
+<span class="k">end</span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-1-Rm9ydHJhbg==" class="sphinx-tabs-panel code-tab group-tab" hidden="true" id="panel-1-Rm9ydHJhbg==" name="Rm9ydHJhbg==" role="tabpanel" tabindex="0"><div class="highlight-fortran notranslate"><div class="highlight"><pre><span></span>@test
+subroutine test_factorial()
+   use factorial_mod
+   use funit
+   @assertEqual(120, factorial(5), &#39;factorial(5)&#39;)
+end subroutine test_factorial
+</pre></div>
+</div>
+</div></div>
+</div>
+</div>
+<div class="admonition-function-that-receives-two-strings-and-returns-a-number challenge admonition">
+<p class="admonition-title">2. Function that receives two strings and returns a number</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-2-UHl0aG9u" aria-selected="true" class="sphinx-tabs-tab code-tab group-tab" id="tab-2-UHl0aG9u" name="UHl0aG9u" role="tab" tabindex="0">Python</button><button aria-controls="panel-2-Qysr" aria-selected="false" class="sphinx-tabs-tab code-tab group-tab" id="tab-2-Qysr" name="Qysr" role="tab" tabindex="-1">C++</button><button aria-controls="panel-2-Ug==" aria-selected="false" class="sphinx-tabs-tab code-tab group-tab" id="tab-2-Ug==" name="Ug==" role="tab" tabindex="-1">R</button><button aria-controls="panel-2-SnVsaWE=" aria-selected="false" class="sphinx-tabs-tab code-tab group-tab" id="tab-2-SnVsaWE=" name="SnVsaWE=" role="tab" tabindex="-1">Julia</button><button aria-controls="panel-2-Rm9ydHJhbg==" aria-selected="false" class="sphinx-tabs-tab code-tab group-tab" id="tab-2-Rm9ydHJhbg==" name="Rm9ydHJhbg==" role="tab" tabindex="-1">Fortran</button></div><div aria-labelledby="tab-2-UHl0aG9u" class="sphinx-tabs-panel code-tab group-tab" id="panel-2-UHl0aG9u" name="UHl0aG9u" role="tabpanel" tabindex="0"><div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">count_word_occurrence_in_string</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">word</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Counts how often word appears in text.</span>
+<span class="sd">    Example: if text is &quot;one two one two three four&quot;</span>
+<span class="sd">             and word is &quot;one&quot;, then this function returns 2</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">words</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">words</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="n">word</span><span class="p">)</span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-2-Qysr" class="sphinx-tabs-panel code-tab group-tab" hidden="true" id="panel-2-Qysr" name="Qysr" role="tabpanel" tabindex="0"><div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&lt;string&gt;</span><span class="cp"></span>
+
+<span class="cm">/* Counts how often word appears in text.</span>
+<span class="cm"> * Example: if text is &quot;one two one two three four&quot;</span>
+<span class="cm"> *          and word is &quot;one&quot;, then this function returns 2</span>
+<span class="cm"> */</span>
+<span class="kt">int</span> <span class="nf">count_word_occurrence_in_string</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span> <span class="n">text</span><span class="p">,</span> <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span> <span class="n">word</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">auto</span> <span class="n">word_count</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="k">auto</span> <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+  <span class="k">for</span> <span class="p">(</span><span class="k">const</span> <span class="k">auto</span> <span class="nl">ch</span> <span class="p">:</span> <span class="n">text</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">ch</span> <span class="o">==</span> <span class="n">word</span><span class="p">[</span><span class="n">word_count</span><span class="p">])</span> <span class="o">++</span><span class="n">word_count</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">word</span><span class="p">[</span><span class="n">word_count</span><span class="p">]</span> <span class="o">==</span> <span class="sc">&#39;\0&#39;</span><span class="p">)</span> <span class="p">{</span>
+      <span class="n">word_count</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+      <span class="o">++</span><span class="n">count</span><span class="p">;</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+
+  <span class="k">return</span> <span class="n">count</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-2-Ug==" class="sphinx-tabs-panel code-tab group-tab" hidden="true" id="panel-2-Ug==" name="Ug==" role="tabpanel" tabindex="0"><div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1">#&#39; Counts how often a given word appears in text</span>
+<span class="c1">#&#39;</span>
+<span class="c1">#&#39; @param text The text to search in.</span>
+<span class="c1">#&#39; @param word The word to search for.</span>
+<span class="c1">#&#39; @return The number of times the word occurs in the text.</span>
+<span class="n">count_word_occurrence_in_string</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">word</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">words</span> <span class="o">&lt;-</span> <span class="nf">strsplit</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="s">&#39; &#39;</span><span class="p">)[[</span><span class="m">1</span><span class="p">]]</span>
+  <span class="nf">sum</span><span class="p">(</span><span class="n">words</span> <span class="o">==</span> <span class="n">word</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-2-SnVsaWE=" class="sphinx-tabs-panel code-tab group-tab" hidden="true" id="panel-2-SnVsaWE=" name="SnVsaWE=" role="tabpanel" tabindex="0"><div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="s">&quot;&quot;&quot;</span>
+<span class="s">    count_word_occurrence_in_string(text::String, word::String)</span>
+
+<span class="s">Count how often word appears in text.</span>
+<span class="s">Example: if `text` is &quot;one two one two three four&quot;</span>
+<span class="s">and `word` is &quot;one&quot;, then this function returns 2</span>
+<span class="s">&quot;&quot;&quot;</span>
+<span class="k">function</span> <span class="n">count_word_occurrence_in_string</span><span class="p">(</span><span class="n">text</span><span class="o">::</span><span class="n">String</span><span class="p">,</span> <span class="n">word</span><span class="o">::</span><span class="n">String</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">count</span><span class="p">(</span><span class="n">word</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span>
+
+<span class="k">end</span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-2-Rm9ydHJhbg==" class="sphinx-tabs-panel code-tab group-tab" hidden="true" id="panel-2-Rm9ydHJhbg==" name="Rm9ydHJhbg==" role="tabpanel" tabindex="0"><div class="highlight-fortran notranslate"><div class="highlight"><pre><span></span><span class="c">! missing - please submit an example</span>
+</pre></div>
+</div>
+</div></div>
+<div class="admonition-solution solution dropdown admonition">
+<p class="admonition-title">Solution</p>
+<p>This is again a <strong>pure function</strong> but uses strings.  Use a similar strategy
+to the above.</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-3-UHl0aG9u" aria-selected="true" class="sphinx-tabs-tab code-tab group-tab" id="tab-3-UHl0aG9u" name="UHl0aG9u" role="tab" tabindex="0">Python</button><button aria-controls="panel-3-Qysr" aria-selected="false" class="sphinx-tabs-tab code-tab group-tab" id="tab-3-Qysr" name="Qysr" role="tab" tabindex="-1">C++</button><button aria-controls="panel-3-Ug==" aria-selected="false" class="sphinx-tabs-tab code-tab group-tab" id="tab-3-Ug==" name="Ug==" role="tab" tabindex="-1">R</button><button aria-controls="panel-3-SnVsaWE=" aria-selected="false" class="sphinx-tabs-tab code-tab group-tab" id="tab-3-SnVsaWE=" name="SnVsaWE=" role="tab" tabindex="-1">Julia</button><button aria-controls="panel-3-Rm9ydHJhbg==" aria-selected="false" class="sphinx-tabs-tab code-tab group-tab" id="tab-3-Rm9ydHJhbg==" name="Rm9ydHJhbg==" role="tab" tabindex="-1">Fortran</button></div><div aria-labelledby="tab-3-UHl0aG9u" class="sphinx-tabs-panel code-tab group-tab" id="panel-3-UHl0aG9u" name="UHl0aG9u" role="tabpanel" tabindex="0"><div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">test_count_word_occurrence_in_string</span><span class="p">():</span>
+    <span class="k">assert</span> <span class="n">count_word_occurrence_in_string</span><span class="p">(</span><span class="s1">&#39;AAA BBB&#39;</span><span class="p">,</span> <span class="s1">&#39;AAA&#39;</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span>
+    <span class="k">assert</span> <span class="n">count_word_occurrence_in_string</span><span class="p">(</span><span class="s1">&#39;AAA AAA&#39;</span><span class="p">,</span> <span class="s1">&#39;AAA&#39;</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span>
+    <span class="c1"># What does this last test tell us?</span>
+    <span class="k">assert</span> <span class="n">count_word_occurrence_in_string</span><span class="p">(</span><span class="s1">&#39;AAAAA&#39;</span><span class="p">,</span> <span class="s1">&#39;AAA&#39;</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-3-Qysr" class="sphinx-tabs-panel code-tab group-tab" hidden="true" id="panel-3-Qysr" name="Qysr" role="tabpanel" tabindex="0"><div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&lt;catch2/catch.hpp&gt;</span><span class="cp"></span>
+
+<span class="cp">#include</span> <span class="cpf">&quot;word_count.hpp&quot;</span><span class="cp"></span>
+
+<span class="n">TEST_CASE</span><span class="p">(</span><span class="s">&quot;Count occurrences of substring in string&quot;</span><span class="p">,</span> <span class="s">&quot;[count_word_occurrence_in_string]&quot;</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">REQUIRE</span><span class="p">(</span><span class="n">count_word_occurrence_in_string</span><span class="p">(</span><span class="s">&quot;AAA BBB&quot;</span><span class="p">,</span> <span class="s">&quot;AAA&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">);</span>
+  <span class="n">REQUIRE</span><span class="p">(</span><span class="n">count_word_occurrence_in_string</span><span class="p">(</span><span class="s">&quot;AAA AAA&quot;</span><span class="p">,</span> <span class="s">&quot;AAA&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span><span class="p">);</span>
+  <span class="n">REQUIRE</span><span class="p">(</span><span class="n">count_word_occurrence_in_string</span><span class="p">(</span><span class="s">&quot;AAAA&quot;</span><span class="p">,</span> <span class="s">&quot;AAA&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">);</span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-3-Ug==" class="sphinx-tabs-panel code-tab group-tab" hidden="true" id="panel-3-Ug==" name="Ug==" role="tabpanel" tabindex="0"><div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">test_that</span><span class="p">(</span><span class="s">&quot;Test count word occurrence in string&quot;</span><span class="p">,</span> <span class="p">{</span>
+  <span class="nf">expect_equal</span><span class="p">(</span><span class="nf">count_word_occurrence_in_string</span><span class="p">(</span><span class="s">&quot;AAA BBB&quot;</span><span class="p">,</span> <span class="s">&quot;AAA&quot;</span><span class="p">),</span> <span class="m">1</span><span class="p">)</span>
+  <span class="nf">expect_equal</span><span class="p">(</span><span class="nf">count_word_occurrence_in_string</span><span class="p">(</span><span class="s">&quot;AAA AAA&quot;</span><span class="p">,</span> <span class="s">&quot;AAA&quot;</span><span class="p">),</span> <span class="m">2</span><span class="p">)</span>
+  <span class="nf">expect_equal</span><span class="p">(</span><span class="nf">count_word_occurrence_in_string</span><span class="p">(</span><span class="s">&quot;AAAAA&quot;</span><span class="p">,</span> <span class="s">&quot;AAA&quot;</span><span class="p">),</span> <span class="m">0</span><span class="p">)</span>
+<span class="p">})</span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-3-SnVsaWE=" class="sphinx-tabs-panel code-tab group-tab" hidden="true" id="panel-3-SnVsaWE=" name="SnVsaWE=" role="tabpanel" tabindex="0"><div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="nd">@testset</span> <span class="s">&quot;Test count word occurrence in string&quot;</span> <span class="k">begin</span>
+    <span class="nd">@test</span> <span class="n">count_word_occurrence_in_string</span><span class="p">(</span><span class="s">&quot;AAA BBB&quot;</span><span class="p">,</span> <span class="s">&quot;AAA&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span>
+    <span class="nd">@test</span> <span class="n">count_word_occurrence_in_string</span><span class="p">(</span><span class="s">&quot;AAA AAA&quot;</span><span class="p">,</span> <span class="s">&quot;AAA&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span>
+    <span class="nd">@test</span> <span class="n">count_word_occurrence_in_string</span><span class="p">(</span><span class="s">&quot;AAAAA&quot;</span><span class="p">,</span> <span class="s">&quot;AAA&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span>
+<span class="k">end</span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-3-Rm9ydHJhbg==" class="sphinx-tabs-panel code-tab group-tab" hidden="true" id="panel-3-Rm9ydHJhbg==" name="Rm9ydHJhbg==" role="tabpanel" tabindex="0"><div class="highlight-fortran notranslate"><div class="highlight"><pre><span></span><span class="c">! missing - please submit an example</span>
+</pre></div>
+</div>
+</div></div>
+</div>
+</div>
+<div class="admonition-function-which-reads-a-file-and-returns-a-number challenge admonition">
+<p class="admonition-title">3. Function which reads a file and returns a number</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-4-UHl0aG9u" aria-selected="true" class="sphinx-tabs-tab code-tab group-tab" id="tab-4-UHl0aG9u" name="UHl0aG9u" role="tab" tabindex="0">Python</button><button aria-controls="panel-4-Qysr" aria-selected="false" class="sphinx-tabs-tab code-tab group-tab" id="tab-4-Qysr" name="Qysr" role="tab" tabindex="-1">C++</button><button aria-controls="panel-4-Ug==" aria-selected="false" class="sphinx-tabs-tab code-tab group-tab" id="tab-4-Ug==" name="Ug==" role="tab" tabindex="-1">R</button><button aria-controls="panel-4-SnVsaWE=" aria-selected="false" class="sphinx-tabs-tab code-tab group-tab" id="tab-4-SnVsaWE=" name="SnVsaWE=" role="tab" tabindex="-1">Julia</button><button aria-controls="panel-4-Rm9ydHJhbg==" aria-selected="false" class="sphinx-tabs-tab code-tab group-tab" id="tab-4-Rm9ydHJhbg==" name="Rm9ydHJhbg==" role="tab" tabindex="-1">Fortran</button></div><div aria-labelledby="tab-4-UHl0aG9u" class="sphinx-tabs-panel code-tab group-tab" id="panel-4-UHl0aG9u" name="UHl0aG9u" role="tabpanel" tabindex="0"><div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">count_word_occurrence_in_file</span><span class="p">(</span><span class="n">file_name</span><span class="p">,</span> <span class="n">word</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Counts how often word appears in file file_name.</span>
+<span class="sd">    Example: if file contains &quot;one two one two three four&quot;</span>
+<span class="sd">             and word is &quot;one&quot;, then this function returns 2</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">file_name</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">f</span><span class="p">:</span>
+            <span class="n">words</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+            <span class="n">count</span> <span class="o">+=</span> <span class="n">words</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="n">word</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">count</span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-4-Qysr" class="sphinx-tabs-panel code-tab group-tab" hidden="true" id="panel-4-Qysr" name="Qysr" role="tabpanel" tabindex="0"><div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&lt;fstream&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;streambuf&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;string&gt;</span><span class="cp"></span>
+
+<span class="cm">/* Counts how often word appears in file fname.</span>
+<span class="cm"> * Example: if file contains &quot;one two one two three four&quot;</span>
+<span class="cm"> *          and word is &quot;one&quot;, then this function returns 2</span>
+<span class="cm"> */</span>
+<span class="kt">int</span> <span class="nf">count_word_occurrence_in_file</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">fname</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">word</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">ifstream</span> <span class="n">fh</span><span class="p">(</span><span class="n">fname</span><span class="p">);</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">text</span><span class="p">((</span><span class="n">std</span><span class="o">::</span><span class="n">istreambuf_iterator</span><span class="o">&lt;</span><span class="kt">char</span><span class="o">&gt;</span><span class="p">(</span><span class="n">fh</span><span class="p">)),</span>
+                   <span class="n">std</span><span class="o">::</span><span class="n">istreambuf_iterator</span><span class="o">&lt;</span><span class="kt">char</span><span class="o">&gt;</span><span class="p">());</span>
+
+  <span class="k">auto</span> <span class="n">word_count</span> <span class="o">=</span> <span class="mf">0l</span><span class="n">u</span><span class="p">;</span> <span class="c1">// will be used for indexing and therefore it has to be *long unsigned* int for the safe conversion to &#39;std::__cxx11::basic_string&lt;char&gt;::size_type&#39;.</span>
+  <span class="k">auto</span> <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+  <span class="k">for</span> <span class="p">(</span><span class="k">const</span> <span class="k">auto</span> <span class="nl">ch</span> <span class="p">:</span> <span class="n">text</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">ch</span> <span class="o">==</span> <span class="n">word</span><span class="p">[</span><span class="n">word_count</span><span class="p">])</span> <span class="o">++</span><span class="n">word_count</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">word</span><span class="p">[</span><span class="n">word_count</span><span class="p">]</span> <span class="o">==</span> <span class="sc">&#39;\0&#39;</span><span class="p">)</span> <span class="p">{</span>
+      <span class="n">word_count</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+      <span class="o">++</span><span class="n">count</span><span class="p">;</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+
+  <span class="k">return</span> <span class="n">count</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-4-Ug==" class="sphinx-tabs-panel code-tab group-tab" hidden="true" id="panel-4-Ug==" name="Ug==" role="tabpanel" tabindex="0"><div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1">#&#39; Counts how often a given word appears in a file.</span>
+<span class="c1">#&#39;</span>
+<span class="c1">#&#39; @param file_name The name of the file to search in.</span>
+<span class="c1">#&#39; @param word The word to search for in the file.</span>
+<span class="c1">#&#39; @return The number of times the word appeared in the file.</span>
+<span class="n">count_word_occurrence_in_file</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span><span class="n">file_name</span><span class="p">,</span> <span class="n">word</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">count</span> <span class="o">&lt;-</span> <span class="m">0</span>
+  <span class="nf">for </span><span class="p">(</span><span class="n">line</span> <span class="n">in</span> <span class="nf">readLines</span><span class="p">(</span><span class="n">file_name</span><span class="p">))</span> <span class="p">{</span>
+    <span class="n">words</span> <span class="o">&lt;-</span> <span class="nf">strsplit</span><span class="p">(</span><span class="n">line</span><span class="p">,</span> <span class="s">&#39; &#39;</span><span class="p">)[[</span><span class="m">1</span><span class="p">]]</span>
+    <span class="n">count</span> <span class="o">&lt;-</span> <span class="n">count</span> <span class="o">+</span> <span class="nf">sum</span><span class="p">(</span><span class="n">words</span> <span class="o">==</span> <span class="n">word</span><span class="p">)</span>
+  <span class="p">}</span>
+  <span class="n">count</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-4-SnVsaWE=" class="sphinx-tabs-panel code-tab group-tab" hidden="true" id="panel-4-SnVsaWE=" name="SnVsaWE=" role="tabpanel" tabindex="0"><div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="s">&quot;&quot;&quot;</span>
+<span class="s">    count_word_occurrence_in_file(file_name::String, word::String)</span>
+
+<span class="s">Counts how often word appears in file file_name.</span>
+<span class="s">Example: if file contains &quot;one two one two three four&quot;</span>
+<span class="s">         And word is &quot;one&quot;, then this function returns 2</span>
+<span class="s">&quot;&quot;&quot;</span>
+<span class="k">function</span> <span class="n">count_word_occurrence_in_file</span><span class="p">(</span><span class="n">file_name</span><span class="o">::</span><span class="n">String</span><span class="p">,</span> <span class="n">word</span><span class="o">::</span><span class="n">String</span><span class="p">)</span>
+    <span class="n">open</span><span class="p">(</span><span class="n">file_name</span><span class="p">,</span> <span class="s">&quot;r&quot;</span><span class="p">)</span> <span class="k">do</span> <span class="n">file</span>
+        <span class="n">lines</span> <span class="o">=</span> <span class="n">readlines</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">count</span><span class="p">(</span><span class="n">word</span><span class="p">,</span> <span class="n">join</span><span class="p">(</span><span class="n">lines</span><span class="p">))</span>
+    <span class="k">end</span>
+<span class="k">end</span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-4-Rm9ydHJhbg==" class="sphinx-tabs-panel code-tab group-tab" hidden="true" id="panel-4-Rm9ydHJhbg==" name="Rm9ydHJhbg==" role="tabpanel" tabindex="0"><div class="highlight-fortran notranslate"><div class="highlight"><pre><span></span><span class="c">! missing - please submit an example</span>
+</pre></div>
+</div>
+</div></div>
+<div class="admonition-solution solution dropdown admonition">
+<p class="admonition-title">Solution</p>
+<p>In this example we test a function which is not pure, because the output
+depends on the value of a file. We can generate a temporary file for testing
+and remove it afterwards.  Even better could be to split file reading from the
+calculation, so that testing the calculation part becomes easy (see above).</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-5-UHl0aG9u" aria-selected="true" class="sphinx-tabs-tab code-tab group-tab" id="tab-5-UHl0aG9u" name="UHl0aG9u" role="tab" tabindex="0">Python</button><button aria-controls="panel-5-Qysr" aria-selected="false" class="sphinx-tabs-tab code-tab group-tab" id="tab-5-Qysr" name="Qysr" role="tab" tabindex="-1">C++</button><button aria-controls="panel-5-Ug==" aria-selected="false" class="sphinx-tabs-tab code-tab group-tab" id="tab-5-Ug==" name="Ug==" role="tab" tabindex="-1">R</button><button aria-controls="panel-5-SnVsaWE=" aria-selected="false" class="sphinx-tabs-tab code-tab group-tab" id="tab-5-SnVsaWE=" name="SnVsaWE=" role="tab" tabindex="-1">Julia</button><button aria-controls="panel-5-Rm9ydHJhbg==" aria-selected="false" class="sphinx-tabs-tab code-tab group-tab" id="tab-5-Rm9ydHJhbg==" name="Rm9ydHJhbg==" role="tab" tabindex="-1">Fortran</button></div><div aria-labelledby="tab-5-UHl0aG9u" class="sphinx-tabs-panel code-tab group-tab" id="panel-5-UHl0aG9u" name="UHl0aG9u" role="tabpanel" tabindex="0"><div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">tempfile</span>
+<span class="kn">import</span> <span class="nn">os</span>
+
+<span class="k">def</span> <span class="nf">test_count_word_occurrence_in_file</span><span class="p">():</span>
+    <span class="n">_</span><span class="p">,</span> <span class="n">temporary_file_name</span> <span class="o">=</span> <span class="n">tempfile</span><span class="o">.</span><span class="n">mkstemp</span><span class="p">()</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">temporary_file_name</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;one two one two three four&quot;</span><span class="p">)</span>
+    <span class="n">count</span> <span class="o">=</span> <span class="n">count_word_occurrence_in_file</span><span class="p">(</span><span class="n">temporary_file_name</span><span class="p">,</span> <span class="s2">&quot;one&quot;</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="n">count</span> <span class="o">==</span> <span class="mi">2</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">temporary_file_name</span><span class="p">)</span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-5-Qysr" class="sphinx-tabs-panel code-tab group-tab" hidden="true" id="panel-5-Qysr" name="Qysr" role="tabpanel" tabindex="0"><div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&lt;filesystem&gt;</span><span class="c1"> // for temp_directory_path(), requires C++17.</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;fstream&gt;</span><span class="cp"></span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;catch2/catch.hpp&gt;</span><span class="cp"></span>
+
+<span class="cp">#include</span> <span class="cpf">&quot;word_count.hpp&quot;</span><span class="cp"></span>
+
+<span class="n">TEST_CASE</span><span class="p">(</span><span class="s">&quot;Count occurrences of substring in file&quot;</span><span class="p">,</span> <span class="s">&quot;[count_word_occurrence_in_file]&quot;</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">namespace</span> <span class="n">fs</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">filesystem</span><span class="p">;</span>
+  <span class="k">auto</span> <span class="n">tmp_dir</span><span class="p">{</span> <span class="n">fs</span><span class="o">::</span><span class="n">temp_directory_path</span><span class="p">()</span> <span class="p">};</span>
+  <span class="k">auto</span> <span class="n">fpath</span><span class="p">{</span> <span class="n">fs</span><span class="o">::</span><span class="n">temp_directory_path</span><span class="p">()</span> <span class="o">/</span> <span class="s">&quot;temp_file&quot;</span> <span class="p">};</span>
+
+  <span class="n">std</span><span class="o">::</span><span class="n">ofstream</span> <span class="n">s</span><span class="p">(</span><span class="n">fpath</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">ios</span><span class="o">::</span><span class="n">out</span> <span class="o">|</span> <span class="n">std</span><span class="o">::</span><span class="n">ios</span><span class="o">::</span><span class="n">trunc</span><span class="p">);</span>
+  <span class="n">s</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;one two one two three four&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+  <span class="n">s</span><span class="p">.</span><span class="n">close</span><span class="p">();</span>
+
+  <span class="n">REQUIRE</span><span class="p">(</span><span class="n">count_word_occurrence_in_file</span><span class="p">(</span><span class="n">fname</span><span class="p">,</span> <span class="s">&quot;one&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span><span class="p">);</span>
+  <span class="n">REQUIRE</span><span class="p">(</span><span class="n">count_word_occurrence_in_file</span><span class="p">(</span><span class="n">fname</span><span class="p">,</span> <span class="s">&quot;three&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">);</span>
+  <span class="n">REQUIRE</span><span class="p">(</span><span class="n">count_word_occurrence_in_file</span><span class="p">(</span><span class="n">fname</span><span class="p">,</span> <span class="s">&quot;six&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">);</span>
+
+  <span class="n">fs</span><span class="o">::</span><span class="n">remove</span><span class="p">(</span> <span class="n">fpath</span> <span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-5-Ug==" class="sphinx-tabs-panel code-tab group-tab" hidden="true" id="panel-5-Ug==" name="Ug==" role="tabpanel" tabindex="0"><div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">test_that</span><span class="p">(</span><span class="s">&quot;Test count word occurrence in file&quot;</span><span class="p">,</span> <span class="p">{</span>
+  <span class="n">fname</span> <span class="o">&lt;-</span> <span class="nf">tempfile</span><span class="p">()</span>
+  <span class="nf">write</span><span class="p">(</span><span class="s">&quot;one two one two three four&quot;</span><span class="p">,</span> <span class="n">fname</span><span class="p">)</span>
+  <span class="nf">expect_equal</span><span class="p">(</span><span class="nf">count_word_occurrence_in_file</span><span class="p">(</span><span class="n">fname</span><span class="p">,</span> <span class="s">&quot;one&quot;</span><span class="p">),</span> <span class="m">2</span><span class="p">)</span>
+  <span class="nf">expect_equal</span><span class="p">(</span><span class="nf">count_word_occurrence_in_file</span><span class="p">(</span><span class="n">fname</span><span class="p">,</span> <span class="s">&quot;three&quot;</span><span class="p">),</span> <span class="m">1</span><span class="p">)</span>
+  <span class="nf">expect_equal</span><span class="p">(</span><span class="nf">count_word_occurrence_in_file</span><span class="p">(</span><span class="n">fname</span><span class="p">,</span> <span class="s">&quot;six&quot;</span><span class="p">),</span> <span class="m">0</span><span class="p">)</span>
+  <span class="nf">unlink</span><span class="p">(</span><span class="n">fname</span><span class="p">)</span>
+<span class="p">})</span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-5-SnVsaWE=" class="sphinx-tabs-panel code-tab group-tab" hidden="true" id="panel-5-SnVsaWE=" name="SnVsaWE=" role="tabpanel" tabindex="0"><div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="nd">@testset</span> <span class="s">&quot;Test count word occurrence in file&quot;</span> <span class="k">begin</span>
+    <span class="n">msg</span> <span class="o">=</span> <span class="s">&quot;one two one two three four&quot;</span>
+    <span class="p">(</span><span class="n">fname</span><span class="p">,</span> <span class="n">testio</span><span class="p">)</span> <span class="o">=</span> <span class="n">mktemp</span><span class="p">()</span>
+    <span class="n">println</span><span class="p">(</span><span class="n">testio</span><span class="p">,</span> <span class="n">msg</span><span class="p">)</span>
+    <span class="n">close</span><span class="p">(</span><span class="n">testio</span><span class="p">)</span>
+    <span class="nd">@test</span> <span class="n">count_word_occurrence_in_file</span><span class="p">(</span><span class="n">fname</span><span class="p">,</span> <span class="s">&quot;one&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span>
+    <span class="nd">@test</span> <span class="n">count_word_occurrence_in_file</span><span class="p">(</span><span class="n">fname</span><span class="p">,</span> <span class="s">&quot;three&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span>
+    <span class="nd">@test</span> <span class="n">count_word_occurrence_in_file</span><span class="p">(</span><span class="n">fname</span><span class="p">,</span> <span class="s">&quot;six&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span>
+<span class="k">end</span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-5-Rm9ydHJhbg==" class="sphinx-tabs-panel code-tab group-tab" hidden="true" id="panel-5-Rm9ydHJhbg==" name="Rm9ydHJhbg==" role="tabpanel" tabindex="0"><div class="highlight-fortran notranslate"><div class="highlight"><pre><span></span><span class="c">! missing - please submit an example</span>
+</pre></div>
+</div>
+</div></div>
+</div>
+</div>
+<div class="admonition-function-with-an-external-dependency challenge admonition">
+<p class="admonition-title">4. Function with an external dependency</p>
+<p>This one is not easy to test because the function has an external dependency.</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-6-UHl0aG9u" aria-selected="true" class="sphinx-tabs-tab code-tab group-tab" id="tab-6-UHl0aG9u" name="UHl0aG9u" role="tab" tabindex="0">Python</button><button aria-controls="panel-6-Qysr" aria-selected="false" class="sphinx-tabs-tab code-tab group-tab" id="tab-6-Qysr" name="Qysr" role="tab" tabindex="-1">C++</button><button aria-controls="panel-6-Ug==" aria-selected="false" class="sphinx-tabs-tab code-tab group-tab" id="tab-6-Ug==" name="Ug==" role="tab" tabindex="-1">R</button><button aria-controls="panel-6-SnVsaWE=" aria-selected="false" class="sphinx-tabs-tab code-tab group-tab" id="tab-6-SnVsaWE=" name="SnVsaWE=" role="tab" tabindex="-1">Julia</button><button aria-controls="panel-6-Rm9ydHJhbg==" aria-selected="false" class="sphinx-tabs-tab code-tab group-tab" id="tab-6-Rm9ydHJhbg==" name="Rm9ydHJhbg==" role="tab" tabindex="-1">Fortran</button></div><div aria-labelledby="tab-6-UHl0aG9u" class="sphinx-tabs-panel code-tab group-tab" id="panel-6-UHl0aG9u" name="UHl0aG9u" role="tabpanel" tabindex="0"><div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">check_reactor_temperature</span><span class="p">(</span><span class="n">temperature_celsius</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Checks whether temperature is above max_temperature</span>
+<span class="sd">    and returns a status.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="kn">from</span> <span class="nn">reactor</span> <span class="kn">import</span> <span class="n">max_temperature</span>
+    <span class="k">if</span> <span class="n">temperature_celsius</span> <span class="o">&gt;</span> <span class="n">max_temperature</span><span class="p">:</span>
+        <span class="n">status</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">status</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">return</span> <span class="n">status</span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-6-Qysr" class="sphinx-tabs-panel code-tab group-tab" hidden="true" id="panel-6-Qysr" name="Qysr" role="tabpanel" tabindex="0"><div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&quot;constants.hpp&quot;</span><span class="cp"></span>
+<span class="cm">/* ^--- Defines the max_temperature constant as:</span>
+<span class="cm">* namespace constants {</span>
+<span class="cm">* constexpr double max_temperature = 100.0;</span>
+<span class="cm">* }</span>
+<span class="cm">*/</span>
+
+<span class="k">enum</span> <span class="k">class</span> <span class="nc">ReactorState</span> <span class="o">:</span> <span class="kt">int</span> <span class="p">{</span> <span class="n">FINE</span><span class="p">,</span> <span class="n">CRITICAL</span> <span class="p">};</span>
+
+<span class="cm">/* Checks whether temperature is above max_temperature and returns a status. */</span>
+<span class="n">ReactorState</span> <span class="nf">check_reactor_temperature</span><span class="p">(</span><span class="kt">double</span> <span class="n">temperature_celsius</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="n">temperature_celsius</span> <span class="o">&gt;</span> <span class="n">constants</span><span class="o">::</span><span class="n">max_temperature</span>
+             <span class="o">?</span> <span class="n">ReactorState</span><span class="o">::</span><span class="nl">CRITICAL</span>
+             <span class="p">:</span> <span class="n">ReactorState</span><span class="o">::</span><span class="n">FINE</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-6-Ug==" class="sphinx-tabs-panel code-tab group-tab" hidden="true" id="panel-6-Ug==" name="Ug==" role="tabpanel" tabindex="0"><div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># reactor &lt;- namespace::makeNamespace(&quot;reactor&quot;)</span>
+<span class="c1"># assign(&quot;max_temperature&quot;, 100, env = reactor)</span>
+<span class="c1"># namespaceExport(reactor, &quot;max_temperature&quot;)</span>
+
+<span class="c1">#&#39; Checks whether the temperature is above max_temperature</span>
+<span class="c1">#&#39; and returns the status.</span>
+<span class="c1">#&#39;</span>
+<span class="c1">#&#39; @param temperature_celsius The temperature of the core</span>
+<span class="c1">#&#39; @return 1 if the temperature is in range, otherwise 0</span>
+<span class="n">check_reactor_temperature</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span><span class="n">temperature_celsius</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nf">if </span><span class="p">(</span><span class="n">temperature_celsius</span> <span class="o">&gt;</span> <span class="n">reactor</span><span class="o">::</span><span class="n">max_temperature</span><span class="p">)</span>
+    <span class="n">status</span> <span class="o">&lt;-</span> <span class="m">1</span>
+  <span class="n">else</span>
+    <span class="n">status</span> <span class="o">&lt;-</span> <span class="m">0</span>
+  <span class="n">status</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-6-SnVsaWE=" class="sphinx-tabs-panel code-tab group-tab" hidden="true" id="panel-6-SnVsaWE=" name="SnVsaWE=" role="tabpanel" tabindex="0"><div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="c"># Importing modules inside functions is not allowed in Julia and must be done at top-level:</span>
+<span class="k">using</span> <span class="n">reactor</span><span class="o">:</span> <span class="n">max_temperature</span>
+
+<span class="s">&quot;&quot;&quot;</span>
+<span class="s">    check_reactor_temperature(temperature_celsius)</span>
+
+<span class="s">Checks whether temperature is above max_temperature</span>
+<span class="s">and returns a status.</span>
+<span class="s">&quot;&quot;&quot;</span>
+<span class="k">function</span> <span class="n">check_reactor_temperature</span><span class="p">(</span><span class="n">temperature_celsius</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">temperature_celsius</span> <span class="o">&gt;</span> <span class="n">max_temperature</span>
+        <span class="n">status</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="k">else</span>
+        <span class="n">status</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">end</span>
+<span class="k">end</span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-6-Rm9ydHJhbg==" class="sphinx-tabs-panel code-tab group-tab" hidden="true" id="panel-6-Rm9ydHJhbg==" name="Rm9ydHJhbg==" role="tabpanel" tabindex="0"><div class="highlight-fortran notranslate"><div class="highlight"><pre><span></span><span class="c">! missing - please submit an example</span>
+</pre></div>
+</div>
+</div></div>
+<div class="admonition-solution solution dropdown admonition">
+<p class="admonition-title">Solution</p>
+<p>This function depends on the value of
+<code class="docutils literal notranslate"><span class="pre">reactor.max_temperature</span></code> so the function is not pure, so testing gets
+harder. You could use monkey patching to override the value of
+<code class="docutils literal notranslate"><span class="pre">max_temperature</span></code>, and test it with different values.  <a class="reference external" href="https://en.wikipedia.org/wiki/Monkey_patch">Monkey
+patching</a> is the concept
+of artificially changing some other value.</p>
+<p>A better solution would probably be to rewrite the function.</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-7-UHl0aG9u" aria-selected="true" class="sphinx-tabs-tab code-tab group-tab" id="tab-7-UHl0aG9u" name="UHl0aG9u" role="tab" tabindex="0">Python</button><button aria-controls="panel-7-Qysr" aria-selected="false" class="sphinx-tabs-tab code-tab group-tab" id="tab-7-Qysr" name="Qysr" role="tab" tabindex="-1">C++</button><button aria-controls="panel-7-Ug==" aria-selected="false" class="sphinx-tabs-tab code-tab group-tab" id="tab-7-Ug==" name="Ug==" role="tab" tabindex="-1">R</button><button aria-controls="panel-7-SnVsaWE=" aria-selected="false" class="sphinx-tabs-tab code-tab group-tab" id="tab-7-SnVsaWE=" name="SnVsaWE=" role="tab" tabindex="-1">Julia</button><button aria-controls="panel-7-Rm9ydHJhbg==" aria-selected="false" class="sphinx-tabs-tab code-tab group-tab" id="tab-7-Rm9ydHJhbg==" name="Rm9ydHJhbg==" role="tab" tabindex="-1">Fortran</button></div><div aria-labelledby="tab-7-UHl0aG9u" class="sphinx-tabs-panel code-tab group-tab" id="panel-7-UHl0aG9u" name="UHl0aG9u" role="tabpanel" tabindex="0"><div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">test_set_temp</span><span class="p">(</span><span class="n">monkeypatch</span><span class="p">):</span>
+    <span class="n">monkeypatch</span><span class="o">.</span><span class="n">setattr</span><span class="p">(</span><span class="n">reactor</span><span class="p">,</span> <span class="s2">&quot;max_temperature&quot;</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="n">check_reactor_temperature</span><span class="p">(</span><span class="mi">99</span><span class="p">)</span>  <span class="o">==</span> <span class="mi">0</span>
+    <span class="k">assert</span> <span class="n">check_reactor_temperature</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span>   <span class="c1"># boundary cases easily go wrong</span>
+    <span class="k">assert</span> <span class="n">check_reactor_temperature</span><span class="p">(</span><span class="mi">101</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-7-Qysr" class="sphinx-tabs-panel code-tab group-tab" hidden="true" id="panel-7-Qysr" name="Qysr" role="tabpanel" tabindex="0"><div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="c1">// Changing variables included from headers (monkey patching) is not possible in C++.</span>
+<span class="cp">#include</span> <span class="cpf">&lt;catch2/catch.hpp&gt;</span><span class="cp"></span>
+
+<span class="cp">#include</span> <span class="cpf">&quot;reactor.hpp&quot;</span><span class="cp"></span>
+
+<span class="n">TEST_CASE</span><span class="p">(</span><span class="s">&quot;Check reactor state&quot;</span><span class="p">,</span> <span class="s">&quot;[reactor_state]&quot;</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">REQUIRE</span><span class="p">(</span><span class="n">check_reactor_temperature</span><span class="p">(</span><span class="mi">99</span><span class="p">)</span> <span class="o">==</span> <span class="n">ReactorState</span><span class="o">::</span><span class="n">FINE</span><span class="p">);</span>
+  <span class="n">REQUIRE</span><span class="p">(</span><span class="n">check_reactor_temperature</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span> <span class="o">==</span> <span class="n">ReactorState</span><span class="o">::</span><span class="n">FINE</span><span class="p">);</span>
+  <span class="n">REQUIRE</span><span class="p">(</span><span class="n">check_reactor_temperature</span><span class="p">(</span><span class="mi">101</span><span class="p">)</span> <span class="o">==</span> <span class="n">ReactorState</span><span class="o">::</span><span class="n">CRITICAL</span><span class="p">);</span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-7-Ug==" class="sphinx-tabs-panel code-tab group-tab" hidden="true" id="panel-7-Ug==" name="Ug==" role="tabpanel" tabindex="0"><div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># Changing variables imported from modules (monkey patching) is not possible in R.</span>
+<span class="c1"># To be able to test this function properly it needs to be made pure:</span>
+<span class="n">check_reactor_temperature</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span><span class="n">max_temperature</span><span class="p">,</span> <span class="n">temperature_celsius</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nf">if </span><span class="p">(</span><span class="n">temperature_celsius</span> <span class="o">&gt;</span> <span class="n">max_temperature</span><span class="p">)</span>
+    <span class="n">status</span> <span class="o">&lt;-</span> <span class="m">1</span>
+  <span class="n">else</span>
+    <span class="n">status</span> <span class="o">&lt;-</span> <span class="m">0</span>
+  <span class="n">status</span>
+<span class="p">}</span>
+<span class="nf">test_that</span><span class="p">(</span><span class="s">&quot;Test reactor temperature&quot;</span><span class="p">,</span> <span class="p">{</span>
+  <span class="nf">expect_equal</span><span class="p">(</span><span class="nf">check_reactor_temperature</span><span class="p">(</span><span class="m">100</span><span class="p">,</span> <span class="m">99</span><span class="p">),</span> <span class="m">0</span><span class="p">)</span>
+  <span class="nf">expect_equal</span><span class="p">(</span><span class="nf">check_reactor_temperature</span><span class="p">(</span><span class="m">100</span><span class="p">,</span> <span class="m">100</span><span class="p">),</span> <span class="m">0</span><span class="p">)</span>  <span class="c1"># boundary cases easily go wrong</span>
+  <span class="nf">expect_equal</span><span class="p">(</span><span class="nf">check_reactor_temperature</span><span class="p">(</span><span class="m">100</span><span class="p">,</span> <span class="m">101</span><span class="p">),</span> <span class="m">1</span><span class="p">)</span>
+<span class="p">})</span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-7-SnVsaWE=" class="sphinx-tabs-panel code-tab group-tab" hidden="true" id="panel-7-SnVsaWE=" name="SnVsaWE=" role="tabpanel" tabindex="0"><div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="c"># Changing variables imported from modules (monkey patching) is not possible in Julia.</span>
+<span class="c"># To be able to test this function properly it needs to be made pure:</span>
+
+<span class="k">function</span> <span class="n">check_reactor_temperature</span><span class="p">(</span><span class="n">temperature_celsius</span><span class="p">,</span> <span class="n">max_temperature</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">temperature_celsius</span> <span class="o">&gt;</span> <span class="n">max_temperature</span>
+        <span class="n">status</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="k">else</span>
+        <span class="n">status</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">end</span>
+<span class="k">end</span>
+
+<span class="c"># normal invocation:</span>
+<span class="k">using</span> <span class="n">reactor</span><span class="o">:</span> <span class="n">max_temperature</span>
+<span class="n">check_reactor_temperature</span><span class="p">(</span><span class="mi">99</span><span class="p">,</span> <span class="n">max_temperature</span><span class="p">)</span>
+
+<span class="c"># tests</span>
+<span class="nd">@testset</span> <span class="s">&quot;Test check_reactor_temperature function&quot;</span> <span class="k">begin</span>
+    <span class="nd">@test</span> <span class="n">check_reactor_temperature</span><span class="p">(</span><span class="mi">99</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span>
+    <span class="nd">@test</span> <span class="n">check_reactor_temperature</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span>   <span class="c"># boundary cases easily go wrong</span>
+    <span class="nd">@test</span> <span class="n">check_reactor_temperature</span><span class="p">(</span><span class="mi">101</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span>
+<span class="k">end</span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-7-Rm9ydHJhbg==" class="sphinx-tabs-panel code-tab group-tab" hidden="true" id="panel-7-Rm9ydHJhbg==" name="Rm9ydHJhbg==" role="tabpanel" tabindex="0"><div class="highlight-fortran notranslate"><div class="highlight"><pre><span></span><span class="c">! also here, not easy to test and better rewrite the function</span>
+</pre></div>
+</div>
+</div></div>
+</div>
+</div>
+<div class="admonition-testing-a-method-of-a-mutable-class challenge admonition">
+<p class="admonition-title">5. Testing a method of a mutable class</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-8-UHl0aG9u" aria-selected="true" class="sphinx-tabs-tab code-tab group-tab" id="tab-8-UHl0aG9u" name="UHl0aG9u" role="tab" tabindex="0">Python</button><button aria-controls="panel-8-Qysr" aria-selected="false" class="sphinx-tabs-tab code-tab group-tab" id="tab-8-Qysr" name="Qysr" role="tab" tabindex="-1">C++</button><button aria-controls="panel-8-Ug==" aria-selected="false" class="sphinx-tabs-tab code-tab group-tab" id="tab-8-Ug==" name="Ug==" role="tab" tabindex="-1">R</button><button aria-controls="panel-8-SnVsaWE=" aria-selected="false" class="sphinx-tabs-tab code-tab group-tab" id="tab-8-SnVsaWE=" name="SnVsaWE=" role="tab" tabindex="-1">Julia</button><button aria-controls="panel-8-Rm9ydHJhbg==" aria-selected="false" class="sphinx-tabs-tab code-tab group-tab" id="tab-8-Rm9ydHJhbg==" name="Rm9ydHJhbg==" role="tab" tabindex="-1">Fortran</button></div><div aria-labelledby="tab-8-UHl0aG9u" class="sphinx-tabs-panel code-tab group-tab" id="panel-8-UHl0aG9u" name="UHl0aG9u" role="tabpanel" tabindex="0"><div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Pet</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">hunger</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">def</span> <span class="nf">go_for_a_walk</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>  <span class="c1"># &lt;-- how would you test this function?</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">hunger</span> <span class="o">+=</span> <span class="mi">1</span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-8-Qysr" class="sphinx-tabs-panel code-tab group-tab" hidden="true" id="panel-8-Qysr" name="Qysr" role="tabpanel" tabindex="0"><div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&lt;string&gt;</span><span class="cp"></span>
+
+<span class="k">class</span> <span class="nc">Pet</span> <span class="p">{</span>
+ <span class="k">private</span><span class="o">:</span>
+  <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">hunger_</span><span class="p">{</span><span class="mi">0</span><span class="p">};</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">name_</span><span class="p">{};</span>
+
+ <span class="k">public</span><span class="o">:</span>
+  <span class="k">explicit</span> <span class="n">Pet</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">name</span><span class="p">)</span> <span class="o">:</span> <span class="n">name_</span><span class="p">(</span><span class="n">name</span><span class="p">)</span> <span class="p">{}</span>
+  <span class="kt">void</span> <span class="n">go_for_a_walk</span><span class="p">()</span> <span class="p">{</span> <span class="n">hunger_</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span> <span class="p">}</span>
+  <span class="c1">// ^-- how would you test this function?</span>
+  <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">hunger</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span> <span class="k">return</span> <span class="n">hunger_</span><span class="p">;</span> <span class="p">}</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-8-Ug==" class="sphinx-tabs-panel code-tab group-tab" hidden="true" id="panel-8-Ug==" name="Ug==" role="tabpanel" tabindex="0"><div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">Pet</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span><span class="n">name</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nf">structure</span><span class="p">(</span>
+    <span class="nf">list</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span><span class="p">,</span> <span class="n">hunger</span> <span class="o">=</span> <span class="m">0</span><span class="p">),</span>
+    <span class="n">class</span> <span class="o">=</span> <span class="s">&quot;Pet&quot;</span>
+  <span class="p">)</span>
+<span class="p">}</span>
+
+<span class="c1"># How would you test this function?</span>
+<span class="n">take_for_a_walk</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span><span class="n">pet</span><span class="p">)</span> <span class="nf">UseMethod</span><span class="p">(</span><span class="s">&quot;take_for_a_walk&quot;</span><span class="p">)</span>
+<span class="n">take_for_a_walk.Pet</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span><span class="n">pet</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">pet</span><span class="o">$</span><span class="n">hunger</span> <span class="o">&lt;-</span> <span class="n">pet</span><span class="o">$</span><span class="n">hunger</span> <span class="o">+</span> <span class="m">1</span>
+  <span class="n">pet</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-8-SnVsaWE=" class="sphinx-tabs-panel code-tab group-tab" hidden="true" id="panel-8-SnVsaWE=" name="SnVsaWE=" role="tabpanel" tabindex="0"><div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="c"># the closest thing to a class in Julia is a `mutable struct`</span>
+<span class="k">mutable</span> <span class="k">struct</span> <span class="n">Pet</span>
+    <span class="n">name</span><span class="o">::</span><span class="n">String</span>
+    <span class="n">hunger</span><span class="o">::</span><span class="kt">Int64</span>
+<span class="k">end</span>
+
+<span class="k">function</span> <span class="n">go_for_a_walk!</span><span class="p">(</span><span class="n">pet</span><span class="o">::</span><span class="n">Pet</span><span class="p">)</span>
+    <span class="n">pet</span><span class="o">.</span><span class="n">hunger</span> <span class="o">+=</span> <span class="mi">1</span>
+<span class="k">end</span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-8-Rm9ydHJhbg==" class="sphinx-tabs-panel code-tab group-tab" hidden="true" id="panel-8-Rm9ydHJhbg==" name="Rm9ydHJhbg==" role="tabpanel" tabindex="0"><div class="highlight-fortran notranslate"><div class="highlight"><pre><span></span><span class="c">! missing - please submit an example</span>
+</pre></div>
+</div>
+</div></div>
+<div class="admonition-solution solution dropdown admonition">
+<p class="admonition-title">Solution</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-9-UHl0aG9u" aria-selected="true" class="sphinx-tabs-tab code-tab group-tab" id="tab-9-UHl0aG9u" name="UHl0aG9u" role="tab" tabindex="0">Python</button><button aria-controls="panel-9-Qysr" aria-selected="false" class="sphinx-tabs-tab code-tab group-tab" id="tab-9-Qysr" name="Qysr" role="tab" tabindex="-1">C++</button><button aria-controls="panel-9-Ug==" aria-selected="false" class="sphinx-tabs-tab code-tab group-tab" id="tab-9-Ug==" name="Ug==" role="tab" tabindex="-1">R</button><button aria-controls="panel-9-SnVsaWE=" aria-selected="false" class="sphinx-tabs-tab code-tab group-tab" id="tab-9-SnVsaWE=" name="SnVsaWE=" role="tab" tabindex="-1">Julia</button><button aria-controls="panel-9-Rm9ydHJhbg==" aria-selected="false" class="sphinx-tabs-tab code-tab group-tab" id="tab-9-Rm9ydHJhbg==" name="Rm9ydHJhbg==" role="tab" tabindex="-1">Fortran</button></div><div aria-labelledby="tab-9-UHl0aG9u" class="sphinx-tabs-panel code-tab group-tab" id="panel-9-UHl0aG9u" name="UHl0aG9u" role="tabpanel" tabindex="0"><div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">test_pet</span><span class="p">():</span>
+    <span class="n">p</span> <span class="o">=</span> <span class="n">Pet</span><span class="p">(</span><span class="s1">&#39;asdf&#39;</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="n">p</span><span class="o">.</span><span class="n">hunger</span> <span class="o">==</span> <span class="mi">0</span>
+    <span class="n">p</span><span class="o">.</span><span class="n">go_for_a_walk</span><span class="p">()</span>
+    <span class="k">assert</span> <span class="n">p</span><span class="o">.</span><span class="n">hunger</span> <span class="o">==</span> <span class="mi">1</span>
+
+    <span class="n">p</span><span class="o">.</span><span class="n">hunger</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+    <span class="n">p</span><span class="o">.</span><span class="n">go_for_a_walk</span><span class="p">()</span>
+    <span class="k">assert</span> <span class="n">p</span><span class="o">.</span><span class="n">hunger</span> <span class="o">==</span> <span class="mi">0</span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-9-Qysr" class="sphinx-tabs-panel code-tab group-tab" hidden="true" id="panel-9-Qysr" name="Qysr" role="tabpanel" tabindex="0"><div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&lt;catch2/catch.hpp&gt;</span><span class="cp"></span>
+
+<span class="cp">#include</span> <span class="cpf">&quot;pet.hpp&quot;</span><span class="cp"></span>
+
+<span class="n">TEST_CASE</span><span class="p">(</span><span class="s">&quot;Check my pets&quot;</span><span class="p">,</span> <span class="s">&quot;[pets]&quot;</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">auto</span> <span class="n">fido</span> <span class="o">=</span> <span class="n">Pet</span><span class="p">(</span><span class="s">&quot;fido&quot;</span><span class="p">);</span>
+  <span class="n">REQUIRE</span><span class="p">(</span><span class="n">fido</span><span class="p">.</span><span class="n">hunger</span><span class="p">()</span> <span class="o">==</span> <span class="mi">0</span><span class="p">);</span>
+
+  <span class="n">fido</span><span class="p">.</span><span class="n">go_for_a_walk</span><span class="p">();</span>
+  <span class="n">REQUIRE</span><span class="p">(</span><span class="n">fido</span><span class="p">.</span><span class="n">hunger</span><span class="p">()</span> <span class="o">==</span> <span class="mi">1</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-9-Ug==" class="sphinx-tabs-panel code-tab group-tab" hidden="true" id="panel-9-Ug==" name="Ug==" role="tabpanel" tabindex="0"><div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">test_that</span><span class="p">(</span><span class="s">&quot;Test Pet class&quot;</span><span class="p">,</span> <span class="p">{</span>
+  <span class="n">p</span> <span class="o">&lt;-</span> <span class="nf">Pet</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">&quot;asdf&quot;</span><span class="p">)</span>
+  <span class="nf">expect_equal</span><span class="p">(</span><span class="n">p</span><span class="o">$</span><span class="n">hunger</span><span class="p">,</span> <span class="m">0</span><span class="p">)</span>
+  <span class="n">p</span> <span class="o">&lt;-</span> <span class="nf">take_for_a_walk</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+  <span class="nf">expect_equal</span><span class="p">(</span><span class="n">p</span><span class="o">$</span><span class="n">hunger</span><span class="p">,</span> <span class="m">1</span><span class="p">)</span>
+
+  <span class="n">p</span><span class="o">$</span><span class="n">hunger</span> <span class="o">&lt;-</span> <span class="m">-1</span>
+  <span class="n">p</span> <span class="o">&lt;-</span> <span class="nf">take_for_a_walk</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+  <span class="nf">expect_equal</span><span class="p">(</span><span class="n">p</span><span class="o">$</span><span class="n">hunger</span><span class="p">,</span> <span class="m">0</span><span class="p">)</span>
+<span class="p">})</span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-9-SnVsaWE=" class="sphinx-tabs-panel code-tab group-tab" hidden="true" id="panel-9-SnVsaWE=" name="SnVsaWE=" role="tabpanel" tabindex="0"><div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="c"># create the mutable struct and test it</span>
+<span class="nd">@testset</span> <span class="s">&quot;Test mutable struct&quot;</span> <span class="k">begin</span>
+    <span class="n">p</span> <span class="o">=</span> <span class="n">Pet</span><span class="p">(</span><span class="s">&quot;asdf&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="nd">@test</span> <span class="n">p</span><span class="o">.</span><span class="n">hunger</span> <span class="o">==</span> <span class="mi">0</span>
+    <span class="n">go_for_a_walk!</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+    <span class="nd">@test</span> <span class="n">p</span><span class="o">.</span><span class="n">hunger</span> <span class="o">==</span> <span class="mi">1</span>
+    <span class="n">p</span><span class="o">.</span><span class="n">hunger</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+    <span class="n">go_for_a_walk!</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+    <span class="nd">@test</span> <span class="n">p</span><span class="o">.</span><span class="n">hunger</span> <span class="o">==</span> <span class="mi">0</span>
+<span class="k">end</span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-9-Rm9ydHJhbg==" class="sphinx-tabs-panel code-tab group-tab" hidden="true" id="panel-9-Rm9ydHJhbg==" name="Rm9ydHJhbg==" role="tabpanel" tabindex="0"><div class="highlight-fortran notranslate"><div class="highlight"><pre><span></span><span class="c">! missing - please submit an example</span>
+</pre></div>
+</div>
+</div></div>
+</div>
+</div>
+</div>
+<div class="section" id="test-driven-development">
+<h2>Test-driven development<a class="headerlink" href="#test-driven-development" title="Permalink to this headline">¶</a></h2>
+<div class="admonition-test-driven-development challenge admonition">
+<p class="admonition-title">Test-driven development</p>
+<p>Write a test before writing the function! You can decide yourself
+what your unwritten function should do, but as a suggestion it can
+be based on <a class="reference external" href="https://en.wikipedia.org/wiki/Fizz_buzz">FizzBuzz</a> - i.e.
+a function that:</p>
+<ul class="simple">
+<li><p>takes an integer argument</p></li>
+<li><p>for arguments that are multiples of three, returns “Fizz”</p></li>
+<li><p>for arguments that are multiples of five, returns “Buzz”</p></li>
+<li><p>for arguments that are multiples of both three and five, returns “FizzBuzz”</p></li>
+<li><p>fails in case of non-integer arguments or integer arguments 0 or negative</p></li>
+<li><p>otherwise returns the integer itself</p></li>
+</ul>
+<p>When writing the tests, consider the different ways that the function could
+and should fail.</p>
+<p>After you have written the tests, implement the function and run the tests
+until they pass.</p>
+</div>
+<div class="admonition-solution solution dropdown admonition">
+<p class="admonition-title">Solution</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-10-UHl0aG9u" aria-selected="true" class="sphinx-tabs-tab code-tab group-tab" id="tab-10-UHl0aG9u" name="UHl0aG9u" role="tab" tabindex="0">Python</button><button aria-controls="panel-10-Qysr" aria-selected="false" class="sphinx-tabs-tab code-tab group-tab" id="tab-10-Qysr" name="Qysr" role="tab" tabindex="-1">C++</button><button aria-controls="panel-10-Ug==" aria-selected="false" class="sphinx-tabs-tab code-tab group-tab" id="tab-10-Ug==" name="Ug==" role="tab" tabindex="-1">R</button><button aria-controls="panel-10-SnVsaWE=" aria-selected="false" class="sphinx-tabs-tab code-tab group-tab" id="tab-10-SnVsaWE=" name="SnVsaWE=" role="tab" tabindex="-1">Julia</button><button aria-controls="panel-10-Rm9ydHJhbg==" aria-selected="false" class="sphinx-tabs-tab code-tab group-tab" id="tab-10-Rm9ydHJhbg==" name="Rm9ydHJhbg==" role="tab" tabindex="-1">Fortran</button></div><div aria-labelledby="tab-10-UHl0aG9u" class="sphinx-tabs-panel code-tab group-tab" id="panel-10-UHl0aG9u" name="UHl0aG9u" role="tabpanel" tabindex="0"><div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pytest</span>
+
+<span class="k">def</span> <span class="nf">fizzbuzz</span><span class="p">(</span><span class="n">number</span><span class="p">):</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">number</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">TypeError</span>
+    <span class="k">if</span> <span class="n">number</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span>
+    <span class="k">elif</span> <span class="n">number</span> <span class="o">%</span> <span class="mi">15</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s2">&quot;FizzBuzz&quot;</span>
+    <span class="k">elif</span> <span class="n">number</span> <span class="o">%</span> <span class="mi">3</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s2">&quot;Fizz&quot;</span>
+    <span class="k">elif</span> <span class="n">number</span> <span class="o">%</span> <span class="mi">5</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s2">&quot;Buzz&quot;</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">number</span>
+
+<span class="k">def</span> <span class="nf">test_fizzbuzz</span><span class="p">():</span>
+    <span class="n">expected_result</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;Fizz&quot;</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="s2">&quot;Buzz&quot;</span><span class="p">,</span> <span class="s2">&quot;Fizz&quot;</span><span class="p">,</span>
+                       <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="s2">&quot;Fizz&quot;</span><span class="p">,</span> <span class="s2">&quot;Buzz&quot;</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="s2">&quot;Fizz&quot;</span><span class="p">,</span>
+                       <span class="mi">13</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="s2">&quot;FizzBuzz&quot;</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">17</span><span class="p">,</span> <span class="s2">&quot;Fizz&quot;</span><span class="p">,</span> <span class="mi">19</span><span class="p">,</span> <span class="s2">&quot;Buzz&quot;</span><span class="p">]</span>
+    <span class="n">obtained_result</span> <span class="o">=</span> <span class="p">[</span><span class="n">fizzbuzz</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">21</span><span class="p">)]</span>
+
+    <span class="k">assert</span> <span class="n">obtained_result</span> <span class="o">==</span> <span class="n">expected_result</span>
+
+    <span class="k">with</span> <span class="n">pytest</span><span class="o">.</span><span class="n">raises</span><span class="p">(</span><span class="ne">ValueError</span><span class="p">):</span>
+        <span class="n">fizzbuzz</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">)</span>
+    <span class="k">with</span> <span class="n">pytest</span><span class="o">.</span><span class="n">raises</span><span class="p">(</span><span class="ne">ValueError</span><span class="p">):</span>
+        <span class="n">fizzbuzz</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+    <span class="k">with</span> <span class="n">pytest</span><span class="o">.</span><span class="n">raises</span><span class="p">(</span><span class="ne">TypeError</span><span class="p">):</span>
+        <span class="n">fizzbuzz</span><span class="p">(</span><span class="mf">1.5</span><span class="p">)</span>
+    <span class="k">with</span> <span class="n">pytest</span><span class="o">.</span><span class="n">raises</span><span class="p">(</span><span class="ne">TypeError</span><span class="p">):</span>
+        <span class="n">fizzbuzz</span><span class="p">(</span><span class="s2">&quot;rabbit&quot;</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">100</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">fizzbuzz</span><span class="p">(</span><span class="n">i</span><span class="p">))</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-10-Qysr" class="sphinx-tabs-panel code-tab group-tab" hidden="true" id="panel-10-Qysr" name="Qysr" role="tabpanel" tabindex="0"><div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="c1">// in the fizzbuzz.hpp header file</span>
+<span class="cp">#include</span> <span class="cpf">&lt;string&gt;</span><span class="cp"></span>
+
+<span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">fizzbuzz</span><span class="p">(</span><span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">n</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">n</span> <span class="o">%</span> <span class="mi">15</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="s">&quot;FizzBuzz&quot;</span><span class="p">;</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">n</span> <span class="o">%</span> <span class="mi">3</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="s">&quot;Fizz&quot;</span><span class="p">;</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">n</span> <span class="o">%</span> <span class="mi">5</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="s">&quot;Buzz&quot;</span><span class="p">;</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">std</span><span class="o">::</span><span class="n">to_string</span><span class="p">(</span><span class="n">n</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// in the source file for the main executable</span>
+<span class="cp">#include</span> <span class="cpf">&lt;cstdlib&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
+
+<span class="kt">int</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">for</span> <span class="p">(</span><span class="k">auto</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">100</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">fizzbuzz</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// in the source file for the test</span>
+<span class="cp">#include</span> <span class="cpf">&lt;string&gt;</span><span class="cp"></span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;catch2/catch.hpp&gt;</span><span class="cp"></span>
+
+<span class="cp">#include</span> <span class="cpf">&quot;fizzbuzz.hpp&quot;</span><span class="cp"></span>
+
+<span class="n">TEST_CASE</span><span class="p">(</span><span class="s">&quot;FizzBuzz&quot;</span><span class="p">,</span> <span class="s">&quot;[fizzbuzz]&quot;</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">auto</span> <span class="n">expected</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span><span class="p">{</span>
+        <span class="s">&quot;1&quot;</span><span class="p">,</span>        <span class="s">&quot;2&quot;</span><span class="p">,</span>    <span class="s">&quot;Fizz&quot;</span><span class="p">,</span> <span class="s">&quot;4&quot;</span><span class="p">,</span>    <span class="s">&quot;Buzz&quot;</span><span class="p">,</span> <span class="s">&quot;Fizz&quot;</span><span class="p">,</span> <span class="s">&quot;7&quot;</span><span class="p">,</span>
+        <span class="s">&quot;8&quot;</span><span class="p">,</span>        <span class="s">&quot;Fizz&quot;</span><span class="p">,</span> <span class="s">&quot;Buzz&quot;</span><span class="p">,</span> <span class="s">&quot;11&quot;</span><span class="p">,</span>   <span class="s">&quot;Fizz&quot;</span><span class="p">,</span> <span class="s">&quot;13&quot;</span><span class="p">,</span>   <span class="s">&quot;14&quot;</span><span class="p">,</span>
+        <span class="s">&quot;FizzBuzz&quot;</span><span class="p">,</span> <span class="s">&quot;16&quot;</span><span class="p">,</span>   <span class="s">&quot;17&quot;</span><span class="p">,</span>   <span class="s">&quot;Fizz&quot;</span><span class="p">,</span> <span class="s">&quot;19&quot;</span><span class="p">,</span>   <span class="s">&quot;Buzz&quot;</span><span class="p">};</span>
+
+  <span class="k">for</span> <span class="p">(</span><span class="k">auto</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="mi">21</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">REQUIRE</span><span class="p">(</span><span class="n">fizzbuzz</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">==</span> <span class="n">expected</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-10-Ug==" class="sphinx-tabs-panel code-tab group-tab" hidden="true" id="panel-10-Ug==" name="Ug==" role="tabpanel" tabindex="0"><div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">WRITEME</span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-10-SnVsaWE=" class="sphinx-tabs-panel code-tab group-tab" hidden="true" id="panel-10-SnVsaWE=" name="SnVsaWE=" role="tabpanel" tabindex="0"><div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="k">using</span> <span class="n">Test</span>
+
+<span class="k">function</span> <span class="n">fizzbuzz</span><span class="p">(</span><span class="n">number</span><span class="o">::</span><span class="kt">Int</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">number</span> <span class="o">&lt;</span> <span class="mi">1</span>
+        <span class="n">throw</span><span class="p">(</span><span class="kt">DomainError</span><span class="p">(</span><span class="n">number</span><span class="p">,</span> <span class="s">&quot;number needs to be 1 or higher&quot;</span><span class="p">))</span>
+    <span class="k">elseif</span> <span class="n">number</span> <span class="o">%</span> <span class="mi">15</span> <span class="o">==</span> <span class="mi">0</span>
+        <span class="k">return</span> <span class="s">&quot;FizzBuzz&quot;</span>
+    <span class="k">elseif</span> <span class="n">number</span> <span class="o">%</span> <span class="mi">3</span> <span class="o">==</span> <span class="mi">0</span>
+        <span class="k">return</span> <span class="s">&quot;Fizz&quot;</span>
+    <span class="k">elseif</span> <span class="n">number</span> <span class="o">%</span> <span class="mi">5</span> <span class="o">==</span> <span class="mi">0</span>
+        <span class="k">return</span> <span class="s">&quot;Buzz&quot;</span>
+    <span class="k">else</span>
+        <span class="k">return</span> <span class="n">number</span>
+    <span class="k">end</span>
+<span class="k">end</span>
+
+<span class="nd">@testset</span> <span class="k">begin</span>
+    <span class="n">expected_result</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="s">&quot;Fizz&quot;</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="s">&quot;Buzz&quot;</span><span class="p">,</span> <span class="s">&quot;Fizz&quot;</span><span class="p">,</span>
+                       <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="s">&quot;Fizz&quot;</span><span class="p">,</span> <span class="s">&quot;Buzz&quot;</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="s">&quot;Fizz&quot;</span><span class="p">,</span>
+                       <span class="mi">13</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="s">&quot;FizzBuzz&quot;</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">17</span><span class="p">,</span> <span class="s">&quot;Fizz&quot;</span><span class="p">,</span> <span class="mi">19</span><span class="p">,</span> <span class="s">&quot;Buzz&quot;</span><span class="p">]</span>
+    <span class="n">obtained_result</span> <span class="o">=</span> <span class="p">[</span><span class="n">fizzbuzz</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="kp">in</span> <span class="mi">1</span><span class="o">:</span><span class="mi">20</span><span class="p">]</span>
+
+    <span class="nd">@test</span> <span class="n">obtained_result</span> <span class="o">==</span> <span class="n">expected_result</span>
+
+    <span class="nd">@test_throws</span> <span class="kt">MethodError</span> <span class="n">fizzbuzz</span><span class="p">(</span><span class="mf">1.5</span><span class="p">)</span>
+    <span class="nd">@test_throws</span> <span class="kt">DomainError</span> <span class="n">fizzbuzz</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="nd">@test_throws</span> <span class="kt">DomainError</span> <span class="n">fizzbuzz</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">)</span>
+
+<span class="k">end</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="kp">in</span> <span class="mi">1</span><span class="o">:</span><span class="mi">20</span>
+    <span class="n">println</span><span class="p">(</span><span class="n">fizzbuzz</span><span class="p">(</span><span class="n">i</span><span class="p">))</span>
+<span class="k">end</span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-10-Rm9ydHJhbg==" class="sphinx-tabs-panel code-tab group-tab" hidden="true" id="panel-10-Rm9ydHJhbg==" name="Rm9ydHJhbg==" role="tabpanel" tabindex="0"><div class="highlight-fortran notranslate"><div class="highlight"><pre><span></span>! The pFUnit test case
+@test
+subroutine test_fizzbuzz()
+   use fizzbuzz_mod
+   use funit
+   @assertEqual(&#39;Fizz&#39;, fizzbuzz(12), &#39;fizzbuzz(12)&#39;)
+   @assertEqual(&#39;Buzz&#39;, fizzbuzz(25), &#39;fizzbuzz(25)&#39;)
+   @assertEqual(&#39;FizzBuzz&#39;, fizzbuzz(60), &#39;fizzbuzz(60)&#39;)
+end subroutine test_fizzbuzz
+
+! The fizzbuzz function
+module fizzbuzz_mod
+contains
+! Evaluates the fizzbuzz of n
+   character(8) function fizzbuzz(n)
+      implicit none
+      integer, intent(in) :: n
+      character(8) str1
+      if( mod(n,15)==0 ) then
+         str1=&#39;FizzBuzz&#39;
+      else if( mod(n,3)==0 ) then
+         str1=&#39;Fizz&#39;
+      else if( mod(n,5)==0 ) then
+         str1=&#39;Buzz&#39;
+      else if( n&lt;0 ) then
+         str1=&#39;Err n&lt;0&#39;
+      else
+         str1=char(n)
+      end if
+      fizzbuzz=str1
+   end function fizzbuzz
+end module fizzbuzz_mod
+</pre></div>
+</div>
+</div></div>
+</div>
+</div>
+<div class="section" id="testing-randomness">
+<h2>Testing randomness<a class="headerlink" href="#testing-randomness" title="Permalink to this headline">¶</a></h2>
+<p>How would you test functions which generate random numbers
+according to some distribution/statistics?</p>
+<p>Functions and modules which contain randomness are
+more difficult to test than pure deterministic functions, but
+many strategies exist:</p>
+<ul class="simple">
+<li><p>For unit tests we can use fixed random seeds.</p></li>
+<li><p>Try to test whether your results follow the expected
+distribution/statistics.</p></li>
+<li><p>When you verify your code “by eye”, what are you looking at? Now try
+to express that in a script.</p></li>
+</ul>
+<div class="admonition-different-ways-of-testing-randomness challenge admonition">
+<p class="admonition-title">Different ways of testing randomness</p>
+<p>Consider the code below which simulates playing
+<a class="reference external" href="https://en.wikipedia.org/wiki/Yahtzee">Yahtzee</a> by using
+random numbers. How would you go about testing it?</p>
+<p>Try to write two types of tests:</p>
+<ul class="simple">
+<li><p>a <em>unit test</em> for the <code class="docutils literal notranslate"><span class="pre">roll_dice</span></code> function. Since it uses
+random numbers, you will need to <strong>set the random seed</strong>,
+pre-calculate what sequence of dice throws you get with that seed,
+and use that in your test.</p></li>
+<li><p>a test of the <code class="docutils literal notranslate"><span class="pre">yahtzee</span></code> function which considers the statistical
+probability of obtaining a “Yahtzee” (5 dice with the same value
+after three throws), which is around 4.6%. This test will be
+an <em>integration test</em> since it tests multiple functions including the
+random number generator itself.</p></li>
+</ul>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-11-UHl0aG9u" aria-selected="true" class="sphinx-tabs-tab code-tab group-tab" id="tab-11-UHl0aG9u" name="UHl0aG9u" role="tab" tabindex="0">Python</button><button aria-controls="panel-11-Qysr" aria-selected="false" class="sphinx-tabs-tab code-tab group-tab" id="tab-11-Qysr" name="Qysr" role="tab" tabindex="-1">C++</button><button aria-controls="panel-11-SnVsaWE=" aria-selected="false" class="sphinx-tabs-tab code-tab group-tab" id="tab-11-SnVsaWE=" name="SnVsaWE=" role="tab" tabindex="-1">Julia</button></div><div aria-labelledby="tab-11-UHl0aG9u" class="sphinx-tabs-panel code-tab group-tab" id="panel-11-UHl0aG9u" name="UHl0aG9u" role="tabpanel" tabindex="0"><div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">random</span>
+<span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">Counter</span>
+
+
+<span class="k">def</span> <span class="nf">roll_dice</span><span class="p">(</span><span class="n">num_dice</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">])</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_dice</span><span class="p">)]</span>
+
+
+<span class="k">def</span> <span class="nf">yahtzee</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Play yahtzee with 5 6-sided dice and 3 throws.</span>
+<span class="sd">    Collect as many of the same dice side as possible.</span>
+<span class="sd">    Returns the number of same sides.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># first throw</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">roll_dice</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+    <span class="n">most_common_side</span><span class="p">,</span> <span class="n">how_often</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">(</span><span class="n">result</span><span class="p">)</span><span class="o">.</span><span class="n">most_common</span><span class="p">(</span><span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+
+    <span class="c1"># we keep the most common side</span>
+    <span class="n">target_side</span> <span class="o">=</span> <span class="n">most_common_side</span>
+    <span class="n">num_same_sides</span> <span class="o">=</span> <span class="n">how_often</span>
+    <span class="k">if</span> <span class="n">num_same_sides</span> <span class="o">==</span> <span class="mi">5</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">5</span>
+
+    <span class="c1"># second and third throw</span>
+    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]:</span>
+        <span class="n">throw</span> <span class="o">=</span> <span class="n">roll_dice</span><span class="p">(</span><span class="mi">5</span> <span class="o">-</span> <span class="n">num_same_sides</span><span class="p">)</span>
+        <span class="n">num_same_sides</span> <span class="o">+=</span> <span class="n">Counter</span><span class="p">(</span><span class="n">throw</span><span class="p">)[</span><span class="n">target_side</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">num_same_sides</span> <span class="o">==</span> <span class="mi">5</span><span class="p">:</span>
+            <span class="k">return</span> <span class="mi">5</span>
+
+    <span class="k">return</span> <span class="n">num_same_sides</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">num_games</span> <span class="o">=</span> <span class="mi">100</span>
+
+    <span class="n">winning_games</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span>
+        <span class="nb">filter</span><span class="p">(</span>
+            <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="o">==</span> <span class="mi">5</span><span class="p">,</span>
+            <span class="p">[</span><span class="n">yahtzee</span><span class="p">()</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_games</span><span class="p">)],</span>
+        <span class="p">)</span>
+    <span class="p">)</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;out of the </span><span class="si">{</span><span class="n">num_games</span><span class="si">}</span><span class="s2"> games, </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">winning_games</span><span class="p">)</span><span class="si">}</span><span class="s2"> got a yahtzee!&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-11-Qysr" class="sphinx-tabs-panel code-tab group-tab" hidden="true" id="panel-11-Qysr" name="Qysr" role="tabpanel" tabindex="0"><div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&lt;cstdlib&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;random&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;tuple&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;vector&gt;</span><span class="cp"></span>
+
+<span class="cm">/* Roll a fair die n_dice times. The faces of the die can be set (default is 1 to 6).</span>
+<span class="cm"> * The PRNG engine is moved in the function such that changes in its state are propagated back to the caller.</span>
+<span class="cm"> */</span>
+<span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="nc">PRNGEngine</span> <span class="o">=</span> <span class="k">decltype</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">default_random_engine</span><span class="p">())</span><span class="o">&gt;</span>
+<span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">unsigned</span> <span class="kt">int</span><span class="o">&gt;</span> <span class="n">roll_dice</span><span class="p">(</span>
+    <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">n_dice</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">unsigned</span> <span class="kt">int</span><span class="o">&gt;</span> <span class="n">faces</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">},</span>
+    <span class="n">PRNGEngine</span><span class="o">&amp;&amp;</span> <span class="n">gen</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">default_random_engine</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">random_device</span><span class="p">()()))</span> <span class="p">{</span>
+  <span class="c1">// create a fair die</span>
+  <span class="k">auto</span> <span class="n">weights</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="p">(</span><span class="n">faces</span><span class="p">.</span><span class="n">size</span><span class="p">(),</span> <span class="mf">1.0</span><span class="p">);</span>
+  <span class="k">auto</span> <span class="n">fair_dice</span> <span class="o">=</span>
+      <span class="n">std</span><span class="o">::</span><span class="n">discrete_distribution</span><span class="o">&lt;</span><span class="kt">unsigned</span> <span class="kt">int</span><span class="o">&gt;</span><span class="p">(</span><span class="n">weights</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">weights</span><span class="p">.</span><span class="n">end</span><span class="p">());</span>
+
+  <span class="k">auto</span> <span class="n">rolls</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">unsigned</span> <span class="kt">int</span><span class="o">&gt;</span><span class="p">(</span><span class="n">n_dice</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+  <span class="k">for</span> <span class="p">(</span><span class="k">auto</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0u</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n_dice</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">rolls</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">faces</span><span class="p">[</span><span class="n">fair_dice</span><span class="p">(</span><span class="n">gen</span><span class="p">)];</span>
+  <span class="p">}</span>
+
+  <span class="k">return</span> <span class="n">rolls</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="cm">/* count how many times each face comes up */</span>
+<span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">unsigned</span> <span class="kt">int</span><span class="o">&gt;</span> <span class="n">count</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">unsigned</span> <span class="kt">int</span><span class="o">&gt;&amp;</span> <span class="n">toss</span><span class="p">,</span>
+                                <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">unsigned</span> <span class="kt">int</span><span class="o">&gt;&amp;</span> <span class="n">faces</span> <span class="o">=</span> <span class="p">{</span>
+                                    <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">})</span> <span class="p">{</span>
+  <span class="k">auto</span> <span class="n">face_counts</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">unsigned</span> <span class="kt">int</span><span class="o">&gt;</span><span class="p">(</span><span class="n">faces</span><span class="p">.</span><span class="n">size</span><span class="p">(),</span> <span class="mi">0</span><span class="p">);</span>
+  <span class="k">for</span> <span class="p">(</span><span class="k">auto</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">faces</span><span class="p">.</span><span class="n">size</span><span class="p">();</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">face_counts</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">count</span><span class="p">(</span><span class="n">toss</span><span class="p">.</span><span class="n">cbegin</span><span class="p">(),</span> <span class="n">toss</span><span class="p">.</span><span class="n">cend</span><span class="p">(),</span> <span class="n">faces</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+  <span class="p">}</span>
+  <span class="k">return</span> <span class="n">face_counts</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="n">std</span><span class="o">::</span><span class="n">tuple</span><span class="o">&lt;</span><span class="kt">unsigned</span> <span class="kt">int</span><span class="p">,</span> <span class="kt">unsigned</span> <span class="kt">int</span><span class="o">&gt;</span> <span class="n">yahtzee</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">auto</span> <span class="n">n_dice</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
+  <span class="k">auto</span> <span class="n">faces</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">unsigned</span> <span class="kt">int</span><span class="o">&gt;</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">};</span>
+  <span class="k">auto</span> <span class="n">toss</span> <span class="o">=</span> <span class="p">[</span><span class="n">faces</span><span class="p">](</span><span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">n_dice</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="nf">roll_dice</span><span class="p">(</span><span class="n">n_dice</span><span class="p">,</span> <span class="n">faces</span><span class="p">);</span> <span class="p">};</span>
+  <span class="c1">// throw all dice</span>
+  <span class="k">auto</span> <span class="n">first_toss</span> <span class="o">=</span> <span class="n">toss</span><span class="p">(</span><span class="n">n_dice</span><span class="p">);</span>
+  <span class="k">auto</span> <span class="n">face_counts</span> <span class="o">=</span> <span class="n">count</span><span class="p">(</span><span class="n">first_toss</span><span class="p">);</span>
+
+  <span class="k">auto</span> <span class="n">it_max</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">max_element</span><span class="p">(</span><span class="n">face_counts</span><span class="p">.</span><span class="n">cbegin</span><span class="p">(),</span> <span class="n">face_counts</span><span class="p">.</span><span class="n">cend</span><span class="p">());</span>
+  <span class="c1">// number of faces that showed the most</span>
+  <span class="k">auto</span> <span class="n">n_collected</span> <span class="o">=</span> <span class="o">*</span><span class="n">it_max</span><span class="p">;</span>
+  <span class="c1">// corresponding index in the array, will be used to get which face showed up</span>
+  <span class="c1">// the most</span>
+  <span class="k">auto</span> <span class="n">idx_max</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">distance</span><span class="p">(</span><span class="n">face_counts</span><span class="p">.</span><span class="n">cbegin</span><span class="p">(),</span> <span class="n">it_max</span><span class="p">);</span>
+
+  <span class="c1">// all 5 dice showed the same face! YAHTZEE!</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">n_collected</span> <span class="o">==</span> <span class="mi">5</span><span class="p">)</span> <span class="k">return</span> <span class="n">std</span><span class="o">::</span><span class="n">make_tuple</span><span class="p">(</span><span class="n">faces</span><span class="p">[</span><span class="n">idx_max</span><span class="p">],</span> <span class="n">n_collected</span><span class="p">);</span>
+
+  <span class="c1">// no yahtzee :(</span>
+  <span class="c1">// we throw (n_dice - n_collected) dice</span>
+  <span class="k">auto</span> <span class="n">second_toss</span> <span class="o">=</span> <span class="n">toss</span><span class="p">(</span><span class="n">n_dice</span> <span class="o">-</span> <span class="n">n_collected</span><span class="p">);</span>
+  <span class="n">n_collected</span> <span class="o">+=</span> <span class="n">count</span><span class="p">(</span><span class="n">second_toss</span><span class="p">,</span> <span class="p">{</span><span class="n">faces</span><span class="p">[</span><span class="n">idx_max</span><span class="p">]})[</span><span class="mi">0</span><span class="p">];</span>
+  <span class="c1">// YAHTZEE!</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">n_collected</span> <span class="o">==</span> <span class="mi">5</span><span class="p">)</span> <span class="k">return</span> <span class="n">std</span><span class="o">::</span><span class="n">make_tuple</span><span class="p">(</span><span class="n">faces</span><span class="p">[</span><span class="n">idx_max</span><span class="p">],</span> <span class="n">n_collected</span><span class="p">);</span>
+
+  <span class="c1">// final chance</span>
+  <span class="k">auto</span> <span class="n">third_toss</span> <span class="o">=</span> <span class="n">toss</span><span class="p">(</span><span class="n">n_dice</span> <span class="o">-</span> <span class="n">n_collected</span><span class="p">);</span>
+  <span class="n">n_collected</span> <span class="o">+=</span> <span class="n">count</span><span class="p">(</span><span class="n">third_toss</span><span class="p">,</span> <span class="p">{</span><span class="n">faces</span><span class="p">[</span><span class="n">idx_max</span><span class="p">]})[</span><span class="mi">0</span><span class="p">];</span>
+
+  <span class="k">return</span> <span class="n">std</span><span class="o">::</span><span class="n">make_tuple</span><span class="p">(</span><span class="n">faces</span><span class="p">[</span><span class="n">idx_max</span><span class="p">],</span> <span class="n">n_collected</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">for</span> <span class="p">(</span><span class="k">auto</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">100</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">value</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">times</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">tie</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">times</span><span class="p">)</span> <span class="o">=</span> <span class="n">yahtzee</span><span class="p">();</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;We got &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">value</span> <span class="o">&lt;&lt;</span> <span class="s">&quot; &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">times</span> <span class="o">&lt;&lt;</span> <span class="s">&quot; times in round &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">i</span>
+              <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">times</span> <span class="o">==</span> <span class="mi">5</span><span class="p">)</span> <span class="p">{</span>
+      <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;YAHTZEE in round &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">i</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+
+  <span class="k">return</span> <span class="n">EXIT_SUCCESS</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-11-SnVsaWE=" class="sphinx-tabs-panel code-tab group-tab" hidden="true" id="panel-11-SnVsaWE=" name="SnVsaWE=" role="tabpanel" tabindex="0"><div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="k">using</span> <span class="n">Random</span>
+
+<span class="s">&quot;&quot;&quot;</span>
+<span class="s">    roll_dice(n_dice::Int=5, sides=(1,2,3,4,5,6))</span>
+
+<span class="s">Returns array of n_dice random integers corresponding to the sides of dice</span>
+<span class="s">&quot;&quot;&quot;</span>
+<span class="k">function</span> <span class="n">roll_dice</span><span class="p">(</span><span class="n">n_dice</span><span class="o">::</span><span class="kt">Int</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">sides</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">rand</span><span class="p">(</span><span class="n">sides</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="kp">in</span> <span class="mi">1</span><span class="o">:</span><span class="n">n_dice</span><span class="p">]</span>
+<span class="k">end</span>
+
+<span class="s">&quot;&quot;&quot;</span>
+<span class="s">    yahtzee()</span>
+
+<span class="s">Play Yahtzee with 5 6-sided dice and 3 throws.</span>
+<span class="s">Collect as many of the same dice side as possible.</span>
+<span class="s">Returns a tuple with the collected side (e.g. 4&#39;s) and</span>
+<span class="s">how many of that side (between 1 and 5).</span>
+<span class="s">&quot;&quot;&quot;</span>
+<span class="k">function</span> <span class="n">yahtzee</span><span class="p">()</span>
+    <span class="n">sides</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">)</span>
+    <span class="n">n_dice</span> <span class="o">=</span> <span class="mi">5</span>
+    <span class="c"># we first throw all dice</span>
+    <span class="n">first_throw</span> <span class="o">=</span> <span class="n">roll_dice</span><span class="p">(</span><span class="n">n_dice</span><span class="p">,</span> <span class="n">sides</span><span class="p">)</span>
+    <span class="c"># count how many times each side comes up</span>
+    <span class="n">side_counts</span> <span class="o">=</span> <span class="p">[</span><span class="n">count</span><span class="p">(</span><span class="n">x</span><span class="o">-&gt;</span><span class="n">x</span><span class="o">==</span><span class="n">i</span><span class="p">,</span><span class="n">first_throw</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="kp">in</span> <span class="n">sides</span><span class="p">]</span>
+    <span class="c"># collected_side is the dice side we will start collecting</span>
+    <span class="n">n_collected</span><span class="p">,</span> <span class="n">collected_side</span> <span class="o">=</span> <span class="n">findmax</span><span class="p">(</span><span class="n">side_counts</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">n_collected</span> <span class="o">==</span> <span class="mi">5</span>
+        <span class="k">return</span> <span class="n">collected_side</span><span class="p">,</span> <span class="n">n_collected</span>
+    <span class="k">end</span>
+
+    <span class="c"># now we throw n_dice-n_collected dice and hope to get more collected_side</span>
+    <span class="n">second_throw</span> <span class="o">=</span> <span class="n">roll_dice</span><span class="p">(</span><span class="n">n_dice</span><span class="o">-</span><span class="n">n_collected</span><span class="p">,</span> <span class="n">sides</span><span class="p">)</span>
+    <span class="n">n_new_matches</span> <span class="o">=</span> <span class="n">count</span><span class="p">(</span><span class="n">x</span><span class="o">-&gt;</span><span class="n">x</span><span class="o">==</span><span class="n">collected_side</span><span class="p">,</span><span class="n">second_throw</span><span class="p">)</span>
+    <span class="n">n_collected</span> <span class="o">+=</span> <span class="n">n_new_matches</span>
+    <span class="k">if</span> <span class="n">n_collected</span> <span class="o">==</span> <span class="mi">5</span>
+        <span class="k">return</span> <span class="n">collected_side</span><span class="p">,</span> <span class="n">n_collected</span>
+    <span class="k">end</span>
+
+    <span class="c"># final throw...</span>
+    <span class="n">third_throw</span> <span class="o">=</span> <span class="n">roll_dice</span><span class="p">(</span><span class="n">n_dice</span><span class="o">-</span><span class="n">n_collected</span><span class="p">,</span> <span class="n">sides</span><span class="p">)</span>
+    <span class="n">n_new_matches</span> <span class="o">=</span> <span class="n">count</span><span class="p">(</span><span class="n">x</span><span class="o">-&gt;</span><span class="n">x</span><span class="o">==</span><span class="n">collected_side</span><span class="p">,</span><span class="n">third_throw</span><span class="p">)</span>
+    <span class="n">n_collected</span> <span class="o">+=</span> <span class="n">n_new_matches</span>
+
+    <span class="k">return</span> <span class="n">collected_side</span><span class="p">,</span> <span class="n">n_collected</span>
+<span class="k">end</span>
+
+
+<span class="k">for</span> <span class="n">i</span> <span class="kp">in</span> <span class="mi">1</span><span class="o">:</span><span class="mi">10</span>
+    <span class="n">collected_side</span><span class="p">,</span> <span class="n">n_collected</span> <span class="o">=</span> <span class="n">yahtzee</span><span class="p">()</span>
+    <span class="n">println</span><span class="p">(</span><span class="s">&quot;We got </span><span class="si">$n_collected</span><span class="s"> </span><span class="si">$collected_side</span><span class="s">&#39;s in this round&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">n_collected</span> <span class="o">==</span> <span class="mi">5</span>
+        <span class="n">println</span><span class="p">(</span><span class="s">&quot;Yay, it&#39;s a Yahtzee!&quot;</span><span class="p">)</span>
+    <span class="k">end</span>
+<span class="k">end</span>
+</pre></div>
+</div>
+</div></div>
+</div>
+<div class="admonition-solution solution dropdown admonition">
+<p class="admonition-title">Solution</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-12-UHl0aG9u" aria-selected="true" class="sphinx-tabs-tab code-tab group-tab" id="tab-12-UHl0aG9u" name="UHl0aG9u" role="tab" tabindex="0">Python</button><button aria-controls="panel-12-Qysr" aria-selected="false" class="sphinx-tabs-tab code-tab group-tab" id="tab-12-Qysr" name="Qysr" role="tab" tabindex="-1">C++</button><button aria-controls="panel-12-SnVsaWE=" aria-selected="false" class="sphinx-tabs-tab code-tab group-tab" id="tab-12-SnVsaWE=" name="SnVsaWE=" role="tab" tabindex="-1">Julia</button></div><div aria-labelledby="tab-12-UHl0aG9u" class="sphinx-tabs-panel code-tab group-tab" id="panel-12-UHl0aG9u" name="UHl0aG9u" role="tabpanel" tabindex="0"><div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">test_roll_dice</span><span class="p">():</span>
+    <span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="n">roll_dice</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span> <span class="o">==</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+    <span class="k">assert</span> <span class="n">roll_dice</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span> <span class="o">==</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+    <span class="k">assert</span> <span class="n">roll_dice</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span> <span class="o">==</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+
+
+<span class="k">def</span> <span class="nf">test_yahtzee</span><span class="p">():</span>
+    <span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">num_games</span> <span class="o">=</span> <span class="mi">10000</span>
+
+    <span class="n">winning_games</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span>
+        <span class="nb">filter</span><span class="p">(</span>
+            <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="o">==</span> <span class="mi">5</span><span class="p">,</span>
+            <span class="p">[</span><span class="n">yahtzee</span><span class="p">()</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_games</span><span class="p">)],</span>
+        <span class="p">)</span>
+    <span class="p">)</span>
+
+    <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">winning_games</span><span class="p">)</span> <span class="o">==</span> <span class="mi">460</span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-12-Qysr" class="sphinx-tabs-panel code-tab group-tab" hidden="true" id="panel-12-Qysr" name="Qysr" role="tabpanel" tabindex="0"><div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&lt;random&gt;</span><span class="cp"></span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;catch2/catch.hpp&gt;</span><span class="cp"></span>
+
+<span class="cp">#include</span> <span class="cpf">&quot;yahtzee.hpp&quot;</span><span class="cp"></span>
+
+<span class="k">using</span> <span class="k">namespace</span> <span class="n">Catch</span><span class="o">::</span><span class="n">literals</span><span class="p">;</span>
+
+<span class="n">TEST_CASE</span><span class="p">(</span><span class="s">&quot;Tossing 5 dice&quot;</span><span class="p">,</span> <span class="s">&quot;[toss]&quot;</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">auto</span> <span class="n">n_dice</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
+  <span class="k">auto</span> <span class="n">faces</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">unsigned</span> <span class="kt">int</span><span class="o">&gt;</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">};</span>
+
+  <span class="c1">// we fix both the random device and the random engine.</span>
+  <span class="c1">// the latter is necessary since the default random engine is implementation-dependent</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">mt19937</span> <span class="n">prng</span><span class="p">;</span>
+  <span class="n">prng</span><span class="p">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">1234</span><span class="p">);</span>
+
+  <span class="k">auto</span> <span class="n">expected_1</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">unsigned</span> <span class="kt">int</span><span class="o">&gt;</span><span class="p">{</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">};</span>
+  <span class="k">auto</span> <span class="n">toss_1</span>  <span class="o">=</span> <span class="n">roll_dice</span><span class="p">(</span><span class="n">n_dice</span><span class="p">,</span> <span class="n">faces</span><span class="p">,</span> <span class="n">prng</span><span class="p">);</span>
+  <span class="n">REQUIRE</span><span class="p">(</span><span class="n">toss_1</span> <span class="o">==</span> <span class="n">expected_1</span><span class="p">);</span>
+
+  <span class="k">auto</span> <span class="n">expected_2</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">unsigned</span> <span class="kt">int</span><span class="o">&gt;</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">};</span>
+  <span class="k">auto</span> <span class="n">toss_2</span>  <span class="o">=</span> <span class="n">roll_dice</span><span class="p">(</span><span class="n">n_dice</span><span class="p">,</span> <span class="n">faces</span><span class="p">,</span> <span class="n">prng</span><span class="p">);</span>
+  <span class="n">REQUIRE</span><span class="p">(</span><span class="n">toss_2</span> <span class="o">==</span> <span class="n">expected_2</span><span class="p">);</span>
+
+  <span class="k">auto</span> <span class="n">expected_3</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">unsigned</span> <span class="kt">int</span><span class="o">&gt;</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">};</span>
+  <span class="k">auto</span> <span class="n">toss_3</span>  <span class="o">=</span> <span class="n">roll_dice</span><span class="p">(</span><span class="n">n_dice</span><span class="p">,</span> <span class="n">faces</span><span class="p">,</span> <span class="n">prng</span><span class="p">);</span>
+  <span class="n">REQUIRE</span><span class="p">(</span><span class="n">toss_3</span> <span class="o">==</span> <span class="n">expected_3</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="n">TEST_CASE</span><span class="p">(</span><span class="s">&quot;Distribution of Yahtzee&quot;</span><span class="p">,</span> <span class="s">&quot;[yahtzee]&quot;</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// try a million throws and see if we get close</span>
+  <span class="c1">// to the statistical average of 4.6%</span>
+  <span class="c1">// (https://en.wikipedia.org/wiki/Yahtzee#Probabilities)</span>
+  <span class="k">auto</span> <span class="n">n_yahtzees</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="k">auto</span> <span class="n">n_trials</span> <span class="o">=</span> <span class="mf">1e6</span><span class="p">;</span>
+
+  <span class="k">for</span> <span class="p">(</span><span class="k">auto</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n_trials</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">value</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">times</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">tie</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">times</span><span class="p">)</span> <span class="o">=</span> <span class="n">yahtzee</span><span class="p">();</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">times</span> <span class="o">==</span> <span class="mi">5</span><span class="p">)</span> <span class="p">{</span>
+      <span class="o">++</span><span class="n">n_yahtzees</span><span class="p">;</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+
+  <span class="n">REQUIRE</span><span class="p">(</span> <span class="n">n_yahtzees</span> <span class="o">/</span> <span class="n">n_tests</span> <span class="o">==</span> <span class="mf">0.046</span><span class="n">_a</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-12-SnVsaWE=" class="sphinx-tabs-panel code-tab group-tab" hidden="true" id="panel-12-SnVsaWE=" name="SnVsaWE=" role="tabpanel" tabindex="0"><div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="k">using</span> <span class="n">Test</span>
+
+<span class="nd">@testset</span> <span class="s">&quot;test roll_dice&quot;</span> <span class="k">begin</span>
+    <span class="c"># fix random seed</span>
+    <span class="n">Random</span><span class="o">.</span><span class="n">seed!</span><span class="p">(</span><span class="mi">1234</span><span class="p">);</span>
+    <span class="c"># known sequence for given seed</span>
+    <span class="n">exp_first_throw</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">]</span>
+    <span class="n">exp_second_throw</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
+    <span class="n">exp_third_throw</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+
+    <span class="n">n_dice</span> <span class="o">=</span> <span class="mi">5</span>
+    <span class="n">sides</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">)</span>
+    <span class="n">throw</span> <span class="o">=</span> <span class="n">roll_dice</span><span class="p">(</span><span class="n">n_dice</span><span class="p">,</span> <span class="n">sides</span><span class="p">)</span>
+    <span class="nd">@test</span> <span class="n">throw</span> <span class="o">==</span> <span class="n">exp_first_throw</span>
+    <span class="n">throw</span> <span class="o">=</span> <span class="n">roll_dice</span><span class="p">(</span><span class="n">n_dice</span><span class="p">,</span> <span class="n">sides</span><span class="p">)</span>
+    <span class="nd">@test</span> <span class="n">throw</span> <span class="o">==</span> <span class="n">exp_second_throw</span>
+    <span class="n">throw</span> <span class="o">=</span> <span class="n">roll_dice</span><span class="p">(</span><span class="n">n_dice</span><span class="p">,</span> <span class="n">sides</span><span class="p">)</span>
+    <span class="nd">@test</span> <span class="n">throw</span> <span class="o">==</span> <span class="n">exp_third_throw</span>
+<span class="k">end</span>
+
+<span class="nd">@testset</span> <span class="s">&quot;testing yahtzee&quot;</span> <span class="k">begin</span>
+    <span class="c"># try a million throws and see if we get close</span>
+    <span class="c"># to the statistical average of 4.6%</span>
+    <span class="c"># (https://en.wikipedia.org/wiki/Yahtzee#Probabilities)</span>
+    <span class="n">n_yahtzees</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">n_tests</span> <span class="o">=</span> <span class="mi">1_000_000</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="kp">in</span> <span class="mi">1</span><span class="o">:</span><span class="n">n_tests</span>
+        <span class="n">collected_side</span><span class="p">,</span> <span class="n">n_collected</span> <span class="o">=</span> <span class="n">yahtzee</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">n_collected</span> <span class="o">==</span> <span class="mi">5</span>
+            <span class="n">n_yahtzees</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">end</span>
+    <span class="k">end</span>
+    <span class="nd">@test</span> <span class="n">n_yahtzees</span><span class="o">/</span><span class="n">n_tests</span> <span class="n">≈</span> <span class="mf">0.046</span> <span class="n">atol</span><span class="o">=</span><span class="mf">0.001</span>
+<span class="k">end</span>
+</pre></div>
+</div>
+</div></div>
+</div>
+</div>
+<div class="section" id="designing-an-end-to-end-test">
+<h2>Designing an end-to-end test<a class="headerlink" href="#designing-an-end-to-end-test" title="Permalink to this headline">¶</a></h2>
+<p>In this exercise we will practice designing an end-to-end test.
+In an end-to-end test (or integration test), the unit is the entire program.
+We typically feed the program with some well defined input and verify
+that it still produces the expected output by comparing it to some reference.</p>
+<div class="admonition-integration-test-for-the-uniq-program challenge admonition">
+<p class="admonition-title">Integration test for the uniq program</p>
+<p>To have a tangible example, let us consider the <code class="docutils literal notranslate"><span class="pre">uniq</span></code> command. This command
+can read a file or an input stream and remove consecutive repetition.
+The program behind <code class="docutils literal notranslate"><span class="pre">uniq</span></code> has been written by somebody else, it probably contains
+some functions, but we will not look into it but regard it as “black box”.</p>
+<p>If we have a file called <code class="docutils literal notranslate"><span class="pre">repetitive-text.txt</span></code> containing:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="nb">all</span> <span class="n">together</span> <span class="n">now</span><span class="p">)</span> <span class="nb">all</span> <span class="n">together</span> <span class="n">now</span>
+<span class="p">(</span><span class="nb">all</span> <span class="n">together</span> <span class="n">now</span><span class="p">)</span> <span class="nb">all</span> <span class="n">together</span> <span class="n">now</span>
+<span class="p">(</span><span class="nb">all</span> <span class="n">together</span> <span class="n">now</span><span class="p">)</span> <span class="nb">all</span> <span class="n">together</span> <span class="n">now</span>
+<span class="p">(</span><span class="nb">all</span> <span class="n">together</span> <span class="n">now</span><span class="p">)</span> <span class="nb">all</span> <span class="n">together</span> <span class="n">now</span>
+<span class="p">(</span><span class="nb">all</span> <span class="n">together</span> <span class="n">now</span><span class="p">)</span> <span class="nb">all</span> <span class="n">together</span> <span class="n">now</span>
+<span class="n">another</span> <span class="n">line</span>
+<span class="n">another</span> <span class="n">line</span>
+<span class="n">another</span> <span class="n">line</span>
+<span class="n">another</span> <span class="n">line</span>
+<span class="n">intermission</span>
+<span class="n">more</span> <span class="n">repetition</span>
+<span class="n">more</span> <span class="n">repetition</span>
+<span class="n">more</span> <span class="n">repetition</span>
+<span class="n">more</span> <span class="n">repetition</span>
+<span class="n">more</span> <span class="n">repetition</span>
+<span class="p">(</span><span class="nb">all</span> <span class="n">together</span> <span class="n">now</span><span class="p">)</span> <span class="nb">all</span> <span class="n">together</span> <span class="n">now</span>
+<span class="p">(</span><span class="nb">all</span> <span class="n">together</span> <span class="n">now</span><span class="p">)</span> <span class="nb">all</span> <span class="n">together</span> <span class="n">now</span>
+</pre></div>
+</div>
+<p>… then feeding this input file to <code class="docutils literal notranslate"><span class="pre">uniq</span></code> like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ uniq &lt; repetitive-text.txt
+</pre></div>
+</div>
+<p>… will produce the following output with repetitions removed:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="nb">all</span> <span class="n">together</span> <span class="n">now</span><span class="p">)</span> <span class="nb">all</span> <span class="n">together</span> <span class="n">now</span>
+<span class="n">another</span> <span class="n">line</span>
+<span class="n">intermission</span>
+<span class="n">more</span> <span class="n">repetition</span>
+<span class="p">(</span><span class="nb">all</span> <span class="n">together</span> <span class="n">now</span><span class="p">)</span> <span class="nb">all</span> <span class="n">together</span> <span class="n">now</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>How would you write an end-to-end test?</p></li>
+<li><p>Now imagine the code reads numbers and produces some (floating point) numbers.
+How would you test that?</p></li>
+<li><p>How would you test a code end-to-end which produces images?</p></li>
+</ul>
+</div>
+<div class="admonition-keypoints keypoints admonition">
+<p class="admonition-title">Keypoints</p>
+<ul class="simple">
+<li><p>Pure functions (these are functions without side-effects) are easiest to test.</p></li>
+<li><p>Classes can be tested but it’s somewhat more elaborate.</p></li>
+</ul>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="../conclusions/" class="btn btn-neutral float-right" title="Conclusions and recommendations" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../continuous-integration/" class="btn btn-neutral float-left" title="Automatic testing with GitHub Actions or GitLab CI" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2020, CodeRefinery project.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
