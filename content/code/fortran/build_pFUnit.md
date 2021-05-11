@@ -2,15 +2,21 @@
 
 ## Set up the environment
 
-Installing pFUnit requires Git, a Fortran compiler and CMake.  On an
-HPC cluster you might need to add a few environment modules. For
+Installing pFUnit requires Git, a Fortran compiler and CMake.
+
+### On a cluster
+
+On an HPC cluster you might need to add a few environment modules. For
 example, on [Tetralith](https://www.nsc.liu.se/systems/tetralith/) you
 would do:
+
 ```bash
 module add git/2.19.3-nsc1-gcc-system
 module add CMake/3.16.4-nsc1
 export FC=/software/sse/manual/mpprun/4.1.3/nsc-wrappers/ifort
 ```
+
+### On own computer
 
 If you don't have [CMake](https://cmake.org/) or a Fortran compiler
 installed yet, one option is to install them into a conda environment
