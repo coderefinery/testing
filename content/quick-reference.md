@@ -111,7 +111,7 @@ More information in the [Testing chapter](http://r-pkgs.had.co.nz/tests.html) of
 ### Test
 
 - Julia
-- https://docs.julialang.org/en/v1/stdlib/Test/
+- - [Documentation](https://docs.julialang.org/en/v1/stdlib/Test/)
 - Part of the standard library
 - Provides simple unit testing functionality with
   `@test` and `@test_throws` macros:
@@ -158,7 +158,7 @@ end
 ### Catch2
 
 - C++
-- https://github.com/catchorg/Catch2
+- [Project page with installation instructions](https://github.com/catchorg/Catch2)
 - Widely used
 - Header-only
 - Very rich in functionality
@@ -185,7 +185,7 @@ TEST_CASE("Use the example library to add numbers", "[add]") {
 ### Google Test
 
 - C++
-- https://github.com/google/googletest
+- [Documentation](https://google.github.io/googletest/)
 - Widely used
 - Very rich in functionality
 - Well-integrated with CMake
@@ -210,7 +210,7 @@ TEST(example, add) {
 ### Boost.Test
 
 - C++
-- https://www.boost.org/doc/libs/1_75_0/libs/test/doc/html/index.html
+- [Documentation](https://www.boost.org/doc/libs/1_75_0/libs/test/doc/html/index.html)
 - Very rich in functionality
 - Header-only use possible
 
@@ -234,7 +234,7 @@ BOOST_AUTO_TEST_CASE( add )
 ### pFUnit
 
 - Fortran
-- https://github.com/Goddard-Fortran-Ecosystem/pFUnit
+- [Documentation and installation](https://github.com/Goddard-Fortran-Ecosystem/pFUnit)
 - Very rich in functionality
 - Requires modern Fortran compilers (uses F2003 standard)
 
