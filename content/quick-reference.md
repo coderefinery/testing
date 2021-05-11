@@ -255,7 +255,7 @@ subroutine test_add_numbers()
 end subroutine
 ```
 
-- [Example installation instructions](./code/fortran/buildpFUnitTetralith)
+- [Example installation instructions](./code/fortran/build_pFUnit)
 
 To test the `factorial` and `fizzbuzz` functions from the [test-design
 exercises](./test-design), use this `CMakeLists.txt` file:
