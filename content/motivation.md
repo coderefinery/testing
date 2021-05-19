@@ -1,8 +1,8 @@
 # Motivation
 
-```{questions}
-- Why automated tests
-- Can there be situations where automated tests are too much?
+```{objectives}
+- Appreciate the importance of testing software
+- Understand various benefits of testing
 ```
 
 
@@ -30,102 +30,39 @@ In software tests, expected results are compared with observed results in order
 to establish accuracy:
 
 ````{tabs}
-   ```{code-tab} py
+   ```{tab} Python
 
-   def fahrenheit_to_celsius(temp_f):
-       """Converts temperature in Fahrenheit
-       to Celsius.
-       """
-       temp_c = (temp_f - 32.0) * (5.0/9.0)
-       return temp_c
-
-   # This is the test function: `assert` raises an error if something
-   # is wrong.
-   def test_fahrenheit_to_celsius():
-       temp_c = fahrenheit_to_celsius(temp_f=100.0)
-       expected_result = 37.777777
-       assert abs(temp_c - expected_result) < 1.0e-6
+      ```{literalinclude} code/python/fahrenheit_to_celsius_test.py
+      :language: python
+      ```
    ```
 
-   ```{code-tab} c++
+   ```{tab} C++
 
-   #include <cmath>  // std::abs
-   #include <cstdlib>
-   #include <iostream>
-
-   using namespace std;
-
-   /* Converts temperature in Fahrenheit to Celsius. */
-   double fahrenheit_to_celsius(double temp_f) {
-     auto temp_c = (temp_f - 32.0) * (5.0 / 9.0);
-     return temp_c;
-   }
-
-   /* This is the test function: `throws` raises an error if something is wrong. */
-   void test_fahrenheit_to_celsius() {
-     auto temp_c = fahrenheit_to_celsius(100.0);
-     auto expected_result = 37.777777;
-     try {
-       if (abs(temp_c - expected_result) > 1.0e-6) throw "Error";
-     } catch (char const* err) {
-       cout << err;
-     }
-   }
-   
-   int main() {
-     cout << fahrenheit_to_celsius(20);
-     test_fahrenheit_to_celsius();
-     return EXIT_SUCCESS;
-   }
+      ```{literalinclude} code/cpp/fahrenheit_to_celsius_test.cpp
+      :language: C++
+      ```
    ```
    
-   ```{code-tab} r R
+   ```{tab} R
 
-   # Converts temperature in Fahrenheit to Celsius.
-   fahrenheit_to_celsius <- function(temp_f)
-   {
-     temp_c <- (temp_f - 32.0) * (5.0/9.0)
-     temp_c
-   }
-
-   # This is the test function: `assertive::is_true` raises an error if something
-   # is wrong.
-   test_fahrenheit_to_celsius <- function()
-   {
-     temp_c <- fahrenheit_to_celsius(temp_f = 100.0)
-     expected_result <- 37.777777
-     assertive::is_true(abs(temp_c - expected_result) < 1.0e-6)
-   }
+      ```{literalinclude} code/R/fahrenheit_to_celsius_test.R
+      :language: R
+      ```
    ```
-   ```{code-tab} fortran
-   program temperature_conversion
 
-   implicit none
-   call test_fahrenheit_to_celsius()
+   ```{tab} Julia
 
-   contains
+      ```{literalinclude} code/julia/fahrenheit_to_celsius_test.jl
+      :language: Julia
+      ```
+   ```
 
-   function fahrenheit_to_celsius(temp_f) result(temp_c)
-      implicit none
-      real temp_f
-      real temp_c
-      temp_c = (temp_f - 32.0) * (5.0/9.0)
-   end function fahrenheit_to_celsius
+   ```{tab} Fortran
 
-   subroutine test_fahrenheit_to_celsius()
-      implicit none
-      real temp_c
-      real expected_result
-      temp_c = fahrenheit_to_celsius(100.0)
-      expected_result = 37.777777
-      if( abs(temp_c - expected_result) > 1.0e-6) then
-         write(*,*) 'Error'
-      else
-         write(*,*) 'Pass'
-      end if
-   end subroutine test_fahrenheit_to_celsius
-
-   end program temperature_conversion
+      ```{literalinclude} code/fortran/fahrenheit_to_celsius_test.f90
+      :language: fortran
+      ```
    ```
 ````
 
@@ -184,55 +121,39 @@ Suiting up to modify untested code.
 We already know how to test this code (see above):
 
 ````{tabs}
-   ```{code-tab} py
+   ```{tab} Python
 
-   def fahrenheit_to_celsius(temp_f):
-       temp_c = (temp_f - 32.0) * (5.0/9.0)
-       return temp_c
-
-   temp_c = fahrenheit_to_celsius(temp_f=100.0)
-   print(temp_c)
+      ```{literalinclude} code/python/fahrenheit_to_celsius_pure.py
+      :language: python
+      ```
    ```
 
-   ```{code-tab} c++
+   ```{tab} C++
 
-   #include <cstdlib>
-   #include <iostream>
+      ```{literalinclude} code/cpp/fahrenheit_to_celsius_pure.cpp
+      :language: C++
+      ```
+   ```
+   
+   ```{tab} R
 
-   /* Converts temperature in Fahrenheit to Celsius. */
-   double fahrenheit_to_celsius(double temp_f) {
-     auto temp_c = (temp_f - 32.0) * (5.0 / 9.0);
-     return temp_c;
-   }
-
-   int main() {
-     auto temp_c = fahrenheit_to_celsius(20);
-     std::cout << temp_c << std::endl;
-     return EXIT_SUCCESS;
-   }
+      ```{literalinclude} code/R/fahrenheit_to_celsius_pure.R
+      :language: R
+      ```
    ```
 
-   ```{code-tab} r R
+   ```{tab} Julia
 
-   fahrenheit_to_celsius <- function(temp_f)
-   {
-     temp_c <- (temp_f - 32.0) * (5.0/9.0)
-     temp_c
-   }
-
-   temp_c <- fahrenheit_to_celsius(temp_f = 100.0)
-   print(temp_c)
+      ```{literalinclude} code/julia/fahrenheit_to_celsius_pure.jl
+      :language: Julia
+      ```
    ```
-   ```{code-tab} fortran
-   function fahrenheit_to_celsius(temp_f) result(temp_c)
-   implicit none
-   real temp_f
-   real temp_c
-   temp_c = (temp_f - 32.0) * (5.0/9.0)
-   end function fahrenheit_to_celsius
 
-   temp_c = fahrenheit_to_celsius(100.0)
-   write(*,*) temp_c
+   ```{tab} Fortran
+
+      ```{literalinclude} code/fortran/fahrenheit_to_celsius_pure.f90
+      :language: fortran
+      ```
    ```
 ````
 
@@ -242,70 +163,42 @@ We already know how to test this code (see above):
 How would you test this code:
 
 ````{tabs}
-   ```{code-tab} py
+   ```{tab} Python
 
-   f_to_c_offset = 32.0
-   f_to_c_factor = 0.555555555
-   temp_c = 0.0
-
-   def fahrenheit_to_celsius_bad(temp_f):
-       global temp_c
-       temp_c = (temp_f - f_to_c_offset) * f_to_c_factor
-
-   fahrenheit_to_celsius_bad(temp_f=100.0)
-   print(temp_c)
+      ```{literalinclude} code/python/fahrenheit_to_celsius_impure.py
+      :language: python
+      ```
    ```
 
-   ```{code-tab} c++
+   ```{tab} C++
 
-   #include <cstdlib>
-   #include <iostream>
+      ```{literalinclude} code/cpp/fahrenheit_to_celsius_impure.cpp
+      :language: C++
+      ```
+   ```
+   
+   ```{tab} R
 
-   constexpr double f_to_c_offset = 32.0;
-   constexpr double f_to_c_factor = 0.555555555;
-   double temp_c = 0.0;
-
-   /* Converts temperature in Fahrenheit to Celsius. */
-   void fahrenheit_to_celsius(double temp_f) {
-     temp_c = (temp_f - f_to_c_offset) * f_to_c_factor;
-   }
-
-   int main() {
-     fahrenheit_to_celsius(20);
-     std::cout << temp_c << std::endl;
-     return EXIT_SUCCESS;
-   }
+      ```{literalinclude} code/R/fahrenheit_to_celsius_impure.R
+      :language: R
+      ```
    ```
 
-   ```{code-tab} r R
+   ```{tab} Julia
 
-   f_to_c_offset <- 32.0
-   f_to_c_factor <- 0.555555555
-   temp_c <- 0.0
-
-   fahrenheit_to_celsius_bad <- function(temp_f)
-   {
-     temp_c <<- (temp_f - f_to_c_offset) * f_to_c_factor
-   }
-
-   fahrenheit_to_celsius_bad(temp_f = 100.0)
-   print(temp_c)
+      ```{literalinclude} code/julia/fahrenheit_to_celsius_impure.jl
+      :language: Julia
+      ```
    ```
-   ```{code-tab} fortran
-   real f_to_c_offset = 32.0
-   real f_to_c_factor = 0.555555555
 
-   function fahrenheit_to_celsius_bad(temp_f) result(temp_c)
-      implicit none
-      real temp_f
-      real temp_c
-      temp_c = (temp_f - f_to_c_offset) * f_to_c_factor
-   end function fahrenheit_to_celsius_bad
+   ```{tab} Fortran
 
-   temp_c = fahrenheit_to_celsius_bad(100.0)
-   write(*,*) temp_c
+      ```{literalinclude} code/fortran/fahrenheit_to_celsius_impure.f90
+      :language: fortran
+      ```
    ```
 ````
+
 
 > ## Tests guide towards modular code structure
 >
