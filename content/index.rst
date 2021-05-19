@@ -11,7 +11,7 @@ see automated testing works and practice designing and writing tests.
 
    2. (Optional) To work on exercises in other languages than Python,
       please follow the instructions under "Language-specific
-      instructions" in the [Test design episode](./test-design)
+      instructions" in the `Test design episode <file:///Users/ktw/coderefinery/lessons/testing/_build/html/test-design.html>`__
       to install the recommended testing frameworks.
 
    3. Basic understanding of Git.
