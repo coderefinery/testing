@@ -1,8 +1,8 @@
 # Motivation
 
-```{questions}
-- Why automated tests
-- Can there be situations where automated tests are too much?
+```{objectives}
+- Appreciate the importance of testing software
+- Understand various benefits of testing
 ```
 
 
