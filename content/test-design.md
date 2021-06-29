@@ -337,45 +337,44 @@ This one is not easy to test because the function has an external dependency.
 
    ````{tab} Python
 
-      ```{literalinclude} code/python/reactor_temperature.py
+      ```{literalinclude} code/python/even_time_difference.py
       :language: Python
       ```
    ````
 
    ````{tab} C++
 
-      ```{literalinclude} code/cpp/reactor_temperature.cpp
+      ```{literalinclude} code/cpp/even_time_difference.cpp
       :language: c++
       ```
    ````
 
    ````{tab} R
 
-      ```{literalinclude} code/R/reactor_temperature.R
+      ```{literalinclude} code/R/even_time_difference.R
       :language: R
       ```
    ````
 
    ````{tab} Julia
 
-      ```{literalinclude} code/julia/reactor_temperature.jl
+      ```{literalinclude} code/julia/even_time_difference.jl
       :language: julia
       ```
    ````
 
    ````{tab} Fortran
 
-      ```{literalinclude} code/fortran/reactor_temperature.f90
+      ```{literalinclude} code/fortran/even_time_difference.f90
       :language: fortran
       ```
    ````
 `````
 
 ``````{solution}
-This function depends on the value of
-`reactor.max_temperature` so the function is not pure, so testing gets
-harder. You could use monkey patching to override the value of
-`max_temperature`, and test it with different values.  [Monkey
+This function depends on the current time, so the function is not pure, so testing gets
+harder. You could use monkey patching to replace the time function with another function
+, and test it with different values.  [Monkey
 patching](https://en.wikipedia.org/wiki/Monkey_patch) is the concept
 of artificially changing some other value.
 
@@ -385,35 +384,35 @@ A better solution would probably be to rewrite the function.
 
    ````{tab} Python
 
-      ```{literalinclude} code/python/reactor_temperature_sol.py
+      ```{literalinclude} code/python/even_time_difference_sol.py
       :language: Python
       ```
    ````
 
    ````{tab} C++
 
-      ```{literalinclude} code/cpp/reactor_temperature_sol.cpp
+      ```{literalinclude} code/cpp/even_time_difference_sol.cpp
       :language: c++
       ```
    ````
 
    ````{tab} R
 
-      ```{literalinclude} code/R/reactor_temperature_sol.R
+      ```{literalinclude} code/R/even_time_difference_sol.R
       :language: R
       ```
    ````
 
    ````{tab} Julia
 
-      ```{literalinclude} code/julia/reactor_temperature_sol.jl
+      ```{literalinclude} code/julia/even_time_difference_sol.jl
       :language: julia
       ```
    ````
 
    ````{tab} Fortran
 
-      ```{literalinclude} code/fortran/reactor_temperature_sol.f90
+      ```{literalinclude} code/fortran/even_time_difference_sol.f90
       :language: fortran
       ```
    ````
