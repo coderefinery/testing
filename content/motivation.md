@@ -30,35 +30,35 @@ In software tests, expected results are compared with observed results in order
 to establish accuracy:
 
 ````{tabs}
-   ```{tab} Python
+   ```{group-tab} Python
 
       ```{literalinclude} code/python/fahrenheit_to_celsius_test.py
       :language: python
       ```
    ```
 
-   ```{tab} C++
+   ```{group-tab} C++
 
       ```{literalinclude} code/cpp/fahrenheit_to_celsius_test.cpp
       :language: C++
       ```
    ```
    
-   ```{tab} R
+   ```{group-tab} R
 
       ```{literalinclude} code/R/fahrenheit_to_celsius_test.R
       :language: R
       ```
    ```
 
-   ```{tab} Julia
+   ```{group-tab} Julia
 
       ```{literalinclude} code/julia/fahrenheit_to_celsius_test.jl
       :language: Julia
       ```
    ```
 
-   ```{tab} Fortran
+   ```{group-tab} Fortran
 
       ```{literalinclude} code/fortran/fahrenheit_to_celsius_test.f90
       :language: fortran
@@ -121,35 +121,35 @@ Suiting up to modify untested code.
 We already know how to test this code (see above):
 
 ````{tabs}
-   ```{tab} Python
+   ```{group-tab} Python
 
       ```{literalinclude} code/python/fahrenheit_to_celsius_pure.py
       :language: python
       ```
    ```
 
-   ```{tab} C++
+   ```{group-tab} C++
 
       ```{literalinclude} code/cpp/fahrenheit_to_celsius_pure.cpp
       :language: C++
       ```
    ```
    
-   ```{tab} R
+   ```{group-tab} R
 
       ```{literalinclude} code/R/fahrenheit_to_celsius_pure.R
       :language: R
       ```
    ```
 
-   ```{tab} Julia
+   ```{group-tab} Julia
 
       ```{literalinclude} code/julia/fahrenheit_to_celsius_pure.jl
       :language: Julia
       ```
    ```
 
-   ```{tab} Fortran
+   ```{group-tab} Fortran
 
       ```{literalinclude} code/fortran/fahrenheit_to_celsius_pure.f90
       :language: fortran
@@ -163,35 +163,35 @@ We already know how to test this code (see above):
 How would you test this code:
 
 ````{tabs}
-   ```{tab} Python
+   ```{group-tab} Python
 
       ```{literalinclude} code/python/fahrenheit_to_celsius_impure.py
       :language: python
       ```
    ```
 
-   ```{tab} C++
+   ```{group-tab} C++
 
       ```{literalinclude} code/cpp/fahrenheit_to_celsius_impure.cpp
       :language: C++
       ```
    ```
    
-   ```{tab} R
+   ```{group-tab} R
 
       ```{literalinclude} code/R/fahrenheit_to_celsius_impure.R
       :language: R
       ```
    ```
 
-   ```{tab} Julia
+   ```{group-tab} Julia
 
       ```{literalinclude} code/julia/fahrenheit_to_celsius_impure.jl
       :language: Julia
       ```
    ```
 
-   ```{tab} Fortran
+   ```{group-tab} Fortran
 
       ```{literalinclude} code/fortran/fahrenheit_to_celsius_impure.f90
       :language: fortran

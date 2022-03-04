@@ -33,31 +33,31 @@ In this episode we will consider how functions and programs can be tested in pro
 
 `````{callout} Language-specific instructions
   ````{tabs}
-    ```{tab} Python
+    ```{group-tab} Python
 
     The suggested solutions below use pytest. Further information can
     be found in the [Quick Reference](../quick-reference#pytest).
     ```
 
-    ```{tab} C++
+    ```{group-tab} C++
 
     The suggested solutions below use Catch2. Further information can
     be found in the [Quick Reference](../quick-reference#catch2).
     ```
 
-   ```{tab} R
+   ```{group-tab} R
 
     The suggested solutions below use testthat. Further information can
     be found in the [Quick Reference](../quick-reference#testthat).
     ```
 
-    ```{tab} Julia
+    ```{group-tab} Julia
 
     The suggested solutions below use Test. Further information can
     be found in the [Quick Reference](../quick-reference#test).
     ```
 
-    ```{tab} Fortran
+    ```{group-tab} Fortran
 
     The suggested solutions below use pFUnit. Further information on how to install 
     pFUnit and set up tests can
@@ -74,35 +74,35 @@ Also discuss why some are easier to test than others.
 
 ```````{challenge} 1. Function that receives a number and returns a number
   `````{tabs}
-    ````{tab} Python
+    ````{group-tab} Python
 
       ```{literalinclude} code/python/factorial.py
       :language: python
       ```
     ````
 
-    ````{tab} C++
+    ````{group-tab} C++
 
       ```{literalinclude} code/cpp/factorial.cpp
       :language: C++
       ```
     ````
 
-    ````{tab} R
+    ````{group-tab} R
 
       ```{literalinclude} code/R/factorial.R
       :language: R
       ```
     ````
 
-    ````{tab} Julia
+    ````{group-tab} Julia
 
       ```{literalinclude} code/julia/factorial.jl
       :language: julia
       ```
     ````
 
-    ````{tab} Fortran
+    ````{group-tab} Fortran
 
       ```{literalinclude} code/fortran/factorial.f90
       :language: fortran
@@ -121,35 +121,35 @@ all of the tests as one function, but you might want to make each test
 function more fine-grained and test only one concept.
 
 `````{tabs}
-   ````{tab} Python
+   ````{group-tab} Python
 
       ```{literalinclude} code/python/factorial_sol.py
       :language: python
       ```
    ````
 
-   ````{tab} C++
+   ````{group-tab} C++
 
       ```{literalinclude} code/cpp/factorial_sol.cpp
       :language: c++
       ```
    ````
 
-   ````{tab} R
+   ````{group-tab} R
 
       ```{literalinclude} code/R/factorial_sol.R
       :language: R
       ```
    ````
 
-   ````{tab} Julia
+   ````{group-tab} Julia
 
       ```{literalinclude} code/julia/factorial_sol.jl
       :language: julia
       ```
    ````
 
-   ````{tab} Fortran
+   ````{group-tab} Fortran
 
       ```{literalinclude} code/fortran/test_factorial.pf
       :language: fortran
@@ -165,35 +165,35 @@ function more fine-grained and test only one concept.
 
 ```````{challenge} 2. Function that receives two strings and returns a number
 `````{tabs}
-   ````{tab} Python
+   ````{group-tab} Python
 
       ```{literalinclude} code/python/count_word_occurrence_in_string.py
       :language: Python
       ```
    ````
 
-   ````{tab} C++
+   ````{group-tab} C++
 
       ```{literalinclude} code/cpp/count_word_occurrence_in_string.cpp
       :language: c++
       ```
    ````
 
-   ````{tab} R
+   ````{group-tab} R
 
       ```{literalinclude} code/R/count_word_occurrence_in_string.R
       :language: R
       ```
    ````
 
-   ````{tab} Julia
+   ````{group-tab} Julia
 
       ```{literalinclude} code/julia/count_word_occurrence_in_string.jl
       :language: julia
       ```
    ````
 
-   ````{tab} Fortran
+   ````{group-tab} Fortran
 
       ```{literalinclude} code/fortran/count_word_occurrence_in_string.f90
       :language: fortran
@@ -206,35 +206,35 @@ This is again a **pure function** but uses strings.  Use a similar strategy
 to the above.
 
 `````{tabs}
-   ````{tab} Python
+   ````{group-tab} Python
 
       ```{literalinclude} code/python/count_word_occurrence_in_string_sol.py
       :language: Python
       ```
    ````
 
-   ````{tab} C++
+   ````{group-tab} C++
 
       ```{literalinclude} code/cpp/count_word_occurrence_in_string_sol.cpp
       :language: c++
       ```
    ````
 
-   ````{tab} R
+   ````{group-tab} R
 
       ```{literalinclude} code/R/count_word_occurrence_in_string_sol.R
       :language: R
       ```
    ````
 
-   ````{tab} Julia
+   ````{group-tab} Julia
 
       ```{literalinclude} code/julia/count_word_occurrence_in_string_sol.jl
       :language: julia
       ```
    ````
 
-   ````{tab} Fortran
+   ````{group-tab} Fortran
 
       ```{literalinclude} code/fortran/count_word_occurrence_in_string_sol.f90
       :language: fortran
@@ -247,35 +247,35 @@ to the above.
 ```````{challenge} 3. Function which reads a file and returns a number
 `````{tabs}
 
-   ````{tab} Python
+   ````{group-tab} Python
 
       ```{literalinclude} code/python/count_word_occurrence_in_file.py
       :language: Python
       ```
    ````
 
-   ````{tab} C++
+   ````{group-tab} C++
 
       ```{literalinclude} code/cpp/count_word_occurrence_in_file.cpp
       :language: c++
       ```
    ````
 
-   ````{tab} R
+   ````{group-tab} R
 
       ```{literalinclude} code/R/count_word_occurrence_in_file.R
       :language: R
       ```
    ````
 
-   ````{tab} Julia
+   ````{group-tab} Julia
 
       ```{literalinclude} code/julia/count_word_occurrence_in_file.jl
       :language: julia
       ```
    ````
 
-   ````{tab} Fortran
+   ````{group-tab} Fortran
 
       ```{literalinclude} code/fortran/count_word_occurrence_in_file.f90
       :language: fortran
@@ -291,35 +291,35 @@ calculation, so that testing the calculation part becomes easy (see above).
 
 `````{tabs}
 
-   ````{tab} Python
+   ````{group-tab} Python
 
       ```{literalinclude} code/python/count_word_occurrence_in_file_sol.py
       :language: Python
       ```
    ````
 
-   ````{tab} C++
+   ````{group-tab} C++
 
       ```{literalinclude} code/cpp/count_word_occurrence_in_file_sol.cpp
       :language: c++
       ```
    ````
 
-   ````{tab} R
+   ````{group-tab} R
 
       ```{literalinclude} code/R/count_word_occurrence_in_file_sol.R
       :language: R
       ```
    ````
 
-   ````{tab} Julia
+   ````{group-tab} Julia
 
       ```{literalinclude} code/julia/count_word_occurrence_in_file_sol.jl
       :language: julia
       ```
    ````
 
-   ````{tab} Fortran
+   ````{group-tab} Fortran
 
       ```{literalinclude} code/fortran/count_word_occurrence_in_file_sol.f90
       :language: fortran
@@ -335,35 +335,35 @@ This one is not easy to test because the function has an external dependency.
 
 `````{tabs}
 
-   ````{tab} Python
+   ````{group-tab} Python
 
       ```{literalinclude} code/python/reactor_temperature.py
       :language: Python
       ```
    ````
 
-   ````{tab} C++
+   ````{group-tab} C++
 
       ```{literalinclude} code/cpp/reactor_temperature.cpp
       :language: c++
       ```
    ````
 
-   ````{tab} R
+   ````{group-tab} R
 
       ```{literalinclude} code/R/reactor_temperature.R
       :language: R
       ```
    ````
 
-   ````{tab} Julia
+   ````{group-tab} Julia
 
       ```{literalinclude} code/julia/reactor_temperature.jl
       :language: julia
       ```
    ````
 
-   ````{tab} Fortran
+   ````{group-tab} Fortran
 
       ```{literalinclude} code/fortran/reactor_temperature.f90
       :language: fortran
@@ -383,35 +383,35 @@ A better solution would probably be to rewrite the function.
 
 `````{tabs}
 
-   ````{tab} Python
+   ````{group-tab} Python
 
       ```{literalinclude} code/python/reactor_temperature_sol.py
       :language: Python
       ```
    ````
 
-   ````{tab} C++
+   ````{group-tab} C++
 
       ```{literalinclude} code/cpp/reactor_temperature_sol.cpp
       :language: c++
       ```
    ````
 
-   ````{tab} R
+   ````{group-tab} R
 
       ```{literalinclude} code/R/reactor_temperature_sol.R
       :language: R
       ```
    ````
 
-   ````{tab} Julia
+   ````{group-tab} Julia
 
       ```{literalinclude} code/julia/reactor_temperature_sol.jl
       :language: julia
       ```
    ````
 
-   ````{tab} Fortran
+   ````{group-tab} Fortran
 
       ```{literalinclude} code/fortran/reactor_temperature_sol.f90
       :language: fortran
@@ -425,35 +425,35 @@ A better solution would probably be to rewrite the function.
 
 `````{tabs}
 
-   ````{tab} Python
+   ````{group-tab} Python
 
       ```{literalinclude} code/python/Pet.py
       :language: Python
       ```
    ````
 
-   ````{tab} C++
+   ````{group-tab} C++
 
       ```{literalinclude} code/cpp/Pet.cpp
       :language: c++
       ```
    ````
 
-   ````{tab} R
+   ````{group-tab} R
 
       ```{literalinclude} code/R/Pet.R
       :language: R
       ```
    ````
 
-   ````{tab} Julia
+   ````{group-tab} Julia
 
       ```{literalinclude} code/julia/Pet.jl
       :language: julia
       ```
    ````
 
-   ````{tab} Fortran
+   ````{group-tab} Fortran
 
       ```{literalinclude} code/fortran/Pet.f90
       :language: fortran
@@ -464,35 +464,35 @@ A better solution would probably be to rewrite the function.
 ``````{solution}
 `````{tabs}
 
-   ````{tab} Python
+   ````{group-tab} Python
 
       ```{literalinclude} code/python/Pet_sol.py
       :language: Python
       ```
    ````
 
-   ````{tab} C++
+   ````{group-tab} C++
 
       ```{literalinclude} code/cpp/Pet_sol.cpp
       :language: c++
       ```
    ````
 
-   ````{tab} R
+   ````{group-tab} R
 
       ```{literalinclude} code/R/Pet_sol.R
       :language: R
       ```
    ````
 
-   ````{tab} Julia
+   ````{group-tab} Julia
 
       ```{literalinclude} code/julia/Pet_sol.jl
       :language: julia
       ```
    ````
 
-   ````{tab} Fortran
+   ````{group-tab} Fortran
 
       ```{literalinclude} code/fortran/Pet_sol.f90
       :language: fortran
@@ -528,35 +528,35 @@ until they pass.
 
 `````{tabs}
 
-   ````{tab} Python
+   ````{group-tab} Python
 
       ```{literalinclude} code/python/fizzbuzz.py
       :language: Python
       ```
    ````
 
-   ````{tab} C++
+   ````{group-tab} C++
 
       ```{literalinclude} code/cpp/fizzbuzz.cpp
       :language: c++
       ```
    ````
 
-   ````{tab} R
+   ````{group-tab} R
 
       ```{literalinclude} code/R/fizzbuzz.R
       :language: R
       ```
    ````
 
-   ````{tab} Julia
+   ````{group-tab} Julia
 
       ```{literalinclude} code/julia/fizzbuzz.jl
       :language: julia
       ```
    ````
 
-   ````{tab} Fortran
+   ````{group-tab} Fortran
 
       ```{literalinclude} code/fortran/fizzbuzz.f90
       :language: fortran
@@ -604,21 +604,21 @@ many strategies exist:
 
    `````{tabs}
 
-   ````{tab} Python
+   ````{group-tab} Python
 
       ```{literalinclude} code/python/yahtzee.py
       :language: Python
       ```
    ````
 
-   ````{tab} C++
+   ````{group-tab} C++
 
       ```{literalinclude} code/cpp/yahtzee.cpp
       :language: c++
       ```
    ````
 
-   ````{tab} Julia
+   ````{group-tab} Julia
 
       ```{literalinclude} code/julia/yahtzee.jl
       :language: julia
@@ -630,21 +630,21 @@ many strategies exist:
 ``````{solution}
    `````{tabs}
 
-   ````{tab} Python
+   ````{group-tab} Python
 
       ```{literalinclude} code/python/yahtzee_sol.py
       :language: Python
       ```
    ````
 
-   ````{tab} C++
+   ````{group-tab} C++
 
       ```{literalinclude} code/cpp/yahtzee_sol.cpp
       :language: c++
       ```
    ````
 
-   ````{tab} Julia
+   ````{group-tab} Julia
 
       ```{literalinclude} code/julia/yahtzee_sol.jl
       :language: julia

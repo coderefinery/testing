@@ -82,7 +82,7 @@ and push the changes (`git push origin main`).
 ### Step 3: Enable automated testing
 
 `````{tabs}
-   ````{tab} GitHub
+   ````{group-tab} GitHub
 
    In this step we will enable GitHub Actions.
    Select "Actions" from your GitHub repository page. You get to a page
@@ -150,7 +150,7 @@ and push the changes (`git push origin main`).
    ```
    ````
 
-   ````{tab} GitLab
+   ````{group-tab} GitLab
 
    In this step we will enable GitLab CI.
    Select "CI/CD" from your Gitlab sidebar of the project. You get to a page
@@ -204,7 +204,7 @@ and push the changes (`git push origin main`).
 ### Step 4: Verify that tests have been automatically run
 
 `````{tabs}
-   ````{tab} GitHub
+   ````{group-tab} GitHub
 
    Observe in the repository how the test succeeds. While the test is
    executing, the repository has a yellow marker. This is replaced with a green
@@ -219,7 +219,7 @@ and push the changes (`git push origin main`).
    Also browse the "Actions" tab and look at the steps there and their output.
    ````
 
-   ````{tab} GitLab
+   ````{group-tab} GitLab
 
    Observe in the repository how the test succeeds. While the test is
    executing, the repository has a blue marker. This is replaced with a green
@@ -270,14 +270,14 @@ Fork the repository using the GitHub/GitLab web interface.
 your colleague's repository directly.**
 
 `````{tabs}
-   ````{tab} GitHub
+   ````{group-tab} GitHub
 
       ```bash
       $ git clone https://github.com/your-username/the-repository.git
       ```
    ````
 
-   ````{tab} GitLab
+   ````{group-tab} GitLab
 
       ```bash
       $ git clone https://gitlab.com/your-username/the-repository.git
