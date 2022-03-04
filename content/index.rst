@@ -50,3 +50,4 @@ see automated testing works and practice designing and writing tests.
 
    quick-reference
    guide
+   exercises
