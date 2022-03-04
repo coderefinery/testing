@@ -10,8 +10,8 @@
 
 This exercise is a collaborative version of the [Automated testing exercise](./continuous-integration).
 
-```{challenge} Exercise overview
-This is an expanded version of the [automated testing demonstration](./continuous-integration).
+```{exercise} Exercise overview
+This is an expanded version of the :doc:`automated testing demonstration <continuous-integration>`.
 The exercise is performed in a collaborative circle within the exercise group
 (breakout room).
 
