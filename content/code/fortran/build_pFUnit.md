@@ -1,3 +1,7 @@
+---
+orphan: true
+---
+
 # Example installation of pFUnit and pFUnit_demos
 
 ## Set up the environment
