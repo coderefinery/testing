@@ -72,7 +72,7 @@ Start by discussing how you would design tests for the
 following five functions, and then try to write the tests.
 Also discuss why some are easier to test than others.
 
-```````{challenge} 1. Function that receives a number and returns a number
+```````{challenge} Design-1: Design a test for a function that receives a number and returns a number
   `````{tabs}
     ````{group-tab} Python
 
@@ -163,7 +163,7 @@ function more fine-grained and test only one concept.
 ``````
 ```````
 
-```````{challenge} 2. Function that receives two strings and returns a number
+```````{challenge} Design-2: Design a test for a function that receives two strings and returns a number
 `````{tabs}
    ````{group-tab} Python
 
@@ -244,7 +244,7 @@ to the above.
 ``````
 ```````
 
-```````{challenge} 3. Function which reads a file and returns a number
+```````{challenge} Design-3: Design a test for a function which reads a file and returns a number
 `````{tabs}
 
    ````{group-tab} Python
@@ -330,7 +330,7 @@ calculation, so that testing the calculation part becomes easy (see above).
 ``````
 ```````
 
-```````{challenge} 4. Function with an external dependency
+```````{challenge} Design-4: Design a test for a function with an external dependency
 This one is not easy to test because the function has an external dependency.
 
 `````{tabs}
@@ -421,7 +421,7 @@ A better solution would probably be to rewrite the function.
 ``````
 ```````
 
-```````{challenge} 5. Testing a method of a mutable class
+```````{challenge} Design-5: Design a test for a method of a mutable class
 
 `````{tabs}
 
@@ -505,7 +505,7 @@ A better solution would probably be to rewrite the function.
 
 ## Test-driven development
 
-```````{challenge} Test-driven development
+```````{challenge} Design-6: Experience test-driven development
 
 Write a test before writing the function! You can decide yourself
 what your unwritten function should do, but as a suggestion it can
@@ -585,7 +585,7 @@ many strategies exist:
   to express that in a script.
 
 
-```````{challenge} Different ways of testing randomness
+```````{challenge} Design-7: Write two different types of tests for randomness
    Consider the code below which simulates playing
    [Yahtzee](https://en.wikipedia.org/wiki/Yahtzee) by using
    random numbers. How would you go about testing it?
@@ -662,7 +662,7 @@ In an end-to-end test (or integration test), the unit is the entire program.
 We typically feed the program with some well defined input and verify
 that it still produces the expected output by comparing it to some reference.
 
-````{challenge} Integration test for the uniq program
+````{challenge} Design-8: Design (but not write) an integration test for the uniq program
 To have a tangible example, let us consider the `uniq` command. This command
 can read a file or an input stream and remove consecutive repetition.
 The program behind `uniq` has been written by somebody else, it probably contains

@@ -10,7 +10,7 @@
 
 This exercise is a collaborative version of the [Automated testing exercise](./continuous-integration).
 
-```{exercise} Exercise overview
+```{exercise} FullCI-1: Create and use a continuous integration workflow on GitHub or GitLab with pull requests and issues
 This is an expanded version of the :doc:`automated testing demonstration <continuous-integration>`.
 The exercise is performed in a collaborative circle within the exercise group
 (breakout room).
@@ -321,7 +321,7 @@ Discuss whether this is a useful feature. And if it is, why do you think is it u
 Finally, we discuss together about our experiences with this exercise.
 
 
-```{challenge} Optional exercise
+```{challenge} (optional) FullCI-2: Add a license file to the previous exercise's repository
 In the [Social coding and open software](https://cicero.xyz/v3/remark/0.14.0/github.com/coderefinery/social-coding/master/talk.md/)
 lesson we learn how important it is to add a LICENSE file.
 
