@@ -17,7 +17,12 @@ In this exercise we will make a simple Python function and use
 We will try to
 keep things simple so that those who do not use Python can follow.
 
-````{challenge} Exercise: 15 min
+````{challenge} Local-1: Create a minimal Pytest example (15 min)
+In this exercise, we will create a minimal example using
+the [pytest](http://doc.pytest.org), run the test, and show what
+happens when a test breaks.
+
+
 1. Create a new directory and change into it:
    ```console
    $ mkdir pytest-example
@@ -87,7 +92,10 @@ keep things simple so that those who do not use Python can follow.
 
 ````
 
-````{challenge} Optional exercise: Testing with numerical tolerance (10 min)
+````{challenge} (optional) Local-2: Create a test that considers numerical tolerance (10 min)
+Let's see an example where the test has to be more clever in order to
+avoid false negative.
+
 In the above exercise we have compared integers.  In this optional exercise we
 want to learn how to compare floating point numbers since they are more tricky
 (see also ["What Every Programmer Should Know About Floating-Point Arithmetic"](https://floating-point-gui.de/)).
@@ -105,7 +113,7 @@ The following test will fail and this might be surprising. Try it out:
 Your goal: find a more robust way to test this addition.
 ````
 
-````{solution}
+````{solution} Solution: Local-2
 One solution is to use
 [pytest.approx](https://docs.pytest.org/en/4.6.x/reference.html#pytest-approx):
 ```python

@@ -15,7 +15,7 @@ in [Full-cycle collaborative workflow](./full-cycle-ci). In the collaborative ve
 C-D below are performed by a collaborator.
 
 
-```{challenge} Exercise overview
+```{challenge} Exercise CI-1: Create and use a continuous integration workflow on GitHub or GitLab
 
 In this exercise, we will:
 
