@@ -11,7 +11,7 @@
 This exercise is a collaborative version of the [Automated testing exercise](./continuous-integration).
 
 ```{exercise} FullCI-1: Create and use a continuous integration workflow on GitHub or GitLab with pull requests and issues
-This is an expanded version of the :doc:`automated testing demonstration <continuous-integration>`.
+This is an expanded version of the {doc}`automated testing demonstration <continuous-integration>`.
 The exercise is performed in a collaborative circle within the exercise group
 (breakout room).
 

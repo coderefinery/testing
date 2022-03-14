@@ -1,8 +1,10 @@
 Exercise list
 =============
 
-This is a list of all exercises in this lesson, mainly for an overview
-for instructors.  Please look for the exercises in the lesson pages
-themselves.
+This is a list of all exercises and solutions in this lesson, mainly
+as a reference for helpers and instructors.  This list is
+automatically generated from all of the other pages in the lesson.
+Any single teaching event will probably cover only a subset of these,
+depending on their interests.
 
 .. exerciselist::
