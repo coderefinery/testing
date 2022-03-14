@@ -1,5 +1,8 @@
-Exercise list
-=============
+List of exercises
+=================
+
+Full list
+---------
 
 This is a list of all exercises and solutions in this lesson, mainly
 as a reference for helpers and instructors.  This list is
