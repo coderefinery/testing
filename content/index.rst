@@ -48,6 +48,6 @@ see automated testing works and practice designing and writing tests.
    :maxdepth: 1
    :caption: Reference
 
+   exercises
    quick-reference
    guide
-   exercises
