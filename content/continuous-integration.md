@@ -77,8 +77,8 @@ and push the changes (`git push origin main`).
 
    In this step we will enable GitHub Actions.
    Select "Actions" from your GitHub repository page. You get to a page
-   "Get started with GitHub Actions". Select the button for "Set up
-   this workflow" under Python Application:
+   "Get started with GitHub Actions". Select the button for "Configure"
+   under Python Application:
 
    ```{figure} img/python_application.png
    :alt: Selecting a Python workflow
@@ -91,7 +91,7 @@ and push the changes (`git push origin main`).
 
    ```{code-block} yaml
    ---
-   emphasize-lines: 34-36
+   emphasize-lines: 37-39
    ---
    # This workflow will install Python dependencies, run tests and lint with a single version of Python
    # For more information see: https://help.github.com/actions/language-and-framework-guides/using-python-with-github-actions
@@ -104,17 +104,20 @@ and push the changes (`git push origin main`).
      pull_request:
        branches: [ main ]
 
+   permissions:
+     contents: read
+
    jobs:
      build:
 
        runs-on: ubuntu-latest
 
        steps:
-       - uses: actions/checkout@v2
-       - name: Set up Python 3.8
-         uses: actions/setup-python@v2
+       - uses: actions/checkout@v3
+       - name: Set up Python 3.10
+         uses: actions/setup-python@v3
          with:
-           python-version: 3.8
+           python-version: "3.10"
        - name: Install dependencies
          run: |
            python -m pip install --upgrade pip
@@ -135,7 +138,6 @@ and push the changes (`git push origin main`).
 
    ```{figure} img/gh_action_commit.png
    :alt: Committing the change
-   :width: 400px
 
    Committing the file via the GitHub web interface: follow the flow, give it some commit name. You can commit directly to master.
    ```
