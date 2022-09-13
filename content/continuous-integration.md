@@ -234,7 +234,7 @@ and push the changes (`git push origin main`).
 After you committed the workflow file, your GitHub/GitLab repository will be ahead of
 your local cloned repository.  Update your local cloned repository:
 
-```bash
+```console
 $ git pull origin main
 ```
 

@@ -44,7 +44,7 @@ happens when a test breaks.
    as tests.
 
 3. Let us try to test it with pytest:
-   ```shell
+   ```console
    $ pytest -v example.py
 
    ============================================================ test session starts =================================
@@ -64,7 +64,7 @@ happens when a test breaks.
 4. Let us break the test!
    Introduce a code change which breaks the code and check
    whether pytest detects the change:
-   ```shell
+   ```console
    $ pytest -v example.py
 
    ============================================================ test session starts =================================
