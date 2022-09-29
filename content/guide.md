@@ -120,3 +120,43 @@ exercise and test design.
   something you do to control behavior (your own as well as the code).
   Testing is also something you can do to improve productivity, but this
   is less visible/detectable.
+
+
+
+## Field reports
+
+### 2022 September
+
+Overall, it went well with the schedule below.  We had to be
+efficient, but it seemed like it wasn't too hard.  The only complaint
+was that there was a lot of time for the first exercise (pytest
+locally), which I would agree with.  I think for next time, we should
+add in parts of that exercise so that there are more advanced things
+to do, since there are more nice features of pytest, such as `--pdb`,
+running single tests, etc.  Other than that, there wasn't really much
+to report.
+
+The way extra long breaks and a 5-minute starting point were included
+is quite good for the schedule.  Not because we needed them, but it
+allowed us to go over time and not be under so much time pressure.
+
+```markdown
+**Day 6**
+* 8:50 - 9:00 Getting started
+* 9:00 - 10:45 Software testing
+  - 9:00-9:05 Short info about today's exercise sessions and possible questions from yesterday
+  - 9:05-9:10 [Motivation](https://coderefinery.github.io/testing/motivation/)
+  - 9:10-9:20 [Concepts](https://coderefinery.github.io/testing/concepts/)
+  - 9:20-9:45 [Testing locally](https://coderefinery.github.io/testing/pytest/)
+      - 5 minutes talking
+      - 15 minute exercises
+      - 5 going over exercises and discussion
+  - 9:45-9:55 Break
+  - 9:55-10:20 [Automated testing](https://coderefinery.github.io/testing/continuous-integration/)
+      - type-along session
+  - 10:20-10:45 [Test design](https://coderefinery.github.io/testing/test-design/)
+      - discussion: 5 minutes
+      - Exercises: 10 minutes.  Any of exercises Design-1 to Design-8 that learners want to do.
+      - discussion and type-along of advanced exercises: 10 minutes
+  - 10:45-11:00 Break
+```
