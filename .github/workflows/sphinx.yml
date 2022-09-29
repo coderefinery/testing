@@ -1,7 +1,7 @@
 # From: https://github.com/rkdarst/sphinx-actions-test/blob/master/.github/workflows/sphinx-build.yml
 
 name: sphinx
-on: [push, pull_request]
+on: [push, pull_request, workflow_dispatch]
 
 # If these SPHINXOPTS are enabled, then be strict about the builds and
 # fail on any warnings
