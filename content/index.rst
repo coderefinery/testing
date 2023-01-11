@@ -51,3 +51,12 @@ see automated testing works and practice designing and writing tests.
    exercises
    quick-reference
    guide
+
+
+.. toctree::
+   :maxdepth: 1
+   :caption: About
+
+   All lessons <https://coderefinery.org/lessons/core/>
+   CodeRefinery <https://coderefinery.org/>
+   Reusing <https://coderefinery.org/lessons/reusing/>
