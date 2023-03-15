@@ -22,7 +22,7 @@ copyright = '2020, CodeRefinery project'
 author = 'CodeRefinery project'
 github_user = 'coderefinery'
 github_repo_name = 'testing'
-github_version = 'master'
+github_version = 'main'
 conf_py_path = '/content/' # with leading and trailing slash
 
 # -- General configuration ---------------------------------------------------
