@@ -36,23 +36,16 @@ If you are new to pull requests / merge requests, you can learn all about them
 in the [Collaborative Git lesson](https://coderefinery.github.io/git-collaborative/).
 
 
-### Step 1: Create a new repository on GitHub/GitLab or fork from the example repo
+### Step 1: Create a new repository on GitHub/GitLab OR fork from the example repo {.tabset}
 
-#### Starting from an empty repo and clone it
+#### Create a new repository
 
 - Begin by creating a repository called (for example) *example-ci*.
 - **Before** you create the repository, select **"Initialize this repository
   with a README"** (otherwise you try to clone an empty repo).
 - Clone the repository (`git clone git@github.com:<yourGitID>/example-ci.git`).
-
-#### Starting from an example repo
-
-- Fork the example repo. There are two options one for [python](https://github.com/AaltoRSE/PyTestingExample) and one for [R](https://github.com/AaltoRSE/RTestingExample).
-- Clone your fork (`git clone git@github.com:<yourGitID>/<Py/R>TestingExample.git`).
-- You can skip step 2
-
-### Step 2: Clone your repository, add code, commit, and push {.tabset}
-
+- Add the following files and code
+  
 `````{tabs}
    ````{group-tab} Python
       Add a file `functions.py` containing:
@@ -94,9 +87,7 @@ in the [Collaborative Git lesson](https://coderefinery.github.io/git-collaborati
       #        f2c(-600)
 
       ```
-      Run your tests with `pytest`.
-
-      Then stage the file (`git add <filename>`), commit (`git commit -m "some commit message"`),
+      Finally, stage the files (`git add <filename>`), commit (`git commit -m "some commit message"`),
       and push the changes (`git push origin main`).
 
    ````
@@ -196,14 +187,37 @@ in the [Collaborative Git lesson](https://coderefinery.github.io/git-collaborati
         #  expect_true(is.numeric(c));
         #})
 
-        ```
+   ````
+`````
+
+
+
+#### Start from an example repo
+
+- Fork the example repo. There are two options one for [python](https://github.com/AaltoRSE/PyTestingExample) and one for [R](https://github.com/AaltoRSE/RTestingExample).
+- Clone your fork (`git clone git@github.com:<yourGitID>/<Py/R>TestingExample.git`).
+
+
+
+### Step 2: Run tests manually {.tabset}
+`````{tabs}
+  ````{group-tab} Python
+      Run your tests with
+      ```
+      pytest
+      ```
+  ````
+  ```{group-tab} R
         You can now run your tests (and a complete check of this package) by running:
-        `Rscript -e 'testthat::test_local()'`
+        ````
+        Rscript -e 'testthat::test_local()'`
         ```{note}
         - You might need to install the testthat package before you can run the command above ( in R `install.packages("testthat")`)        
         ```
-   ````
+        ````
+  ````
 `````
+
 
 
 ### Step 3: Enable automated testing
