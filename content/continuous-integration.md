@@ -199,7 +199,7 @@ in the [Collaborative Git lesson](https://coderefinery.github.io/git-collaborati
 
 
 
-### Step 2: Run tests manually {.tabset}
+### Step 2: Run tests locally {.tabset}
 `````{tabs}
   ````{group-tab} Python
       Run your tests with
