@@ -36,7 +36,7 @@ If you are new to pull requests / merge requests, you can learn all about them
 in the [Collaborative Git lesson](https://coderefinery.github.io/git-collaborative/).
 
 
-### Step 1: Create a new repository on GitHub/GitLab OR fork from the example repo {.tabset}
+### Step 1: Create a new repository on GitHub/GitLab OR fork from the example repo
 
 #### Create a new repository
 
@@ -199,23 +199,20 @@ in the [Collaborative Git lesson](https://coderefinery.github.io/git-collaborati
 
 
 
-### Step 2: Run tests locally {.tabset}
+### Step 2: Run tests locally
 `````{tabs}
   ````{group-tab} Python
-      Run your tests with
-      ```
-      pytest
-      ```
+  You can run your tests locally with
+  ```
+  pytest
+  ```
   ````
-  ```{group-tab} R
-        You can now run your tests (and a complete check of this package) by running:
-        ````
-        Rscript -e 'testthat::test_local()'`
-        ```{note}
-        - You might need to install the testthat package before you can run the command above ( in R `install.packages("testthat")`)        
-        ```
-        ````
-  ````
+  ````{group-tab} R
+  You can now run your tests (and a complete check of this package) by running:
+  ```
+  Rscript -e 'testthat::test_local()'`
+  ```
+> **_NOTE:_** You might need to install the testthat package before you can run the command above ( in R `install.packages("testthat")`)
 `````
 
 
