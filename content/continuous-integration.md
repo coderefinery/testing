@@ -19,8 +19,8 @@ C-D below are performed by a collaborator.
 
 In this exercise, we will:
 
-**A.** Create a repository on GitHub/GitLab   
-**B.** Commit code to the repository and set up tests with GitHub Actions/ GitLab CI  
+**A.** Create and add code to a repository on GitHub/GitLab (or, alternatively, fork and clone an existing example repository)   
+**B.** Set up tests with GitHub Actions/ GitLab CI  
 **C.** Find a bug in our repository and open an issue to report it  
 **D.** Fix the bug on a bugfix branch and open a pull request (GitHub)/ merge request (GitLab)  
 **E.** Merge the pull/merge request and see how the issue is automatically closed.
@@ -192,7 +192,7 @@ in the [Collaborative Git lesson](https://coderefinery.github.io/git-collaborati
 
 
 
-#### Start from an example repo
+#### Fork and clone an existing example repository
 
 - Fork the example repo. There are two options one for [python](https://github.com/AaltoRSE/PyTestingExample) and one for [R](https://github.com/AaltoRSE/RTestingExample).
 - Clone your fork (`git clone git@github.com:<yourGitID>/<Py/R>TestingExample.git`).
@@ -202,13 +202,13 @@ in the [Collaborative Git lesson](https://coderefinery.github.io/git-collaborati
 ### Step 2: Run tests locally
 `````{tabs}
   ````{group-tab} Python
-  You can run your tests locally with
+  You can now run your tests locally with
   ```
   pytest
   ```
   ````
   ````{group-tab} R
-  You can now run your tests (and a complete check of this package) by running:
+  You can now run your tests (and a complete check of this package) locally by running:
   ```
   Rscript -e 'testthat::test_local()'`
   ```
@@ -218,8 +218,6 @@ in the [Collaborative Git lesson](https://coderefinery.github.io/git-collaborati
 
 
 ### Step 3: Enable automated testing
-
-This following tab 
 
 `````{tabs}
   ````{group-tab} GitHub-Python
