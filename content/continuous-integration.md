@@ -305,7 +305,7 @@ in the [Collaborative Git lesson](https://coderefinery.github.io/git-collaborati
   "Editor". (Instead you can also click on "Add CI/CD" on the main page or just add a `.gitlab-ci.yml` file the result is identical.
 
   Copy the following code snippet into the file. Gitlab will save it as `.gitlab-ci.yml`.
-  Add `pytest example.py` to the last line (highlighted):
+  Add `pytest test_functions.py` to the last line (highlighted):
 
   ```{code-block} yaml
   ---
@@ -500,7 +500,7 @@ $ git pull origin main
 Hint: if the above command fails, check whether the branch name on the GitHub/GitLab
 repository is called `main` and not perhaps `master`.
 
-Next uncomment the code in `example.py` under "step 5", commit, and push.
+Next uncomment the code in `test_functions.py` under "step 5", commit, and push.
 Verify that the test suite now fails on the "Actions" tab (GitHub)
 or the "CI/CD->Pipelines" tab (GitLab).
 
