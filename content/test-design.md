@@ -152,7 +152,6 @@ function more fine-grained and test only one concept.
    ````{group-tab} Fortran
 
       ```{literalinclude} code/fortran/test_factorial.pf
-      :language: fortran
       ```
    ````
 `````
@@ -562,8 +561,7 @@ until they pass.
       :language: fortran
       ```
       ```{literalinclude} code/fortran/test_fizzbuzz.pf
-      :language: fortran
-      ```      
+      ```
    ````
    `````
 ``````
