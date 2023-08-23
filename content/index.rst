@@ -1,7 +1,19 @@
 Software testing
 ================
 
-In this lesson we will discuss why testing often needs to be part of the
+Have you ever had some of these problems?:
+
+- You change B and C, and suddenly A doesn't work anymore.  Time
+  wasted trying to figure out what changed.
+- There was some simple problem, systematically testing could have
+  found it.
+- You get someone else's code and are afraid to touch it because who
+  knows what might break.  Plot twist: it's your own code!
+
+People have learned that some automatic way to check problems makes
+software development much easier.  This lesson will talk about the
+places it's useful for research code, and how easy it can be.
+We will discuss why testing often needs to be part of the
 software development cycle and how such a cycle can be implemented. We will
 see automated testing works and practice designing and writing tests.
 
@@ -16,16 +28,18 @@ see automated testing works and practice designing and writing tests.
 
    3. Basic understanding of Git.
 
-   4. You need a `GitHub <https://github.com>`__ or a `Gitlab <https://gitlab.com/>`__ account.
+   4. You need a `GitHub <https://github.com>`__ or a `Gitlab
+      <https://gitlab.com/>`__ account for the "automated testing" and
+      "full-cycle collaborative workflow" (but the rest works fine
+      just locally).
 
 
 .. csv-table::
    :widths: auto
    :delim: ;
 
-   10 min ; :doc:`motivation`
-   10 min ; :doc:`concepts`
-   20 min ; :doc:`pytest`
+   15 min ; :doc:`motivation`
+   25 min ; :doc:`pytest`
    30 min ; :doc:`continuous-integration`
    30 min ; :doc:`test-design`
    5 min ; :doc:`conclusions`
@@ -36,7 +50,6 @@ see automated testing works and practice designing and writing tests.
    :caption: The lesson
 
    motivation
-   concepts
    pytest
    continuous-integration
    test-design
