@@ -193,3 +193,8 @@ allowed us to go over time and not be under so much time pressure.
       - discussion and type-along of advanced exercises: 10 minutes
   - 10:45-11:00 Break
 ```
+
+### 2019 November instructor training workshop
+
+Some notes about teaching are here:
+<https://github.com/coderefinery/testing/issues/42>
