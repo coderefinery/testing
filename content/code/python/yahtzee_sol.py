@@ -5,15 +5,16 @@ def test_roll_dice():
     assert roll_dice(5) == [5, 2, 5, 2, 3]
 
 
+import pytest
 def test_yahtzee():
     random.seed(1)
-    num_games = 10000
+    n_tests = 1_000_000
 
     winning_games = list(
         filter(
             lambda x: x == 5,
-            [yahtzee() for _ in range(num_games)],
+            [yahtzee() for _ in range(n_tests)],
         )
     )
 
-    assert len(winning_games) == 460
+    assert len(winning_games) / n_tests == pytest.approx(0.046, abs=0.01)
