@@ -136,7 +136,27 @@ wasn't enough time for practical things, so I think a plan like last
 time could have been good.  As usual, we should have found a way to
 talk less and do more.
 
+This was the schedule from March 2023:
 
+```markdown
+* 8:50 - 9:00 Getting started
+* 9:00 - 10:45 [Software testing](https://coderefinery.github.io/testing/)
+  - 9:00-9:05 Short info about today's exercise sessions and possible questions from yesterday
+  - 9:05-9:10 [Motivation](https://coderefinery.github.io/testing/motivation/)
+  - 9:10-9:20 [Concepts](https://coderefinery.github.io/testing/concepts/)
+  - 9:20-9:45 [Testing locally](https://coderefinery.github.io/testing/pytest/)
+      - 5 minutes talking
+      - 15 minute exercises
+      - 5 going over exercises and discussion
+  - 9:45-9:55 Break
+  - 9:55-10:20 [Automated testing](https://coderefinery.github.io/testing/continuous-integration/)
+      - type-along session
+  - 10:20-10:45 [Test design](https://coderefinery.github.io/testing/test-design/)
+      - discussion: 5 minutes
+      - Exercises: 10 minutes.  Any of exercises Design-1 to Design-8 that learners want to do.
+      - discussion and type-along of advanced exercises: 10 minutes
+  - 10:45-11:00 Break
+```
 
 ### 2022 September
 
