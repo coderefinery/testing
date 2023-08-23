@@ -36,32 +36,32 @@ In this episode we will consider how functions and programs can be tested in pro
     ```{group-tab} Python
 
     The suggested solutions below use pytest. Further information can
-    be found in the [Quick Reference](../quick-reference#pytest).
+    be found in the [Quick Reference](pytest-ref).
     ```
 
     ```{group-tab} C++
 
     The suggested solutions below use Catch2. Further information can
-    be found in the [Quick Reference](../quick-reference#catch2).
+    be found in the [Quick Reference](catch2).
     ```
 
    ```{group-tab} R
 
     The suggested solutions below use testthat. Further information can
-    be found in the [Quick Reference](../quick-reference#testthat).
+    be found in the [Quick Reference](testthat).
     ```
 
     ```{group-tab} Julia
 
     The suggested solutions below use Test. Further information can
-    be found in the [Quick Reference](../quick-reference#test).
+    be found in the [Quick Reference](test).
     ```
 
     ```{group-tab} Fortran
 
-    The suggested solutions below use pFUnit. Further information on how to install 
+    The suggested solutions below use pFUnit. Further information on how to install
     pFUnit and set up tests can
-    be found in the [Quick Reference](../quick-reference#pfunit).
+    be found in the [Quick Reference](pfunit).
     ```
   ````
 `````

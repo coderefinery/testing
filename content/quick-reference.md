@@ -9,35 +9,37 @@ of code automatically.  They provide more control than one single
 script which does some tests.
 
 - Python
-    - [pytest](#pytest)
+    - [pytest](pytest-ref)
     - [nose](http://nose.readthedocs.io)
     - [doctest](https://docs.python.org/2/library/doctest.html)
     - [unittest](https://docs.python.org/2/library/unittest.html)
 
 - R
-    - [testthat](#testthat)
+    - [testthat](testthat)
 
 - Julia
-    - [Test](#test)
+    - [Test](test)
 
 - Matlab
     - [Class-Based Unit Tests](https://www.mathworks.com/help/matlab/class-based-unit-tests.html)
 
 - C(++)
-    - [Google Test](#google-test)
-    - [Catch2](#catch2)
+    - [Google Test](google-test)
+    - [Catch2](catch2)
     - [cppunit](https://freedesktop.org/wiki/Software/cppunit/)
-    - [Boost.Test](#boost-test)
+    - [Boost.Test](boost-test)
     - [UnitTest++](http://unittest-cpp.github.io)
 
 - Fortran
-    - [pFUnit](#pfunit)
+    - [pFUnit](pfunit)
     - [FRUIT](https://sourceforge.net/projects/fortranxunit/)
     - [Ftunit](http://flibs.sourceforge.net/ftnunit.html)
 
 ---
 
-### pytest
+(pytest-ref)=
+
+### pytest_
 
 - Python
 - http://doc.pytest.org
@@ -62,6 +64,8 @@ def test_get_word_lengths():
 - [Example project](https://github.com/bast/pytest-demo)
 
 ---
+
+(testthat)=
 
 ### testthat
 
@@ -107,6 +111,8 @@ def test_get_word_lengths():
 More information in the [Testing chapter](http://r-pkgs.had.co.nz/tests.html) of the book [R Packages](http://r-pkgs.had.co.nz) by Hadley Wickham.
 
 ---
+
+(test)=
 
 ### Test
 
@@ -155,6 +161,8 @@ end
 
 ---
 
+(catch2)=
+
 ### Catch2
 
 - C++
@@ -182,6 +190,8 @@ TEST_CASE("Use the example library to add numbers", "[add]") {
 
 ---
 
+(google-test)=
+
 ### Google Test
 
 - C++
@@ -207,6 +217,8 @@ TEST(example, add) {
 
 ---
 
+(boost-test)=
+
 ### Boost.Test
 
 - C++
@@ -230,6 +242,8 @@ BOOST_AUTO_TEST_CASE( add )
 - [Example project](https://github.com/ENCCS/boost-test-demo)
 
 ---
+
+(pfunit)=
 
 ### pFUnit
 
