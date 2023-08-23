@@ -125,6 +125,19 @@ exercise and test design.
 
 ## Field reports
 
+### 2023 March
+
+Due to a mix-up with instructors, we changed the plan at the last
+minute and it didn't go so well (we should have known).  The original
+plan had pytest as a demo, with exercises for Github CI and test
+design.  We did pytest as an exercise, Github CI as an exercise, and
+had almost no time for test design.  One complaint was that there
+wasn't enough time for practical things, so I think a plan like last
+time could have been good.  As usual, we should have found a way to
+talk less and do more.
+
+
+
 ### 2022 September
 
 Overall, it went well with the schedule below.  We had to be
