@@ -50,20 +50,22 @@ does not constitute science, and this can be offending to learners.
 
 ### Structure of the lesson
 
-#### Concepts
+#### Motivation and concepts
 
-After the Motivation episode, the lesson continues with a walkthrough
-of important concepts in software testing (unit tests, integration
-tests, test-driven development etc). At the end of the Concepts episode
-there's a link to the Quick Reference where learners can find a list of
-available testing frameworks for different languages.
+The former "motivation" and "concepts" episodes have been combined
+into one.  Previously, the lesson was described as quite dogmagtic and
+without enough time for exercises.  When teaching, try to give some of
+the benefits, but without being too long about it.  The quick
+reference has more details on language-specific things.
 
 #### Testing locally
 
 After introducing the concepts the lesson becomes hands-on in the
 Testing Locally episode. The pytest example there can be done as
 type-along and the optional exercise "Testing with numerical
-tolerance" can be left as homework.
+tolerance" can be left as homework.  The end-to-end test may be hard
+for many people who can't script other programs, but it provides
+something that can keep advanced people interested for longer.
 
 #### Automated testing (or full-cycle collaborative workflow)
 
@@ -74,7 +76,7 @@ collaborative exercise in the optional episode "Full-cycle
 collaborative workflow", and the instructor has a choice which one to
 teach (with the latter requiring around double the time). The
 exercise in Automated Testing can either be done as a type-along
-demonstration by the instructor or as an exercise in breakout rooms.  
+demonstration by the instructor or as an exercise in breakout rooms.
 
 **If run as an exercise, this episode requires that learners know how
 to set up Git repositories locally and online and how to work with
@@ -124,6 +126,12 @@ exercise and test design.
 
 
 ## Field reports
+
+### 2023 September
+
+For this lesson, "Motivation" and "Concepts" were combined.  An extra
+end-to-end test was added under "testing locally".
+
 
 ### 2023 March
 
