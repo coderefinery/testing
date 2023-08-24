@@ -18,7 +18,7 @@
 # -- Project information -----------------------------------------------------
 
 project = 'Software testing'
-copyright = '2020, CodeRefinery project'
+copyright = '2016-2023, CodeRefinery project'
 author = 'CodeRefinery project'
 github_user = 'coderefinery'
 github_repo_name = 'testing'
