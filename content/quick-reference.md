@@ -42,7 +42,7 @@ script which does some tests.
 ### pytest_
 
 - Python
-- http://doc.pytest.org
+- <http://doc.pytest.org>
 - Installable via Conda or pip.
 - Easy to use: Prefix a function with `test_` and the test runner will execute it.
   No need to subclass anything.
@@ -70,7 +70,7 @@ def test_get_word_lengths():
 ### testthat
 
 - R
-- https://github.com/r-lib/testthat
+- <https://github.com/r-lib/testthat>
 - Easily installed from CRAN with `install.packages("testthat")`, or from GitHub with `devtools::install_github("r-lib/testthat")`
 - Use in package development with `usethis::use_testthat()`
 - Add a new test file with `usethis::use_test("test-name")`, e.g.:

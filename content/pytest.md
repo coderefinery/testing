@@ -1,7 +1,7 @@
 # Testing locally
 
 ```{questions}
-- How can we implement a test suite using pytest?
+- How hard is it to implement a test suite using pytest?
 ```
 
 
@@ -10,8 +10,8 @@
 In this exercise we will make a simple Python function and use
 [pytest](http://doc.pytest.org) to test it.
 
-* This is easy to use by almost any project and doesn't rely on any
-  other servers or services.
+* This is easy to use by almost any Python project and doesn't rely on any
+  other servers or services.  Similar things exist in other languages.
 * The downside is that you have to remember to run it yourself.
 
 We will try to
@@ -137,7 +137,93 @@ def test_add():
 This is OK but the `1.0e-7` can be a bit arbitrary.
 ````
 
+
+## Exercise end-to-end test (advanced)
+
+If you have spare time, you can work on this.  It isn't required for
+anything else.  It counts as a bit advanced, because you are writing
+one program to run another program and check it's output.  This isn't
+necessarily hard, but it is different from what most people do!
+
+````{exercise} Local-3: Create an end-to-end test (advanced, optional)
+
+Often, you can include tests that run your whole workflow or program.
+For example, you might include sample data and check the output
+against what you expect.  (including sample data is a great idea
+anyway, so this helps a lot!)
+
+We'll use the word-count example repository
+<https://github.com/coderefinery/word-count>, as used in [the
+Documentation
+lesson](https://coderefinery.github.io/reproducible-research/workflow-management/).
+
+As a reminder, you can run the script like this to get some output,
+which prints to standard output (the terminal):
+
+```console
+$ python3 statistics/count.py data/abyss.txt
+```
+
+Your goal is to make a test that can run this and let you know if it's
+successful or not.  You could use Python, or you could use shell
+scripting.  You can test if these two lines are in the output: `the
+4044` and `and 2807`.
+
+Python hint:
+[subprocess.check_output](https://docs.python.org/3/library/subprocess.html#subprocess.check_output)
+will run a command and return its output as a string.
+
+Bash hint: `COMMAND | grep "PATTERN"` ("pipe to grep") will be true if
+the pattern is in the command.
+
+````
+
+````{solution} Solution: Local-3
+There are two solutions in the repository already, in the `tests/`
+dierectory <https://github.com/coderefinery/word-count>, one in Python
+and one in bash shell.  Neither of these are a very advanced or
+perfect solution, and you could integrate them with pytest or whatever
+other test framework you use.
+
+The shell one works with shell and prints a bit more output:
+
+```console
+$ sh tests/end-to-end-shell.sh
+the 4044
+Success: 'the' found correct number of times
+and 2807
+Success: 'and' found correct number of times
+Success
+```
+
+The Python one:
+```console
+$ python3 tests/end-to-end-python.py
+Success
+```
+
+````
+
+
+## Spare time?
+
+We give a lot of time here, since it can be tricky for some people.
+If you have more time, try looking at {doc}`test-design` - there are
+many more tests to start writing there, and you now know enough to do
+that.
+
+We'll discuss these in more detail later.
+
+
+## Summary
+
+* Local testing can be very easy.
+* Even simple tests can provide checks for obviously breaking things.
+
+
+
 ```{keypoints}
-- pytest collects and runs all test functions starting with `test_`.
+- pytest collects and runs all test functions starting with
+  `test_`. If run on a directory, it collects all files matching `test_*.py`
 - Python and C/C++ have better tooling for automated tests than Fortran and you can use those also for Fortran projects (via `iso_c_binding`).
 ```
