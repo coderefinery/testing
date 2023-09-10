@@ -1,5 +1,5 @@
-Software testing
-================
+Automated testing - Preventing yourself and others from breaking your functioning code
+======================================================================================
 
 Have you ever had some of these problems?:
 
