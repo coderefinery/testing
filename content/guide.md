@@ -1,5 +1,21 @@
 # Instructor guide
 
+## Detailed schedule
+
+- 9:00-9:05 Short info about today's exercise sessions and possible questions from yesterday
+- 9:05-9:10 [Motivation](https://coderefinery.github.io/testing/motivation/)
+- 9:10-9:20 [Concepts](https://coderefinery.github.io/testing/concepts/)
+- 9:20-9:35 [Testing locally](https://coderefinery.github.io/testing/pytest/) - demo
+- 9:35-9:55 [Automated testing](https://coderefinery.github.io/testing/continuous-integration/) - **20 min. exercise**
+- 9:55-10:05 Discussion/de-brief
+- 10:05-10:15 Break
+- 10:15-10:50 [Test design](https://coderefinery.github.io/testing/test-design/)
+    - discussion: 5 minutes
+    - **20 min. exercises**. Any of exercises Design-1 to Design-8 that learners want to do.
+    - discussion and type-along of advanced exercises: 10 minutes
+- 10:50-11:00 Conclusions and discussion
+
+
 ## Why we teach this lesson
 
 - Because writing tests and using automated testing is often part
