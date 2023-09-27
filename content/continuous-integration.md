@@ -19,12 +19,12 @@ C-D below are performed by a collaborator.
 
 In this exercise, we will:
 
-**A.** Create and add code to a repository on GitHub/GitLab (or, alternatively, fork and clone an existing example repository)
-**B.** Set up tests with GitHub Actions/ GitLab CI
-**C.** Find a bug in our repository and open an issue to report it
-**D.** Fix the bug on a bugfix branch and open a pull request (GitHub)/ merge request (GitLab)
-**E.** Merge the pull/merge request and see how the issue is automatically closed.
-**F.** Create a test to increase the code coverage of our tests.
+- **A.** Create and add code to a repository on GitHub/GitLab (or, alternatively, fork and clone an existing example repository)
+- **B.** Set up tests with GitHub Actions/ GitLab CI
+- **C.** Find a bug in our repository and open an issue to report it
+- **D.** Fix the bug on a bugfix branch and open a pull request (GitHub)/ merge request (GitLab)
+- **E.** Merge the pull/merge request and see how the issue is automatically closed.
+- **F.** Create a test to increase the code coverage of our tests.
 ```
 
 ### Prerequisites
