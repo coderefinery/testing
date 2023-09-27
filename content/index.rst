@@ -15,7 +15,7 @@ software development much easier.  This lesson will talk about the
 places it's useful for research code, and how easy it can be.
 We will discuss why testing often needs to be part of the
 software development cycle and how such a cycle can be implemented. We will
-see automated testing works and practice designing and writing tests.
+see how automated testing works and practice designing and writing tests.
 
 .. prereq::
 
