@@ -44,7 +44,7 @@ digits with the expected result?:
       :language: C++
       ```
    ```
-   
+
    ```{group-tab} R
 
       ```{literalinclude} code/R/fahrenheit_to_celsius_test.R

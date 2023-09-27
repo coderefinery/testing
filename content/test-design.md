@@ -110,7 +110,7 @@ Also discuss why some are easier to test than others.
 
     ````
     Discussion point: The factorial grows very rapidly. What happens if you
-    pass a large number as argument to the function? 
+    pass a large number as argument to the function?
    `````
 
 ``````{solution}
@@ -416,7 +416,7 @@ A better solution would probably be to rewrite the function.
       :language: fortran
       ```
    ````
-`````   
+`````
 ``````
 ```````
 

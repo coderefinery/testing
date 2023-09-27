@@ -149,7 +149,7 @@ using Test
 
 function get_word_lengths(s::String)
     return [length(w) for w in split(s)]
-end 
+end
 
 @testset "Testing get_word_length()" begin
     text = "Three tomatoes are walking down the street"

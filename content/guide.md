@@ -122,12 +122,12 @@ before the Continuous Integration episode.
 ### Timing
 
 The lesson is stipulated to take around 2 hours, but if more time is
-available you can replace the Automated Testing episode with "Full-cycle 
+available you can replace the Automated Testing episode with "Full-cycle
 collaborative workflow", or give more time to the Test Design episode.
 
 Splitting the lesson in two halves with a lunch break in the middle
 works well. Before lunch you have on hour introduction and the two
-first exercises. After lunch you continue with the automated testing 
+first exercises. After lunch you continue with the automated testing
 exercise and test design.
 
 ### Room for improvement

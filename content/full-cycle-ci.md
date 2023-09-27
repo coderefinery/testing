@@ -19,12 +19,12 @@ The exercise takes 20-30 minutes.
 
 In this exercise, everybody will:
 
-**A.** Create a repository on GitHub/GitLab (everybody should use a **different repository name** for their repository)  
-**B.** Commit code to the repository and set up tests with GitHub Actions/ GitLab CI  
-**C.** Everybody will find a bug in their repository and open an issue in their repository  
+**A.** Create a repository on GitHub/GitLab (everybody should use a **different repository name** for their repository)
+**B.** Commit code to the repository and set up tests with GitHub Actions/ GitLab CI
+**C.** Everybody will find a bug in their repository and open an issue in their repository
 **D.** Then each one will clone the repo of one of their exercise partners, fix the bug,
-  and open a pull request (GitHub)/ merge request (GitLab)  
-**E.** Everybody then merges their co-worker's change  
+  and open a pull request (GitHub)/ merge request (GitLab)
+**E.** Everybody then merges their co-worker's change
 ```
 
 ```{figure} img/testing_group_work.png
@@ -256,7 +256,7 @@ or the "CI/CD->Pipelines" tab (GitLab).
 ### Step 6: Open an issue on GitHub/GitLab
 
 Open a new issue in your repository about the broken test (click the "Issues" button on
-GitHub or GitLab and write a title for the issue). 
+GitHub or GitLab and write a title for the issue).
 The plan is that your colleague will fix the issue through a pull/merge request.
 
 

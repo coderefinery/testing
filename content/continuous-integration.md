@@ -1,4 +1,4 @@
-# Automated testing 
+# Automated testing
 
 ```{questions}
 - How can we implement automatic testing each time we push changes to the repository?
@@ -19,10 +19,10 @@ C-D below are performed by a collaborator.
 
 In this exercise, we will:
 
-**A.** Create and add code to a repository on GitHub/GitLab (or, alternatively, fork and clone an existing example repository)   
-**B.** Set up tests with GitHub Actions/ GitLab CI  
-**C.** Find a bug in our repository and open an issue to report it  
-**D.** Fix the bug on a bugfix branch and open a pull request (GitHub)/ merge request (GitLab)  
+**A.** Create and add code to a repository on GitHub/GitLab (or, alternatively, fork and clone an existing example repository)
+**B.** Set up tests with GitHub Actions/ GitLab CI
+**C.** Find a bug in our repository and open an issue to report it
+**D.** Fix the bug on a bugfix branch and open a pull request (GitHub)/ merge request (GitLab)
 **E.** Merge the pull/merge request and see how the issue is automatically closed.
 **F.** Create a test to increase the code coverage of our tests.
 ```
@@ -45,7 +45,7 @@ in the [Collaborative Git lesson](https://coderefinery.github.io/git-collaborati
   with a README"** (otherwise you try to clone an empty repo).
 - Clone the repository (`git clone git@github.com:<yourGitID>/example-ci.git`).
 - Add the following files and code
-  
+
 `````{tabs}
    ````{group-tab} Python
       Add a file `functions.py` containing:
@@ -63,7 +63,7 @@ in the [Collaborative Git lesson](https://coderefinery.github.io/git-collaborati
       def convert_fahrenheit_to_celsius(fahrenheit):
           return multiply(subtract(fahrenheit, 32), 9 / 5) # <-- Fix this in step 7
       ```
-      and a file `test_functions.py` containing: 
+      and a file `test_functions.py` containing:
 
       ```python
 
@@ -98,7 +98,7 @@ in the [Collaborative Git lesson](https://coderefinery.github.io/git-collaborati
         Package: rtestingexample
         Title: Testing package for R and github actions
         Version: 0.0.0.9000
-        Authors@R: 
+        Authors@R:
             person("Your", "Name", , "none@example.com", role = c("aut", "cre"),
                   )
         Author: Your Name
@@ -162,7 +162,7 @@ in the [Collaborative Git lesson](https://coderefinery.github.io/git-collaborati
       - in the `testthat` folder create a file `test-functions.R` with the following content:
         ```R
 
-        test_that(desc = "Add", code = {  
+        test_that(desc = "Add", code = {
           c <- add(2,3);   # Runs the function
 
           # Test that the result is the correct value
@@ -174,15 +174,15 @@ in the [Collaborative Git lesson](https://coderefinery.github.io/git-collaborati
 
         # uncomment the following test in step 11
         #test_that(desc = "Fahrenheit to Celsius", code = {
-        #  
-        #  temp_C <- convert_fahrenheit_to_celsius(50);   
-        #  expect_equal(temp_C,10);  
+        #
+        #  temp_C <- convert_fahrenheit_to_celsius(50);
+        #  expect_equal(temp_C,10);
         #  expect_true(is.numeric(temp_C));
         #})
 
         # uncomment the following test in step 5
-        #test_that(desc = "Subtract", code = { 
-        #  c <- subtract(3,2); 
+        #test_that(desc = "Subtract", code = {
+        #  c <- subtract(3,2);
         #  expect_equal(c,1);
         #  expect_true(is.numeric(c));
         #})
@@ -234,8 +234,8 @@ in the [Collaborative Git lesson](https://coderefinery.github.io/git-collaborati
   ```
 
   GitHub creates the following file for you in the subfolder `.github/workflows`.
-  Modify the highlited lines according to the action below. This will add a code coverage 
-  report to new pull requests. The if clause restricts this to pull requests, as otherwise 
+  Modify the highlited lines according to the action below. This will add a code coverage
+  report to new pull requests. The if clause restricts this to pull requests, as otherwise
   this action would not have a target to write the reports to. On pushes only the unittesting is run.
 
   ```{code-block} yaml
@@ -252,7 +252,7 @@ in the [Collaborative Git lesson](https://coderefinery.github.io/git-collaborati
       branches: [ "main" ]
     pull_request:
       branches: [ "main" ]
-    
+
   jobs:
     build:
       permissions:
@@ -281,7 +281,7 @@ in the [Collaborative Git lesson](https://coderefinery.github.io/git-collaborati
       - name: Test with pytest and calculate coverage
         run: |
           pytest --cov-report "xml:coverage.xml"  --cov=.
-      - name: Create Coverage 
+      - name: Create Coverage
         if: ${{ github.event_name == 'pull_request' }}
         uses: orgoro/coverage@v3
         with:
@@ -333,7 +333,7 @@ in the [Collaborative Git lesson](https://coderefinery.github.io/git-collaborati
   test:
     stage: test
     script:
-      - pytest 
+      - pytest
 
   ```
 
@@ -352,11 +352,11 @@ in the [Collaborative Git lesson](https://coderefinery.github.io/git-collaborati
   In this step we will enable GitHub Actions.
   Select "Actions" from your GitHub repository page. You get to a page
   "Get started with GitHub Actions". Unfortunately, as of the creation of this lecture, the default "R package action"
-  that is suggested by github is quite complex and not really fit for our purpose. Instead we will create our own 
-  workflow as detailed below. 
+  that is suggested by github is quite complex and not really fit for our purpose. Instead we will create our own
+  workflow as detailed below.
   So first click on the " set up a workflow yourself" link above the "Search workflows" field.
 
-  GitHub creates a "main.yml" file that we can now modify as needed. 
+  GitHub creates a "main.yml" file that we can now modify as needed.
 
   - First, replace the name by a more descriptive one (e.g. r_testing.yml)
 
@@ -380,13 +380,13 @@ in the [Collaborative Git lesson](https://coderefinery.github.io/git-collaborati
       test-coverage:
         runs-on: ubuntu-latest
         env:
-          GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}         
+          GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
         name: R
         steps:
           - uses: actions/checkout@v3
           - name: Setup R
             uses: r-lib/actions/setup-r@v2
-            with:                
+            with:
               use-public-rspm: true
           - uses: r-lib/actions/setup-r-dependencies@v2
             with:
@@ -421,11 +421,11 @@ in the [Collaborative Git lesson](https://coderefinery.github.io/git-collaborati
               name: coverage-test-failures
               path: ${{ runner.temp }}/package
     ```
-    The action is a modified version of the action generated by [covr](https://covr.r-lib.org/) using the `usethis::use_github_action("test-coverage")` command. 
+    The action is a modified version of the action generated by [covr](https://covr.r-lib.org/) using the `usethis::use_github_action("test-coverage")` command.
     It is built up from several actions provided by the [r-lib project](https://github.com/r-lib/actions), along with the test/coverage commands.
-    
-    
-  
+
+
+
   Commit the change by pressing the "Start Commit" button:
 
   ```{figure} img/gh_action_commit.png
@@ -522,11 +522,11 @@ you try to fix issue number 1).
 ```{callout} Shortcut
 
    Here it's perfectly possible to take a shortcut and commit and push
-   directly to the main branch. If you do this, steps 8-9 below are skipped.  
+   directly to the main branch. If you do this, steps 8-9 below are skipped.
    - When would you push directly to the main branch, and when would you send a
    pull/merge request?
-```   
-   
+```
+
 
 Then push to your repository.
 
@@ -558,14 +558,14 @@ Discuss whether this is a useful feature. And if it is, why do you think is it u
 ### Step 10: Increase your code coverage
 
 We are currently missing several functions in our tests. Write a test for the `multiply` function in a new branch and create a pull request.
-On python you can directly observe the increase in code coverage. 
-On R you can have a look at the action (`Actions -> last run of your action -> Select a job -> Test coverage`). If you compare this with the 
-previous run, you should see an increase once the update is in. 
+On python you can directly observe the increase in code coverage.
+On R you can have a look at the action (`Actions -> last run of your action -> Select a job -> Test coverage`). If you compare this with the
+previous run, you should see an increase once the update is in.
 
 ### Step 11 (optional): Repeat steps 5-9 for the `convert_fahrenheit_to_celsius` function:
 
 Repetition helps learning, so let's do the testing again for our `convert_fahrenheit_to_celsius` function.
-Uncomment the test for the `convert_fahrenheit_to_celsius` function and repeat steps 5 to 9 fixing the bug this test exposes. 
+Uncomment the test for the `convert_fahrenheit_to_celsius` function and repeat steps 5 to 9 fixing the bug this test exposes.
 
 
 ### Discussion
