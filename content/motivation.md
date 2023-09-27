@@ -67,10 +67,10 @@ digits with the expected result?:
    ```
 ````
 
-Or you can test whole programs (this should be):
-
+Or you can test whole programs:
 ```console
 $ python3 run-test.py
+
 running: sample_data/set1.csv --output=tests/set1.txt
 CORRECT
 ```
@@ -79,27 +79,25 @@ CORRECT
 
 ## What can tests help you do?
 
-* Preserving expected functionality
+**Preserving expected functionality**
+- Check old things when you add new ones
 
-  * Check old things when you add new ones.
+**Help users of your code**
+- Verify it's installed correctly and works.
+- See examples of what it should do.
 
-* Help users of your code
+**Help other developers modify it**
+- Change things with confidence that nothing is breaking.
+- Warning if documentation/examples go out of date.
 
-  * Verify it's installed correctly and works.
-  * See examples of what it should do.
-
-* Help other developers modify it
-
- * Change things with confidence that nothing is breaking.
- * Warning if documentation/examples go out of date.
-
-* Manage complexity
-
-  * If code is easy to test, it's probably easier to maintaine.
-  * The next lesson `Modular code development
-    <https://coderefinery.github.io/modular-type-along/>`__ demonstrates.
+**Manage complexity**
+- If code is easy to test, it's probably easier to maintain.
+- The next lesson [Modular code development](https://coderefinery.github.io/modular-type-along/)
+  demonstrates this.
 
 ---
+
+## Discussion: When is it OK not to add tests?
 
 ```{discussion} Discussion: When is it OK not to add tests?
 
@@ -113,7 +111,6 @@ Vote in the notes and we'll discuss soon.  **It is always a balance: there is no
 
 ```
 
-
 ---
 
 ## Discussion: What's easy and hard to test?
@@ -124,9 +121,6 @@ Use the collaborative notes to answer these questions:
 
 1. Give examples of things (from your work) that are easy to test.
 2. Give examples of things (from your work) that are hard to test.
-
-
-
 ```
 
 ---
@@ -138,7 +132,6 @@ Use the collaborative notes to answer these questions:
 * Test how parts work together - **Integration tests**
 
 * Test the whole thing running - **End-to-end tests**
-
   * For example, running on sample data.
 
 * Check same results as before - **Regression tests**
@@ -150,27 +143,23 @@ Use the collaborative notes to answer these questions:
   integration**
 
 * Report that tells you which lines were/were not run by tests -
-  **Code Coverage**
-
-  * [Real-life example](https://coveralls.io/github/bast/runtest)
+  **Code coverage**
 
 * Framework that runs test for you - **Testing framework**
-
   * See [Quick Reference](./quick-reference) for some examples.
-
 
 ---
 
 ## What should you do?
 
-* Not every code needs perfect test coverage
+* Not every code needs perfect test coverage.
 
-* If code is interactive-only (Juptyer Notebook), it's usually hard to
+* If code is interactive-only (Jupyter Notebook), it's usually hard to
   test.
 
   * But also hard to run: the next lesson will discuss!
 
-* At least end-to-end is often easy to add
+* At least end-to-end is often easy to add.
 
 * Add tests of tricky functions.
 
@@ -184,30 +173,17 @@ Use the collaborative notes to answer these questions:
 
 * **Learning how to test well make the rest of your code better, too.**
 
-
 ---
 
-## Other good practices
+## Where to start
 
-- Test before committing (use the Git staging area)
-- Tests shouldn't run too long - if it takes several minutes, it won't
-  be run that often.
-- Fix broken tests immediately (dirty dishes effect)
-- Do not deactivate tests "temporarily"
-- Think about coverage (physics and lines of code)
-- Go public with your testing dashboard and issues/tickets
-- Test controlled errors: if something is expected to fail, test for that
-- Create benchmark calculations to cover various performance-critical modules and monitor timing
-- Make testing easy to run (`make test`)
-- Make testing easy to analyze
-  - Do not flood screen with pages of output in case everything runs OK
-  - Test with numerical tolerance (extremely annoying to compare digits by eye)
-- Tests don't *guarantee* correctness - tests can be wrong or incomplete!
+- A simple script or notebook probably does not need an automated test.
 
-```{keypoints}
+**If you have nothing yet**
+- Start with an end-to-end test.
+- Describe in words how *you* check whether the code still works.
+- Translate the words into a script.
+- Run the script automatically on every code change.
 
-* Tests take some setup, but can make things much, much easier later.
-* There are many forms of tests - it doesn't have to be hard.
-* Continuous integration is when every commit/merge is tested
-  automatically, which we will see soon.
-```
+**If you want to start with unit-testing**
+- You want to rewrite a function? Start adding a unit test right there first.
