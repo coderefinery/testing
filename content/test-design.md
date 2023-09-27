@@ -8,27 +8,18 @@
 
 In this episode we will consider how functions and programs can be tested in programs developed in different programming languages.
 
-```{Objectives}
-- Learn how to determine what kind of unit tests can be performed for different type of functions.
-- Learn how to perform test-driven development in which tests for a function are designed and implemented before the function is written.
-- Learn how to test functions whose output depend on random numbers.
-```
-
 ```{discussion} Exercise instructions
 **For the instructor**
 - First motivate and give a quick tour of all exercises below (10 minutes).
 - Emphasize that the focus of this episode is *design*. It is OK to only discuss in groups and not write code.
 
-**In breakout rooms (35 minutes)**
-- We arrange breakout rooms according to preferred languages.
+**During exercise session**
 - Choose the exercise which interests you most. There are many more exercises than we would have time for.
 - Discuss what testing framework can be used to implement the test.
 - Keep notes, questions, and answers in the collaborative document.
-- If time is available, implement the test(s) using the chosen framework.
-- If you want to collaborate on writing the code and tests you can share a workspace on [codeshare.io](https://codeshare.io/)!
 
-**Once we return to main room**
-- Discussion on experiences learned (10 minutes).
+**Once we return to stream**
+- Discussion about experiences learned.
 ```
 
 `````{callout} Language-specific instructions
@@ -72,7 +63,7 @@ Start by discussing how you would design tests for the
 following five functions, and then try to write the tests.
 Also discuss why some are easier to test than others.
 
-```````{challenge} Design-1: Design a test for a function that receives a number and returns a number
+```````{exercise} Design-1: Design a test for a function that receives a number and returns a number
   `````{tabs}
     ````{group-tab} Python
 
@@ -162,7 +153,7 @@ function more fine-grained and test only one concept.
 ``````
 ```````
 
-```````{challenge} Design-2: Design a test for a function that receives two strings and returns a number
+```````{exercise} Design-2: Design a test for a function that receives two strings and returns a number
 `````{tabs}
    ````{group-tab} Python
 
@@ -243,7 +234,7 @@ to the above.
 ``````
 ```````
 
-```````{challenge} Design-3: Design a test for a function which reads a file and returns a number
+```````{exercise} Design-3: Design a test for a function which reads a file and returns a number
 `````{tabs}
 
    ````{group-tab} Python
@@ -329,7 +320,7 @@ calculation, so that testing the calculation part becomes easy (see above).
 ``````
 ```````
 
-```````{challenge} Design-4: Design a test for a function with an external dependency
+```````{exercise} Design-4: Design a test for a function with an external dependency
 This one is not easy to test because the function has an external dependency.
 
 `````{tabs}
@@ -420,7 +411,7 @@ A better solution would probably be to rewrite the function.
 ``````
 ```````
 
-```````{challenge} Design-5: Design a test for a method of a mutable class
+```````{exercise} Design-5: Design a test for a method of a mutable class
 
 `````{tabs}
 
@@ -504,7 +495,7 @@ A better solution would probably be to rewrite the function.
 
 ## Test-driven development
 
-```````{challenge} Design-6: Experience test-driven development
+```````{exercise} Design-6: Experience test-driven development
 
 Write a test before writing the function! You can decide yourself
 what your unwritten function should do, but as a suggestion it can
@@ -583,7 +574,7 @@ many strategies exist:
   to express that in a script.
 
 
-```````{challenge} Design-7: Write two different types of tests for randomness
+```````{exercise} Design-7: Write two different types of tests for randomness
    Consider the code below which simulates playing
    [Yahtzee](https://en.wikipedia.org/wiki/Yahtzee) by using
    random numbers. How would you go about testing it?
@@ -660,7 +651,7 @@ In an end-to-end test (or integration test), the unit is the entire program.
 We typically feed the program with some well defined input and verify
 that it still produces the expected output by comparing it to some reference.
 
-````{challenge} Design-8: Design (but not write) an integration test for the uniq program
+````{exercise} Design-8: Design (but not write) an end-to-end test for the uniq program
 To have a tangible example, let us consider the `uniq` command. This command
 can read a file or an input stream and remove consecutive repetition.
 The program behind `uniq` has been written by somebody else, it probably contains
@@ -701,28 +692,23 @@ more repetition
 (all together now) all together now
 ```
 
-- How would you write an end-to-end test?
-- Now imagine the code reads numbers and produces some (floating point) numbers.
-  How would you test that?
+How would you write an end-to-end test for `uniq`?
+````
+
+````{exercise} Design-9: More end-to-end testing
+- Now imagine a code which reads numbers and produces some (floating
+  point) numbers. How would you test that?
 - How would you test a code end-to-end which produces images?
 ````
 
-If you have spare time, you can work on this.  It isn't required for
-anything else.  It counts as a bit advanced, because you are writing
-one program to run another program and check it's output.  This isn't
-necessarily hard, but it is different from what most people do!
-
-````{exercise} Design-9: Create an end-to-end test (advanced, optional)
-
+`````{exercise} Design-10: Create an actual end-to-end test
 Often, you can include tests that run your whole workflow or program.
 For example, you might include sample data and check the output
 against what you expect.  (including sample data is a great idea
 anyway, so this helps a lot!)
 
 We'll use the word-count example repository
-<https://github.com/coderefinery/word-count>, as used in [the
-Documentation
-lesson](https://coderefinery.github.io/reproducible-research/workflow-management/).
+<https://github.com/coderefinery/word-count>.
 
 As a reminder, you can run the script like this to get some output,
 which prints to standard output (the terminal):
@@ -743,9 +729,7 @@ will run a command and return its output as a string.
 Bash hint: `COMMAND | grep "PATTERN"` ("pipe to grep") will be true if
 the pattern is in the command.
 
-````
-
-````{solution} Solution: Design-9
+````{solution}
 There are two solutions in the repository already, in the `tests/`
 dierectory <https://github.com/coderefinery/word-count>, one in Python
 and one in bash shell.  Neither of these are a very advanced or
@@ -769,8 +753,11 @@ $ python3 tests/end-to-end-python.py
 Success
 ```
 ````
+`````
 
 ```{keypoints}
 - Pure functions (these are functions without side-effects) are easiest to test.
+  And also easiest to reuse in another code project since they don't depend on
+  any side-effects.
 - Classes can be tested but it's somewhat more elaborate.
 ```
