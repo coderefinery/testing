@@ -607,6 +607,13 @@ many strategies exist:
       ```
    ````
 
+   ````{group-tab} R
+
+      ```{literalinclude} code/R/yahtzee.R
+      :language: R
+      ```
+   ````
+
    ````{group-tab} Julia
 
       ```{literalinclude} code/julia/yahtzee.jl
@@ -630,6 +637,13 @@ many strategies exist:
 
       ```{literalinclude} code/cpp/yahtzee_sol.cpp
       :language: c++
+      ```
+   ````
+
+   ````{group-tab} R
+
+      ```{literalinclude} code/R/yahtzee_sol.R
+      :language: R
       ```
    ````
 
