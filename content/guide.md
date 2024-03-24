@@ -143,6 +143,45 @@ exercise and test design.
 
 ## Field reports
 
+### 2024 March (first time with no exercises)
+
+This was the first year we did the "all demo" mode with no exercises,
+and it worked well enough.  Our rough plan can be seen [at this
+hackmd](https://hackmd.io/cMowYt5nQOqZj0n1wsIlyw) (not pasted here
+because it's kind of long).
+
+We tried to be fast with motivation, and not go to details. In
+"testing locally", we basically did the exercise as a demo.  There
+wasn't much of note, it worked and there was plenty of
+discussion. "Automated testing" worked fine also, except: a) we had to
+choose how to push to Github, we used vscode, but not all learners did
+that method.  Nothing to change here, but be aware you should explain
+what and why you are doing for people who didn't use your chosen
+method of linking, and b) code coverage didn't work from a PR from a
+fork.  We had one person set up the automated tests, then swapped
+instructors and showed the second making the fork and contributing.
+
+The biggest thing to think about is how, when demoing testing
+locally/automated testing, people ask "how to tests work?", which then
+comes later.  I don't know if I would change the order,
+though... because showing how to design tests without knowing how to
+use them would make the same kind of questions, but reversed.  I think
+it's just a "decide how it is and prepare for the questions" - maybe
+in "motivation" or some other summary episode at the start.
+
+"Test design" didn't have any major problems, but many of the tests
+were relatively simple to discuss: the earlier tests would be trivial
+to understand if someone shows you the code (should we demonstrate
+typing two lines that's the same as in motivation? - but interesting
+to do as an exercise).  Some of the later ones were interesting to
+build up and demonstrate.  It would be good to think which exercises
+one wants to demo, and which one wants to only talk about.  And think
+which comes out of each demo/telling.
+
+Overall, no major issues in doing this demo-based with good
+familiarity but limited preparation time.
+
+
 ### 2023 September
 
 For this lesson, "Motivation" and "Concepts" were combined.  An extra
