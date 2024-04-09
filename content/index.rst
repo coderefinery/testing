@@ -39,7 +39,7 @@ see how automated testing works and practice designing and writing tests.
    :delim: ;
 
    15 min ; :doc:`motivation`
-   25 min ; :doc:`pytest`
+   25 min ; :doc:`locally`
    30 min ; :doc:`continuous-integration`
    30 min ; :doc:`test-design`
    5 min ; :doc:`conclusions`
@@ -50,7 +50,7 @@ see how automated testing works and practice designing and writing tests.
    :caption: The lesson
 
    motivation
-   pytest
+   locally
    continuous-integration
    test-design
    conclusions
