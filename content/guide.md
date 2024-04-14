@@ -3,7 +3,7 @@
 ## Detailed schedule
 
 - 9:00-9:15 [Motivation](https://coderefinery.github.io/testing/motivation/)
-- 9:15-9:40 [Testing locally](https://coderefinery.github.io/testing/pytest/)
+- 9:15-9:40 [Testing locally](https://coderefinery.github.io/testing/locally/)
     - explain the exercise: 5 min
     - **20 min exercise**
 - 9:40-10:00 [Automated testing](https://coderefinery.github.io/testing/continuous-integration/)
