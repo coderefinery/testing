@@ -245,7 +245,7 @@ in the [Collaborative Git lesson](https://coderefinery.github.io/git-collaborati
   # This workflow will install Python dependencies, run tests and lint with a single version of Python
   # For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-python
 
-  name: Python application
+  name: Test
 
   on:
     push:
