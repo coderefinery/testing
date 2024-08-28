@@ -240,53 +240,54 @@ in the [Collaborative Git lesson](https://coderefinery.github.io/git-collaborati
 
   ```{code-block} yaml
   ---
-  emphasize-lines: 16,29,39-45
+  emphasize-lines: 14,30,40-46
   ---
-  # This workflow will install Python dependencies, run tests and lint with a variety of Python versions
-  # For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-python
+# This workflow will install Python dependencies, run tests and lint with a single version of Python
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-python
 
-  name: Python package
+name: Python application
 
-  on:
-    push:
-      branches: [ "main" ]
-    pull_request:
-      branches: [ "main" ]
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
 
-  jobs:
-    build:
-      permissions:
-        contents: read
-        pull-requests: write
+permissions:
+  contents: read
+  pull-requests: write
 
-      runs-on: ubuntu-latest
+jobs:
+  build:
 
-      steps:
-      - uses: actions/checkout@v3
-      - name: Set up Python 3.10
-        uses: actions/setup-python@v3
-        with:
-          python-version: "3.10"
-      - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip
-          python -m pip install flake8 pytest pytest-cov
-          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
-      - name: Lint with flake8
-        run: |
-          # stop the build if there are Python syntax errors or undefined names
-          flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
-          # exit-zero treats all errors as warnings. The GitHub editor is 127 chars wide
-          flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
-      - name: Test with pytest and calculate coverage
-        run: |
-          pytest --cov-report "xml:coverage.xml"  --cov=.
-      - name: Create Coverage
-        if: ${{ github.event_name == 'pull_request' }}
-        uses: orgoro/coverage@v3
-        with:
-            coverageFile: coverage.xml
-            token: ${{ secrets.GITHUB_TOKEN }}
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+    - name: Set up Python 3.10
+      uses: actions/setup-python@v3
+      with:
+        python-version: "3.10"
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install flake8 pytest pytest-cov
+        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+    - name: Lint with flake8
+      run: |
+        # stop the build if there are Python syntax errors or undefined names
+        flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
+        # exit-zero treats all errors as warnings. The GitHub editor is 127 chars wide
+        flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
+    - name: Test with pytest
+      run: |
+        pytest --cov-report "xml:coverage.xml" --cov=.
+    - name: Create Coverage
+      if: ${{ github.event_name == 'pull_request' }}
+      uses: orgoro/coverage@v3
+      with:
+          coverageFile: coverage.xml
+          token: ${{ secrets.GITHUB_TOKEN }}
   ```
 
   Commit the change by pressing the "Start Commit" button:
