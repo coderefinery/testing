@@ -240,12 +240,12 @@ in the [Collaborative Git lesson](https://coderefinery.github.io/git-collaborati
 
   ```{code-block} yaml
   ---
-  emphasize-lines: 16,29,39-45
+  emphasize-lines: 14,30,40-46
   ---
-  # This workflow will install Python dependencies, run tests and lint with a variety of Python versions
+  # This workflow will install Python dependencies, run tests and lint with a single version of Python
   # For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-python
 
-  name: Python package
+  name: Test
 
   on:
     push:
@@ -253,16 +253,17 @@ in the [Collaborative Git lesson](https://coderefinery.github.io/git-collaborati
     pull_request:
       branches: [ "main" ]
 
+  permissions:
+    contents: read
+    pull-requests: write
+
   jobs:
     build:
-      permissions:
-        contents: read
-        pull-requests: write
 
       runs-on: ubuntu-latest
 
       steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Set up Python 3.10
         uses: actions/setup-python@v3
         with:
@@ -270,7 +271,7 @@ in the [Collaborative Git lesson](https://coderefinery.github.io/git-collaborati
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          python -m pip install flake8 pytest pytest-cov
+          pip install flake8 pytest pytest-cov
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
       - name: Lint with flake8
         run: |
@@ -278,9 +279,9 @@ in the [Collaborative Git lesson](https://coderefinery.github.io/git-collaborati
           flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
           # exit-zero treats all errors as warnings. The GitHub editor is 127 chars wide
           flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
-      - name: Test with pytest and calculate coverage
+      - name: Test with pytest
         run: |
-          pytest --cov-report "xml:coverage.xml"  --cov=.
+          pytest --cov-report "xml:coverage.xml" --cov=.
       - name: Create Coverage
         if: ${{ github.event_name == 'pull_request' }}
         uses: orgoro/coverage@v3
