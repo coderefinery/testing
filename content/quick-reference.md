@@ -11,8 +11,8 @@ script which does some tests.
 - Python
     - [pytest](pytest-ref)
     - [nose](http://nose.readthedocs.io)
-    - [doctest](https://docs.python.org/2/library/doctest.html)
-    - [unittest](https://docs.python.org/2/library/unittest.html)
+    - [doctest](https://docs.python.org/3/library/doctest.html)
+    - [unittest](https://docs.python.org/3/library/unittest.html)
 
 - R
     - [testthat](testthat)
@@ -222,7 +222,7 @@ TEST(example, add) {
 ### Boost.Test
 
 - C++
-- [Documentation](https://www.boost.org/doc/libs/1_75_0/libs/test/doc/html/index.html)
+- [Documentation](https://www.boost.org/doc/libs/1_86_0/libs/test/doc/html/index.html)
 - Very rich in functionality
 - Header-only use possible
 
