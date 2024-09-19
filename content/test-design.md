@@ -728,7 +728,7 @@ As a reminder, you can run the script like this to get some output,
 which prints to standard output (the terminal):
 
 ```console
-$ python3 statistics/count.py data/abyss.txt
+$ python3 code/count.py data/abyss.txt
 ```
 
 Your goal is to make a test that can run this and let you know if it's
