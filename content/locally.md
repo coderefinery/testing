@@ -59,6 +59,17 @@ happens when a test breaks.
     and a test itself with `@test`.
   ````
 
+  ````{group-tab} C++/GoogleTest
+    Create `example.cc` with content
+    ```{literalinclude} code/cpp_gtest/example.cc
+    :language: cpp
+    ```
+    and `CMakeLists.txt` with content
+    ```{literalinclude} code/cpp_gtest/CMakeLists.txt
+    :language: cmake
+    ```
+  ````
+
 `````
 
 3. Run the test
@@ -101,11 +112,70 @@ happens when a test breaks.
     ```
     Yay! The test passed! 
   ````
+  ````{group-tab} C++/GoogleTest
+  As this is the only compiled language in the examples we have to do a few more steps.
+  
+  Starting with the configure step of CMake
+  (Note that `<path>` will be different for everyone)
+  ```console
+  $ cmake -S. -Bbuild
+  -- The CXX compiler identification is GNU 13.2.0
+  -- Detecting CXX compiler ABI info
+  -- Detecting CXX compiler ABI info - done
+  -- Check for working CXX compiler: /usr/bin/c++ - skipped
+  -- Detecting CXX compile features
+  -- Detecting CXX compile features - done
+  -- The C compiler identification is GNU 13.2.0
+  -- Detecting C compiler ABI info
+  -- Detecting C compiler ABI info - done
+  -- Check for working C compiler: /usr/bin/cc - skipped
+  -- Detecting C compile features
+  -- Detecting C compile features - done
+  -- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+  -- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
+  -- Found Threads: TRUE  
+  -- Configuring done (2.1s)
+  -- Generating done (0.0s)
+  -- Build files have been written to: <path>/build
+  ```
+  and the build step which will also download GoogleTest on the first run
+  ```console
+  $ cmake --build build
+  [ 10%] Building CXX object _deps/googletest-build/googletest/CMakeFiles/gtest.dir/src/gtest-all.cc.o
+  [ 20%] Linking CXX static library ../../../lib/libgtest.a
+  [ 20%] Built target gtest
+  [ 30%] Building CXX object _deps/googletest-build/googletest/CMakeFiles/gtest_main.dir/src/gtest_main.cc.o
+  [ 40%] Linking CXX static library ../../../lib/libgtest_main.a
+  [ 40%] Built target gtest_main
+  [ 50%] Building CXX object CMakeFiles/example.dir/example.cc.o
+  [ 60%] Linking CXX executable example
+  [ 60%] Built target example
+  [ 70%] Building CXX object _deps/googletest-build/googlemock/CMakeFiles/gmock.dir/src/gmock-all.cc.o
+  [ 80%] Linking CXX static library ../../../lib/libgmock.a
+  [ 80%] Built target gmock
+  [ 90%] Building CXX object _deps/googletest-build/googlemock/CMakeFiles/gmock_main.dir/src/gmock_main.cc.o
+  [100%] Linking CXX static library ../../../lib/libgmock_main.a
+  [100%] Built target gmock_main
+  ```
+  Finally, we change into the `build` directory 
+  and run CTest
+  ```console
+  $ cd build
+  $ ctest
+  Test project <path>/build
+  `    Start 1: AddTests.IntTest
+  1/1 Test #1: AddTests.IntTest .................   Passed    0.00 sec
+  
+  100% tests passed, 0 tests failed out of 1
+  
+  Total Test time (real) =   0.01 sec  
+  ```
+  ````
 `````
 4. Let us break the test!
 
-Introduce a code change which breaks the code and check
-whether out test detects the change:
+Introduce a code change which breaks the code (e.g. `-` instead of `+`) and check
+whether our test detects the change:
 `````{tabs}
   ````{group-tab} Python
    ```console
@@ -174,6 +244,62 @@ whether out test detects the change:
     Notice how `Test.jl` is smart and includes context: 
     Lines that failed, evaluated and expected results.
   ````
+  ````{group-tab} C++/GoogleTest
+  ```console
+  $ ctest
+  Test project <path>/build
+      Start 1: AddTests.IntTest
+  1/1 Test #1: AddTests.IntTest .................***Failed    0.00 sec
+  
+  0% tests passed, 1 tests failed out of 1
+  
+  Total Test time (real) =   0.01 sec
+  
+  The following tests FAILED:
+  	  1 - AddTests.IntTest (Failed)
+  Errors while running CTest
+  Output from these tests are in: <path>/build/Testing/Temporary/LastTest.log
+  Use "--rerun-failed --output-on-failure" to re-run the failed cases verbosely.
+  ```
+  following the recommendation, we run
+  ```console
+  $ ctest --output-on-failure
+  Test project <path>/build
+      Start 1: AddTests.IntTest
+  1/1 Test #1: AddTests.IntTest .................***Failed    0.00 sec
+  Running main() from <path>/build/_deps/googletest-src/googletest/src/gtest_main.cc
+  Note: Google Test filter = AddTests.IntTest
+  [==========] Running 1 test from 1 test suite.
+  [----------] Global test environment set-up.
+  [----------] 1 test from AddTests
+  [ RUN      ] AddTests.IntTest
+  <path>/example.cc:12: Failure
+  Expected equality of these values:
+    add(2,3)
+      Which is: -1
+    5
+  [  FAILED  ] AddTests.IntTest (0 ms)
+  [----------] 1 test from AddTests (0 ms total)
+  
+  [----------] Global test environment tear-down
+  [==========] 1 test from 1 test suite ran. (0 ms total)
+  [  PASSED  ] 0 tests.
+  [  FAILED  ] 1 test, listed below:
+  [  FAILED  ] AddTests.IntTest
+  
+   1 FAILED TEST
+  
+  
+  0% tests passed, 1 tests failed out of 1
+  
+  Total Test time (real) =   0.01 sec
+  
+  The following tests FAILED:
+  	  1 - AddTests.IntTest (Failed)
+  Errors while running CTest
+  ```
+  This output is very verbose, but notice how it includes context: lines that failed, values of the relevant variables
+  ````
 `````
 ```````
 
@@ -218,6 +344,23 @@ The following test will fail and this might be surprising. Try it out:
        @test myadd(0.1, 0.2) == 0.3
    end
    ```
+  ````
+  ````{group-tab} C++/GoogleTest
+  ```cpp
+  #include <gtest/gtest.h>
+
+  template<typename Number>
+  Number
+  add(Number a, Number b)
+  {
+    return a + b;
+  }    
+  
+  TEST(AddTests, DoubleTest)
+  {
+      ASSERT_EQ(add(0.1,0.2),0.3);
+  }
+  ```
   ````
 `````
 
@@ -287,6 +430,26 @@ Your goal: find a more robust way to test this addition.
         @test abs(myadd(0.1,0.2)-0.3) < 1.0e-7
     ```
     This is OK but the `1.0e-7` can be a bit arbitrary.
+  ````
+  ````{group-tab} C++/GoogleTest
+  GoogleTest offers a very sophisticated way to test equality of two double numbers based on 'units in the last place (ULP)',
+  see [the documentation](http://google.github.io/googletest/reference/assertions.html#floating-point) for more details.
+  ```cpp 
+  TEST(AddTests, DoubleTest)
+  {
+    ASSERT_DOUBLE_EQ(add(0.1,0.2),0.3);
+  }
+  ```
+  But maybe you found the 'less than' assertion first and did this instead:
+  ```cpp
+  #include<cmath>
+  TEST(AddTests, DoubleTest)
+  {
+    //assert that add(0.1,0.2)-0.3 < 1.0e-7 holds
+    ASSERT_LT(std::abs(add(0.1,0.2)-0.3),1.0e-7);
+  }
+  ```
+  This is OK but the `1.0e-7` can be a bit arbitrary. The first option is certainly more robust in the C++ case.
   ````
 ````` 
 ````````
