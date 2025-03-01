@@ -1,0 +1,12 @@
+$ cmake -S. -Bbuild
+-- The CXX compiler identification is GNU 13.2.0
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/bin/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Performing Test HAVE_FLAG__ffile_prefix_map__<path>_build__deps_catch2_src__
+-- Performing Test HAVE_FLAG__ffile_prefix_map__<path>_build__deps_catch2_src__ - Success
+-- Configuring done (4.1s)
+-- Generating done (0.0s)
+-- Build files have been written to: <path>/build

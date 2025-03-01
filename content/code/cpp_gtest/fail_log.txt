@@ -1,0 +1,14 @@
+$ ctest
+Test project <path>/build
+    Start 1: AddTests.IntTest
+1/1 Test #1: AddTests.IntTest .................***Failed    0.00 sec
+
+0% tests passed, 1 tests failed out of 1
+
+Total Test time (real) =   0.01 sec
+
+The following tests FAILED:
+	  1 - AddTests.IntTest (Failed)
+Errors while running CTest
+Output from these tests are in: <path>/build/Testing/Temporary/LastTest.log
+Use "--rerun-failed --output-on-failure" to re-run the failed cases verbosely.
