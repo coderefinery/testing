@@ -1,0 +1,35 @@
+$ ctest --output-on-failure
+Test project <path>/build
+    Start 1: IntTest
+1/1 Test #1: IntTest ..........................***Failed    0.01 sec
+Filters: "IntTest"
+Randomness seeded to: 2865819826
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+example is a Catch2 v3.4.0 host application.
+Run with -? for options
+
+-------------------------------------------------------------------------------
+IntTest
+-------------------------------------------------------------------------------
+<path>/example.cc:10
+...............................................................................
+
+<path>/example.cc:12: FAILED:
+  REQUIRE( add(2,3)==5 )
+with expansion:
+  -1 == 5
+
+===============================================================================
+test cases: 1 | 1 failed
+assertions: 1 | 1 failed
+
+
+
+0% tests passed, 1 tests failed out of 1
+
+Total Test time (real) =   0.01 sec
+
+The following tests FAILED:
+	  1 - IntTest (Failed)
+Errors while running CTest

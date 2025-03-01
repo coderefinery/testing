@@ -15,7 +15,7 @@ one of the language specific test frameworks to test it.
   other servers or services.  
 * The downside is that you have to remember to run it yourself.
 
-```````{exercise} Local-1: Create a minimal example (15 min)
+`````````{exercise} Local-1: Create a minimal example (15 min)
 In this exercise, we will create a minimal example using
 the [pytest](http://doc.pytest.org), run the test, and show what
 happens when a test breaks.
@@ -28,8 +28,8 @@ happens when a test breaks.
    ```
 
 2. Create an example file and paste the following code into it
-`````{tabs}
-  ````{group-tab} Python
+```````{tabs}
+  ``````{group-tab} Python
     Create `example.py` with content
 
     ```{literalinclude} code/python/example.py
@@ -38,18 +38,18 @@ happens when a test breaks.
     This code contains one genuine function and a test function.
    `pytest` finds any functions beginning with `test_` and treats them
    as tests.
-  ````
+  ``````
 
-  ````{group-tab} R
+  ``````{group-tab} R
     Create `example.R` with content 
     ```{literalinclude} code/R/example.R
     :language: R
     ```
     A test with `testthat` is created by calling 
     `test_that()` with a test name and code as arguments.
-  ````
+  ``````
 
-  ````{group-tab} Julia
+  ``````{group-tab} Julia
     Create `example.jl` with content 
     ```{literalinclude} code/julia/example.jl
     :language: Julia
@@ -57,24 +57,39 @@ happens when a test breaks.
     The package `Test.jl` handles all testing. 
     A test(set) is added with `@testset` 
     and a test itself with `@test`.
-  ````
+  ``````
 
-  ````{group-tab} C++/GoogleTest
-    Create `example.cc` with content
-    ```{literalinclude} code/cpp_gtest/example.cc
-    :language: cpp
-    ```
-    and `CMakeLists.txt` with content
-    ```{literalinclude} code/cpp_gtest/CMakeLists.txt
-    :language: cmake
-    ```
-  ````
+  ``````{group-tab} C++
+    `````{tabs}
+      ````{group-tab} Catch2
+        Create `example.cc` with content
+        ```{literalinclude} code/cpp_catch2/example.cc
+          :language: cpp
+        ```
+        and `CMakeLists.txt` with content
+        ```{literalinclude} code/cpp_catch2/CMakeLists.txt
+          :language: cmake
+        ```
 
-`````
+      ````
+      ````{group-tab} GoogleTest
+        Create `example.cc` with content
+        ```{literalinclude} code/cpp_gtest/example.cc
+          :language: cpp
+        ```
+        and `CMakeLists.txt` with content
+        ```{literalinclude} code/cpp_gtest/CMakeLists.txt
+          :language: cmake
+        ```
+      ````     
+    `````    
+  ``````
+
+```````
 
 3. Run the test
-`````{tabs}
-  ````{group-tab} Python
+```````{tabs}
+  ``````{group-tab} Python
    ```console
    $ pytest -v example.py
 
@@ -91,8 +106,8 @@ happens when a test breaks.
    Yay! The test passed!
 
    Hint for participants trying this inside Spyder or IPython: try `!pytest -v example.py`.
-  ````
-  ````{group-tab} R
+  ``````
+  ``````{group-tab} R
     ```console
     $ Rscript example.R 
     
@@ -102,8 +117,8 @@ happens when a test breaks.
     Yay! The test passed! 
 
     Note that the emoji is random and might be different for you.
-  ````
-  ````{group-tab} Julia
+  ``````
+  ``````{group-tab} Julia
     ```console
     $ julia example.jl 
     
@@ -111,73 +126,51 @@ happens when a test breaks.
     myadd         |    1      1  0.0s
     ```
     Yay! The test passed! 
-  ````
-  ````{group-tab} C++/GoogleTest
-  As this is the only compiled language in the examples we have to do a few more steps.
-  
-  Starting with the configure step of CMake
-  (Note that `<path>` will be different for everyone)
-  ```console
-  $ cmake -S. -Bbuild
-  -- The CXX compiler identification is GNU 13.2.0
-  -- Detecting CXX compiler ABI info
-  -- Detecting CXX compiler ABI info - done
-  -- Check for working CXX compiler: /usr/bin/c++ - skipped
-  -- Detecting CXX compile features
-  -- Detecting CXX compile features - done
-  -- The C compiler identification is GNU 13.2.0
-  -- Detecting C compiler ABI info
-  -- Detecting C compiler ABI info - done
-  -- Check for working C compiler: /usr/bin/cc - skipped
-  -- Detecting C compile features
-  -- Detecting C compile features - done
-  -- Performing Test CMAKE_HAVE_LIBC_PTHREAD
-  -- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
-  -- Found Threads: TRUE  
-  -- Configuring done (2.1s)
-  -- Generating done (0.0s)
-  -- Build files have been written to: <path>/build
-  ```
-  and the build step which will also download GoogleTest on the first run
-  ```console
-  $ cmake --build build
-  [ 10%] Building CXX object _deps/googletest-build/googletest/CMakeFiles/gtest.dir/src/gtest-all.cc.o
-  [ 20%] Linking CXX static library ../../../lib/libgtest.a
-  [ 20%] Built target gtest
-  [ 30%] Building CXX object _deps/googletest-build/googletest/CMakeFiles/gtest_main.dir/src/gtest_main.cc.o
-  [ 40%] Linking CXX static library ../../../lib/libgtest_main.a
-  [ 40%] Built target gtest_main
-  [ 50%] Building CXX object CMakeFiles/example.dir/example.cc.o
-  [ 60%] Linking CXX executable example
-  [ 60%] Built target example
-  [ 70%] Building CXX object _deps/googletest-build/googlemock/CMakeFiles/gmock.dir/src/gmock-all.cc.o
-  [ 80%] Linking CXX static library ../../../lib/libgmock.a
-  [ 80%] Built target gmock
-  [ 90%] Building CXX object _deps/googletest-build/googlemock/CMakeFiles/gmock_main.dir/src/gmock_main.cc.o
-  [100%] Linking CXX static library ../../../lib/libgmock_main.a
-  [100%] Built target gmock_main
-  ```
-  Finally, we change into the `build` directory 
-  and run CTest
-  ```console
-  $ cd build
-  $ ctest
-  Test project <path>/build
-  `    Start 1: AddTests.IntTest
-  1/1 Test #1: AddTests.IntTest .................   Passed    0.00 sec
-  
-  100% tests passed, 0 tests failed out of 1
-  
-  Total Test time (real) =   0.01 sec  
-  ```
-  ````
-`````
+  ``````
+  ``````{group-tab} C++
+    As this is the only compiled language in the examples we have to do a few more steps.
+    `````{tabs}
+      ````{group-tab} Catch2
+        Starting with the configure step of CMake
+        (Note that `<path>` will be different for everyone)
+        ```{literalinclude} code/cpp_catch2/config_log.txt
+          :language: console
+        ```
+        and the build step which will also download Catch2 on the first run
+        ```{literalinclude} code/cpp_catch2/build_log.txt
+          :language: console          
+        ```
+        Finally, we change into the `build` directory 
+        and run CTest
+        ```{literalinclude} code/cpp_catch2/test_log.txt
+          :language: console          
+        ```
+      ````
+      ````{group-tab} GoogleTest
+        Starting with the configure step of CMake
+        (Note that `<path>` will be different for everyone)
+        ```{literalinclude} code/cpp_gtest/config_log.txt
+          :language: console
+        ```
+        and the build step which will also download GoogleTest on the first run
+        ```{literalinclude} code/cpp_gtest/build_log.txt
+          :language: console
+        ```
+        Finally, we change into the `build` directory 
+        and run CTest
+        ```{literalinclude} code/cpp_gtest/test_log.txt
+          :language: console
+        ```
+      ````    
+    `````    
+  ``````
+```````
 4. Let us break the test!
 
 Introduce a code change which breaks the code (e.g. `-` instead of `+`) and check
 whether our test detects the change:
-`````{tabs}
-  ````{group-tab} Python
+```````{tabs}
+  ``````{group-tab} Python
    ```console
    $ pytest -v example.py
 
@@ -203,8 +196,8 @@ whether our test detects the change:
    ```
    Notice how pytest is smart and includes context: lines that failed,
    values of the relevant variables.
-  ````
-  ````{group-tab} R
+  ``````
+  ``````{group-tab} R
     ```console
     $ Rscript example.R 
 
@@ -218,8 +211,8 @@ whether our test detects the change:
     ```
     `testthat` tells us exactly which test failed and how
     but does not include more context.
-  ````
-  ````{group-tab} Julia
+  ``````
+  ``````{group-tab} Julia
     ```console
     $ julia example.jl
 
@@ -243,67 +236,37 @@ whether our test detects the change:
     ```
     Notice how `Test.jl` is smart and includes context: 
     Lines that failed, evaluated and expected results.
-  ````
-  ````{group-tab} C++/GoogleTest
-  ```console
-  $ ctest
-  Test project <path>/build
-      Start 1: AddTests.IntTest
-  1/1 Test #1: AddTests.IntTest .................***Failed    0.00 sec
-  
-  0% tests passed, 1 tests failed out of 1
-  
-  Total Test time (real) =   0.01 sec
-  
-  The following tests FAILED:
-  	  1 - AddTests.IntTest (Failed)
-  Errors while running CTest
-  Output from these tests are in: <path>/build/Testing/Temporary/LastTest.log
-  Use "--rerun-failed --output-on-failure" to re-run the failed cases verbosely.
-  ```
-  following the recommendation, we run
-  ```console
-  $ ctest --output-on-failure
-  Test project <path>/build
-      Start 1: AddTests.IntTest
-  1/1 Test #1: AddTests.IntTest .................***Failed    0.00 sec
-  Running main() from <path>/build/_deps/googletest-src/googletest/src/gtest_main.cc
-  Note: Google Test filter = AddTests.IntTest
-  [==========] Running 1 test from 1 test suite.
-  [----------] Global test environment set-up.
-  [----------] 1 test from AddTests
-  [ RUN      ] AddTests.IntTest
-  <path>/example.cc:12: Failure
-  Expected equality of these values:
-    add(2,3)
-      Which is: -1
-    5
-  [  FAILED  ] AddTests.IntTest (0 ms)
-  [----------] 1 test from AddTests (0 ms total)
-  
-  [----------] Global test environment tear-down
-  [==========] 1 test from 1 test suite ran. (0 ms total)
-  [  PASSED  ] 0 tests.
-  [  FAILED  ] 1 test, listed below:
-  [  FAILED  ] AddTests.IntTest
-  
-   1 FAILED TEST
-  
-  
-  0% tests passed, 1 tests failed out of 1
-  
-  Total Test time (real) =   0.01 sec
-  
-  The following tests FAILED:
-  	  1 - AddTests.IntTest (Failed)
-  Errors while running CTest
-  ```
-  This output is very verbose, but notice how it includes context: lines that failed, values of the relevant variables
-  ````
-`````
+  ``````
+  ``````{group-tab} C++
+    Since we introduced a change we have to call `cmake --build build` again
+    (from the top directory)
+    `````{tabs}
+      ````{group-tab} Catch2
+        ```{literalinclude} code/cpp_catch2/fail_log.txt
+          :language: console
+        ```
+        following the recommendation, we run
+        ```{literalinclude} code/cpp_catch2/fail_verbose_log.txt
+          :language: console
+        ```
+        This output is very verbose, but notice how it includes context: lines that failed, values of the relevant variables
+      ````
+      ````{group-tab} GoogleTest
+        ```{literalinclude} code/cpp_gtest/fail_log.txt
+          :language: console
+        ```
+        following the recommendation, we run
+        ```{literalinclude} code/cpp_gtest/fail_verbose_log.txt
+          :language: console
+        ```
+        This output is very verbose, but notice how it includes context: lines that failed, values of the relevant variables
+      ````    
+    `````
+  ``````
 ```````
+`````````
 
-```````{challenge} (optional) Local-2: Create a test that considers numerical tolerance (10 min)
+`````````{challenge} (optional) Local-2: Create a test that considers numerical tolerance (10 min)
 Let's see an example where the test has to be more clever in order to
 avoid false negative.
 
@@ -312,8 +275,8 @@ want to learn how to compare floating point numbers since they are more tricky
 (see also ["What Every Programmer Should Know About Floating-Point Arithmetic"](https://floating-point-gui.de/)).
 
 The following test will fail and this might be surprising. Try it out:
-`````{tabs}
-  ````{group-tab} Python
+```````{tabs}
+  ``````{group-tab} Python
    ```python
    def add(a, b):
        return a + b
@@ -321,8 +284,8 @@ The following test will fail and this might be surprising. Try it out:
    def test_add():
        assert add(0.1, 0.2) == 0.3
    ```
-  ````
-  ````{group-tab} R
+  ``````
+  ``````{group-tab} R
    ```R
    add <- function(a, b){
        return a + b
@@ -332,8 +295,8 @@ The following test will fail and this might be surprising. Try it out:
        expect_identical(add(0.1, 0.2),0.3)
    })
    ```
-  ````
-  ````{group-tab} Julia
+  ``````
+  ``````{group-tab} Julia
    ```Julia
    function myadd(a,b)
        return a + b
@@ -344,33 +307,54 @@ The following test will fail and this might be surprising. Try it out:
        @test myadd(0.1, 0.2) == 0.3
    end
    ```
-  ````
-  ````{group-tab} C++/GoogleTest
-  ```cpp
-  #include <gtest/gtest.h>
-
-  template<typename Number>
-  Number
-  add(Number a, Number b)
-  {
-    return a + b;
-  }    
-  
-  TEST(AddTests, DoubleTest)
-  {
-      ASSERT_EQ(add(0.1,0.2),0.3);
-  }
-  ```
-  ````
-`````
-
-Your goal: find a more robust way to test this addition.
+  ``````
+  ``````{group-tab} C++
+    `````{tabs}
+      ````{group-tab} Catch2
+        ```cpp
+          #include <catch2/catch_test_macros.hpp>
+        
+          template<typename Number>
+          Number
+          add(Number a, Number b)
+          {
+            return a + b;
+          }    
+          
+          TEST_CASE("AddTests", "DoubleTest")
+          {
+              REQUIRE(add(0.1,0.2)==0.3);
+          }
+        ```
+      ````
+      ````{group-tab} GoogleTest
+        ```cpp
+          #include <gtest/gtest.h>
+        
+          template<typename Number>
+          Number
+          add(Number a, Number b)
+          {
+            return a + b;
+          }    
+          
+          TEST(AddTests, DoubleTest)
+          {
+              ASSERT_EQ(add(0.1,0.2),0.3);
+          }
+        ```
+      ````    
+    `````
+  ``````
 ```````
 
-```````{solution} Solution: Local-2
+Your goal: find a more robust way to test this addition.
+`````````
 
-`````{tabs}
-  ````{group-tab} Python
+`````````{solution} Solution: Local-2
+
+```````{tabs}
+  ``````{group-tab} Python
     One solution is to use
     [pytest.approx](https://docs.pytest.org/en/4.6.x/reference.html#pytest-approx):
     ```python
@@ -392,8 +376,8 @@ Your goal: find a more robust way to test this addition.
         assert abs(result - 0.3) < 1.0e-7
     ```
     This is OK but the `1.0e-7` can be a bit arbitrary.
-  ````
-  ````{group-tab} R
+  ``````
+  ``````{group-tab} R
     One solution is to use
     [expect_equal](https://testthat.r-lib.org/reference/equality-expectations.html) which allows for roundoff errors:
     ```R
@@ -413,8 +397,8 @@ Your goal: find a more robust way to test this addition.
     })
     ```
     This is OK but the `1.0e-7` can be a bit arbitrary.
-  ````
-  ````{group-tab} Julia
+  ``````
+  ``````{group-tab} Julia
     One solution is to use `\approx`:
     ```Julia
     @testset "Add floats with approx" begin
@@ -430,29 +414,56 @@ Your goal: find a more robust way to test this addition.
         @test abs(myadd(0.1,0.2)-0.3) < 1.0e-7
     ```
     This is OK but the `1.0e-7` can be a bit arbitrary.
-  ````
-  ````{group-tab} C++/GoogleTest
-  GoogleTest offers a very sophisticated way to test equality of two double numbers based on 'units in the last place (ULP)',
-  see [the documentation](http://google.github.io/googletest/reference/assertions.html#floating-point) for more details.
-  ```cpp 
-  TEST(AddTests, DoubleTest)
-  {
-    ASSERT_DOUBLE_EQ(add(0.1,0.2),0.3);
-  }
-  ```
-  But maybe you found the 'less than' assertion first and did this instead:
-  ```cpp
-  #include<cmath>
-  TEST(AddTests, DoubleTest)
-  {
-    //assert that add(0.1,0.2)-0.3 < 1.0e-7 holds
-    ASSERT_LT(std::abs(add(0.1,0.2)-0.3),1.0e-7);
-  }
-  ```
-  This is OK but the `1.0e-7` can be a bit arbitrary. The first option is certainly more robust in the C++ case.
-  ````
-````` 
-````````
+  ``````
+  ``````{group-tab} C++
+    `````{tabs}
+      ````{group-tab} Catch2
+        Catch2 offers a very sophisticated way to test equality of two floating point numbers based on 'units in the last place (ULP)'.
+        Matching the settings of GoogleTest we consider decimals equals to within `4` ULP.
+        ```cpp
+          #include <catch2/matchers/catch_matchers_floating_point.hpp>
+          using Catch::Matchers::WithinULP;
+          TEST_CASE("DoubleTest", "[add]")
+          {
+            REQUIRE_THAT(add(0.1,0.2),WithinULP(0.3,4));
+          }
+        ```
+        But maybe you didn't know about 
+        [Catch2 floating point matchers](https://github.com/catchorg/Catch2/blob/devel/docs/comparing-floating-point-numbers.md#top)
+        and did this instead:
+        ```cpp
+          #include <cmath>
+          TEST_CASE("DoubleTest", "[add]")
+          {
+            REQUIRE(std::abs(add(0.1,0.2)-0.3) < 1.0e-7);
+          }
+        ```
+        This is OK but the `1.0e-7` can be a bit arbitrary. The first option is certainly more robust and recommended in the C++ case.
+      ````
+      ````{group-tab} GoogleTest
+        GoogleTest offers a very sophisticated way to test equality of two double numbers based on 'units in the last place (ULP)',
+        see [the documentation](http://google.github.io/googletest/reference/assertions.html#floating-point) for more details.
+        ```cpp 
+          TEST(AddTests, DoubleTest)
+          {
+            ASSERT_DOUBLE_EQ(add(0.1,0.2),0.3);
+          }
+        ```
+        But maybe you found the 'less than' assertion first and did this instead:
+        ```cpp
+          #include<cmath>
+          TEST(AddTests, DoubleTest)
+          {
+            //assert that add(0.1,0.2)-0.3 < 1.0e-7 holds
+            ASSERT_LT(std::abs(add(0.1,0.2)-0.3),1.0e-7);
+          }
+        ```
+        This is OK but the `1.0e-7` can be a bit arbitrary. The first option is certainly more robust and recommended in the C++ case.
+      ````
+    `````
+  ``````
+``````` 
+``````````
 
 ---
 
