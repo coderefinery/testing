@@ -33,6 +33,9 @@ see how automated testing works and practice designing and writing tests.
       "full-cycle collaborative workflow" (but the rest works fine
       just locally).
 
+   5. If you wish to follow in the terminal and are new to the command line, we
+      recorded a `short shell crash course <https://youtu.be/xbTTDLA3txI>`__.
+
 
 .. csv-table::
    :widths: auto
@@ -61,6 +64,7 @@ see how automated testing works and practice designing and writing tests.
    :maxdepth: 1
    :caption: Reference
 
+   Shell crash course <https://youtu.be/xbTTDLA3txI>
    exercises
    quick-reference
    guide
