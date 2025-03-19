@@ -18,8 +18,8 @@
 # -- Project information -----------------------------------------------------
 
 project = 'Automated testing'
-copyright = 'CodeRefinery project'
-author = 'CodeRefinery project'
+copyright = 'CodeRefinery contributors'
+author = 'CodeRefinery contributors'
 github_user = 'coderefinery'
 github_repo_name = 'testing'
 github_version = 'main'
