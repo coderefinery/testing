@@ -39,10 +39,10 @@ script which does some tests.
 
 (pytest-ref)=
 
-### pytest_
+### pytest
 
 - Python
-- <http://doc.pytest.org>
+- <https://docs.pytest.org/>
 - Installable via Conda or pip.
 - Easy to use: Prefix a function with `test_` and the test runner will execute it.
   No need to subclass anything.
@@ -60,7 +60,6 @@ def test_get_word_lengths():
     assert get_word_lengths(text) == [5, 8, 3, 7, 4, 3, 6]
 ```
 
-- [Example output](https://travis-ci.org/bast/pytest-demo/builds/104182942)
 - [Example project](https://github.com/bast/pytest-demo)
 
 ---
@@ -185,9 +184,6 @@ TEST_CASE("Use the example library to add numbers", "[add]") {
 }
 ```
 
-- [Example output](https://github.com/ENCCS/catch2-demo/runs/1959590399?check_suite_focus=true)
-- [Example project](https://github.com/ENCCS/catch2-demo)
-
 ---
 
 (google-test)=
@@ -212,7 +208,6 @@ TEST(example, add) {
 }
 ```
 
-- [Example output](https://travis-ci.org/bast/gtest-demo/builds/104190982)
 - [Example project](https://github.com/bast/gtest-demo)
 
 ---
@@ -237,9 +232,6 @@ BOOST_AUTO_TEST_CASE( add )
   BOOST_TEST(res == 3.0);
 }
 ```
-
-- [Example output](https://github.com/ENCCS/boost-test-demo/runs/1959592305?check_suite_focus=true)
-- [Example project](https://github.com/ENCCS/boost-test-demo)
 
 ---
 
@@ -282,7 +274,6 @@ You can then compile using this script:
 :language: bash
 ```
 
-- [Example output](https://travis-ci.org/bast/pfunit-demo/builds/104193675)
 - [Example project](https://github.com/bast/pfunit-demo)
 
 ---
@@ -293,9 +284,9 @@ Each of these are web services to handle testing, free for open source
 projects.
 
 - [GitHub Actions](https://github.com/features/actions) (we will
-  demonstrate in next episode)
+  demonstrate this in the next episode)
 - [GitLab CI](https://about.gitlab.com/features/gitlab-ci-cd/)
-  (we will demonstrate in next episode)
+  (we will demonstrate this in the next episode)
 - [Azure Pipelines](https://azure.microsoft.com/en-us/services/devops/pipelines/)
 - [Coveralls](https://coveralls.io)
 - [Codecov](https://codecov.io)
@@ -305,7 +296,6 @@ projects.
 ## Good resources
 
 - [Getting Started With Testing in Python](https://realpython.com/python-testing/)
-- [Introductions to Python Testing Frameworks](http://pythontesting.net/start-here/)
 
 
 ```{keypoints}
