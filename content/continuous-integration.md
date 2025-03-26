@@ -194,7 +194,7 @@ in the [Collaborative Git lesson](https://coderefinery.github.io/git-collaborati
 
 #### Fork and clone an existing example repository
 
-- Fork the example repo. There are two options one for [python](https://github.com/AaltoRSE/PyTestingExample) and one for [R](https://github.com/AaltoRSE/RTestingExample).
+- Fork the example repo. There are two options one for [Python](https://github.com/AaltoRSE/PyTestingExample) and one for [R](https://github.com/AaltoRSE/RTestingExample).
 - Clone your fork (`git clone git@github.com:<yourGitID>/<Py/R>TestingExample.git`).
 
 
@@ -234,7 +234,7 @@ in the [Collaborative Git lesson](https://coderefinery.github.io/git-collaborati
   ```
 
   GitHub creates the following file for you in the subfolder `.github/workflows`.
-  Modify the highlited lines according to the action below. This will add a code coverage
+  Modify the highlighted lines according to the action below. This will add a code coverage
   report to new pull requests. The if clause restricts this to pull requests, as otherwise
   this action would not have a target to write the reports to. On pushes only the unittesting is run.
 
@@ -321,7 +321,7 @@ in the [Collaborative Git lesson](https://coderefinery.github.io/git-collaborati
     - test
   before_script:
     - cat /proc/version #print out operations system
-    - python -V  # Print out python version for debugging
+    - python -V  # Print out Python version for debugging
     - pip install pytest flake8
     - if [ -f requirements.txt ]; then pip install -r requirements.txt;fi
 
@@ -552,14 +552,14 @@ the commit message or the pull/merge request contained the correct issue number)
 
 See also:
 - GitHub: [closing issues using keywords](https://help.github.com/articles/closing-issues-using-keywords/)
-- GitLab: [closing issues using keywords](https://docs.gitlab.com/ee/user/project/issues/managing_issues.html#closing-issues)
+- GitLab: [closing issues using keywords](https://docs.gitlab.com/user/project/issues/managing_issues/#closing-issues-automatically)
 
 Discuss whether this is a useful feature. And if it is, why do you think is it useful?
 
 ### Step 10: Increase your code coverage
 
 We are currently missing several functions in our tests. Write a test for the `multiply` function in a new branch and create a pull request.
-On python you can directly observe the increase in code coverage.
+On Python you can directly observe the increase in code coverage.
 On R you can have a look at the action (`Actions -> last run of your action -> Select a job -> Test coverage`). If you compare this with the
 previous run, you should see an increase once the update is in.
 
@@ -582,7 +582,7 @@ Finally, we discuss together about our experiences with this exercise.
   [centralized](https://coderefinery.github.io/git-collaborative/02-centralized/) and
   [forking](https://coderefinery.github.io/git-collaborative/03-distributed/) workflows - have a look at this
   [alternative exercise](./full-cycle-ci) to see how that works.
-- GitHub Actions has a [Marketpace](https://github.com/marketplace?type=actions) which offer wide range of automatic workflows
+- GitHub Actions has a [Marketplace](https://github.com/marketplace?type=actions) which offer wide range of automatic workflows
 - On GitLab use [GitLab CI](https://about.gitlab.com/product/continuous-integration/)
 - For Windows builds you can also use [Appveyor](https://www.appveyor.com)
 
