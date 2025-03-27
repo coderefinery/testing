@@ -10,7 +10,6 @@ script which does some tests.
 
 - Python
     - [pytest](pytest-ref)
-    - [nose](http://nose.readthedocs.io)
     - [doctest](https://docs.python.org/3/library/doctest.html)
     - [unittest](https://docs.python.org/3/library/unittest.html)
 
@@ -28,7 +27,6 @@ script which does some tests.
     - [Catch2](catch2)
     - [cppunit](https://freedesktop.org/wiki/Software/cppunit/)
     - [Boost.Test](boost-test)
-    - [UnitTest++](http://unittest-cpp.github.io)
 
 - Fortran
     - [pFUnit](pfunit)
