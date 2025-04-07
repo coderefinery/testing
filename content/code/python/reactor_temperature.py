@@ -1,4 +1,5 @@
-def check_reactor_temperature(temperature_celsius):       """
+def check_reactor_temperature(temperature_celsius):
+    """
     Checks whether temperature is above max_temperature
     and returns a status.
     """
