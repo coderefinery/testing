@@ -1,0 +1,698 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Automated testing &mdash; Automated testing  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=949a1ff5" />
+      <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx_lesson.css?v=e9df6548" />
+      <link rel="stylesheet" type="text/css" href="../_static/term_role_formatting.css?v=4194e21c" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx_rtd_theme_ext_color_contrast.css?v=8e8ea19f" />
+      <link rel="stylesheet" type="text/css" href="../_static/tabs.css?v=a5c4661c" />
+
+  
+    <link rel="shortcut icon" href="../_static/coderefinery.ico"/>
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=187304be"></script>
+      <script src="../_static/doctools.js?v=9a2dae69"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=582ca9e2"></script>
+      <script src="../_static/minipres.js?v=a0d29692"></script>
+      <script>let toggleHintShow = 'Click to show';</script>
+      <script>let toggleHintHide = 'Click to hide';</script>
+      <script>let toggleOpenOnPrint = 'true';</script>
+      <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+      <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+      <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+      <script src="../_static/tabs.js?v=3030b3cb"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex/" />
+    <link rel="search" title="Search" href="../search/" />
+    <link rel="next" title="Test design" href="../test-design/" />
+    <link rel="prev" title="Testing locally" href="../locally/" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../" class="icon icon-home">
+            Automated testing
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search/" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">The lesson</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../motivation/">Motivation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../locally/">Testing locally</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Automated testing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#continuous-integration">Continuous integration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#prerequisites">Prerequisites</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#step-1-create-a-new-repository-on-github-gitlab-or-fork-from-the-example-repo">Step 1: Create a new repository on GitHub/GitLab OR fork from the example repo</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#create-a-new-repository">Create a new repository</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#fork-and-clone-an-existing-example-repository">Fork and clone an existing example repository</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#step-2-run-tests-locally">Step 2: Run tests locally</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#step-3-enable-automated-testing">Step 3: Enable automated testing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#step-4-verify-that-tests-have-been-automatically-run">Step 4: Verify that tests have been automatically run</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#step-5-add-a-test-which-reveals-a-problem">Step 5: Add a test which reveals a problem</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#step-6-open-an-issue-on-github-gitlab">Step 6: Open an issue on GitHub/GitLab</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#step-7-fix-the-broken-test">Step 7: Fix the broken test</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#step-8-open-a-pull-request-github-merge-request-gitlab">Step 8: Open a pull request (GitHub)/ merge request (GitLab)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#step-9-accept-the-pull-merge-request">Step 9: Accept the pull/merge request</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#step-10-increase-your-code-coverage">Step 10: Increase your code coverage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#step-11-optional-repeat-steps-5-9-for-the-convert-fahrenheit-to-celsius-function">Step 11 (optional): Repeat steps 5-9 for the <code class="docutils literal notranslate"><span class="pre">convert_fahrenheit_to_celsius</span></code> function:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#discussion">Discussion</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#where-to-go-from-here">Where to go from here</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../test-design/">Test design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../conclusions/">Conclusions and recommendations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../full-cycle-ci/">(Optional) Full-cycle collaborative workflow</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://youtu.be/xbTTDLA3txI">Shell crash course</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercises/">List of exercises</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../quick-reference/">Quick Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guide/">Instructor guide</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">About</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://coderefinery.org/lessons/core/">All lessons</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://coderefinery.org/">CodeRefinery</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://coderefinery.org/lessons/reusing/">Reusing</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../">Automated testing</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Automated testing</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/coderefinery/testing/blob/main/content/continuous-integration.md" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="automated-testing">
+<h1>Automated testing<a class="headerlink" href="#automated-testing" title="Link to this heading"></a></h1>
+<div class="admonition-questions questions admonition" id="questions-0">
+<p class="admonition-title">Questions</p>
+<ul class="simple">
+<li><p>How can we implement automatic testing each time we push changes to the repository?</p></li>
+<li><p>Why is it good to autoclose issues with commit messages?</p></li>
+</ul>
+</div>
+<section id="continuous-integration">
+<h2>Continuous integration<a class="headerlink" href="#continuous-integration" title="Link to this heading"></a></h2>
+<p>We will now learn to set up automatic tests using either GitHub Actions or
+GitLab CI - you can choose which one to use and instructions are provided for both.</p>
+<p>This exercise can be run in “collaborative mode” by following instead the instructions
+in <a class="reference internal" href="../full-cycle-ci/"><span class="doc std std-doc">Full-cycle collaborative workflow</span></a>. In the collaborative version steps
+C-D below are performed by a collaborator.</p>
+<div class="admonition-exercise-ci-1-create-and-use-a-continuous-integration-workflow-on-github-or-gitlab exercise important admonition" id="exercise-0">
+<p class="admonition-title">Exercise CI-1: Create and use a continuous integration workflow on GitHub or GitLab</p>
+<p>In this exercise, we will:</p>
+<ul class="simple">
+<li><p><strong>A.</strong> Create and add code to a repository on GitHub/GitLab (or, alternatively, fork and clone an existing example repository)</p></li>
+<li><p><strong>B.</strong> Set up tests with GitHub Actions/ GitLab CI</p></li>
+<li><p><strong>C.</strong> Find a bug in our repository and open an issue to report it</p></li>
+<li><p><strong>D.</strong> Fix the bug on a bugfix branch and open a pull request (GitHub)/ merge request (GitLab)</p></li>
+<li><p><strong>E.</strong> Merge the pull/merge request and see how the issue is automatically closed.</p></li>
+<li><p><strong>F.</strong> Create a test to increase the code coverage of our tests.</p></li>
+</ul>
+</div>
+<section id="prerequisites">
+<h3>Prerequisites<a class="headerlink" href="#prerequisites" title="Link to this heading"></a></h3>
+<p>If you are new to Git, you can find a step-by-step guide to
+setting up repositories and making commits in
+<a class="reference external" href="https://coderefinery.github.io/git-refresher/">this git-refresher material</a>.
+If you are new to pull requests / merge requests, you can learn all about them
+in the <a class="reference external" href="https://coderefinery.github.io/git-collaborative/">Collaborative Git lesson</a>.</p>
+</section>
+<section id="step-1-create-a-new-repository-on-github-gitlab-or-fork-from-the-example-repo">
+<h3>Step 1: Create a new repository on GitHub/GitLab OR fork from the example repo<a class="headerlink" href="#step-1-create-a-new-repository-on-github-gitlab-or-fork-from-the-example-repo" title="Link to this heading"></a></h3>
+<section id="create-a-new-repository">
+<h4>Create a new repository<a class="headerlink" href="#create-a-new-repository" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p>Begin by creating a repository called (for example) <em>example-ci</em>.</p></li>
+<li><p><strong>Before</strong> you create the repository, select <strong>“Initialize this repository
+with a README”</strong> (otherwise you try to clone an empty repo).</p></li>
+<li><p>Clone the repository (<code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">clone</span> <span class="pre">git&#64;github.com:&lt;yourGitID&gt;/example-ci.git</span></code>).</p></li>
+<li><p>Add the following files and code</p></li>
+</ul>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-UHl0aG9u" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-0-UHl0aG9u" name="UHl0aG9u" role="tab" tabindex="0">Python</button><button aria-controls="panel-0-Ug==" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-0-Ug==" name="Ug==" role="tab" tabindex="-1">R</button></div><div aria-labelledby="tab-0-UHl0aG9u" class="sphinx-tabs-panel group-tab" id="panel-0-UHl0aG9u" name="UHl0aG9u" role="tabpanel" tabindex="0"><p>Add a file <code class="docutils literal notranslate"><span class="pre">functions.py</span></code> containing:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">add</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">subtract</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>  <span class="c1"># &lt;--- fix this in step 7</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">multiply</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">a</span> <span class="o">*</span> <span class="n">b</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">convert_fahrenheit_to_celsius</span><span class="p">(</span><span class="n">fahrenheit</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">multiply</span><span class="p">(</span><span class="n">subtract</span><span class="p">(</span><span class="n">fahrenheit</span><span class="p">,</span> <span class="mi">32</span><span class="p">),</span> <span class="mi">9</span> <span class="o">/</span> <span class="mi">5</span><span class="p">)</span> <span class="c1"># &lt;-- Fix this in step 7</span>
+</pre></div>
+</div>
+<p>and a file <code class="docutils literal notranslate"><span class="pre">test_functions.py</span></code> containing:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">functions</span><span class="w"> </span><span class="kn">import</span> <span class="n">add</span><span class="p">,</span> <span class="n">subtract</span><span class="p">,</span> <span class="n">multiply</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">functions</span><span class="w"> </span><span class="kn">import</span> <span class="n">convert_fahrenheit_to_celsius</span> <span class="k">as</span> <span class="n">f2c</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pytest</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">test_add</span><span class="p">():</span>
+    <span class="k">assert</span> <span class="n">add</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span> <span class="o">==</span> <span class="mi">5</span>
+    <span class="k">assert</span> <span class="n">add</span><span class="p">(</span><span class="s1">&#39;space&#39;</span><span class="p">,</span> <span class="s1">&#39;ship&#39;</span><span class="p">)</span> <span class="o">==</span> <span class="s1">&#39;spaceship&#39;</span>
+
+<span class="c1"># uncomment the following test in step 5</span>
+<span class="c1">#def test_subtract():</span>
+<span class="c1">#    assert subtract(2, 3) == -1</span>
+
+<span class="c1"># uncomment the following test in step 11</span>
+<span class="c1"># def test_convert_fahrenheit_to_celsius():</span>
+<span class="c1">#    assert f2c(32) == 0</span>
+<span class="c1">#    assert f2c(122) == pytest.approx(50)</span>
+<span class="c1">#    with pytest.raises(AssertionError):</span>
+<span class="c1">#        f2c(-600)</span>
+
+</pre></div>
+</div>
+<p>Finally, stage the files (<code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">add</span> <span class="pre">&lt;filename&gt;</span></code>), commit (<code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">commit</span> <span class="pre">-m</span> <span class="pre">&quot;some</span> <span class="pre">commit</span> <span class="pre">message&quot;</span></code>),
+and push the changes (<code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">push</span> <span class="pre">origin</span> <span class="pre">main</span></code>).</p>
+</div><div aria-labelledby="tab-0-Ug==" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-0-Ug==" name="Ug==" role="tabpanel" tabindex="0"><ul>
+<li><p>Make a folder <code class="docutils literal notranslate"><span class="pre">rtestingexample</span></code></p></li>
+<li><p>In that folder create a file <code class="docutils literal notranslate"><span class="pre">DESCRIPTION</span></code> with the following contents:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Package</span><span class="p">:</span> <span class="n">rtestingexample</span>
+<span class="n">Title</span><span class="p">:</span> <span class="n">Testing</span> <span class="n">package</span> <span class="k">for</span> <span class="n">R</span> <span class="ow">and</span> <span class="n">github</span> <span class="n">actions</span>
+<span class="n">Version</span><span class="p">:</span> <span class="mf">0.0.0.9000</span>
+<span class="n">Authors</span><span class="nd">@R</span><span class="p">:</span>
+    <span class="n">person</span><span class="p">(</span><span class="s2">&quot;Your&quot;</span><span class="p">,</span> <span class="s2">&quot;Name&quot;</span><span class="p">,</span> <span class="p">,</span> <span class="s2">&quot;none@example.com&quot;</span><span class="p">,</span> <span class="n">role</span> <span class="o">=</span> <span class="n">c</span><span class="p">(</span><span class="s2">&quot;aut&quot;</span><span class="p">,</span> <span class="s2">&quot;cre&quot;</span><span class="p">),</span>
+          <span class="p">)</span>
+<span class="n">Author</span><span class="p">:</span> <span class="n">Your</span> <span class="n">Name</span>
+<span class="n">Maintainer</span><span class="p">:</span> <span class="n">Your</span> <span class="n">Name</span> <span class="o">&lt;</span><span class="n">none</span><span class="nd">@example</span><span class="o">.</span><span class="n">com</span><span class="o">&gt;</span>
+<span class="n">Description</span><span class="p">:</span> <span class="n">Just</span> <span class="n">a</span> <span class="n">few</span> <span class="n">functions</span> <span class="n">that</span> <span class="n">are</span> <span class="n">being</span> <span class="n">tested</span><span class="o">.</span>
+<span class="n">License</span><span class="p">:</span> <span class="n">MIT</span>
+<span class="n">Encoding</span><span class="p">:</span> <span class="n">UTF</span><span class="o">-</span><span class="mi">8</span>
+<span class="n">Depends</span><span class="p">:</span> <span class="n">testthat</span>
+<span class="n">Roxygen</span><span class="p">:</span> <span class="nb">list</span><span class="p">(</span><span class="n">markdown</span> <span class="o">=</span> <span class="n">TRUE</span><span class="p">)</span>
+<span class="n">RoxygenNote</span><span class="p">:</span> <span class="mf">7.2.3</span>
+</pre></div>
+</div>
+</li>
+<li><p>In that folder create a file <code class="docutils literal notranslate"><span class="pre">NAMESPACE</span></code> with the following content:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Default NAMESPACE created by R</span>
+<span class="c1"># Remove the previous line if you edit this file</span>
+
+<span class="c1"># Export all names</span>
+<span class="n">exportPattern</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">)</span>
+
+<span class="c1"># Import all packages listed as Imports or Depends</span>
+<span class="n">import</span><span class="p">(</span>
+<span class="n">testthat</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</li>
+<li><p>create a subfolder <code class="docutils literal notranslate"><span class="pre">R</span></code> (this will contain all functions of the package)</p></li>
+<li><p>in the <code class="docutils literal notranslate"><span class="pre">R</span></code> folder create a file <code class="docutils literal notranslate"><span class="pre">functions.R</span></code>with the following content:</p>
+<div class="highlight-R notranslate"><div class="highlight"><pre><span></span><span class="n">add</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="kr">function</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">){</span>
+<span class="w">    </span><span class="kr">return</span><span class="p">(</span><span class="n">a</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">b</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="n">subtract</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="kr">function</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">){</span>
+<span class="w">    </span><span class="kr">return</span><span class="p">(</span><span class="n">a</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">b</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="n">multiply</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="kr">function</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">){</span>
+<span class="w">    </span><span class="kr">return</span><span class="p">(</span><span class="n">a</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">b</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="n">convert_fahrenheit_to_celsius</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="kr">function</span><span class="p">(</span><span class="n">fahrenheit</span><span class="p">){</span>
+<span class="w">    </span><span class="n">C_temp</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">multiply</span><span class="p">(</span><span class="nf">subtract</span><span class="p">(</span><span class="n">fahrenheit</span><span class="p">,</span><span class="m">32</span><span class="p">),</span><span class="m">5</span><span class="o">/</span><span class="m">9</span><span class="p">);</span>
+<span class="w">    </span><span class="kr">return</span><span class="p">(</span><span class="n">C_temp</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+<li><p>create a subfolder <code class="docutils literal notranslate"><span class="pre">tests</span></code></p></li>
+<li><p>in <code class="docutils literal notranslate"><span class="pre">tests</span></code> create a folder <code class="docutils literal notranslate"><span class="pre">testthat</span></code> and a file <code class="docutils literal notranslate"><span class="pre">testthat.R</span></code> with the following content:</p>
+<div class="highlight-R notranslate"><div class="highlight"><pre><span></span><span class="c1"># This file is part of the standard setup for testthat.</span>
+<span class="c1"># It is recommended that you do not modify it.</span>
+<span class="c1">#</span>
+<span class="c1"># Where should you do additional test configuration?</span>
+<span class="c1"># Learn more about the roles of various files in:</span>
+<span class="c1"># * https://r-pkgs.org/tests.html</span>
+<span class="c1"># * https://testthat.r-lib.org/reference/test_package.html#special-files</span>
+
+<span class="nf">library</span><span class="p">(</span><span class="n">testthat</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">rtestingexample</span><span class="p">)</span>
+
+<span class="nf">test_check</span><span class="p">(</span><span class="s">&quot;rtestingexample&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+<li><p>in the <code class="docutils literal notranslate"><span class="pre">testthat</span></code> folder create a file <code class="docutils literal notranslate"><span class="pre">test-functions.R</span></code> with the following content:</p>
+<div class="highlight-R notranslate"><div class="highlight"><pre><span></span><span class="nf">test_that</span><span class="p">(</span><span class="n">desc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Add&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">code</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">c</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">add</span><span class="p">(</span><span class="m">2</span><span class="p">,</span><span class="m">3</span><span class="p">);</span><span class="w">   </span><span class="c1"># Runs the function</span>
+
+<span class="w">  </span><span class="c1"># Test that the result is the correct value</span>
+<span class="w">  </span><span class="nf">expect_equal</span><span class="p">(</span><span class="n">c</span><span class="p">,</span><span class="m">5</span><span class="p">);</span>
+
+<span class="w">  </span><span class="c1"># Test that the result is numeric</span>
+<span class="w">  </span><span class="nf">expect_true</span><span class="p">(</span><span class="nf">is.numeric</span><span class="p">(</span><span class="n">c</span><span class="p">));</span>
+<span class="p">})</span>
+
+<span class="c1"># uncomment the following test in step 11</span>
+<span class="c1">#test_that(desc = &quot;Fahrenheit to Celsius&quot;, code = {</span>
+<span class="c1">#</span>
+<span class="c1">#  temp_C &lt;- convert_fahrenheit_to_celsius(50);</span>
+<span class="c1">#  expect_equal(temp_C,10);</span>
+<span class="c1">#  expect_true(is.numeric(temp_C));</span>
+<span class="c1">#})</span>
+
+<span class="c1"># uncomment the following test in step 5</span>
+<span class="c1">#test_that(desc = &quot;Subtract&quot;, code = {</span>
+<span class="c1">#  c &lt;- subtract(3,2);</span>
+<span class="c1">#  expect_equal(c,1);</span>
+<span class="c1">#  expect_true(is.numeric(c));</span>
+<span class="c1">#})</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</div></div>
+</section>
+<section id="fork-and-clone-an-existing-example-repository">
+<h4>Fork and clone an existing example repository<a class="headerlink" href="#fork-and-clone-an-existing-example-repository" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p>Fork the example repo. There are two options one for <a class="reference external" href="https://github.com/AaltoRSE/PyTestingExample">Python</a> and one for <a class="reference external" href="https://github.com/AaltoRSE/RTestingExample">R</a>.</p></li>
+<li><p>Clone your fork (<code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">clone</span> <span class="pre">git&#64;github.com:&lt;yourGitID&gt;/&lt;Py/R&gt;TestingExample.git</span></code>).</p></li>
+</ul>
+</section>
+</section>
+<section id="step-2-run-tests-locally">
+<h3>Step 2: Run tests locally<a class="headerlink" href="#step-2-run-tests-locally" title="Link to this heading"></a></h3>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-1-UHl0aG9u" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-1-UHl0aG9u" name="UHl0aG9u" role="tab" tabindex="0">Python</button><button aria-controls="panel-1-Ug==" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-1-Ug==" name="Ug==" role="tab" tabindex="-1">R</button></div><div aria-labelledby="tab-1-UHl0aG9u" class="sphinx-tabs-panel group-tab" id="panel-1-UHl0aG9u" name="UHl0aG9u" role="tabpanel" tabindex="0"><p>You can now run your tests locally with</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pytest</span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-1-Ug==" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-1-Ug==" name="Ug==" role="tabpanel" tabindex="0"><p>You can now run your tests (and a complete check of this package) locally by running:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Rscript -e &#39;testthat::test_local()&#39;`
+</pre></div>
+</div>
+<blockquote>
+<div><p><strong><em>NOTE:</em></strong> You might need to install the testthat package before you can run the command above ( in R <code class="docutils literal notranslate"><span class="pre">install.packages(&quot;testthat&quot;)</span></code>)</p>
+</div></blockquote>
+</div></div>
+</section>
+<section id="step-3-enable-automated-testing">
+<h3>Step 3: Enable automated testing<a class="headerlink" href="#step-3-enable-automated-testing" title="Link to this heading"></a></h3>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-2-R2l0SHViLVB5dGhvbg==" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-2-R2l0SHViLVB5dGhvbg==" name="R2l0SHViLVB5dGhvbg==" role="tab" tabindex="0">GitHub-Python</button><button aria-controls="panel-2-R2l0TGFiLVB5dGhvbg==" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-2-R2l0TGFiLVB5dGhvbg==" name="R2l0TGFiLVB5dGhvbg==" role="tab" tabindex="-1">GitLab-Python</button><button aria-controls="panel-2-R2l0SHViLVI=" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-2-R2l0SHViLVI=" name="R2l0SHViLVI=" role="tab" tabindex="-1">GitHub-R</button></div><div aria-labelledby="tab-2-R2l0SHViLVB5dGhvbg==" class="sphinx-tabs-panel group-tab" id="panel-2-R2l0SHViLVB5dGhvbg==" name="R2l0SHViLVB5dGhvbg==" role="tabpanel" tabindex="0"><p>In this step we will enable GitHub Actions.
+Select “Actions” from your GitHub repository page. You get to a page
+“Get started with GitHub Actions”. Select the button for “Configure”
+under Python Application:</p>
+<figure class="align-default" id="id1">
+<img alt="Selecting a Python workflow" src="../_images/python_application.png" />
+<figcaption>
+<p><span class="caption-text">Select “Python application” as the starter workflow.</span><a class="headerlink" href="#id1" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>GitHub creates the following file for you in the subfolder <code class="docutils literal notranslate"><span class="pre">.github/workflows</span></code>.
+Modify the highlighted lines according to the action below. This will add a code coverage
+report to new pull requests. The if clause restricts this to pull requests, as otherwise
+this action would not have a target to write the reports to. On pushes only the unittesting is run.</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># This workflow will install Python dependencies, run tests and lint with a single version of Python</span>
+<span class="c1"># For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-python</span>
+
+<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Test</span>
+
+<span class="nt">on</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">push</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">branches</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="w"> </span><span class="s">&quot;main&quot;</span><span class="w"> </span><span class="p p-Indicator">]</span>
+<span class="w">  </span><span class="nt">pull_request</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">branches</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="w"> </span><span class="s">&quot;main&quot;</span><span class="w"> </span><span class="p p-Indicator">]</span>
+
+<span class="nt">permissions</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">contents</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">read</span>
+<span class="hll"><span class="w">  </span><span class="nt">pull-requests</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">write</span>
+</span>
+<span class="nt">jobs</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">build</span><span class="p">:</span>
+
+<span class="w">    </span><span class="nt">runs-on</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ubuntu-latest</span>
+
+<span class="w">    </span><span class="nt">steps</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/checkout@v4</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Set up Python 3.10</span>
+<span class="w">      </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/setup-python@v3</span>
+<span class="w">      </span><span class="nt">with</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">python-version</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;3.10&quot;</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Install dependencies</span>
+<span class="w">      </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">        </span><span class="no">python -m pip install --upgrade pip</span>
+<span class="hll"><span class="w">        </span><span class="no">pip install flake8 pytest pytest-cov</span>
+</span><span class="w">        </span><span class="no">if [ -f requirements.txt ]; then pip install -r requirements.txt; fi</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Lint with flake8</span>
+<span class="w">      </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">        </span><span class="no"># stop the build if there are Python syntax errors or undefined names</span>
+<span class="w">        </span><span class="no">flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics</span>
+<span class="w">        </span><span class="no"># exit-zero treats all errors as warnings. The GitHub editor is 127 chars wide</span>
+<span class="w">        </span><span class="no">flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Test with pytest</span>
+<span class="w">      </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="hll"><span class="w">        </span><span class="no">pytest --cov-report &quot;xml:coverage.xml&quot; --cov=.</span>
+</span><span class="hll"><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Create Coverage</span>
+</span><span class="hll"><span class="w">      </span><span class="nt">if</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${{ github.event_name == &#39;pull_request&#39; }}</span>
+</span><span class="hll"><span class="w">      </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">orgoro/coverage@v3</span>
+</span><span class="hll"><span class="w">      </span><span class="nt">with</span><span class="p">:</span>
+</span><span class="hll"><span class="w">          </span><span class="nt">coverageFile</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">coverage.xml</span>
+</span><span class="hll"><span class="w">          </span><span class="nt">token</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${{ secrets.GITHUB_TOKEN }}</span>
+</span></pre></div>
+</div>
+<p>Commit the change by pressing the “Start Commit” button:</p>
+<figure class="align-default" id="id2">
+<img alt="Committing the change" src="../_images/gh_action_commit.png" />
+<figcaption>
+<p><span class="caption-text">Committing the file via the GitHub web interface: follow the flow, give it some commit name. You can commit directly to master.</span><a class="headerlink" href="#id2" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</div><div aria-labelledby="tab-2-R2l0TGFiLVB5dGhvbg==" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-2-R2l0TGFiLVB5dGhvbg==" name="R2l0TGFiLVB5dGhvbg==" role="tabpanel" tabindex="0"><p>In this step we will enable GitLab CI.
+Select “CI/CD” from your Gitlab sidebar of the project. You get to a page
+“Editor”. (Instead you can also click on “Add CI/CD” on the main page or just add a <code class="docutils literal notranslate"><span class="pre">.gitlab-ci.yml</span></code> file the result is identical.</p>
+<p>Copy the following code snippet into the file. Gitlab will save it as <code class="docutils literal notranslate"><span class="pre">.gitlab-ci.yml</span></code>.
+Add <code class="docutils literal notranslate"><span class="pre">pytest</span> <span class="pre">test_functions.py</span></code> to the last line (highlighted):</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># This workflow will install Python dependencies, run tests and lint with a single version of Python</span>
+<span class="c1"># For more information see: https://gitlab.com/gitlab-org/gitlab/-/blob/master/lib/gitlab/ci/templates/Python.gitlab-ci.yml</span>
+
+<span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">python:latest</span>
+<span class="nt">stages</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">linting</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">test</span>
+<span class="nt">before_script</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cat /proc/version</span><span class="w"> </span><span class="c1">#print out operations system</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">python -V</span><span class="w">  </span><span class="c1"># Print out Python version for debugging</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pip install pytest flake8</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">if [ -f requirements.txt ]; then pip install -r requirements.txt;fi</span>
+
+<span class="nt">linting</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">stage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">linting</span>
+<span class="w">  </span><span class="nt">script</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics</span>
+
+<span class="nt">test</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">stage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">test</span>
+<span class="hll"><span class="w">  </span><span class="nt">script</span><span class="p">:</span>
+</span><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pytest</span>
+</pre></div>
+</div>
+<p>Commit the change by pressing the “Commit changes” button:</p>
+<figure class="align-default" id="id3">
+<a class="reference internal image-reference" href="../_images/gl_action_commit.png"><img alt="Committing the change" src="../_images/gl_action_commit.png" style="width: 400px;" />
+</a>
+<figcaption>
+<p><span class="caption-text">Committing the file via the GitLab web interface: follow the flow, give it some commit name. You can commit directly to master.</span><a class="headerlink" href="#id3" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</div><div aria-labelledby="tab-2-R2l0SHViLVI=" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-2-R2l0SHViLVI=" name="R2l0SHViLVI=" role="tabpanel" tabindex="0"><p>In this step we will enable GitHub Actions.
+Select “Actions” from your GitHub repository page. You get to a page
+“Get started with GitHub Actions”. Unfortunately, as of the creation of this lecture, the default “R package action”
+that is suggested by github is quite complex and not really fit for our purpose. Instead we will create our own
+workflow as detailed below.
+So first click on the “ set up a workflow yourself” link above the “Search workflows” field.</p>
+<p>GitHub creates a “main.yml” file that we can now modify as needed.</p>
+<ul>
+<li><p>First, replace the name by a more descriptive one (e.g. r_testing.yml)</p></li>
+<li><p>Then add the following code to the file:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># Workflow derived from https://github.com/r-lib/actions/tree/v2/examples</span>
+<span class="c1"># Need help debugging build failures? Start at https://github.com/r-lib/actions#where-to-find-help</span>
+<span class="nt">on</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">push</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">branches</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">main</span><span class="p p-Indicator">]</span>
+<span class="w">  </span><span class="nt">pull_request</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">branches</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">main</span><span class="p p-Indicator">]</span>
+
+<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">test-coverage</span>
+
+<span class="nt">jobs</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">test-coverage</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">runs-on</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ubuntu-latest</span>
+<span class="w">    </span><span class="nt">env</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">GITHUB_PAT</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${{ secrets.GITHUB_TOKEN }}</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">R</span>
+<span class="w">    </span><span class="nt">steps</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/checkout@v3</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Setup R</span>
+<span class="w">        </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">r-lib/actions/setup-r@v2</span>
+<span class="w">        </span><span class="nt">with</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">use-public-rspm</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">r-lib/actions/setup-r-dependencies@v2</span>
+<span class="w">        </span><span class="nt">with</span><span class="p">:</span>
+<span class="hll"><span class="w">          </span><span class="nt">extra-packages</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+</span><span class="hll"><span class="w">            </span><span class="no">any::covr</span>
+</span><span class="hll"><span class="w">            </span><span class="no">any::rcmdcheck</span>
+</span><span class="hll"><span class="w">          </span><span class="nt">needs</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+</span><span class="hll"><span class="w">            </span><span class="no">coverage</span>
+</span><span class="hll"><span class="w">            </span><span class="no">check</span>
+</span><span class="hll"><span class="w">          </span><span class="nt">working-directory</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;rtestingexample&#39;</span>
+</span><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Test coverage</span>
+<span class="w">        </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">          </span><span class="no">covr::codecov(</span>
+<span class="w">            </span><span class="no">quiet = FALSE,</span>
+<span class="w">            </span><span class="no">clean = FALSE,</span>
+<span class="hll"><span class="w">            </span><span class="no">path = &quot;rtestingexample&quot;,</span>
+</span><span class="w">            </span><span class="no">install_path = file.path(Sys.getenv(&quot;RUNNER_TEMP&quot;), &quot;package&quot;)</span>
+<span class="w">          </span><span class="no">)</span>
+<span class="w">        </span><span class="nt">shell</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Rscript {0}</span>
+
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Show testthat output</span>
+<span class="w">        </span><span class="nt">if</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">always()</span>
+<span class="w">        </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">          </span><span class="no">## --------------------------------------------------------------------</span>
+<span class="w">          </span><span class="no">find ${{ runner.temp }}/package -name &#39;testthat.Rout*&#39; -exec cat &#39;{}&#39; \; || true</span>
+<span class="w">        </span><span class="nt">shell</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bash</span>
+
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Upload test results</span>
+<span class="w">        </span><span class="nt">if</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">failure()</span>
+<span class="w">        </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/upload-artifact@v3</span>
+<span class="w">        </span><span class="nt">with</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">coverage-test-failures</span>
+<span class="w">          </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${{ runner.temp }}/package</span>
+</pre></div>
+</div>
+<p>The action is a modified version of the action generated by <a class="reference external" href="https://covr.r-lib.org/">covr</a> using the <code class="docutils literal notranslate"><span class="pre">usethis::use_github_action(&quot;test-coverage&quot;)</span></code> command.
+It is built up from several actions provided by the <a class="reference external" href="https://github.com/r-lib/actions">r-lib project</a>, along with the test/coverage commands.</p>
+</li>
+</ul>
+<p>Commit the change by pressing the “Start Commit” button:</p>
+<figure class="align-default" id="id4">
+<img alt="Committing the change" src="../_images/gh_action_commit.png" />
+<figcaption>
+<p><span class="caption-text">Committing the file via the GitHub web interface: follow the flow, give it some commit name. You can commit directly to master.</span><a class="headerlink" href="#id4" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</div></div>
+</section>
+<section id="step-4-verify-that-tests-have-been-automatically-run">
+<h3>Step 4: Verify that tests have been automatically run<a class="headerlink" href="#step-4-verify-that-tests-have-been-automatically-run" title="Link to this heading"></a></h3>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-3-R2l0SHViLVB5dGhvbg==" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-3-R2l0SHViLVB5dGhvbg==" name="R2l0SHViLVB5dGhvbg==" role="tab" tabindex="0">GitHub-Python</button><button aria-controls="panel-3-R2l0TGFiLVB5dGhvbg==" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-3-R2l0TGFiLVB5dGhvbg==" name="R2l0TGFiLVB5dGhvbg==" role="tab" tabindex="-1">GitLab-Python</button><button aria-controls="panel-3-R2l0SHViLVI=" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-3-R2l0SHViLVI=" name="R2l0SHViLVI=" role="tab" tabindex="-1">GitHub-R</button></div><div aria-labelledby="tab-3-R2l0SHViLVB5dGhvbg==" class="sphinx-tabs-panel group-tab" id="panel-3-R2l0SHViLVB5dGhvbg==" name="R2l0SHViLVB5dGhvbg==" role="tabpanel" tabindex="0"><p>Observe in the repository how the test succeeds. While the test is
+executing, the repository has a yellow marker. This is replaced with a green
+check mark, once the test succeeds:</p>
+<figure class="align-default" id="id5">
+<img alt="Verify that the test passed" src="../_images/green_check_mark.png" />
+<figcaption>
+<p><span class="caption-text">Green check means passed.</span><a class="headerlink" href="#id5" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>Also browse the “Actions” tab and look at the steps there and their output.</p>
+</div><div aria-labelledby="tab-3-R2l0TGFiLVB5dGhvbg==" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-3-R2l0TGFiLVB5dGhvbg==" name="R2l0TGFiLVB5dGhvbg==" role="tabpanel" tabindex="0"><p>Observe in the repository how the test succeeds. While the test is
+executing, the repository has a blue marker. This is replaced with a green
+check mark, once the test succeeds:</p>
+<figure class="align-default" id="id6">
+<img alt="Verify that the test passed" src="../_images/gl_green_check_mark.png" />
+<figcaption>
+<p><span class="caption-text">Green check means passed.</span><a class="headerlink" href="#id6" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>Also browse the “Pipelines” tab and look at the steps there and their output.</p>
+</div><div aria-labelledby="tab-3-R2l0SHViLVI=" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-3-R2l0SHViLVI=" name="R2l0SHViLVI=" role="tabpanel" tabindex="0"><p>Observe in the repository how the test succeeds. While the test is
+executing, the repository has a yellow marker. This is replaced with a green
+check mark, once the test succeeds:</p>
+<figure class="align-default" id="id7">
+<img alt="Verify that the test passed" src="../_images/green_check_mark.png" />
+<figcaption>
+<p><span class="caption-text">Green check means passed.</span><a class="headerlink" href="#id7" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>Also browse the “Actions” tab and look at the steps there and their output.</p>
+</div></div>
+</section>
+<section id="step-5-add-a-test-which-reveals-a-problem">
+<h3>Step 5: Add a test which reveals a problem<a class="headerlink" href="#step-5-add-a-test-which-reveals-a-problem" title="Link to this heading"></a></h3>
+<p>After you committed the workflow file, your GitHub/GitLab repository will be ahead of
+your local cloned repository.  Update your local cloned repository:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>git<span class="w"> </span>pull<span class="w"> </span>origin<span class="w"> </span>main
+</pre></div>
+</div>
+<p>Hint: if the above command fails, check whether the branch name on the GitHub/GitLab
+repository is called <code class="docutils literal notranslate"><span class="pre">main</span></code> and not perhaps <code class="docutils literal notranslate"><span class="pre">master</span></code>.</p>
+<p>Next uncomment the code in <code class="docutils literal notranslate"><span class="pre">test_functions.py</span></code> under “step 5”, commit, and push.
+Verify that the test suite now fails on the “Actions” tab (GitHub)
+or the “CI/CD-&gt;Pipelines” tab (GitLab).</p>
+</section>
+<section id="step-6-open-an-issue-on-github-gitlab">
+<h3>Step 6: Open an issue on GitHub/GitLab<a class="headerlink" href="#step-6-open-an-issue-on-github-gitlab" title="Link to this heading"></a></h3>
+<p>Open a new issue in your repository about the broken test (click the
+“Issues” button on GitHub or GitLab and write a title for the issue).
+The plan is that we will fix the issue through a pull/merge request.</p>
+</section>
+<section id="step-7-fix-the-broken-test">
+<h3>Step 7: Fix the broken test<a class="headerlink" href="#step-7-fix-the-broken-test" title="Link to this heading"></a></h3>
+<p>Now fix the code <strong>on a new branch</strong>, you can call it <code class="docutils literal notranslate"><span class="pre">yourname/bugfix</span></code>.
+After you have fixed the code on the new branch, commit the following
+commit message <code class="docutils literal notranslate"><span class="pre">&quot;restore</span> <span class="pre">function</span> <span class="pre">subtract;</span> <span class="pre">fixes</span> <span class="pre">#1&quot;</span></code> (assuming that
+you try to fix issue number 1).</p>
+<div class="admonition-shortcut callout admonition" id="callout-0">
+<p class="admonition-title">Shortcut</p>
+<p>Here it’s perfectly possible to take a shortcut and commit and push
+directly to the main branch. If you do this, steps 8-9 below are skipped.</p>
+<ul class="simple">
+<li><p>When would you push directly to the main branch, and when would you send a
+pull/merge request?</p></li>
+</ul>
+</div>
+<p>Then push to your repository.</p>
+</section>
+<section id="step-8-open-a-pull-request-github-merge-request-gitlab">
+<h3>Step 8: Open a pull request (GitHub)/ merge request (GitLab)<a class="headerlink" href="#step-8-open-a-pull-request-github-merge-request-gitlab" title="Link to this heading"></a></h3>
+<p>Go back to the repository on GitHub or GitLab and open a pull/merge
+request. <strong>In a collaborative setting, you could request a code
+review from collaborators at this stage.</strong> Before accepting the
+pull/merge request, observe how GitHub Actions/ Gitlab CI
+automatically tested the code.</p>
+<p>If you forgot to reference the issue number in the commit message, you
+can still add it to the pull/merge request: <code class="docutils literal notranslate"><span class="pre">my</span> <span class="pre">pull/merge</span> <span class="pre">request</span> <span class="pre">title,</span> <span class="pre">closes</span> <span class="pre">#1</span></code>.</p>
+</section>
+<section id="step-9-accept-the-pull-merge-request">
+<h3>Step 9: Accept the pull/merge request<a class="headerlink" href="#step-9-accept-the-pull-merge-request" title="Link to this heading"></a></h3>
+<p>Observe how accepting the pull/merge request automatically closes the issue (provided
+the commit message or the pull/merge request contained the correct issue number).</p>
+<p>See also:</p>
+<ul class="simple">
+<li><p>GitHub: <a class="reference external" href="https://help.github.com/articles/closing-issues-using-keywords/">closing issues using keywords</a></p></li>
+<li><p>GitLab: <a class="reference external" href="https://docs.gitlab.com/user/project/issues/managing_issues/#closing-issues-automatically">closing issues using keywords</a></p></li>
+</ul>
+<p>Discuss whether this is a useful feature. And if it is, why do you think is it useful?</p>
+</section>
+<section id="step-10-increase-your-code-coverage">
+<h3>Step 10: Increase your code coverage<a class="headerlink" href="#step-10-increase-your-code-coverage" title="Link to this heading"></a></h3>
+<p>We are currently missing several functions in our tests. Write a test for the <code class="docutils literal notranslate"><span class="pre">multiply</span></code> function in a new branch and create a pull request.
+On Python you can directly observe the increase in code coverage.
+On R you can have a look at the action (<code class="docutils literal notranslate"><span class="pre">Actions</span> <span class="pre">-&gt;</span> <span class="pre">last</span> <span class="pre">run</span> <span class="pre">of</span> <span class="pre">your</span> <span class="pre">action</span> <span class="pre">-&gt;</span> <span class="pre">Select</span> <span class="pre">a</span> <span class="pre">job</span> <span class="pre">-&gt;</span> <span class="pre">Test</span> <span class="pre">coverage</span></code>). If you compare this with the
+previous run, you should see an increase once the update is in.</p>
+</section>
+<section id="step-11-optional-repeat-steps-5-9-for-the-convert-fahrenheit-to-celsius-function">
+<h3>Step 11 (optional): Repeat steps 5-9 for the <code class="docutils literal notranslate"><span class="pre">convert_fahrenheit_to_celsius</span></code> function:<a class="headerlink" href="#step-11-optional-repeat-steps-5-9-for-the-convert-fahrenheit-to-celsius-function" title="Link to this heading"></a></h3>
+<p>Repetition helps learning, so let’s do the testing again for our <code class="docutils literal notranslate"><span class="pre">convert_fahrenheit_to_celsius</span></code> function.
+Uncomment the test for the <code class="docutils literal notranslate"><span class="pre">convert_fahrenheit_to_celsius</span></code> function and repeat steps 5 to 9 fixing the bug this test exposes.</p>
+</section>
+<section id="discussion">
+<h3>Discussion<a class="headerlink" href="#discussion" title="Link to this heading"></a></h3>
+<p>Finally, we discuss together about our experiences with this exercise.</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="where-to-go-from-here">
+<h2>Where to go from here<a class="headerlink" href="#where-to-go-from-here" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>This example was using Python but you can achieve the same automation for R or Fortran or C/C++ or other languages</p></li>
+<li><p>This workflow is very useful for collaborators who work on the same code and it works both for
+<a class="reference external" href="https://coderefinery.github.io/git-collaborative/02-centralized/">centralized</a> and
+<a class="reference external" href="https://coderefinery.github.io/git-collaborative/03-distributed/">forking</a> workflows - have a look at this
+<a class="reference internal" href="../full-cycle-ci/"><span class="doc std std-doc">alternative exercise</span></a> to see how that works.</p></li>
+<li><p>GitHub Actions has a <a class="reference external" href="https://github.com/marketplace?type=actions">Marketplace</a> which offer wide range of automatic workflows</p></li>
+<li><p>On GitLab use <a class="reference external" href="https://about.gitlab.com/product/continuous-integration/">GitLab CI</a></p></li>
+<li><p>For Windows builds you can also use <a class="reference external" href="https://www.appveyor.com">Appveyor</a></p></li>
+</ul>
+<div class="admonition-keypoints keypoints admonition" id="keypoints-0">
+<p class="admonition-title">Keypoints</p>
+<ul class="simple">
+<li><p>When fixing bugs or other problems reported in issues, use the issue
+autoclosing mechanism when you send the pull/merge request.</p></li>
+</ul>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../locally/" class="btn btn-neutral float-left" title="Testing locally" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../test-design/" class="btn btn-neutral float-right" title="Test design" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright CodeRefinery contributors.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
