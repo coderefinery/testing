@@ -322,7 +322,7 @@ Finally, we discuss together about our experiences with this exercise.
 
 
 ```{challenge} (optional) FullCI-2: Add a license file to the previous exercise's repository
-In the [Social coding and open software](https://cicero.xyz/v3/remark/0.14.0/github.com/coderefinery/social-coding/master/talk.md/)
+In the [Social coding and open software](https://coderefinery.github.io/social-coding/software-licensing/)
 lesson we learn how important it is to add a LICENSE file.
 
 Your goal:
