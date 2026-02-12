@@ -1,0 +1,377 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Instructor guide &mdash; Software testing  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/togglebutton.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/mystnb.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/tabs.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/sphinx_lesson.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/sphinx_rtd_theme_ext_color_contrast.css" type="text/css" />
+
+  
+  
+    <link rel="shortcut icon" href="../_static/coderefinery.ico"/>
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/togglebutton.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
+        <script src="../_static/minipres.js"></script>
+        <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex/" />
+    <link rel="search" title="Search" href="../search/" />
+    <link rel="prev" title="Quick Reference" href="../quick-reference/" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../" class="icon icon-home"> Software testing
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search/" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">The lesson</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../motivation/">Motivation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../concepts/">Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pytest/">Testing locally</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../continuous-integration/">Automated testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../test-design/">Test design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../conclusions/">Conclusions and recommendations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../full-cycle-ci/">(Optional) Full-cycle collaborative workflow</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Reference</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../quick-reference/">Quick Reference</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Instructor guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#why-we-teach-this-lesson">Why we teach this lesson</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#intended-learning-outcomes">Intended learning outcomes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#how-we-teach-this-lesson">How we teach this lesson</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#how-to-start">How to start</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#questions-to-involve-participants">Questions to involve participants</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#structure-of-the-lesson">Structure of the lesson</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#concepts">Concepts</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#testing-locally">Testing locally</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#automated-testing-or-full-cycle-collaborative-workflow">Automated testing (or full-cycle collaborative workflow)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#test-design">Test design</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#order-of-continuous-integration-and-test-design">Order of Continuous Integration and Test Design</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#timing">Timing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#room-for-improvement">Room for improvement</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../">Software testing</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Instructor guide</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            
+              <a href="https://github.com/coderefinery/testing/blob/master/content/guide.md" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="instructor-guide">
+<h1>Instructor guide<a class="headerlink" href="#instructor-guide" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="why-we-teach-this-lesson">
+<h2>Why we teach this lesson<a class="headerlink" href="#why-we-teach-this-lesson" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Because writing tests and using automated testing is often part
+of the development process, especially for codes that are larger than
+a simple script.</p></li>
+<li><p>We wish to give learners the tools so that they can rewrite codes and
+collaborate on a code projects with more confidence.</p></li>
+<li><p>Testing can help detecting regressions during development instead of later
+(when using the code) or too late (after having published results).</p></li>
+<li><p>Can simplify collaboration since contributors can be more confident that
+their changes preserve expected functionality.</p></li>
+<li><p>Tests document the intent of the function/module/library/code.</p></li>
+<li><p>Tests can guide the code towards more modular and reusable code style with
+fewer side effects.</p></li>
+</ul>
+</div>
+<div class="section" id="intended-learning-outcomes">
+<h2>Intended learning outcomes<a class="headerlink" href="#intended-learning-outcomes" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Know that in each language tools exist that can execute a series of test functions
+and report success or failure.</p></li>
+<li><p>Know that services like GitHub Actions, Azure pipelines, GitLab CI, Appveyor, and others
+allow us to automatically run tests on every Git push or every pull request or merge request.</p></li>
+<li><p>Be able to approach a function or module or library and design a test for it “in words”
+or pseudo-code.</p></li>
+<li><p>Know what test coverage means and how it can help to detect untested/unused code.</p></li>
+<li><p>Know where in a larger and untested project to start introducing tests since it is beyond
+reach and also probably not reasonable to test everything.</p></li>
+</ul>
+</div>
+<div class="section" id="how-we-teach-this-lesson">
+<h2>How we teach this lesson<a class="headerlink" href="#how-we-teach-this-lesson" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="how-to-start">
+<h3>How to start<a class="headerlink" href="#how-to-start" title="Permalink to this headline">¶</a></h3>
+<p>The quote from another testing lesson by Kathryn Huff can be discussed
+to get participants to reflect on the role of software testing in
+science and its parallels to calibrating measurement devices. The second half
+of the quote is left out because it goes so far as to say that untested software
+does not constitute science, and this can be offending to learners.</p>
+</div>
+<div class="section" id="questions-to-involve-participants">
+<h3>Questions to involve participants<a class="headerlink" href="#questions-to-involve-participants" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Do you agree that testing software is similar to calibrating detectors?</p></li>
+<li><p>Do you test your code?</p></li>
+<li><p>How and when do you test?</p></li>
+<li><p>Where would you start adding a test in an existing project?</p></li>
+<li><p>In which situations would you recommend not to add any tests?</p></li>
+</ul>
+</div>
+<div class="section" id="structure-of-the-lesson">
+<h3>Structure of the lesson<a class="headerlink" href="#structure-of-the-lesson" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="concepts">
+<h4>Concepts<a class="headerlink" href="#concepts" title="Permalink to this headline">¶</a></h4>
+<p>After the Motivation episode, the lesson continues with a walkthrough
+of important concepts in software testing (unit tests, integration
+tests, test-driven development etc). At the end of the Concepts episode
+there’s a link to the Quick Reference where learners can find a list of
+available testing frameworks for different languages.</p>
+</div>
+<div class="section" id="testing-locally">
+<h4>Testing locally<a class="headerlink" href="#testing-locally" title="Permalink to this headline">¶</a></h4>
+<p>After introducing the concepts the lesson becomes hands-on in the
+Testing Locally episode. The pytest example there can be done as
+type-along and the optional exercise “Testing with numerical
+tolerance” can be left as homework.</p>
+</div>
+<div class="section" id="automated-testing-or-full-cycle-collaborative-workflow">
+<h4>Automated testing (or full-cycle collaborative workflow)<a class="headerlink" href="#automated-testing-or-full-cycle-collaborative-workflow" title="Permalink to this headline">¶</a></h4>
+<p>After learning how to run tests locally, the lesson goes into
+automated testing using GitHub Actions or GitLab CI in the Automated
+Testing episode. This episode is a simplified version of the
+collaborative exercise in the optional episode “Full-cycle
+collaborative workflow”, and the instructor has a choice which one to
+teach (with the latter requiring around double the time). The
+exercise in Automated Testing can either be done as a type-along
+demonstration by the instructor or as an exercise in breakout rooms.</p>
+<p><strong>If run as an exercise, this episode requires that learners know how
+to set up Git repositories locally and online and how to work with
+pull/merge requests!</strong></p>
+<p>If the optional Full-cycle episode is covered, it is useful during the
+wrap up of the exercise to have a co-instructor doing the exercise in
+parallel with you. As your partner makes a pull requests with “fixes
+#1” (or whatever PR number) you can show that the PR links to a issue,
+and the issue pointing to a commit.</p>
+</div>
+<div class="section" id="test-design">
+<h4>Test design<a class="headerlink" href="#test-design" title="Permalink to this headline">¶</a></h4>
+<p>This episode now has exercises in different languages covering
+different testing approaches (unit tests, integration tests, testing
+randomness, TDD). In normal workshops there are far too many
+exercises for the available time so the instructor has freedom to
+recommend specific exercises, to let learners choose themselves, or to
+recommend learners to discuss rather than implement the tests.</p>
+</div>
+<div class="section" id="order-of-continuous-integration-and-test-design">
+<h4>Order of Continuous Integration and Test Design<a class="headerlink" href="#order-of-continuous-integration-and-test-design" title="Permalink to this headline">¶</a></h4>
+<p>When this lesson is taught standalone in a software testing workshop
+or hackathon, it might be better to go through the Test Design episode
+before the Continuous Integration episode.</p>
+</div>
+</div>
+<div class="section" id="timing">
+<h3>Timing<a class="headerlink" href="#timing" title="Permalink to this headline">¶</a></h3>
+<p>The lesson is stipulated to take around 2 hours, but if more time is
+available you can replace the Automated Testing episode with “Full-cycle
+collaborative workflow”, or give more time to the Test Design episode.</p>
+<p>Splitting the lesson in two halves with a lunch break in the middle
+works well. Before lunch you have on hour introduction and the two
+first exercises. After lunch you continue with the automated testing
+exercise and test design.</p>
+</div>
+<div class="section" id="room-for-improvement">
+<h3>Room for improvement<a class="headerlink" href="#room-for-improvement" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>The lesson is still too Python centric in the “Testing locally” and “Automated testing” episodes.
+It would be nice to offer alternatives for learners who write in different languages.</p></li>
+<li><p>Currently the lesson is in the “discipline” domain. Testing is
+something you do to control behavior (your own as well as the code).
+Testing is also something you can do to improve productivity, but this
+is less visible/detectable.</p></li>
+</ul>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="../quick-reference/" class="btn btn-neutral float-left" title="Quick Reference" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2020, CodeRefinery project.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -1,0 +1,447 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Concepts &mdash; Software testing  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/togglebutton.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/mystnb.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/tabs.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/sphinx_lesson.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/sphinx_rtd_theme_ext_color_contrast.css" type="text/css" />
+
+  
+  
+    <link rel="shortcut icon" href="../_static/coderefinery.ico"/>
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/togglebutton.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
+        <script src="../_static/minipres.js"></script>
+        <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex/" />
+    <link rel="search" title="Search" href="../search/" />
+    <link rel="next" title="Testing locally" href="../pytest/" />
+    <link rel="prev" title="Motivation" href="../motivation/" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../" class="icon icon-home"> Software testing
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search/" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">The lesson</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../motivation/">Motivation</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Concepts</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#how-to-test">How to test?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#defensive-programming">Defensive programming</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#unit-tests">Unit tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#integration-tests">Integration tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#regression-tests">Regression tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#test-driven-development">Test-driven development</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#continuous-integration">Continuous integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#code-coverage">Code coverage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#total-time-to-test-matters">Total time to test matters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#tests-don-t-guarantee-correctness">Tests don’t guarantee correctness</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#testing-frameworks">Testing frameworks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#good-practices">Good practices</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../pytest/">Testing locally</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../continuous-integration/">Automated testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../test-design/">Test design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../conclusions/">Conclusions and recommendations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../full-cycle-ci/">(Optional) Full-cycle collaborative workflow</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../quick-reference/">Quick Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guide/">Instructor guide</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../">Software testing</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Concepts</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            
+              <a href="https://github.com/coderefinery/testing/blob/master/content/concepts.md" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="concepts">
+<h1>Concepts<a class="headerlink" href="#concepts" title="Permalink to this headline">¶</a></h1>
+<div class="admonition-questions questions admonition">
+<p class="admonition-title">Questions</p>
+<ul class="simple">
+<li><p>What are unit tests, regression tests, and integration tests?</p></li>
+<li><p>What is test coverage?</p></li>
+<li><p>How should we approach testing?</p></li>
+</ul>
+</div>
+<div class="figure align-default" id="id1">
+<a class="reference internal image-reference" href="../_images/unit-testing.jpg"><img alt="Tests is no guarantee" src="../_images/unit-testing.jpg" style="width: 400px;" /></a>
+<p class="caption"><span class="caption-text">Tests are no guarantee. Figure source: <a class="reference external" href="https://twitter.com/dave1010/status/613601365529657344">https://twitter.com/dave1010/status/613601365529657344</a></span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
+</div>
+<div class="section" id="how-to-test">
+<h2>How to test?<a class="headerlink" href="#how-to-test" title="Permalink to this headline">¶</a></h2>
+<p>Imperfect tests <strong>run frequently</strong> are better than perfect tests which are
+never written:</p>
+<ul class="simple">
+<li><p>Test <strong>frequently</strong> (each commit/push)</p></li>
+<li><p>Test <strong>automatically</strong> (e.g. using
+<a class="reference external" href="https://azure.microsoft.com/en-us/services/devops/pipelines/">Azure pipelines</a> or
+<a class="reference external" href="https://github.com/marketplace?type=actions">GitHub Actions</a> or <a class="reference external" href="https://docs.gitlab.com/ee/ci/">GitLab CI</a> or similar services)</p></li>
+<li><p>Test with <a class="reference external" href="http://www.smbc-comics.com/comic/2013-06-05">numerical tolerance</a>
+(see also <a class="reference external" href="https://floating-point-gui.de/">“What Every Programmer Should Know About Floating-Point Arithmetic”</a>)</p></li>
+<li><p>Think about <strong>code coverage</strong> (<a class="reference external" href="https://coveralls.io">Coveralls</a> or <a class="reference external" href="https://codecov.io">Codecov</a> or similar services)</p></li>
+</ul>
+</div>
+<hr class="docutils" />
+<div class="section" id="defensive-programming">
+<h2>Defensive programming<a class="headerlink" href="#defensive-programming" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Assume that mistakes will happen and introduce guards against them.</p></li>
+<li><p>Use <strong>assertions</strong> for things you believe will/should never happen.</p></li>
+<li><p>Use <strong>exceptions</strong> for anomalous or exceptional conditions requiring
+special processing.</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">kelvin_to_celsius</span><span class="p">(</span><span class="n">temp_k</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Converts temperature in Kelvin</span>
+<span class="sd">    to Celsius.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">assert</span> <span class="n">temp_k</span> <span class="o">&gt;=</span> <span class="mf">0.0</span><span class="p">,</span> <span class="s2">&quot;ERROR: negative T_K&quot;</span>
+    <span class="n">temp_c</span> <span class="o">=</span> <span class="n">temp_k</span> <span class="o">-</span> <span class="mf">273.15</span>
+    <span class="k">return</span> <span class="n">temp_c</span>
+</pre></div>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="unit-tests">
+<h2>Unit tests<a class="headerlink" href="#unit-tests" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><strong>Unit tests</strong> are functions</p></li>
+<li><p>Test one unit: module or even single function</p></li>
+<li><p>Good documentation of the capability and dependencies of a module</p></li>
+<li><p>Unit tests are not about testing units of measure and unit conversion, they are about testing small components (units) of a code</p></li>
+</ul>
+</div>
+<hr class="docutils" />
+<div class="section" id="integration-tests">
+<h2>Integration tests<a class="headerlink" href="#integration-tests" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><strong>Integration tests</strong> verify whether multiple modules are working well together</p></li>
+<li><p>Like in a car assembly we have to test all components independently and also whether the components are working together when combined</p></li>
+<li><p>Unit tests can be used for testing independent components (<em>e.g.</em> battery, controller, motor) and integration tests to check if car is working overall</p></li>
+</ul>
+</div>
+<hr class="docutils" />
+<div class="section" id="regression-tests">
+<h2>Regression tests<a class="headerlink" href="#regression-tests" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Similarly to integration tests, <strong>regression tests</strong> often operate on the
+whole code base</p></li>
+<li><p>Rather than assuming that the test author knows what the correct
+result should be, regression tests look to the past for the expected behavior</p></li>
+<li><p>Often spans multiple code versions: when developing a new version, input
+and output files of a previous version are used to test that the same
+behaviour is observed</p></li>
+</ul>
+</div>
+<hr class="docutils" />
+<div class="section" id="test-driven-development">
+<h2>Test-driven development<a class="headerlink" href="#test-driven-development" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>In <strong>test-driven development</strong>, one writes tests before writing code</p></li>
+<li><p>Very often we know the result that a function is supposed to produce</p></li>
+<li><p>Development cycle (red, green, refactor):</p>
+<ul>
+<li><p>Write the test</p></li>
+<li><p>Write an empty function template</p></li>
+<li><p><strong>Verify that the test fails</strong></p></li>
+<li><p>Program until the test passes</p></li>
+<li><p>Perhaps improve until you are happy (refactor)</p></li>
+<li><p>Move on</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<hr class="docutils" />
+<div class="section" id="continuous-integration">
+<h2>Continuous integration<a class="headerlink" href="#continuous-integration" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><strong>Continuous integration</strong> is basically when you automatically test
+every single commit/push (you test whether code integrates <strong>before</strong> you integrate it)</p></li>
+</ul>
+</div>
+<hr class="docutils" />
+<div class="section" id="code-coverage">
+<h2>Code coverage<a class="headerlink" href="#code-coverage" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>If I break the code and all tests pass who is to blame?</p></li>
+<li><p><strong>Code coverage</strong> measures and documents which lines of code have been traversed during a test run</p></li>
+<li><p>It is possible to have line-by-line coverage</p></li>
+<li><p><a class="reference external" href="https://coveralls.io/github/bast/runtest">Real-life example</a></p></li>
+</ul>
+</div>
+<hr class="docutils" />
+<div class="section" id="total-time-to-test-matters">
+<h2>Total time to test matters<a class="headerlink" href="#total-time-to-test-matters" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Total time to test matters</p></li>
+<li><p>If the test set takes 7 hours to run, it is likely that nobody will run it</p></li>
+<li><p>Identify fast essential test set that has sufficient coverage and is sufficiently
+short to be run before each commit or push</p></li>
+<li><p>Test code can be marked (grouped). Here our <code class="docutils literal notranslate"><span class="pre">pytest</span></code> is marked:</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nd">@pytest</span><span class="o">.</span><span class="n">mark</span><span class="o">.</span><span class="n">conversion</span>
+<span class="k">def</span> <span class="nf">test_fahrenheit_to_celsius</span><span class="p">():</span>
+    <span class="n">temp_c</span> <span class="o">=</span> <span class="n">fahrenheit_to_celsius</span><span class="p">(</span><span class="n">temp_f</span><span class="o">=</span><span class="mf">100.0</span><span class="p">)</span>
+    <span class="n">expected_result</span> <span class="o">=</span> <span class="mf">37.777777</span>
+    <span class="k">assert</span> <span class="nb">abs</span><span class="p">(</span><span class="n">temp_c</span> <span class="o">-</span> <span class="n">expected_result</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mf">1.0e-6</span>
+</pre></div>
+</div>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$ pytest -v -m conversion
+</pre></div>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="tests-don-t-guarantee-correctness">
+<h2>Tests don’t guarantee correctness<a class="headerlink" href="#tests-don-t-guarantee-correctness" title="Permalink to this headline">¶</a></h2>
+<p>Not only do tests not guarantee the absence of bugs, they can
+also contain their own bugs.
+Here’s an example of how we could get the testing of the
+<code class="docutils literal notranslate"><span class="pre">kelvin_to_celsius</span></code> function wrong:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">kelvin_to_celsius</span><span class="p">(</span><span class="n">temp_k</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Converts temperature in Kelvin</span>
+<span class="sd">    to Celsius.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">assert</span> <span class="n">temp_k</span> <span class="o">&gt;=</span> <span class="mf">0.0</span><span class="p">,</span> <span class="s2">&quot;ERROR: negative T_K&quot;</span>
+    <span class="n">temp_c</span> <span class="o">=</span> <span class="n">temp_k</span> <span class="o">+</span> <span class="mf">273.15</span>  <span class="c1"># BUG!</span>
+    <span class="k">return</span> <span class="n">temp_c</span>
+
+<span class="c1"># buggy test</span>
+<span class="k">def</span> <span class="nf">test_kelvin_to_celsius</span><span class="p">():</span>
+    <span class="n">temp_c</span> <span class="o">=</span> <span class="n">kelvin_to_celsius</span><span class="p">(</span><span class="n">temp_k</span><span class="o">=</span><span class="mf">0.0</span><span class="p">)</span>
+    <span class="n">expected_result</span> <span class="o">=</span> <span class="mf">273.15</span>
+    <span class="k">assert</span> <span class="nb">abs</span><span class="p">(</span><span class="n">temp_c</span> <span class="o">-</span> <span class="n">expected_result</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mf">1.0e-6</span>    
+</pre></div>
+</div>
+<p>All tests are happy!</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="testing-frameworks">
+<h2>Testing frameworks<a class="headerlink" href="#testing-frameworks" title="Permalink to this headline">¶</a></h2>
+<p>A large number of testing frameworks, tools and libraries are available for
+different programming languages. Some of the most popular ones are listed
+in the <a class="reference internal" href="../quick-reference/"><span class="doc std std-doc">Quick Reference</span></a>.</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="good-practices">
+<h2>Good practices<a class="headerlink" href="#good-practices" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Test before committing (use the Git staging area)</p></li>
+<li><p>Fix broken tests immediately (dirty dishes effect)</p></li>
+<li><p>Do not deactivate tests “temporarily”</p></li>
+<li><p>Think about coverage (physics and lines of code)</p></li>
+<li><p>Go public with your testing dashboard and issues/tickets</p></li>
+<li><p>Test controlled errors: if something is expected to fail, test for that</p></li>
+<li><p>Create benchmark calculations to cover various performance-critical modules and monitor timing</p></li>
+<li><p>Make testing easy to run (<code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">test</span></code>)</p></li>
+<li><p>Make testing easy to analyze</p>
+<ul>
+<li><p>Do not flood screen with pages of output in case everything runs OK</p></li>
+<li><p>Test with numerical tolerance (extremely annoying to compare digits by eye)</p></li>
+</ul>
+</li>
+</ul>
+<div class="admonition-keypoints keypoints admonition">
+<p class="admonition-title">Keypoints</p>
+<ul class="simple">
+<li><p>Assertions, exceptions, unit tests, integration tests and regression
+tests are used to test a code on different levels</p></li>
+<li><p>Test driven development is one way to develop code which is tested
+from the start</p></li>
+<li><p>Continuous integration is when every commit/merge is tested
+automatically</p></li>
+</ul>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="../pytest/" class="btn btn-neutral float-right" title="Testing locally" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../motivation/" class="btn btn-neutral float-left" title="Motivation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2020, CodeRefinery project.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
