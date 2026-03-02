@@ -125,7 +125,7 @@ Use the collaborative notes to answer these questions:
 
 ---
 
-## Types of tests
+## Testing vocabulary
 
 * Test functions one at a time - **Unit tests**
 
@@ -134,7 +134,7 @@ Use the collaborative notes to answer these questions:
 * Test the whole thing running - **End-to-end tests**
   * For example, running on sample data.
 
-* Check same results as before - **Regression tests**
+* Check results are the same as before - **Regression tests**
 
 * Write test first (the output), then write code to make test pass -
   **Test-driven development**
