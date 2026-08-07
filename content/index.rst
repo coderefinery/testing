@@ -76,4 +76,4 @@ see how automated testing works and practice designing and writing tests.
 
    All lessons <https://coderefinery.org/lessons/core/>
    CodeRefinery <https://coderefinery.org/>
-   Reusing <https://coderefinery.org/lessons/reusing/>
+   reusing
