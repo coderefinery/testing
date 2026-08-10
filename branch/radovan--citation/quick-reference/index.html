@@ -1,0 +1,501 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Quick Reference &mdash; Automated testing  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=949a1ff5" />
+      <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx_lesson.css?v=e9df6548" />
+      <link rel="stylesheet" type="text/css" href="../_static/term_role_formatting.css?v=4194e21c" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx_rtd_theme_ext_color_contrast.css?v=8e8ea19f" />
+
+  
+    <link rel="shortcut icon" href="../_static/coderefinery.ico"/>
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=187304be"></script>
+      <script src="../_static/doctools.js?v=9a2dae69"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=582ca9e2"></script>
+      <script src="../_static/minipres.js?v=a0d29692"></script>
+      <script>let toggleHintShow = 'Click to show';</script>
+      <script>let toggleHintHide = 'Click to hide';</script>
+      <script>let toggleOpenOnPrint = 'true';</script>
+      <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+      <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+      <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex/" />
+    <link rel="search" title="Search" href="../search/" />
+    <link rel="next" title="Instructor guide" href="../guide/" />
+    <link rel="prev" title="List of exercises" href="../exercises/" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../" class="icon icon-home">
+            Automated testing
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search/" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">The lesson</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../motivation/">Motivation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../locally/">Testing locally</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../continuous-integration/">Automated testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../test-design/">Test design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../conclusions/">Conclusions and recommendations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../full-cycle-ci/">(Optional) Full-cycle collaborative workflow</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference external" href="https://youtu.be/xbTTDLA3txI">Shell crash course</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercises/">List of exercises</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Quick Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#available-tools">Available tools</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#unit-test-frameworks">Unit test frameworks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pytest">pytest</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#testthat">testthat</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#test">Test</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#catch2">Catch2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#google-test">Google Test</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#boost-test">Boost.Test</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pfunit">pFUnit</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#services-to-deploy-testing-and-coverage">Services to deploy testing and coverage</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#good-resources">Good resources</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../guide/">Instructor guide</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">About</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://coderefinery.org/lessons/core/">All lessons</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://coderefinery.org/">CodeRefinery</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://coderefinery.org/lessons/reusing/">Reusing</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../">Automated testing</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Quick Reference</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/coderefinery/testing/blob/main/content/quick-reference.md" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="quick-reference">
+<h1>Quick Reference<a class="headerlink" href="#quick-reference" title="Link to this heading"></a></h1>
+<section id="available-tools">
+<h2>Available tools<a class="headerlink" href="#available-tools" title="Link to this heading"></a></h2>
+<section id="unit-test-frameworks">
+<h3>Unit test frameworks<a class="headerlink" href="#unit-test-frameworks" title="Link to this heading"></a></h3>
+<p>A <strong>test framework</strong> makes it easy to run tests across large amounts
+of code automatically.  They provide more control than one single
+script which does some tests.</p>
+<ul class="simple">
+<li><p>Python</p>
+<ul>
+<li><p><a class="reference internal" href="#pytest-ref"><span class="std std-ref">pytest</span></a></p></li>
+<li><p><a class="reference external" href="https://docs.python.org/3/library/doctest.html">doctest</a></p></li>
+<li><p><a class="reference external" href="https://docs.python.org/3/library/unittest.html">unittest</a></p></li>
+</ul>
+</li>
+<li><p>R</p>
+<ul>
+<li><p><a class="reference internal" href="#testthat"><span class="std std-ref">testthat</span></a></p></li>
+</ul>
+</li>
+<li><p>Julia</p>
+<ul>
+<li><p><a class="reference internal" href="#test"><span class="std std-ref">Test</span></a></p></li>
+</ul>
+</li>
+<li><p>Matlab</p>
+<ul>
+<li><p><a class="reference external" href="https://www.mathworks.com/help/matlab/class-based-unit-tests.html">Class-Based Unit Tests</a></p></li>
+</ul>
+</li>
+<li><p>C(++)</p>
+<ul>
+<li><p><a class="reference internal" href="#google-test"><span class="std std-ref">Google Test</span></a></p></li>
+<li><p><a class="reference internal" href="#catch2"><span class="std std-ref">Catch2</span></a></p></li>
+<li><p><a class="reference external" href="https://freedesktop.org/wiki/Software/cppunit/">cppunit</a></p></li>
+<li><p><a class="reference internal" href="#boost-test"><span class="std std-ref">Boost.Test</span></a></p></li>
+</ul>
+</li>
+<li><p>Fortran</p>
+<ul>
+<li><p><a class="reference internal" href="#pfunit"><span class="std std-ref">pFUnit</span></a></p></li>
+<li><p><a class="reference external" href="https://sourceforge.net/projects/fortranxunit/">FRUIT</a></p></li>
+<li><p><a class="reference external" href="http://flibs.sourceforge.net/ftnunit.html">Ftunit</a></p></li>
+</ul>
+</li>
+</ul>
+<hr class="docutils" />
+</section>
+<section id="pytest">
+<span id="pytest-ref"></span><h3>pytest<a class="headerlink" href="#pytest" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Python</p></li>
+<li><p><a class="reference external" href="https://docs.pytest.org/">https://docs.pytest.org/</a></p></li>
+<li><p>Installable via Conda or pip.</p></li>
+<li><p>Easy to use: Prefix a function with <code class="docutils literal notranslate"><span class="pre">test_</span></code> and the test runner will execute it.
+No need to subclass anything.</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">get_word_lengths</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Returns a list of integers representing</span>
+<span class="sd">    the word lengths in string s.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">w</span><span class="p">)</span> <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">s</span><span class="o">.</span><span class="n">split</span><span class="p">()]</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">test_get_word_lengths</span><span class="p">():</span>
+    <span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;Three tomatoes are walking down the street&quot;</span>
+    <span class="k">assert</span> <span class="n">get_word_lengths</span><span class="p">(</span><span class="n">text</span><span class="p">)</span> <span class="o">==</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">]</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/bast/pytest-demo">Example project</a></p></li>
+</ul>
+<hr class="docutils" />
+</section>
+<section id="testthat">
+<span id="id1"></span><h3>testthat<a class="headerlink" href="#testthat" title="Link to this heading"></a></h3>
+<ul>
+<li><p>R</p></li>
+<li><p><a class="reference external" href="https://github.com/r-lib/testthat">https://github.com/r-lib/testthat</a></p></li>
+<li><p>Easily installed from CRAN with <code class="docutils literal notranslate"><span class="pre">install.packages(&quot;testthat&quot;)</span></code>, or from GitHub with <code class="docutils literal notranslate"><span class="pre">devtools::install_github(&quot;r-lib/testthat&quot;)</span></code></p></li>
+<li><p>Use in package development with <code class="docutils literal notranslate"><span class="pre">usethis::use_testthat()</span></code></p></li>
+<li><p>Add a new test file with <code class="docutils literal notranslate"><span class="pre">usethis::use_test(&quot;test-name&quot;)</span></code>, e.g.:</p>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># tests/testthat/test_example.R</span>
+<span class="c1"># file added by running `usethis::use_test(&quot;example&quot;)`</span>
+
+<span class="nf">context</span><span class="p">(</span><span class="s">&quot;Arithmetics&quot;</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="s">&quot;mypackage&quot;</span><span class="p">)</span>
+
+<span class="nf">test_that</span><span class="p">(</span><span class="s">&quot;square root function works&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nf">expect_equal</span><span class="p">(</span><span class="nf">my_sqrt</span><span class="p">(</span><span class="m">4</span><span class="p">),</span><span class="w"> </span><span class="m">2</span><span class="p">)</span>
+<span class="w">  </span><span class="nf">expect_warning</span><span class="p">(</span><span class="nf">my_sqrt</span><span class="p">(</span><span class="m">-4</span><span class="p">))</span>
+<span class="p">})</span>
+</pre></div>
+</div>
+<p>Tests consist of one or more <em>expectations</em>, and multiple tests can be grouped together in one test file.
+Test files are put in the directory <code class="docutils literal notranslate"><span class="pre">tests/testthat/</span></code>, and their file names are prefixed with <code class="docutils literal notranslate"><span class="pre">test_</span></code>.</p>
+</li>
+<li><p>Run all tests in package with <code class="docutils literal notranslate"><span class="pre">devtools::test()</span></code> (if you use RStudio, press <kbd>Ctrl+Shift+T</kbd>):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&gt; devtools::test()
+Loading mypackage
+Testing mypackage
+✔ |  OK F W S | Context
+✔ |   2       | Arithmetics
+
+══ Results ═════════════════════════════════════════════════════════════════════
+OK:       2
+Failed:   0
+Warnings: 0
+Skipped:  0
+</pre></div>
+</div>
+</li>
+</ul>
+<p>More information in the <a class="reference external" href="http://r-pkgs.had.co.nz/tests.html">Testing chapter</a> of the book <a class="reference external" href="http://r-pkgs.had.co.nz">R Packages</a> by Hadley Wickham.</p>
+<hr class="docutils" />
+</section>
+<section id="test">
+<span id="id2"></span><h3>Test<a class="headerlink" href="#test" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Julia</p></li>
+<li><ul>
+<li><p><a class="reference external" href="https://docs.julialang.org/en/v1/stdlib/Test/">Documentation</a></p></li>
+</ul>
+</li>
+<li><p>Part of the standard library</p></li>
+<li><p>Provides simple unit testing functionality with
+<code class="docutils literal notranslate"><span class="pre">&#64;test</span></code> and <code class="docutils literal notranslate"><span class="pre">&#64;test_throws</span></code> macros:</p></li>
+</ul>
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">julia</span><span class="o">&gt;</span><span class="w"> </span><span class="k">using</span><span class="w"> </span><span class="n">Test</span>
+
+<span class="n">julia</span><span class="o">&gt;</span><span class="w"> </span><span class="nd">@test</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">]</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">]</span>
+<span class="n">Test</span><span class="w"> </span><span class="n">Passed</span>
+
+<span class="c"># approximate comparisons:</span>
+<span class="n">julia</span><span class="o">&gt;</span><span class="w"> </span><span class="nd">@test</span><span class="w"> </span><span class="nb">π</span><span class="w"> </span><span class="o">≈</span><span class="w"> </span><span class="mf">3.14</span><span class="w"> </span><span class="n">atol</span><span class="o">=</span><span class="mf">0.01</span>
+<span class="n">Test</span><span class="w"> </span><span class="n">Passed</span>
+
+<span class="c"># Tests that an expression throws exception:</span>
+<span class="n">julia</span><span class="o">&gt;</span><span class="w"> </span><span class="nd">@test_throws</span><span class="w"> </span><span class="kt">BoundsError</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">][</span><span class="mi">4</span><span class="p">]</span>
+<span class="n">Test</span><span class="w"> </span><span class="n">Passed</span>
+<span class="w">      </span><span class="n">Thrown</span><span class="o">:</span><span class="w"> </span><span class="kt">BoundsError</span>
+
+<span class="n">julia</span><span class="o">&gt;</span><span class="w"> </span><span class="nd">@test_throws</span><span class="w"> </span><span class="kt">DimensionMismatch</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">]</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">]</span>
+<span class="n">Test</span><span class="w"> </span><span class="n">Passed</span>
+<span class="w">      </span><span class="n">Thrown</span><span class="o">:</span><span class="w"> </span><span class="kt">DimensionMismatch</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Grouping related tests with the <code class="docutils literal notranslate"><span class="pre">&#64;testset</span></code> macro:</p></li>
+</ul>
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="k">using</span><span class="w"> </span><span class="n">Test</span>
+
+<span class="k">function</span><span class="w"> </span><span class="n">get_word_lengths</span><span class="p">(</span><span class="n">s</span><span class="o">::</span><span class="kt">String</span><span class="p">)</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">[</span><span class="n">length</span><span class="p">(</span><span class="n">w</span><span class="p">)</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">w</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">split</span><span class="p">(</span><span class="n">s</span><span class="p">)]</span>
+<span class="k">end</span>
+
+<span class="nd">@testset</span><span class="w"> </span><span class="s">&quot;Testing get_word_length()&quot;</span><span class="w"> </span><span class="k">begin</span>
+<span class="w">    </span><span class="n">text</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Three tomatoes are walking down the street&quot;</span>
+<span class="w">    </span><span class="nd">@test</span><span class="w"> </span><span class="n">get_word_lengths</span><span class="p">(</span><span class="n">text</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="p">[</span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="p">]</span>
+<span class="w">    </span><span class="n">number</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">123</span>
+<span class="w">    </span><span class="nd">@test_throws</span><span class="w"> </span><span class="kt">MethodError</span><span class="w"> </span><span class="n">get_word_lengths</span><span class="p">(</span><span class="n">number</span><span class="p">)</span>
+<span class="k">end</span>
+</pre></div>
+</div>
+<hr class="docutils" />
+</section>
+<section id="catch2">
+<span id="id3"></span><h3>Catch2<a class="headerlink" href="#catch2" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>C++</p></li>
+<li><p><a class="reference external" href="https://github.com/catchorg/Catch2">Project page with installation instructions</a></p></li>
+<li><p>Widely used</p></li>
+<li><p>Header-only</p></li>
+<li><p>Very rich in functionality</p></li>
+<li><p>Well-integrated with CMake</p></li>
+</ul>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;catch2/catch.hpp&gt;</span>
+
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;example.h&quot;</span>
+
+<span class="k">using</span><span class="w"> </span><span class="k">namespace</span><span class="w"> </span><span class="nn">Catch</span><span class="o">::</span><span class="nn">literals</span><span class="p">;</span>
+
+<span class="n">TEST_CASE</span><span class="p">(</span><span class="s">&quot;Use the example library to add numbers&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;[add]&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">auto</span><span class="w"> </span><span class="n">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">add_numbers</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span><span class="w"> </span><span class="mf">2.0</span><span class="p">);</span>
+<span class="w">  </span><span class="n">REQUIRE</span><span class="p">(</span><span class="n">res</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mf">3.0</span><span class="n">_a</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<hr class="docutils" />
+</section>
+<section id="google-test">
+<span id="id4"></span><h3>Google Test<a class="headerlink" href="#google-test" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>C++</p></li>
+<li><p><a class="reference external" href="https://google.github.io/googletest/">Documentation</a></p></li>
+<li><p>Widely used</p></li>
+<li><p>Very rich in functionality</p></li>
+<li><p>Well-integrated with CMake</p></li>
+</ul>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;gtest/gtest.h&gt;</span>
+
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;example.h&quot;</span>
+
+<span class="n">TEST</span><span class="p">(</span><span class="n">example</span><span class="p">,</span><span class="w"> </span><span class="n">add</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kt">double</span><span class="w"> </span><span class="n">res</span><span class="p">;</span>
+<span class="w">  </span><span class="n">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">add_numbers</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span><span class="w"> </span><span class="mf">2.0</span><span class="p">);</span>
+<span class="w">  </span><span class="n">ASSERT_NEAR</span><span class="p">(</span><span class="n">res</span><span class="p">,</span><span class="w"> </span><span class="mf">3.0</span><span class="p">,</span><span class="w"> </span><span class="mf">1.0e-11</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/bast/gtest-demo">Example project</a></p></li>
+</ul>
+<hr class="docutils" />
+</section>
+<section id="boost-test">
+<span id="id5"></span><h3>Boost.Test<a class="headerlink" href="#boost-test" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>C++</p></li>
+<li><p><a class="reference external" href="https://www.boost.org/doc/libs/1_86_0/libs/test/doc/html/index.html">Documentation</a></p></li>
+<li><p>Very rich in functionality</p></li>
+<li><p>Header-only use possible</p></li>
+</ul>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;boost/test/unit_test.hpp&gt;</span>
+
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;example.h&quot;</span>
+
+<span class="n">BOOST_AUTO_TEST_CASE</span><span class="p">(</span><span class="w"> </span><span class="n">add</span><span class="w"> </span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">  </span><span class="k">auto</span><span class="w"> </span><span class="n">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">add_numbers</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span><span class="w"> </span><span class="mf">2.0</span><span class="p">);</span>
+<span class="w">  </span><span class="n">BOOST_TEST</span><span class="p">(</span><span class="n">res</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mf">3.0</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<hr class="docutils" />
+</section>
+<section id="pfunit">
+<span id="id6"></span><h3>pFUnit<a class="headerlink" href="#pfunit" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Fortran</p></li>
+<li><p><a class="reference external" href="https://github.com/Goddard-Fortran-Ecosystem/pFUnit">Documentation and installation</a></p></li>
+<li><p>Very rich in functionality</p></li>
+<li><p>Requires modern Fortran compilers (uses F2003 standard)</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@test</span>
+<span class="n">subroutine</span> <span class="n">test_add_numbers</span><span class="p">()</span>
+
+   <span class="n">use</span> <span class="n">hello</span>
+   <span class="n">use</span> <span class="n">pfunit_mod</span>
+
+   <span class="n">implicit</span> <span class="n">none</span>
+
+   <span class="n">real</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span> <span class="p">::</span> <span class="n">res</span>
+
+   <span class="n">call</span> <span class="n">add_numbers</span><span class="p">(</span><span class="mf">1.0</span><span class="n">d0</span><span class="p">,</span> <span class="mf">2.0</span><span class="n">d0</span><span class="p">,</span> <span class="n">res</span><span class="p">)</span>
+   <span class="nd">@assertEqual</span><span class="p">(</span><span class="n">res</span><span class="p">,</span> <span class="mf">3.0</span><span class="n">d0</span><span class="p">)</span>
+
+<span class="n">end</span> <span class="n">subroutine</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><a class="reference internal" href="../code/fortran/build_pFUnit/"><span class="doc std std-doc">Example installation instructions</span></a></p></li>
+</ul>
+<p>To test the <code class="docutils literal notranslate"><span class="pre">factorial</span></code> and <code class="docutils literal notranslate"><span class="pre">fizzbuzz</span></code> functions from the <a class="reference internal" href="../test-design/"><span class="doc std std-doc">test-design
+exercises</span></a>, use this <code class="docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code> file:</p>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">cmake_minimum_required</span><span class="p">(</span><span class="s">VERSION</span><span class="w"> </span><span class="s">3.12</span><span class="p">)</span>
+
+<span class="nb">project</span><span class="w"> </span><span class="p">(</span><span class="s">PFUNIT_DEMO_CR</span>
+<span class="w">  </span><span class="s">VERSION</span><span class="w"> </span><span class="s">1.0.0</span>
+<span class="w">  </span><span class="s">LANGUAGES</span><span class="w"> </span><span class="s">Fortran</span><span class="p">)</span>
+
+<span class="nb">find_package</span><span class="p">(</span><span class="s">PFUNIT</span><span class="w"> </span><span class="s">REQUIRED</span><span class="p">)</span>
+<span class="nb">enable_testing</span><span class="p">()</span>
+
+<span class="c"># system under test</span>
+<span class="nb">add_library</span><span class="w"> </span><span class="p">(</span><span class="s">sut</span>
+<span class="w">  </span><span class="s">factorial.f90</span>
+<span class="w">  </span><span class="s">fizzbuzz.f90</span>
+<span class="w">  </span><span class="p">)</span>
+
+<span class="nb">target_include_directories</span><span class="p">(</span><span class="s">sut</span><span class="w"> </span><span class="s">PUBLIC</span><span class="w"> </span><span class="o">${</span><span class="nv">CMAKE_CURRENT_BINARY_DIR</span><span class="o">}</span><span class="p">)</span>
+
+<span class="c"># tests</span>
+<span class="nb">set</span><span class="w"> </span><span class="p">(</span><span class="s">test_srcs</span><span class="w"> </span><span class="s">test_factorial.pf</span><span class="w"> </span><span class="s">test_fizzbuzz.pf</span><span class="p">)</span>
+<span class="nb">add_pfunit_ctest</span><span class="w"> </span><span class="p">(</span><span class="s">my_tests</span>
+<span class="w">  </span><span class="s">TEST_SOURCES</span><span class="w"> </span><span class="o">${</span><span class="nv">test_srcs</span><span class="o">}</span>
+<span class="w">  </span><span class="s">LINK_LIBRARIES</span><span class="w"> </span><span class="s">sut</span>
+<span class="w">  </span><span class="p">)</span>
+</pre></div>
+</div>
+<p>You can then compile using this script:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash -f</span>
+
+<span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span>-d<span class="w"> </span>build<span class="w"> </span><span class="o">]]</span>
+<span class="k">then</span>
+<span class="w">    </span>rm<span class="w"> </span>-rf<span class="w"> </span>build
+<span class="k">fi</span>
+
+mkdir<span class="w"> </span>-p<span class="w"> </span>build
+<span class="nb">cd</span><span class="w"> </span>build
+cmake<span class="w"> </span>..<span class="w"> </span>-DCMAKE_PREFIX_PATH<span class="o">=</span><span class="nv">$PFUNIT_DIR</span>
+make
+./my_tests
+
+<span class="c1"># or</span>
+<span class="c1"># ctest --verbose</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/bast/pfunit-demo">Example project</a></p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="services-to-deploy-testing-and-coverage">
+<h3>Services to deploy testing and coverage<a class="headerlink" href="#services-to-deploy-testing-and-coverage" title="Link to this heading"></a></h3>
+<p>Each of these are web services to handle testing, free for open source
+projects.</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/features/actions">GitHub Actions</a> (we will
+demonstrate this in the next episode)</p></li>
+<li><p><a class="reference external" href="https://about.gitlab.com/features/gitlab-ci-cd/">GitLab CI</a>
+(we will demonstrate this in the next episode)</p></li>
+<li><p><a class="reference external" href="https://azure.microsoft.com/en-us/services/devops/pipelines/">Azure Pipelines</a></p></li>
+<li><p><a class="reference external" href="https://coveralls.io">Coveralls</a></p></li>
+<li><p><a class="reference external" href="https://codecov.io">Codecov</a></p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="good-resources">
+<h2>Good resources<a class="headerlink" href="#good-resources" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://realpython.com/python-testing/">Getting Started With Testing in Python</a></p></li>
+</ul>
+<div class="admonition-keypoints keypoints admonition" id="keypoints-0">
+<p class="admonition-title">Keypoints</p>
+<ul class="simple">
+<li><p>Testing is a basic requirement of any possible language</p></li>
+<li><p>There are various tools for any language you may use</p></li>
+<li><p>There are free web services for open source</p></li>
+</ul>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../exercises/" class="btn btn-neutral float-left" title="List of exercises" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../guide/" class="btn btn-neutral float-right" title="Instructor guide" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright CodeRefinery contributors.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
