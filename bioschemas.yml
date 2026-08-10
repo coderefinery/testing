@@ -1,0 +1,91 @@
+{
+    "@context": "https://schema.org/",
+    "@type": "LearningResource",
+    "@id": "https://coderefinery.github.io/testing",
+    "description": "Preventing yourself and others from breaking your functioning code. In this lesson we talk about motivation for testing, about test design, but also about some tools that are typically used for automated testing of software.",
+    "keywords": "software testing, GitHub actions",
+    "name": "Automated testing - CodeRefinery lesson",
+    "author": [
+        {
+            "@type": "Organization",
+            "name": "CodeRefinery"
+        },
+        {
+            "@type": "Person",
+            "name": "Radovan Bast"
+        },
+        {
+            "@type": "Person",
+            "name": "Kjartan Thor Wikfeldt"
+        },
+        {
+            "@type": "Person",
+            "name": "Richard Darst"
+        },
+        {
+            "@type": "Person",
+            "name": "Bj\u00f8rn Lindi"
+        },
+        {
+            "@type": "Person",
+            "name": "Johan Hellsvik"
+        },
+        {
+            "@type": "Person",
+            "name": "Poojan Smart"
+        },
+        {
+            "@type": "Person",
+            "name": "Marijn van Vliet"
+        },
+        {
+            "@type": "Person",
+            "name": "Roberto Di Remigio Eik\u00e5s"
+        },
+        {
+            "@type": "Person",
+            "name": "Jens Wehner"
+        },
+        {
+            "@type": "Person",
+            "name": "Teemu Ruokolainen"
+        },
+        {
+            "@type": "Person",
+            "name": "Janus Valberg-Madsen"
+        },
+        {
+            "@type": "Person",
+            "name": "Sri Harsha Vathsavayi"
+        },
+        {
+            "@type": "Person",
+            "name": "Rostyslav Skrypnyk"
+        },
+        {
+            "@type": "Person",
+            "name": "Jan Philipp Thiele"
+        },
+        {
+            "@type": "Person",
+            "name": "Viktor Rehnberg"
+        },
+        {
+            "@type": "Person",
+            "name": "Thomas Pfau"
+        }
+    ],
+    "about": "Preventing yourself and others from breaking your functioning code. In this lesson we talk about motivation for testing, about test design, but also about some tools that are typically used for automated testing of software.",
+    "audience": "",
+    "competencyRequired": "",
+    "educationalLevel": "Beginner",
+    "identifier": "https://doi.org/10.5281/zenodo.16410887",
+    "inLanguage": "en-UK",
+    "learningResourceType": "lesson",
+    "license": "https://creativecommons.org/licenses/by/4.0/",
+    "teaches": "",
+    "url": "https://coderefinery.github.io/testing",
+    "accessibilitySummary": "",
+    "isPartOf": "https://coderefinery.org",
+    "version": "2026-08-10"
+}
