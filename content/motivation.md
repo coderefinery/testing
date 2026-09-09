@@ -23,17 +23,20 @@ Have you ever had some of these problems?
 - There was some simple problem, systematically testing could have
   found it.
   But testing manually takes too much time,
-  so nobody ever did it
+  so nobody has ever done it
   with the appropriate care.
-- You get someone else's code and are afraid to touch it because who
-  knows what might break.  Plot twist: it's your own code!
+- You get someone else's code. 
+  You really need to change it 
+  but are afraid to touch it because who
+  knows what might break.
+  Plot twist: it's your own code!
+- You implement features to someone else's code and want to merge it,
+  but they are not sure your changes haven't broken anything 
+  and it's time consuming to test that.
 
 People have learned that some automatic way to check problems makes
 software development much easier.  This lesson will talk about the
 places it's useful for research code, and how easy it can be.
-
-Most people test their code in some way, typically manually.
-
 
 ## Untested software can be compared to uncalibrated measurement devices 
 
