@@ -5,8 +5,37 @@
 - Understand various benefits of testing
 ```
 
+Most scientists nowadays depend on software for research.
 
-## Untested software can be compared to uncalibrated detectors
+What can go wrong when research software has bugs?  Look no further:
+
+- [A Scientist's Nightmare: Software Problem Leads to Five Retractions](https://science.sciencemag.org/content/314/5807/1856.summary)
+- [Researchers find bug in Python script may have affected hundreds of studies](https://arstechnica.com/information-technology/2019/10/chemists-discover-cross-platform-python-scripts-not-so-cross-platform/)
+
+How can we avoid problems like these?
+
+## What are typical problems that *automated* tests can address?
+
+Have you ever had some of these problems?
+
+- You change B and C, and suddenly A doesn't work anymore.  Time
+  wasted trying to figure out what changed.
+- There was some simple problem, systematically testing could have
+  found it.
+  But testing manually takes too much time,
+  so nobody ever did it
+  with the appropriate care.
+- You get someone else's code and are afraid to touch it because who
+  knows what might break.  Plot twist: it's your own code!
+
+People have learned that some automatic way to check problems makes
+software development much easier.  This lesson will talk about the
+places it's useful for research code, and how easy it can be.
+
+Most people test their code in some way, typically manually.
+
+
+## Untested software can be compared to uncalibrated measurement devices 
 
 *"Before relying on a new experimental device, an experimental scientist always
 establishes its accuracy. A new detector is calibrated when the scientist
@@ -17,18 +46,14 @@ calibration are compared against the expected response."*
 
 With testing, simulations and analysis using software *can* be held to the same standards as experimental measurement devices!
 
-What can go wrong when research software has bugs?  Look no further:
-
-- [A Scientist's Nightmare: Software Problem Leads to Five Retractions](https://science.sciencemag.org/content/314/5807/1856.summary)
-- [Researchers find bug in Python script may have affected hundreds of studies](https://arstechnica.com/information-technology/2019/10/chemists-discover-cross-platform-python-scripts-not-so-cross-platform/)
-
 ---
 
 ## Testing in a nutshell
 
-In software tests, expected results are compared with observed results
+In the most basic form of software tests, 
+expected results are compared with observed results
 in order to establish accuracy.  Why are we not comparing directly all
-digits with the expected result?:
+digits with the expected result?
 
 ````{tabs}
    ```{group-tab} Python
@@ -79,12 +104,34 @@ CORRECT
 
 ## What can tests help you do?
 
-**Preserving expected functionality**
-- Check old things when you add new ones
+```{list-table} Problems, Solutions and who is affected?
+:widths: 40 30 30
+* - Problem
+  - Solution
+  - Who is affected?
+* - Breaking old functionality  
+    when adding new features 
+  - End-to-End tests
+  - Developers
+* - Verify installation
+  - Smoke tests 
+  - Users
+* - Showing up-to-date example
+  - End-to-End tests
+  - Users
+* - Improve readability and names 
+  - Unit tests
+  - Developers
+* - Refactor and restructure
+  - All tests
+  - Developers
+* - Documentation out of date
+  - Executable notebooks  
+    and [nbval](https://github.com/computationalmodelling/nbval),  
+    End-to-End tests 
+  - Users
 
-**Help users of your code**
-- Verify it's installed correctly and works.
-- See examples of what it should do.
+```
 
 **Help other developers modify it**
 - Change things with confidence that nothing is breaking.
@@ -127,14 +174,18 @@ Use the collaborative notes to answer these questions:
 
 ## Testing vocabulary
 
-* Test functions one at a time - **Unit tests**
+* Test functions and methods one at a time - **Unit tests**
 
 * Test how parts work together - **Integration tests**
 
-* Test the whole thing running - **End-to-end tests**
+* Test the whole thing running, checking the output - **End-to-end tests**
   * For example, running on sample data.
 
+* Test that the whole thing runs in the simplest scenario possible - **Smoke Test**
+  * if this fails, no point in testing other things, usually.
+
 * Check results are the same as before - **Regression tests**
+  * Other names for the same thing: **Acceptance Tests**, **Golden-Master Tests**, **Characterization Tests**
 
 * Write test first (the output), then write code to make test pass -
   **Test-driven development**

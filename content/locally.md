@@ -1,4 +1,4 @@
-# Testing locally
+# Automated Testing on your computer 
 
 ```{questions}
 - How hard is it to set up a test suite for a first unit test?
@@ -9,7 +9,8 @@
 
 
 In this exercise we will make a simple function and use
-one of the language specific test frameworks to test it.
+one of the language specific test frameworks 
+to test it automatically.
 
 * This is easy to use by almost any project and doesn't rely on any
   other servers or services.  

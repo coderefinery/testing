@@ -342,6 +342,8 @@ Your goal:
 
 
 ```{keypoints}
+- GitHub Actions (and other services, like GitLab CI/CD pipelines) can be used to run automatically the test suite when pushing
+- Setting up is usually done with YAML files. Every platform has their own syntax, but there are templates one can use
 - When fixing bugs or other problems reported in issues, use the issue
   autoclosing mechanism when you send the pull/merge request.
 ```

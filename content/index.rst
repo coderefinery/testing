@@ -1,21 +1,34 @@
 Automated testing - Preventing yourself and others from breaking your functioning code
 ======================================================================================
 
-Have you ever had some of these problems?:
+In this lesson we discuss the basics of *automated* testing.
 
-- You change B and C, and suddenly A doesn't work anymore.  Time
-  wasted trying to figure out what changed.
-- There was some simple problem, systematically testing could have
-  found it.
-- You get someone else's code and are afraid to touch it because who
-  knows what might break.  Plot twist: it's your own code!
+We start discussing why automated testing is important.
+We then show how to set up automated testing in your projects
+in a few programming languages,
+so that you can run a test suite conveniently on your own computer.
+We will then show how to make GitHub (or GitLab)
+run the test suite automatically
+(typically whenever someone pushes to the repository),
+and tell us when there was a problem.
 
-People have learned that some automatic way to check problems makes
-software development much easier.  This lesson will talk about the
-places it's useful for research code, and how easy it can be.
-We will discuss why testing often needs to be part of the
-software development cycle and how such a cycle can be implemented. We will
-see how automated testing works and practice designing and writing tests.
+If time allows,
+we might do that in a collaborative fashion,
+running the test suite on a pull request
+to inform the code review process.
+
+Writing tests can be challenging sometimes,
+so we will discuss typical problems in test design,
+mentioning also *Test Driven Develpment*,
+and practice designing and writing tests.
+
+The goals of the module
+is to make the learners feel comfortable
+with setting up a test suite of automated tests,
+feel familiar with the automation options
+on Software forges (e.g. GitHub and GitLab),
+and make them aware of the typical challenges
+in writing automated tests.
 
 .. prereq::
 
