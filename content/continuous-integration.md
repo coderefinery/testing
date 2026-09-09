@@ -1,14 +1,30 @@
-# Automated testing
+# Automated testing and "Continuous Integration"
 
 ```{questions}
 - How can we implement automatic testing each time we push changes to the repository?
 - Why is it good to autoclose issues with commit messages?
 ```
 
-## Continuous integration
 
 We will now learn to set up automatic tests using either GitHub Actions or
 GitLab CI - you can choose which one to use and instructions are provided for both.
+
+
+```{note} 
+
+## What is Continuous integration?
+
+From [Wikipedia](https://en.wikipedia.org/wiki/Continuous_integration):
+
+>    *Continuous integration (CI) is the practice 
+>    of integrating source code changes frequently 
+>    and ensuring that the integrated codebase is in a workable state.*
+
+By extension
+the expression **Continous Integration** is also commonly used
+to mean the automation *tools* that facilitate the practice.
+
+````
 
 This exercise can be run in "collaborative mode" by following instead the instructions
 in [Full-cycle collaborative workflow](./full-cycle-ci). In the collaborative version steps
@@ -27,7 +43,7 @@ In this exercise, we will:
 - **F.** Create a test to increase the code coverage of our tests.
 ```
 
-### Prerequisites
+## Prerequisites
 
 If you are new to Git, you can find a step-by-step guide to
 setting up repositories and making commits in
@@ -36,9 +52,9 @@ If you are new to pull requests / merge requests, you can learn all about them
 in the [Collaborative Git lesson](https://coderefinery.github.io/git-collaborative/).
 
 
-### Step 1: Create a new repository on GitHub/GitLab OR fork from the example repo
+## Step 1: Create a new repository on GitHub/GitLab OR fork from the example repo
 
-#### Create a new repository
+### Create a new repository
 
 - Begin by creating a repository called (for example) *example-ci*.
 - **Before** you create the repository, select **"Initialize this repository
@@ -191,14 +207,14 @@ in the [Collaborative Git lesson](https://coderefinery.github.io/git-collaborati
 
 
 
-#### Fork and clone an existing example repository
+### Fork and clone an existing example repository
 
 - Fork the example repo. There are two options one for [Python](https://github.com/AaltoRSE/PyTestingExample) and one for [R](https://github.com/AaltoRSE/RTestingExample).
 - Clone your fork (`git clone git@github.com:<yourGitID>/<Py/R>TestingExample.git`).
 
 
 
-### Step 2: Run tests locally
+## Step 2: Run tests locally
 `````{tabs}
   ````{group-tab} Python
   You can now run your tests locally with
@@ -216,7 +232,7 @@ in the [Collaborative Git lesson](https://coderefinery.github.io/git-collaborati
 
 
 
-### Step 3: Enable automated testing
+## Step 3: Enable automated testing
 
 `````{tabs}
   ````{group-tab} GitHub-Python
@@ -439,7 +455,7 @@ in the [Collaborative Git lesson](https://coderefinery.github.io/git-collaborati
 `````
 
 
-### Step 4: Verify that tests have been automatically run
+## Step 4: Verify that tests have been automatically run
 
 `````{tabs}
    ````{group-tab} GitHub-Python
@@ -488,7 +504,7 @@ in the [Collaborative Git lesson](https://coderefinery.github.io/git-collaborati
 `````
 
 
-### Step 5: Add a test which reveals a problem
+## Step 5: Add a test which reveals a problem
 
 After you committed the workflow file, your GitHub/GitLab repository will be ahead of
 your local cloned repository.  Update your local cloned repository:
@@ -505,14 +521,14 @@ Verify that the test suite now fails on the "Actions" tab (GitHub)
 or the "CI/CD->Pipelines" tab (GitLab).
 
 
-### Step 6: Open an issue on GitHub/GitLab
+## Step 6: Open an issue on GitHub/GitLab
 
 Open a new issue in your repository about the broken test (click the
 "Issues" button on GitHub or GitLab and write a title for the issue).
 The plan is that we will fix the issue through a pull/merge request.
 
 
-### Step 7: Fix the broken test
+## Step 7: Fix the broken test
 
 Now fix the code **on a new branch**, you can call it `yourname/bugfix`.
 After you have fixed the code on the new branch, commit the following
@@ -531,7 +547,7 @@ you try to fix issue number 1).
 Then push to your repository.
 
 
-### Step 8: Open a pull request (GitHub)/ merge request (GitLab)
+## Step 8: Open a pull request (GitHub)/ merge request (GitLab)
 
 Go back to the repository on GitHub or GitLab and open a pull/merge
 request. **In a collaborative setting, you could request a code
@@ -544,7 +560,7 @@ can still add it to the pull/merge request: `my pull/merge request
 title, closes #1`.
 
 
-### Step 9: Accept the pull/merge request
+## Step 9: Accept the pull/merge request
 
 Observe how accepting the pull/merge request automatically closes the issue (provided
 the commit message or the pull/merge request contained the correct issue number).
@@ -555,14 +571,14 @@ See also:
 
 Discuss whether this is a useful feature. And if it is, why do you think is it useful?
 
-### Step 10: Increase your code coverage
+## Step 10: Increase your code coverage
 
 We are currently missing several functions in our tests. Write a test for the `multiply` function in a new branch and create a pull request.
 On Python you can directly observe the increase in code coverage.
 On R you can have a look at the action (`Actions -> last run of your action -> Select a job -> Test coverage`). If you compare this with the
 previous run, you should see an increase once the update is in.
 
-### Step 11 (optional): Repeat steps 5-9 for the `convert_fahrenheit_to_celsius` function:
+## Step 11 (optional): Repeat steps 5-9 for the `convert_fahrenheit_to_celsius` function:
 
 Repetition helps learning, so let's do the testing again for our `convert_fahrenheit_to_celsius` function.
 Uncomment the test for the `convert_fahrenheit_to_celsius` function and repeat steps 5 to 9 fixing the bug this test exposes.

@@ -1,7 +1,7 @@
 Automated testing - Preventing yourself and others from breaking your functioning code
 ======================================================================================
 
-In this lesson we discuss the basics of automated testing.
+In this lesson we discuss the basics of *automated* testing.
 
 We start discussing why automated testing is important.
 We then show how to set up automated testing in your projects
