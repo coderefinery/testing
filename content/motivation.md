@@ -104,12 +104,34 @@ CORRECT
 
 ## What can tests help you do?
 
-**Preserving expected functionality**
-- Check old things when you add new ones
+```{list-table} Problems, Solutions and who is affected?
+:widths: 40 30 30
+* - Problem
+  - Solution
+  - Who is affected?
+* - Breaking old functionality  
+    when adding new features 
+  - End-to-End tests
+  - Developers
+* - Verify installation
+  - Smoke tests 
+  - Users
+* - Showing up-to-date example
+  - End-to-End tests
+  - Users
+* - Improve readability and names 
+  - Unit tests
+  - Developers
+* - Refactor and restructure
+  - All tests
+  - Developers
+* - Documentation out of date
+  - Executable notebooks  
+    and [nbval](https://github.com/computationalmodelling/nbval),  
+    End-to-End tests 
+  - Users
 
-**Help users of your code**
-- Verify it's installed correctly and works.
-- See examples of what it should do.
+```
 
 **Help other developers modify it**
 - Change things with confidence that nothing is breaking.
@@ -152,14 +174,18 @@ Use the collaborative notes to answer these questions:
 
 ## Testing vocabulary
 
-* Test functions one at a time - **Unit tests**
+* Test functions and methods one at a time - **Unit tests**
 
 * Test how parts work together - **Integration tests**
 
-* Test the whole thing running - **End-to-end tests**
+* Test the whole thing running, checking the output - **End-to-end tests**
   * For example, running on sample data.
 
+* Test that the whole thing runs in the simplest scenario possible - **Smoke Test**
+  * if this fails, no point in testing other things, usually.
+
 * Check results are the same as before - **Regression tests**
+  * Other names for the same thing: **Acceptance Tests**, **Golden-Master Tests**, **Characterization Tests**
 
 * Write test first (the output), then write code to make test pass -
   **Test-driven development**
