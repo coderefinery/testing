@@ -5,8 +5,7 @@
 - Understand various benefits of testing
 ```
 
-Most scientists nowadays depend on software for research.
-
+Most scientists nowadays depend on software for research.  
 What can go wrong when research software has bugs?  Look no further:
 
 - [A Scientist's Nightmare: Software Problem Leads to Five Retractions](https://science.sciencemag.org/content/314/5807/1856.summary)
@@ -16,7 +15,7 @@ How can we avoid problems like these?
 
 ## What are typical problems that *automated* tests can address?
 
-Have you ever had some of these problems?
+Have you ever had any of these problems?
 
 - You change B and C, and suddenly A doesn't work anymore.  Time
   wasted trying to figure out what changed.
@@ -40,23 +39,89 @@ places it's useful for research code, and how easy it can be.
 
 ## Untested software can be compared to uncalibrated measurement devices 
 
-*"Before relying on a new experimental device, an experimental scientist always
+```{epigraph}
+*Before relying on a new experimental device, an experimental scientist always
 establishes its accuracy. A new detector is calibrated when the scientist
 observes its responses to known input signals. The results of this
-calibration are compared against the expected response."*
+calibration are compared against the expected response.*
 
-> [From [Testing and Continuous Integration with Python](https://carpentries-incubator.github.io/python-testing/), created by K. Huff]
+-- From [Testing and Continuous Integration with Python](https://carpentries-incubator.github.io/python-testing/), created by K. Huff
+```
 
 With testing, simulations and analysis using software *can* be held to the same standards as experimental measurement devices!
 
 ---
 
+## What can tests help you do?
+
+```{list-table} Problems, Solution and who is affected?
+:widths: 40 30 30
+* - **Problem**
+  - **Solution**
+  - **Who is affected?**
+* - Breaking old functionality  
+    when adding new features 
+  - {term}`End-to-End test`s
+  - Developers
+* - Verify installation
+  - {term}`Smoke test`s
+  - Users
+* - Make small incremental changes,  
+    (e.g., improving readability, names)
+  - {term}`Unit test`s
+  - Developers
+* - Make architectural changes,  
+    (e.g., shifting code between  
+    classes, modules and functions)
+  - {term}`Integration test`s  
+    {term}`End-to-End test`s
+  - Developers
+* - Change things with confidence  
+    that nothing is breaking
+  - All tests
+  - Developers
+* - Documentation out of date  
+    including code examples
+  - Executable notebooks  
+    and [nbval](https://github.com/computationalmodelling/nbval),  
+    {term}`End-to-End test`s
+  - Users
+
+```
+
+Very few people are proud of the code they write 
+the first time they write it.
+
+Often, they'd like to improve it.
+
+But code without automated tests cannot be improved as easily
+as code with automated tests.
+
+Moreover, **code that is easy to test is probably easier to maintain**,
+since it needs to be more modular and have better separation of concerns.
+
+The [Modular code development lesson](https://coderefinery.github.io/modular-type-along/)
+  demonstrates this.
+
+---
+
 ## Testing in a nutshell
 
-In the most basic form of software tests, 
-expected results are compared with observed results
-in order to establish accuracy.  Why are we not comparing directly all
-digits with the expected result?
+There are many forms of testing.
+
+One can write test programs and run them (a form of {term}`end-to-end test`ing):
+```console
+$ python3 run-test.py
+
+running: sample_data/set1.csv --output=tests/set1.txt
+CORRECT
+```
+
+In the most basic form of a software test, 
+the observed result is compared with expected result (an "*oracle*")
+in order to establish correctness.  
+Here are some examples of this testing pattern 
+in different programming languages (in this case, {term}`unit test`s):
 
 ````{tabs}
    ```{group-tab} Python
@@ -95,61 +160,12 @@ digits with the expected result?
    ```
 ````
 
-Or you can test whole programs:
-```console
-$ python3 run-test.py
-
-running: sample_data/set1.csv --output=tests/set1.txt
-CORRECT
-```
 
 ---
 
-## What can tests help you do?
+## Discussion: When is it OK not to add automated tests?
 
-```{list-table} Problems, Solutions and who is affected?
-:widths: 40 30 30
-* - Problem
-  - Solution
-  - Who is affected?
-* - Breaking old functionality  
-    when adding new features 
-  - End-to-End tests
-  - Developers
-* - Verify installation
-  - Smoke tests 
-  - Users
-* - Showing up-to-date example
-  - End-to-End tests
-  - Users
-* - Improve readability and names 
-  - Unit tests
-  - Developers
-* - Refactor and restructure
-  - All tests
-  - Developers
-* - Documentation out of date
-  - Executable notebooks  
-    and [nbval](https://github.com/computationalmodelling/nbval),  
-    End-to-End tests 
-  - Users
-
-```
-
-**Help other developers modify it**
-- Change things with confidence that nothing is breaking.
-- Warning if documentation/examples go out of date.
-
-**Manage complexity**
-- If code is easy to test, it's probably easier to maintain.
-- The next lesson [Modular code development](https://coderefinery.github.io/modular-type-along/)
-  demonstrates this.
-
----
-
-## Discussion: When is it OK not to add tests?
-
-```{discussion} Discussion: When is it OK not to add tests?
+::::{discussion} Discussion: When is it OK not to add automated tests?
 
 Vote in the notes and we'll discuss soon.  **It is always a balance: there is no "always"/"never"**.
 
@@ -159,85 +175,42 @@ Vote in the notes and we'll discuss soon.  **It is always a balance: there is no
 3. A simple short, "obviously correct" shell script?
 4. Can you give other examples?
 
-```
+:::{solution}
+The role of automated tests is to save time when making changes to code.
 
----
+1. In this case you just "test manually" the notebook by running it. Automated tests might not save you time. 
+   But if some non trivial functions are added, you might want to have automated {term}`unit test`s for these separately.
 
-## Discussion: What's easy and hard to test?
+2. Writing automated tests for "throwaway code" can be a waste of time. But if you get back to it, then you should think about writing automated tests for it.
 
-```{discussion} Discussion: Testing in practice
+3. "Manual test" can be sufficient. In case of changes, checking the script with a {term}`linter` like [Shellcheck](https://www.shellcheck.net/) might still be useful!
 
-Use the collaborative notes to answer these questions:
+:::
 
-1. Give examples of things (from your work) that are easy to test.
-2. Give examples of things (from your work) that are hard to test.
-```
-
----
-
-## Testing vocabulary
-
-* Test functions and methods one at a time - **Unit tests**
-
-* Test how parts work together - **Integration tests**
-
-* Test the whole thing running, checking the output - **End-to-end tests**
-  * For example, running on sample data.
-
-* Test that the whole thing runs in the simplest scenario possible - **Smoke Test**
-  * if this fails, no point in testing other things, usually.
-
-* Check results are the same as before - **Regression tests**
-  * Other names for the same thing: **Acceptance Tests**, **Golden-Master Tests**, **Characterization Tests**
-
-* Write test first (the output), then write code to make test pass -
-  **Test-driven development**
-
-* GitHub or GitLab runs tests automatically - **Continuous
-  integration**
-
-* Report that tells you which lines were/were not run by tests -
-  **Code coverage**
-
-* Framework that runs test for you - **Testing framework**
-  * See [Quick Reference](./quick-reference) for some examples.
+::::
 
 ---
 
 ## What should you do?
 
-* Not every code needs perfect test coverage.
 
 * If code is interactive-only (Jupyter Notebook), it's usually hard to
   test.
 
-  * But also hard to run: the next lesson will discuss!
+  * But also hard to run: the [next lesson](https://coderefinery.github.io/modular-type-along/) will discuss!
 
 * At least end-to-end is often easy to add.
 
 * Add tests of tricky functions.
 
   * If you'd have to run it over and over to test while writing, why
-    not make it a property test?
+    not make it a proper automated test?
 
 * It's easy to have Gitlab/Github run the tests.
 
   * It's nice to push without thinking, and the system tells you when
-    it's broke.
+    it's broken.
 
 * **Learning how to test well make the rest of your code better, too.**
 
----
 
-## Where to start
-
-- A simple script or notebook probably does not need an automated test.
-
-**If you have nothing yet**
-- Start with an end-to-end test.
-- Describe in words how *you* check whether the code still works.
-- Translate the words into a script.
-- Run the script automatically on every code change.
-
-**If you want to start with unit-testing**
-- You want to rewrite a function? Start adding a unit test right there first.

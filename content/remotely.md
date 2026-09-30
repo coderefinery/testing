@@ -27,7 +27,7 @@ In this exercise, we will:
 - **C.** Find a bug in our repository and open an issue to report it
 - **D.** Fix the bug on a bugfix branch and open a pull request (GitHub)/ merge request (GitLab)
 - **E.** Merge the pull/merge request and see how the issue is automatically closed.
-- **F.** Create a test to increase the code coverage of our tests.
+- **F.** Create a test to increase the {term}`code coverage` of our tests.
 ```
 
 ## Prerequisites
@@ -579,15 +579,64 @@ Finally, we discuss together about our experiences with this exercise.
 
 ## Where to go from here
 
-- This example was using Python but you can achieve the same automation for R or Fortran or C/C++ or other languages
-- This workflow is very useful for collaborators who work on the same code and it works both for
+**These techniques:**
+- **apply to all programming languages**:
+  This example was using Python but you can achieve the same automation for any other languages
+- **are recommended and useful for collaborative software development**: 
+  automatically running the test suite remotely 
+  as presented here
+  is very useful for collaborators who work on the same code and it works both for
   [centralized](https://coderefinery.github.io/git-collaborative/02-centralized/) and
   [forking](https://coderefinery.github.io/git-collaborative/03-distributed/) workflows - have a look at this
   [alternative exercise](./full-cycle-ci) to see how that works.
-- GitHub Actions has a [Marketplace](https://github.com/marketplace?type=actions) which offer wide range of automatic workflows
-- On GitLab use [GitLab CI](https://about.gitlab.com/product/continuous-integration/)
-- For Windows builds you can also use [Appveyor](https://www.appveyor.com)
+  
+**There is more tooling available** to discover, for example:
+ 
+ 
+```{list-table} Features and implementations on GitHub Actions and GitLab CI/CD 
+* - **Feature**
+  - **GitHub**  
+    **Actions**
+  - **GitLab**  
+    **CI/CD**
+* - Composable actions
+  - [GitHub Marketplace](https://github.com/marketplace?type=actions),  
+    very mature ecosystem 
+  - [Components](https://gitlab.com/explore/catalog)
+* - Defaults
+  - Very minimal  
+    (checkout requires an action)
+  - Typical use cases  
+    are "baked in" 
+* - Examples and templates
+  - Template workflows
+  - Some [Pipeline examples](https://docs.gitlab.com/ci/examples/)
+* - Execution 
+  - [GitHub-hosted runners](https://docs.github.com/en/actions/concepts/runners/github-hosted-runners)  
+  - [GitLab-hosted runners](https://docs.gitlab.com/ci/runners/#gitlab-hosted-runners)  
+* - Self-hosted  
+    execution
+  - [Self-hosted runners](https://docs.github.com/en/actions/how-tos/manage-runners/self-hosted-runners)
+  - [GitLab runner](https://docs.gitlab.com/runner/)  
+    (more customizable)
+```
 
+Both GitHub Actions (on *github.com*) and GitLab CI/CD (on *gitlab.com*) offer runners  on Linux, Windows and MacOS machines.
+
+
+If you need more control, you can **self-host**:
+- CI/CD and Actions can also be made available
+  for self-hosted GitLab servers or GitHub Enterprise 
+  (i.e., outside *gitlab.com* or *github.com* domains).
+  Your data does not have to go to a cloud!
+- If you need more control on the running environment,
+  you can connect the git server 
+  to another host 
+  (including, e.g., a HPC system)
+  and run workflows/pipelines there,
+  with self-hosted runners 
+  (for [GitHub](https://docs.github.com/en/actions/concepts/runners/self-hosted-runners)
+  and for [GitLab](https://docs.gitlab.com/runner/)). 
 
 ```{keypoints}
 - When fixing bugs or other problems reported in issues, use the issue

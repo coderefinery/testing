@@ -1,7 +1,136 @@
 # Quick Reference
 
+## Glossary
+:::::{glossary} 
+
+Unit test
+  A test that covers a single functions or method
+  (a "unit")
+
+Integration test
+  A test that checks if "units" work together as intended
+
+Smoke Test
+  Check that the whole application or script runs without errors
+  in the simplest scenario possible.
+  If this fails, no point in testing other things, usually
+
+
+Regression
+  A loss of functionality, typically due to a bug
+
+End-to-end test
+  Test the whole thing running, checking the output
+  (For example, running on sample data
+  and checking that the output is the expected one.
+  See also {term}`Regression test<regression test>`)
+
+Regression test
+
+  Check that results and behaviour are what they are supposed to be.
+  Typically written once a {term}`regression` is detected.
+  Other names for the same kind of test:
+  - Characterization Tests
+  - Acceptance Tests
+  - Golden-Master Tests
+
+Characterization Test
+
+  Automated test that is written on existing (legacy) code,
+  (assuming that version of the code is correct)
+  and added to a test suite
+  to make further work/changes easier
+
+Test-first development
+
+  The practice of writing automated tests 
+  before writing the code that makes the tests pass
+
+TDD
+  Acronym for {term}`Test-driven development`
+
+Test-driven development
+  A special case of Test-First development 
+  where the workflow is: 
+
+  - Make a list of specifications
+
+  - Then, for each specification:
+    - Write a test, run it and verify that the test fails
+    - Write the minimum amount of code to make the test pass
+    - Refactor and improve the code
+  
+
+Continuous integration
+
+  The practice of merging in the main branch frequently
+  without having long-lived branches.
+  This typically requires automating part of the workflow,
+  especially testing,
+  and GitHub/GitLab et similia have support for that
+  via Actions/CI-CD respectively.
+
+Code coverage
+
+  Metric representing the fraction of code base 
+  executed during the test suite.  
+  Note: this is only an **upper bound**
+  to the fraction of code base 
+  that is anyhow tested.
+  And it is perfectly possible to write tests that are completely useless
+  but increase code coverage.
+
+Testing framework
+
+  Framework that runs tests for you.
+  See the following for some examples.
+
+Linter
+
+  A program that can check your code 
+  for typical mistakes 
+  or for risky practices, and reports them to you.
+
+Fixture
+  A resource that needs to be set up before a test case can run
+  and needs to be torn down after the test case 
+  (or a whole test suite) 
+  has run.
+
+Property testing
+  Test that a property of the code holds
+  for a whole class of inputs.
+  Typically done by automatically generating
+  test cases according to a strategy.
+  Tends to very time-consuming 
+  compared to unit testing.
+
+Test Registration
+  The act of marking a test for execution 
+  in a main testing program. 
+  Test frameworks allow to do this
+  automatically
+  at test definition
+  so that it does not have to be manually invoked 
+  in the "main" script/function,
+  with the risk of forgetting it.
+
+Test Pyramid
+  The general approach for balancing test types
+  in a test suite.
+  The slower a test type is,
+  the fewere tests of that type 
+  should be in the test suite.
+  
+  Search engines can show many representations of this.
+  
+  
+  
+:::::
+
 ## Available tools
 
+(unit-test-frameworks)=
 ### Unit test frameworks
 
 A **test framework** makes it easy to run tests across large amounts
@@ -281,10 +410,8 @@ You can then compile using this script:
 Each of these are web services to handle testing, free for open source
 projects.
 
-- [GitHub Actions](https://github.com/features/actions) (we will
-  demonstrate this in the next episode)
-- [GitLab CI](https://about.gitlab.com/features/gitlab-ci-cd/)
-  (we will demonstrate this in the next episode)
+- [GitHub Actions](https://github.com/features/actions) - see episode [Automated Testing Remotely](./remotely)
+- [GitLab CI](https://about.gitlab.com/features/gitlab-ci-cd/) - see episode [Automated Testing Remotely](./remotely)
 - [Azure Pipelines](https://azure.microsoft.com/en-us/services/devops/pipelines/)
 - [Coveralls](https://coveralls.io)
 - [Codecov](https://codecov.io)
