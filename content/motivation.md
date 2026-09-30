@@ -204,7 +204,7 @@ The role of automated tests is to save time when making changes to code.
 * Add tests of tricky functions.
 
   * If you'd have to run it over and over to test while writing, why
-    not make it a property test?
+    not make it a proper automated test?
 
 * It's easy to have Gitlab/Github run the tests.
 
