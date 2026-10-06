@@ -1,0 +1,445 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org/",
+  "@type": "LearningResource",
+  "@id": "https://coderefinery.github.io/testing",
+  "description": "Preventing yourself and others from breaking your functioning code. In this lesson we talk about motivation for testing, about test design, but also about some tools that are typically used for automated testing of software.",
+  "keywords": "software testing, GitHub actions",
+  "name": "Automated testing - CodeRefinery lesson",
+  "author": [
+    {
+      "@type": "Organization",
+      "name": "CodeRefinery"
+    },
+    {
+      "@type": "Person",
+      "name": "Radovan Bast"
+    },
+    {
+      "@type": "Person",
+      "name": "Kjartan Thor Wikfeldt"
+    },
+    {
+      "@type": "Person",
+      "name": "Richard Darst"
+    },
+    {
+      "@type": "Person",
+      "name": "Bj\u00f8rn Lindi"
+    },
+    {
+      "@type": "Person",
+      "name": "Johan Hellsvik"
+    },
+    {
+      "@type": "Person",
+      "name": "Poojan Smart"
+    },
+    {
+      "@type": "Person",
+      "name": "Marijn van Vliet"
+    },
+    {
+      "@type": "Person",
+      "name": "Roberto Di Remigio Eik\u00e5s"
+    },
+    {
+      "@type": "Person",
+      "name": "Jens Wehner"
+    },
+    {
+      "@type": "Person",
+      "name": "Teemu Ruokolainen"
+    },
+    {
+      "@type": "Person",
+      "name": "Janus Valberg-Madsen"
+    },
+    {
+      "@type": "Person",
+      "name": "Sri Harsha Vathsavayi"
+    },
+    {
+      "@type": "Person",
+      "name": "Rostyslav Skrypnyk"
+    },
+    {
+      "@type": "Person",
+      "name": "Jan Philipp Thiele"
+    },
+    {
+      "@type": "Person",
+      "name": "Viktor Rehnberg"
+    },
+    {
+      "@type": "Person",
+      "name": "Thomas Pfau"
+    }
+  ],
+  "about": "Preventing yourself and others from breaking your functioning code. In this lesson we talk about motivation for testing, about test design, but also about some tools that are typically used for automated testing of software.",
+  "audience": "",
+  "competencyRequired": "",
+  "educationalLevel": "Beginner",
+  "identifier": "https://doi.org/10.5281/zenodo.16410887",
+  "inLanguage": "en-UK",
+  "learningResourceType": "lesson",
+  "license": "https://creativecommons.org/licenses/by/4.0/",
+  "teaches": "",
+  "url": "https://coderefinery.github.io/testing",
+  "accessibilitySummary": "",
+  "isPartOf": "https://coderefinery.org",
+  "version": "2026-08-10"
+}
+</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Conclusions and recommendations &mdash; Automated testing</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=949a1ff5" />
+      <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=9c3e77be" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx_lesson.css?v=e9df6548" />
+      <link rel="stylesheet" type="text/css" href="../_static/term_role_formatting.css?v=4194e21c" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx_rtd_theme_ext_color_contrast.css?v=01954304" />
+
+  
+    <link rel="shortcut icon" href="../_static/coderefinery.ico"/>
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=187304be"></script>
+      <script src="../_static/doctools.js?v=9a2dae69"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=582ca9e2"></script>
+      <script src="../_static/minipres.js?v=a0d29692"></script>
+      <script>let toggleHintShow = 'Click to show';</script>
+      <script>let toggleHintHide = 'Click to hide';</script>
+      <script>let toggleOpenOnPrint = 'true';</script>
+      <script src="../_static/togglebutton.js?v=b8b12719"></script>
+      <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+      <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+      <script data-domain="coderefinery.github.io" defer="defer" src="https://plausible.cs.aalto.fi/js/script.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex/" />
+    <link rel="search" title="Search" href="../search/" />
+    <link rel="next" title="(Optional) Full-cycle collaborative workflow" href="../full-cycle-ci/" />
+    <link rel="prev" title="Test design" href="../test-design/" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../" class="icon icon-home">
+            Automated testing
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search/" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">The lesson</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../motivation/">Motivation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../locally/">Automated testing on your computer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../remotely/">Automated testing remotely</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../test-design/">Test design</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Conclusions and recommendations</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#discussion-what-s-easy-and-hard-to-test">Discussion: What’s easy and hard to test?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#the-basics-what-knowledge-do-you-need">The basics: what knowledge do you need?</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#why-use-a-testing-framework">Why use a testing framework?</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#don-t-over-test">Don’t over-test</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#pick-the-low-hanging-fruits-first">Pick the low-hanging fruits first</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#going-more-in-depth">Going more in-depth</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../full-cycle-ci/">(Optional) Full-cycle collaborative workflow</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://youtu.be/xbTTDLA3txI">Shell crash course</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercises/">List of exercises</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../quick-reference/">Quick Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guide/">Instructor guide</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">About</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://coderefinery.org/lessons/core/">All lessons</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://coderefinery.org/">CodeRefinery</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reusing/">Reusing</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../">Automated testing</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Conclusions and recommendations</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/coderefinery/testing/blob/main/content/conclusions.md" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="conclusions-and-recommendations">
+<h1>Conclusions and recommendations<a class="headerlink" href="#conclusions-and-recommendations" title="Link to this heading"></a></h1>
+<div class="admonition-objectives objectives admonition" id="objectives-0">
+<p class="admonition-title">Objectives</p>
+<ul class="simple">
+<li><p>What is a realistic approach to automated test?</p></li>
+<li><p>How can I start?</p></li>
+</ul>
+</div>
+<hr class="docutils" />
+<section id="discussion-what-s-easy-and-hard-to-test">
+<h2>Discussion: What’s easy and hard to test?<a class="headerlink" href="#discussion-what-s-easy-and-hard-to-test" title="Link to this heading"></a></h2>
+<div class="admonition-discussion-testing-in-practice discussion important admonition" id="discussion-0">
+<p class="admonition-title">Discussion: Testing in practice</p>
+<p>Use the collaborative notes to answer these questions:</p>
+<ol class="arabic simple">
+<li><p>Give examples of things (from your work) that are easy to test.</p></li>
+<li><p>Give examples of things (from your work) that are hard to test.</p></li>
+</ol>
+</div>
+<hr class="docutils" />
+<p>Considering automated tests when writing code
+is a major mental shift, that you will hopefully embrace
+after attending this lesson.</p>
+</section>
+<section id="the-basics-what-knowledge-do-you-need">
+<h2>The basics: what knowledge do you need?<a class="headerlink" href="#the-basics-what-knowledge-do-you-need" title="Link to this heading"></a></h2>
+<p>Learn one <a class="reference internal" href="../quick-reference/#term-Testing-framework"><span class="xref std std-term">testing framework</span></a> well enough for basics:</p>
+<ul class="simple">
+<li><p>Explore and use the good tools that exist out there.</p></li>
+<li><p>An incomplete list of testing frameworks
+can be found <a class="reference internal" href="../quick-reference/#unit-test-frameworks"><span class="std std-ref">here</span></a>.</p></li>
+</ul>
+<section id="why-use-a-testing-framework">
+<h3>Why use a testing framework?<a class="headerlink" href="#why-use-a-testing-framework" title="Link to this heading"></a></h3>
+<p>Automated testing typically involves a number of repetitive tasks
+and tricky problem solving.</p>
+<p>Fortunately for us,
+someone has already found a solution for most of these
+and created <a class="reference internal" href="../quick-reference/#term-Testing-framework"><span class="xref std std-term">testing framework</span></a>s that we can use.</p>
+<p>Note: not all frameworks solve all problems
+(also because sometimes the underlying language does not have the necessary features).</p>
+<table class="docutils align-default" id="id1">
+<caption><span class="caption-text">Why use a testing framework?</span><a class="headerlink" href="#id1" title="Link to this table"></a></caption>
+<colgroup>
+<col style="width: 40.0%" />
+<col style="width: 40.0%" />
+<col style="width: 20.0%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>Typical problem</strong></p></td>
+<td><p><strong>Solution</strong></p></td>
+<td><p><strong>Examples</strong></p></td>
+</tr>
+<tr class="row-even"><td><p>Report failures/successes<br />
+consistently<br />
+(to humans or other machines)</p></td>
+<td><p>Automated collection and output,<br />
+(e.g., Junit XML format or <a class="reference external" href="https://en.wikipedia.org/wiki/Test_Anything_Protocol">TAP</a>)</p></td>
+<td><p>Fundamental feature that<br />
+all testing frameworks have</p></td>
+</tr>
+<tr class="row-odd"><td><p>Remember to run<br />
+all the tests you write<br />
+in the main test script/program</p></td>
+<td><p>Automatic discovery,<br />
+automatic <a class="reference internal" href="../quick-reference/#term-Test-Registration"><span class="xref std std-term">registration</span></a><br />
+when declaring test functions</p></td>
+<td><p><a class="reference external" href="https://docs.pytest.org/en/stable/">pytest</a></p></td>
+</tr>
+<tr class="row-even"><td><p>Run only some tests<br />
+(to save time)</p></td>
+<td><p>Test filtering<br />
+via patterns</p></td>
+<td><p><a class="reference external" href="https://docs.pytest.org/en/stable/how-to/usage.html#specifying-which-tests-to-run">pytest</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Provide useful information<br />
+on why a test has failed</p></td>
+<td><p>“Smart” assertions/macros</p></td>
+<td><p><a class="reference external" href="https://docs.pytest.org/en/stable/how-to/assert.html#assert">pytest</a>,
+<a class="reference external" href="https://google.github.io/googletest/primer.html#assertions">GoogleTest</a></p></td>
+</tr>
+<tr class="row-even"><td><p>Run same test for many<br />
+known input/output combinations</p></td>
+<td><p>Parametric tests</p></td>
+<td><p><a class="reference external" href="https://docs.pytest.org/en/stable/how-to/parametrize.html#pytest-mark-parametrize-parametrizing-test-functions">pytest</a>,<br />
+<a class="reference external" href="https://docs.julialang.org/en/v1/stdlib/Test/#Working-with-Test-Sets">Julia</a> (see <code class="docutils literal notranslate"><span class="pre">testset</span> <span class="pre">for</span></code>)</p></td>
+</tr>
+<tr class="row-odd"><td><p>Check that a property holds<br />
+for a class of inputs and outputs</p></td>
+<td><p>Automatically generate test cases<br />
+based on a strategy<br />
+(property testing)</p></td>
+<td><p><a class="reference external" href="https://hypothesis.readthedocs.io/en/latest/tutorial/introduction.html">hypothesis</a><br />
+(Python)</p></td>
+</tr>
+<tr class="row-even"><td><p>Debugging on failure</p></td>
+<td><p>Start debugger on test failure</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">pytest</span> <span class="pre">--pdb</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Floating point equalities<br />
+with tolerance</p></td>
+<td><p>Macros/classes</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">≈</span></code> (Julia), <code class="docutils literal notranslate"><span class="pre">pytest.approx</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Set up and tear down<br />
+of complex test cases</p></td>
+<td><p><a class="reference internal" href="../quick-reference/#term-Fixture"><span class="xref std std-term">Fixture</span></a>s</p></td>
+<td><p><a class="reference external" href="https://docs.pytest.org/en/stable/explanation/fixtures.html">pytest</a>,<br />
+<a class="reference external" href="https://google.github.io/googletest/primer.html#same-data-multiple-tests">GoogleTest</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Estimate how much of your code<br />
+is <em>run</em> in the test suite</p></td>
+<td><p>Automatic <a class="reference internal" href="../quick-reference/#term-Code-coverage"><span class="xref std std-term">coverage</span></a><br />
+measurement</p></td>
+<td><p><a class="reference external" href="https://pytest-cov.readthedocs.io/en/latest/">Pytest-cov</a>,<br />
+<a class="reference external" href="https://wiki.cs.jmu.edu/reference/gcov/">gcov/lcov</a><br />
+(for C/C++/Fortran)</p></td>
+</tr>
+<tr class="row-even"><td><p>Do code examples<br />
+in documentation<br />
+work as expected?</p></td>
+<td><p>Documentation tests<br />
+(doctests)</p></td>
+<td><p><a class="reference external" href="https://docs.python.org/3/library/doctest.html">Python</a>,<br />
+<a class="reference external" href="https://documenter.juliadocs.org/stable/man/doctests/">Julia</a>,
+<a class="reference external" href="https://cran.r-project.org/web/packages/doctest/vignettes/doctest.html">R</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Will my code work<br />
+with different versions<br />
+of the dependencies?</p></td>
+<td><p>Test in different environments</p></td>
+<td><p><a class="reference external" href="https://tox.wiki/en">tox</a>, <a class="reference external" href="https://nox.thea.codes/en/stable/index.html">Nox</a><br />
+(Python)</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="don-t-over-test">
+<h2>Don’t over-test<a class="headerlink" href="#don-t-over-test" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>Not every code needs perfect <a class="reference internal" href="../quick-reference/#term-Code-coverage"><span class="xref std std-term">test coverage</span></a>.</p></li>
+<li><p>A simple script or notebook probably does not need an automated test.</p></li>
+</ul>
+</section>
+<section id="pick-the-low-hanging-fruits-first">
+<h2>Pick the low-hanging fruits first<a class="headerlink" href="#pick-the-low-hanging-fruits-first" title="Link to this heading"></a></h2>
+<p>You probably won’t do everything perfectly when you start off… But
+what are some of the easy starting points?</p>
+<p><strong>If you have got nothing yet</strong>:</p>
+<ol class="arabic simple">
+<li><p>Start with an end-to-end test.
+Typically easy to add, from a “manual” use case.
+This should match (or serve as) an <strong>example in the code documentation</strong> anyway.</p></li>
+</ol>
+<ul class="simple">
+<li><p>Describe in words how <em>you</em> check whether the code still works.</p></li>
+<li><p>Translate the words into a script.</p></li>
+<li><p>Run the script as often as reasonable.</p></li>
+</ul>
+<ol class="arabic simple" start="2">
+<li><p>Do you have some single functions that are easy to test, but hard to
+verify just by looking at them?  Add unit tests.</p></li>
+<li><p>A local testing framework + GitHub actions/Gitlab CI-CD is very easy!
+And works well in the background - you do whatever you want and get an email
+if you break things.  It’s actually pretty freeing.</p></li>
+</ol>
+<p><strong>If you need to start modifying some existing code:</strong></p>
+<ol class="arabic simple">
+<li><p>Add a <a class="reference internal" href="../quick-reference/#term-Characterization-Test"><span class="xref std std-term">characterization test</span></a> for the part of the code you need to change.</p></li>
+<li><p>Add tests for any functionality you intend to add.</p></li>
+<li><p>Consider adding some end-to-end tests for the use case you have in mind.</p></li>
+</ol>
+</section>
+<section id="going-more-in-depth">
+<h2>Going more in-depth<a class="headerlink" href="#going-more-in-depth" title="Link to this heading"></a></h2>
+<p><strong>With time</strong>:</p>
+<ul class="simple">
+<li><p>The code gets larger,
+the chance of undetected bugs increases,
+tests should increase.</p></li>
+<li><p>Bugs will be found. When you find them, add tests against those.</p></li>
+</ul>
+<p><strong>How to improve your code:</strong></p>
+<ul>
+<li><p>Use <a class="reference internal" href="../quick-reference/#term-Code-coverage"><span class="xref std std-term">code coverage</span></a> analysis to identify untested or unused code.
+Remember <a class="reference external" href="https://en.wikipedia.org/wiki/Goodhart%27s_law">Goodhart’s Law</a>.</p></li>
+<li><p>Strike a healthy balance between different kinds of tests:</p>
+<ul class="simple">
+<li><p>Fast tests give you information quicker but can be shallow;</p></li>
+<li><p>Thorough tests can catch more bugs but take longer to run
+and can be brittle.</p></li>
+</ul>
+<p>The <a class="reference internal" href="../quick-reference/#term-Test-Pyramid"><span class="xref std std-term">test pyramid</span></a>
+is a recommended strategy to balance between test types.</p>
+</li>
+<li><p>If you make your code easier to test, it becomes more modular (and vice versa - see the <a class="reference external" href="https://coderefinery.github.io/modular-type-along/">modular code development lesson</a>).</p></li>
+<li><p><strong>Learning how to test well make the rest of your code better, too.</strong></p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../test-design/" class="btn btn-neutral float-left" title="Test design" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../full-cycle-ci/" class="btn btn-neutral float-right" title="(Optional) Full-cycle collaborative workflow" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright CodeRefinery contributors.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
