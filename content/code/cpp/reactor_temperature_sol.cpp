@@ -2,8 +2,9 @@
 #include <catch2/catch.hpp>
 
 #include "reactor.hpp"
+#include "constants.hpp"
 
 TEST_CASE("Check reactor state", "[reactor_state]") {
-  REQUIRE(check_reactor_temperature(99) == ReactorState::FINE);
-  REQUIRE(check_reactor_temperature(100) == ReactorState::FINE);
-  REQUIRE(check_reactor_temperature(101) == ReactorState::CRITICAL);
+  REQUIRE(check_reactor_temperature(constants::max_temperature-1) == ReactorState::FINE);
+  REQUIRE(check_reactor_temperature(constants::max_temperature) == ReactorState::FINE);
+  REQUIRE(check_reactor_temperature(constants::max_temperature+1) == ReactorState::CRITICAL);

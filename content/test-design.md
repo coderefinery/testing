@@ -105,8 +105,9 @@ Also discuss why some are easier to test than others.
    `````
 
 ``````{solution}
-This is a **pure function** so is easy to test: inputs go to
-outputs.  For example, start with the below, then think of some
+This is a **pure function** so is easy to test: 
+same inputs produce the same outputs.
+For example, start with the below, then think of some
 what extreme cases/boundary cases there might be.  This example shows
 all of the tests as one function, but you might want to make each test
 function more fine-grained and test only one concept.
@@ -363,8 +364,12 @@ This one is not easy to test because the function has an external dependency.
 
 ``````{solution}
 This function depends on the value of
-`reactor.max_temperature` so the function is not pure, so testing gets
-harder. You could use monkey patching to override the value of
+`reactor.max_temperature` so the function 
+has a non-explicit argument,
+and lacks a clear "injection point"
+for that,
+so testing gets harder. 
+You could use monkey patching to override the value of
 `max_temperature`, and test it with different values.  [Monkey
 patching](https://en.wikipedia.org/wiki/Monkey_patch) is the concept
 of artificially changing some other value.
